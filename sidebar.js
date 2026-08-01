@@ -28,4 +28,24 @@
   el.innerHTML =
     '<h2>Latest</h2><ul class="side-latest">' + latest + "</ul>" +
     '<h2>Archive</h2><ul class="side-archive">' + archive + "</ul>";
+
+  // Hamburger toggle (only visible when the sidebar doesn't fit; see CSS).
+  var btn = document.getElementById("menu-toggle");
+  if (btn) {
+    function setOpen(open) {
+      el.classList.toggle("open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      setOpen(!el.classList.contains("open"));
+    });
+    // Tapping a link or anywhere outside closes it.
+    el.addEventListener("click", function (e) {
+      if (e.target.closest("a")) setOpen(false);
+    });
+    document.addEventListener("click", function (e) {
+      if (!el.contains(e.target) && e.target !== btn) setOpen(false);
+    });
+  }
 })();

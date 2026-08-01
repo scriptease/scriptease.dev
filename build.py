@@ -145,6 +145,7 @@ PAGE = """<!DOCTYPE html>
 <body>
 <header class="site">
   <a class="brand" href="/">{site}</a>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
 </header>
 <div class="layout">
   <main>

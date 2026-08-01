@@ -25,7 +25,24 @@ header.site, footer.site {
   padding: 1.5rem 1.25rem;
 }
 
-header.site { border-bottom: 1px solid var(--line); }
+header.site {
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: .35rem .55rem;
+  cursor: pointer;
+  color: var(--ink);
+}
 footer.site {
   border-top: 1px solid var(--line);
   color: var(--muted);
@@ -69,7 +86,25 @@ main { min-width: 0; max-width: var(--readw); }
 @media (max-width: 46rem) {
   .layout { grid-template-columns: 1fr; gap: 2rem; }
   main { max-width: none; }
-  .sidebar { position: static; border-top: 1px solid var(--line); padding-top: 1.5rem; }
+  .menu-toggle { display: block; }
+  .sidebar {
+    position: fixed;
+    top: 4rem;
+    right: 1rem;
+    width: 16rem;
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 5rem);
+    overflow-y: auto;
+    margin: 0;
+    padding: 1rem 1.25rem .25rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+    display: none;
+    z-index: 20;
+  }
+  .sidebar.open { display: block; }
 }
 
 a { color: var(--accent); text-decoration: none; }
