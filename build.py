@@ -144,7 +144,7 @@ PAGE = """<!DOCTYPE html>
 </head>
 <body>
 <header class="site">
-  <a class="brand" href="/"><img class="brand-shark" src="/shark.svg" alt="" width="20" height="20"> {site}</a>
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> {site}</a>
   <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
 </header>
 <div class="layout">
