@@ -27,7 +27,10 @@
 
   el.innerHTML =
     '<h2>Latest</h2><ul class="side-latest">' + latest + "</ul>" +
-    '<h2>Archive</h2><ul class="side-archive">' + archive + "</ul>";
+    '<h2>Archive</h2><ul class="side-archive">' + archive + "</ul>" +
+    '<h2>Elsewhere</h2><ul class="side-links">' +
+    '<li><a href="https://scripteasesite.wordpress.com">WordPress mirror</a></li>' +
+    "</ul>";
 
   // Hamburger toggle (only visible when the sidebar doesn't fit; see CSS).
   var btn = document.getElementById("menu-toggle");
