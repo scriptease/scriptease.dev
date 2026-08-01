@@ -56,7 +56,11 @@ footer.site {
   letter-spacing: -.01em;
   color: var(--ink);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
 }
+.brand-shark { width: 20px; height: 20px; display: block; }
 
 .layout {
   max-width: var(--maxw);
