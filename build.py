@@ -140,6 +140,8 @@ PAGE = """<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -168,6 +170,8 @@ REDIRECT = """<!DOCTYPE html>
 <meta charset="utf-8">
 <meta http-equiv="refresh" content="0; url=/posts/{slug}/">
 <link rel="canonical" href="/posts/{slug}/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>{site}</title>
 </head>
 <body>
