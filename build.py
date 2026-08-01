@@ -196,6 +196,7 @@ def entry_list(posts):
             '<a class="entry-title" href="/posts/{slug}/">{title}</a>\n'
             '<time>{date}</time>\n'
             '<p class="hook">{hook}</p>\n'
+            '<a class="read-more" href="/posts/{slug}/">Read more →</a>\n'
             '</li>'.format(
                 slug=p["slug"], title=escape(p["title"]),
                 date=escape(p["created"]), hook=escape(p["hook"])))
