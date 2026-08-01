@@ -87,6 +87,13 @@ main { min-width: 0; max-width: var(--readw); }
 .sidebar .side-latest time { display: block; color: var(--muted); font-size: .78rem; }
 .sidebar .side-archive li { margin-bottom: .3rem; }
 .sidebar .side-archive .count { color: var(--muted); font-size: .85em; }
+.sidebar h2 a { color: inherit; text-decoration: none; }
+.sidebar h2 a:hover { color: var(--accent); }
+.side-cloud { line-height: 1.9; margin: 0 0 2rem; }
+.side-cloud a { color: var(--ink); margin-right: .4rem; white-space: nowrap; }
+.side-cloud a.on { color: var(--accent); }
+.side-cloud a.off { color: var(--muted); }
+.side-cloud a:hover { color: var(--accent); text-decoration: none; }
 
 @media (max-width: 46rem) {
   .layout { grid-template-columns: 1fr; gap: 2rem; }
@@ -141,10 +148,19 @@ a:hover { text-decoration: underline; }
 }
 .post-tags {
   margin: 0 0 2rem;
-  color: var(--muted);
   font-size: .85rem;
 }
-.post-tags span { margin-right: .5rem; }
+.post-tags a { color: var(--muted); margin-right: .5rem; }
+.post-tags a:hover { color: var(--accent); }
+
+.tag-cloud { line-height: 2.1; }
+.tag-cloud a {
+  margin-right: .7rem;
+  white-space: nowrap;
+  color: var(--ink);
+  font-weight: 600;
+}
+.tag-cloud a:hover { color: var(--accent); text-decoration: none; }
 .post h2 { font-size: 1.4rem; margin: 2.5rem 0 .75rem; letter-spacing: -.01em; }
 .post h3 { font-size: 1.15rem; margin: 2rem 0 .5rem; }
 .post p { margin: 0 0 1.25rem; }

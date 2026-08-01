@@ -134,6 +134,11 @@ def month_label(ym):
         return ym
 
 
+def tag_slug(tag):
+    """`Open Source` / `open-source` -> url-safe `open-source`."""
+    return re.sub(r'[^a-z0-9]+', '-', tag.lower()).strip('-')
+
+
 PAGE = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -226,8 +231,9 @@ def build_post(md_path):
     tags = [t.strip().lstrip("#") for t in fm.get("tags", "").strip("[] ").split(",") if t.strip()]
     tags_html = ""
     if tags:
-        spans = " ".join('<span>#%s</span>' % escape(t) for t in tags)
-        tags_html = '<p class="post-tags">%s</p>\n' % spans
+        links = " ".join(
+            '<a href="/tags/%s/">#%s</a>' % (tag_slug(t), escape(t)) for t in tags)
+        tags_html = '<p class="post-tags">%s</p>\n' % links
     article = '<article class="post">\n<h1>{t}</h1>\n{tags}{h}\n</article>'.format(
         t=escape(title), tags=tags_html, h=html)
     out = REPO / "posts" / slug / "index.html"
@@ -262,6 +268,58 @@ def build_month_pages(posts):
             site=SITE_TITLE, tagline=SITE_TAGLINE, content=content))
 
 
+def build_tag_pages(posts):
+    """One /tags/<slug>/ page per tag (its posts, newest first), plus the
+    /tags/ cloud. Only complete on a full build — a filtered run reflects just
+    the built subset, same as the month pages and posts.js."""
+    tags = {}
+    for p in posts:
+        for t in p["tags"]:
+            tags.setdefault(t, []).append(p)
+    for tag, items in tags.items():
+        items = sorted(items, key=lambda p: p["created"], reverse=True)
+        content = (
+            '<section class="intro"><h1>#{tag}</h1>'
+            '<p>{n} post{s} tagged #{tag}.</p></section>\n{list}'.format(
+                tag=escape(tag), n=len(items), s="" if len(items) == 1 else "s",
+                list=entry_list(items)))
+        out = REPO / "tags" / tag_slug(tag) / "index.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(PAGE.format(
+            title="#%s — %s" % (escape(tag), SITE_TITLE),
+            site=SITE_TITLE, tagline=SITE_TAGLINE, content=content))
+    build_tag_cloud(tags)
+
+
+def build_tag_cloud(tags):
+    """/tags/ — every tag as a link, font-size scaled by how often it's used."""
+    if not tags:
+        return
+    counts = {t: len(items) for t, items in tags.items()}
+    lo, hi = min(counts.values()), max(counts.values())
+
+    def size(n):
+        if hi == lo:
+            return 1.2
+        return round(0.85 + (n - lo) / (hi - lo) * (2.1 - 0.85), 2)
+
+    ordered = sorted(counts, key=lambda t: (-counts[t], t))
+    links = "\n".join(
+        '<a href="/tags/{slug}/" style="font-size:{sz}rem" '
+        'title="{n} post{s}">#{tag}</a>'.format(
+            slug=tag_slug(t), sz=size(counts[t]), n=counts[t],
+            s="" if counts[t] == 1 else "s", tag=escape(t))
+        for t in ordered)
+    content = (
+        '<section class="intro"><h1>Tags</h1></section>\n'
+        '<div class="tag-cloud">\n%s\n</div>' % links)
+    out = REPO / "tags" / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(PAGE.format(
+        title="Tags — %s" % SITE_TITLE, site=SITE_TITLE,
+        tagline=SITE_TAGLINE, content=content))
+
+
 def write_posts_js(posts):
     """window.POSTS = [...] newest first — the data the sidebar reads on every
     page. Titles stored raw (JSON-escaped); sidebar.js HTML-escapes on render."""
@@ -292,6 +350,7 @@ def main():
     posts.sort(key=lambda p: p["created"], reverse=True)
 
     build_month_pages(posts)
+    build_tag_pages(posts)
     write_posts_js(posts)
     if posts:
         (REPO / "index.html").write_text(
