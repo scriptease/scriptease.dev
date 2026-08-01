@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tomato Maxing — scriptease</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">scriptease</a>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Tomato Maxing</h1>
+<p>It was 37°C in Munich — a record. I was deep in a presentation about token maxing — our jargon for squeezing every drop of work out of an AI — and to clear my head I stepped back from it and let my mind wander. It landed on the watering system out on my balcony — and the heat wave bearing down on it while I'd be gone.</p>
+<p>Four days later we'd drive to Austria. An hour into trying to make that €30 WiFi watering pump do what I wanted, I was fairly sure I'd just bricked it.</p>
+<p>Let me back up.</p>
+<h2>One innocent question</h2>
+<p>The pump sits in a 35-litre bucket and pumps water to the plants. It came with a phone app called ELESION — tap a button, the pump runs. Fine, until you want to leave town during a heat wave and water your tomatoes from a mountain in Austria.</p>
+<p>So I asked a simple question: <em>can I control this thing with code instead of my thumb?</em></p>
+<p>And one constraint made the whole thing hard. I'd be 300 km away. Any clever trick that only works while my laptop is on the same WiFi as the pump is useless from Austria. I didn't just need to control the pump — I needed to control it <strong>through the internet</strong>. That single requirement is what turned an afternoon into a fight.</p>
+<h2>The fight</h2>
+<p>The way in is a platform called <strong>Tuya</strong> — the Chinese company that builds the guts of thousands of cheap smart gadgets. "ELESION" is just a sticker on top; underneath, it's a stock Tuya device. Tuya has a proper developer door. Getting through it took three walls.</p>
+<p><strong>Wall one: a QR code that gaslit me.</strong> To grant my code access, you scan a pairing code with the phone. Every time I scanned it and confirmed, the website instantly said "expired." Then I noticed the tell: <em>it only expired when I pressed the button. If I never confirmed, it never expired.</em> The one action that was supposed to grant access was the exact thing that killed it.</p>
+<p><strong>Wall two: an account that didn't exist.</strong> My ELESION login — correct, straight out of my iCloud Keychain — simply didn't work in Tuya's own app. Same email, same password, "no such person." My account was real; it was just locked in a drawer only the sticker-brand could open.</p>
+<p><strong>Wall three: the region shell game.</strong> Because it's an OEM (sticker-brand) device, it might be locked to a region. Europe splits into two data centers — Central and West — and the free tier lets you have <em>one project at a time</em>. So every time I wanted to test whether the <em>other</em> region was the problem, I had to <strong>delete the whole project first</strong>. One in, one out, over and over, just to find out which door the device was even behind.</p>
+<h2>Rock bottom</h2>
+<p>Then it got genuinely bad — and it started with a decision I had to make on purpose.</p>
+<p>One of these pumps can only be paired to <strong>one app at a time</strong>. To even <em>attempt</em> the new approach, I had to first remove it from the app where it already worked. So I burned the one boat I had: I disconnected the pump from the working setup, on faith that I could get it back somewhere better. That's the moment the safety net went away.</p>
+<p>And then it wouldn't reconnect at all.</p>
+<p>Part of the problem was the hardware itself. The pump has exactly two buttons: one for Wi-Fi, one to water. To factory-reset it, you hold the Wi-Fi button until the light flashes. But the pairing guides all hinge on <em>how</em> it flashes — a <strong>fast</strong> blink means the device wants one kind of setup, a <strong>slow</strong> blink means another. But mine only ever blinked at one speed — I held that button a full twenty seconds and it never changed. So I was being asked "fast or slow?" about a device that had only one answer, with no way to change its mind. I stood there with my phone paired to the pump, waiting a full minute for it to be picked up — and nothing. And that was just to claw back to <em>square one</em>, before any of the clever stuff.</p>
+<p>So I did what everyone does: I updated the ELESION app, hoping a newer version would fix the connection. The update <strong>deleted my device from the setup list entirely</strong> — and iOS won't let you reinstall the old version. I wasn't back to zero. I was <em>worse</em> than zero, with a dead pump, wilting tomatoes, and four days until we drove to Austria.</p>
+<p>I genuinely thought: <em>I broke it.</em></p>
+<h2>The eagle lands</h2>
+<p>The unlock was almost stupid. Stop fighting the account. Factory-reset the pump, wipe it clean, and re-pair it from scratch into a new Tuya account.</p>
+<p>Except re-pairing wasn't the point-and-click it had been years ago. Back then, ELESION let me pick my pump from a list — there it was, by name. Tuya's app had no such entry, so I couldn't tell it <em>what</em> I was connecting; I had to add the thing as a generic, nameless "some Wi-Fi and Bluetooth gadget, figure it out" device and hope the pump raised its hand. And going back to ELESION wasn't a fallback either — the app update had already wiped the pump from its list too. Neither app would name my device anymore.</p>
+<p>The trick that finally worked: not "irrigation device," which kept failing — plain <strong>"Wi-Fi only."</strong> Fifty seconds later, the pump showed up in an account my code was actually allowed to talk to.</p>
+<p><em>The eagle has landed.</em></p>
+<p>I test-fired it. It worked. It worked.</p>
+<h2>Wasser an</h2>
+<p>Here's the part I still grin at. I don't type <code>water on</code> in a terminal. I say it out loud:</p>
+<blockquote>
+<p><strong>"Wasser an."</strong> — the pump starts.
+<strong>"Wasser aus."</strong> — it stops.</p>
+</blockquote>
+<p>The voice goes to Maestro and Maestro Relay — the same agent setup I use to build software at work. That hands off to the little <strong>water CLI</strong> I built, which is the bridge in the middle. The CLI talks to Tuya's <strong>cloud</strong>, and the cloud reaches the pump on my balcony — which means the command works whether I'm in the next room or in another country. That was the whole point.</p>
+<p>The tomatoes survived Austria.</p>
+<h2>Flying blind</h2>
+<p>It worked — but using it in anger taught me the next problem.</p>
+<p>From Austria I was conservative at first: a minute of watering at a time. Then I bumped it to two. Then the news said 36, 37°C, record-breaking, and I pushed it to three minutes a run, nervous the whole time about whether I was overdoing it or not doing enough.</p>
+<p>Then I got home and looked in the tank. It was only <strong>half empty</strong>. After four days of a heat wave, I hadn't even come close to the bottom. I'd been rationing water I had plenty of — because I had no way to <em>see</em> how much was left. I was flying blind the entire time.</p>
+<p>So naturally I ended up in a conversation with the AI about fixing that too: point a camera at the tank, add a water-level sensor, or — the cheapest option — measure the pump's flow rate once and just <em>calculate</em> the remaining water from the log of how long it's run. The tool taught me what the next tool should be. (That one's not built yet.)</p>
+<h2>Tomato maxing</h2>
+<p>Here's the thing that makes this more than a gadget story.</p>
+<p>Code got cheap. Building a little tool like this used to be a weekend you couldn't justify; now it's an evening of procrastination and a conversation. So the leverage stops being about work. The exact same agent stack that ships our company's software also waters my tomatoes, by voice, from a mountain 300 km away.</p>
+<p>That's the joke that's also the thesis. When code is this cheap, you don't just automate your job. You automate your garden.</p>
+<p>Tomato maxing.</p>
+</article>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

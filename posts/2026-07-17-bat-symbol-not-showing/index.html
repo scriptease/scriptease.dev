@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bat Symbol Not Showing — scriptease</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">scriptease</a>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Bat Symbol Not Showing</h1>
+<p>An app I'd used for years launched perfectly on my new Mac — three copies of it at once, all alive in Activity Monitor — and not one of them showed its little bat icon in the menu bar. The code was fine. The app was fine. The Mac just refused to show it, and wouldn't say why.</p>
+<p>A quick cast of characters. SimSim is a tiny free tool for iPhone developers: it sits in the Mac's menu bar — that strip at the top of the screen with the clock and the Wi-Fi symbol — and its icon is, for whatever reason, a little bat. Click the bat, and it takes you straight to the hidden folders where iPhone simulators store an app's data. (My dictation software insisted on transcribing it as "bad symbol not showing" all afternoon, which honestly also fit.)</p>
+<h2>"It worked on my other Mac"</h2>
+<p>On my old Mac: launch SimSim, bat appears, done. On the new one: launch SimSim, and… nothing. The process was running — Activity Monitor showed it. Launch it again, two processes. I had copies in the Downloads folder, in my personal apps folder, and in the system one — and I could run all three at once. Three healthy processes, zero bats.</p>
+<p>I'd already ruled out the usual suspect. When a Mac blocks a downloaded app for security reasons, it doesn't run at all — and these were visibly running. So I handed the mystery to Claude, an AI that can operate my terminal, inside the app's own source code — the recipe an app is built from. That matters for later: the AI could read the app's code, build it from scratch, and interrogate macOS directly.</p>
+<h2>The theory graveyard</h2>
+<p>What followed was two hours of the AI producing genuinely good theories and me killing them with thirty-second experiments.</p>
+<p>Theory one: the notch. My new MacBook has that black cutout at the top of the screen, and when the menu bar fills up, macOS silently drops icons behind it — they don't wrap, they just vanish. Plausible! The AI even proved the icon was being created: it watched macOS's internal diary while launching SimSim, and the diary confirmed the menu bar item existed. It just wasn't anywhere I could see.</p>
+<p>So I removed another icon to make room and watched everything slide over. No bat. I sent a screenshot with the empty space circled. Theory dead.</p>
+<p>Somewhere in here I noticed I'd become the assistant's assistant: I was taking screenshot after screenshot and feeding them in by hand. Why am I making the screenshots when Claude can look at the screen itself? I moved the session over to the Claude desktop app, which is allowed to see the screen — same conversation, new pair of eyes.</p>
+<p>Theory two: an old saved position. macOS remembers where each menu bar icon sits, and SimSim had a position on file — maybe it was pinned behind the notch while everything else flowed around it? The AI deleted it and relaunched. No bat.</p>
+<p>Theory three was the fun one. The AI went spelunking through macOS's hidden pile of saved settings and found that all ten menu bar slots for apps not made by Apple were marked <em>hidden</em> — and I remembered that I used to run Bartender, a menu-bar organizer app that hides icons for you, which I'd abandoned after too many crashes. A half-uninstalled Bartender leaving every icon switched off? That story fit so well. The AI flipped all ten flags back to visible, restarted the menu bar. No bat. The flags weren't even connected to anything — phantom leftovers.</p>
+<p>Meanwhile the AI had built its own copy of SimSim from source and added a line of debugging that made the app report its own icon's position on screen. The answer came back: the icon sat at coordinates (0, −22) — map numbers for a spot just off the bottom of the visible screen. Not behind the notch — parked in the void where macOS puts things it has decided not to place. The app dutifully reported "I am visible." It was not.</p>
+<h2>"You don't understand"</h2>
+<p>And here the session revealed something about AI itself. When the theories ran out, the model I'd started with — Opus, one flavor of Claude — fell back to suggestions: shrink the screen's pixels to make the menu bar wider, install a third-party tool that manages menu bar icons, quit some apps to free a slot. Three tidy options, none of which touched the problem. This was never "I need more space." It was "the icon doesn't show."</p>
+<p>So I switched to a stronger model — Fable — and had it read the entire session from the top. It came back with the same three ideas. Two different AIs had independently converged on the same wrong answers — not because they're stupid, but because when the evidence runs out, they reach for the most common internet answer, and the internet's answer to a crowded menu bar is those three. I told it, in exactly these words: <em>you don't understand.</em> Twice. The way out wasn't a fourth suggestion. It was me doing something no suggestion list contained: my own experiment.</p>
+<h2>"Why doesn't it work the same way for SimSim?"</h2>
+<p>The turning point wasn't a discovery. It was a question.</p>
+<p>I stopped the VPN — its icon disappeared from the bar. Started it — the icon came back. Instantly, reliably, right in the free space that supposedly didn't exist. So macOS could place new icons on demand — just not SimSim's. <em>Why doesn't it work the same way for SimSim?</em></p>
+<p>That question changed everything, because it shrank the problem. This wasn't "the menu bar is broken" or "the Mac is full." Something was singling out this one app. And there was one more memory rattling around in my head: macOS lets you hold the Command key and drag an icon right out of the menu bar to get rid of it. I'd done exactly that months ago, to an icon I didn't want. Had I ever, maybe, done it to the bat?</p>
+<h2>"One idea we could try"</h2>
+<p>Here's the experiment that cracked it, and it was my favorite moment of the session. Every app on a Mac has a bundle identifier — an internal passport number, like <code>com.dsmelov.SimSim</code>, that macOS uses to recognize the app no matter where the file lives or what it's called. If macOS was holding a grudge, the grudge had to be filed under that name.</p>
+<p>So: take the exact same app, byte for byte, change <em>only</em> the internal name — <code>SimSim</code> becomes <code>SimSim2</code> — and launch it.</p>
+<p>The bat appeared. Instantly.</p>
+<p>Same code, same icon, same everything, different name badge: welcomed into the menu bar like nothing was ever wrong. Then I Command-dragged the clone's icon out and relaunched — now <em>that</em> name was cursed too. macOS wasn't judging the app; it was banning the name. That's why three copies in three folders all failed identically — they all wore the same badge.</p>
+<h2>"Found it"</h2>
+<p>Now we knew exactly what to look for: wherever macOS keeps its list of banished menu bar icons. The AI was digging through settings files; I asked whether it had tried a plain web search — maybe there's an official way to get a dragged-out icon back. And while it searched, I went poking through System Settings myself.</p>
+<p>There it was. <strong>System Settings → Menu Bar.</strong> A list of every app that ever put an icon in the menu bar, each with its own on/off switch. And SimSim: switched off.</p>
+<p><img alt="The Menu Bar pane in System Settings — SimSim, with its little bat icon, toggled off" src="assets/bat-symbol-not-showing/menu-bar-settings-simsim-off.png" /></p>
+<p>One flip. Bat's back. On this year's macOS, Command-dragging an icon out of the bar isn't a rearrangement anymore — it's a permanent per-app "never show this again," filed under the bundle identifier, in a settings pane neither of us knew existed. My months-old drag of some icon I don't even remember had survived onto a brand-new Mac via settings sync — and silently vetoed every future copy of SimSim.</p>
+<p>Two hours of forensics, and the fix was a toggle. But here's the thing my whole afternoon confirmed: you only find the toggle once you've asked the right question. "Why doesn't my icon show" finds you nothing. "Why does macOS treat this one name differently" finds you the answer.</p>
+<h2>"While we are still in the project"</h2>
+<p>We were already inside SimSim's source code, so I brought up something that had annoyed me for years: click the bat, and the menu <em>lags</em>. Click it twice impatiently and it queues your clicks, opening and closing like a haunted door.</p>
+<p>The AI read the code and found the reason in minutes: every single click rebuilt the entire menu from scratch — rereading the simulator folders and rebuilding every app's icon — while the user interface waited. The fix is a classic: do the slow work in the background, show the menu instantly from the last known state, and update it a moment later when the fresh data is ready. The very first click, before anything is cached, shows a small "Loading Simulators…" note instead of freezing.</p>
+<p>Twenty minutes from complaint to fix. Click, menu, instantly, every time.</p>
+<h2>"Yes, open a PR"</h2>
+<p>The lag wasn't my Mac's problem — it was in SimSim itself, so every user of the app had it. We didn't stop at fixing my copy: we saved the change, uploaded it to my copy of the project, and opened a pull request — an offer of the change back to the original developer — as <a href="https://github.com/dsmelov/simsim/pull/64">dsmelov/simsim#64</a>. If it's accepted, everyone's bat gets snappy.</p>
+<p>Looking back, this session had a shape I keep seeing in the best ones. You start with a problem. The way there is hairy — good theories, dead ends, a graveyard of plausible explanations. Then you find the right question, and the answer turns out to be embarrassingly easy. And once you're standing there with the solution, you don't just leave: you fix the other annoyance while the toolbox is open, and push it back upstream so everybody profits.</p>
+<p>The bat is back in my menu bar. The menu opens instantly. And somewhere in macOS there's still a settings pane quietly holding grudges under names — go check yours: System Settings → Menu Bar. You might find an old friend switched off.</p>
+</article>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

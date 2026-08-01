@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Vault I Could Finally Give Away — scriptease</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">scriptease</a>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>The Vault I Could Finally Give Away</h1>
+<p>This morning my note-taking system was three months of personal plumbing. By lunch it was a 355-kilobyte zip file — running on a friend's Mac.</p>
+<h2>"I have an idea"</h2>
+<p>For the last three months I've been building something I find hard to describe without sounding like I've joined a cult: a folder of notes with an AI living inside it. The notes are in Obsidian — a note app that stores everything as plain text files on your own disk. The AI is Claude Code — a version of Claude that runs in a terminal and can read and write files. Point it at the notes folder, and suddenly the folder answers questions, files research, and keeps itself organized.</p>
+<p>Over those months, my vault grew the way home setups do. A watcher script checks a research queue every two minutes. A cron job backs everything up at 17:45. A notification relay pings my Discord when anything finishes. Two Macs check on each other over SSH. It works beautifully — for me, on my machines, with my glue.</p>
+<p>Which is exactly why I couldn't give it to anyone. Every clever part was welded to some other clever part.</p>
+<p>This morning I started a session with the words "I have an idea," and then talked faster than I could think it through: a fresh vault, next to my real one, called Showcase. Not a copy of my system — a starting point for somebody else's.</p>
+<h2>"You're already doing the stuff the agent would do"</h2>
+<p>The heart of my real vault is the research pipeline. I say "research the best e-ink tablets," a checkbox line appears in a file called 🔬 Research, and machinery takes over: a watcher notices the new line, dispatches a background agent, the agent does the web research, writes a report into the vault, ticks the checkbox, and pings my phone. Fully asynchronous. I was proud of it.</p>
+<p>And the first thing I did for the giveable version was delete almost all of it.</p>
+<p>Because while dictating the idea, I ran into a realization mid-sentence: asynchronous is powerful, but it isn't actually <em>needed</em>. When you ask a Claude session to research something, you are already talking to exactly the kind of agent the queue would have dispatched. So let the session do the whole ritual itself: write the checkbox into the log, do the research right there, file the report, tick its own box. Same durable paper trail, same tidy folder of results — minus the watcher, the cron job, the notification relay, and the two Macs.</p>
+<p>The giveable version of the pipeline wasn't a smaller queue. It was no queue. Three months of machinery, replaced by a one-page instruction file — because the machinery had quietly become optional the moment the assistant itself got good enough to just do the work when asked.</p>
+<h2>"You don't launch Claude in it"</h2>
+<p>The second pattern I wanted to hand over is the one that makes people's eyes go wide: driving the vault from a phone.</p>
+<p>Claude Code has a remote-control mode. The old way — the way I'd been doing it — was to start a session in the terminal and expose it to the Claude mobile app, one session at a time. The new way is better, and it inverts how you think about the whole thing: you run one command in the vault folder — <code>claude remote-control --name "Obsidian vault"</code> — and it starts a <em>host</em>. Not a session. A quiet process that sits there, and from your phone you create fresh sessions inside it whenever you want, on the fly.</p>
+<p>You don't launch Claude in your vault anymore. You put the host in, and then you continue working in new sessions — from the couch, from the train, with the Mac's screen locked at home. The vault stops being a program you start and becomes a place where sessions happen.</p>
+<p>That command went into the guide as step one. The terminal way became the footnote.</p>
+<h2>Technically in the void</h2>
+<p>Then came the wall, and it was a funny one: the smartest parts of the vault are invisible.</p>
+<p>Obsidian's file browser only shows markdown — the plain-text note format. Everything that makes the Showcase vault clever is <em>not</em> markdown: the shell scripts, the skill definitions, the whole hidden <code>.claude</code> folder where the agent's abilities live. Hand someone the vault and they'd see some notes and none of the machinery. Like gifting a watch with the movement removed.</p>
+<p>The fix became a house rule. Every invisible thing gets a visible markdown note: what it does, how to use it, and a link pointing into the dark. As I put it while dictating — the file itself is technically in the void, but now you can see it. The vault grew a Skills folder and a Scripts folder that are really just mirrors: doc-note anchors for things Obsidian refuses to show.</p>
+<p>The invisible-things theme kept going. iCloud folder paths contain a space, which quietly breaks shell commands unless you quote them — so the guide now says so, and recommends a one-line shortcut path so you never type the real one again. And the nastiest one: the very first time Claude Code opens a new folder, it asks "Do you trust the files in this folder?" — a question it only asks at the terminal. Skip that, and every session you later create from your phone silently hangs on a prompt nobody can see. That disclaimer went in twice, in bold, because I'd met that wall personally.</p>
+<h2>"Like the diamond — you were faster"</h2>
+<p>The whole build was a duet played too fast. I kept dictating ideas mid-build — add a projects registry, add a file for other vaults, add doc notes, add an overview — and the ideas kept arriving before the previous one was finished.</p>
+<p>At one point I asked for icon proposals for the "Other Vaults" file. Claude offered a diamond 💎 — Obsidian's logo is a gem — and I picked it. Then I had a thought: wait, is there a <em>purple</em> emoji? Obsidian's gem is purple. Claude, eager, had already renamed the file to a purple crystal ball 🔮 before I finished the thought. "Like the diamond," I said, "you were faster." The file got renamed back. It is 💎 Other Vaults now, and there is a matching tip in the guide: tag your vault folder purple in the Finder, because that's Obsidian's color and the purple dot makes it spottable everywhere.</p>
+<p>That's what co-building actually looks like: not a genius machine and a spectator, but two parties correcting each other at slightly different speeds.</p>
+<h2>Zero leaks</h2>
+<p>Before zipping, one last paranoid pass: does anything in the vault point at <em>my</em> world? Three months of habits leave fingerprints — usernames in paths, machine names, references to my other tooling.</p>
+<p>The audit came back clean. Every script finds the vault relative to its own location. The Obsidian template resolves the vault path at runtime. The setup guide's only absolute path is the generic iCloud one every Mac shares. The one place my vault's name appeared in an instruction file became a placeholder in brackets. The zip excludes my workspace state, so my open tabs don't ship as a souvenir.</p>
+<p>Then: zip, 355 kilobytes, 48 files. Sent.</p>
+<h2>"It already worked!!"</h2>
+<p>Before lunch, the message came back: it already worked for my friend. First try, her Mac, her vault.</p>
+<p>Three months, compressed into a morning — because the compression wasn't code, it was decisions. Delete the queue; the session is the agent. Run a host; sessions come to you. Anchor every invisible thing to a visible note. Quote the path with the space in it. Approve the folder once before you trust it remotely.</p>
+<p>The last thing I put in the guide is the only actual philosophy in it: start small and find your way. The vault isn't a system to comply with. It's a starting point to reshape until it fits how <em>you</em> work — which is, when I think about it, exactly what mine had been doing to me for three months.</p>
+<p><em>Want the folder? It's the same one my friend got: <a href="https://github.com/scriptease/obsidian-vault/releases/download/v2/Showcase-2026-07-17-v2.zip">download the starting vault</a> (or <a href="https://github.com/scriptease/obsidian-vault">browse it on GitHub</a>). Open 🚀 Start Here.md and find your way.</em></p>
+</article>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

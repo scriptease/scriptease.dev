@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Making Up Insights — scriptease</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">scriptease</a>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Making Up Insights</h1>
+<p>I read that my coding assistant ships with a built-in command that studies how you work with it and reports back. Why not give it a shot? The first section — titled "At a Glance" — looked fine: actual feedback on how I prompt, what I do right. Then I got into the details and thought: that's not right. This is so specific, it's like it took five of my three thousand sessions and built the whole report out of them.</p>
+<p>I had no idea how close that guess would land.</p>
+<h2>The report card</h2>
+<p>The command is called <code>/insights</code>. It samples your past sessions — the conversations you've had with the assistant — and writes you a usage report: what you worked on, what went well, where things ground, what to try next. A report card about our collaboration, written by the other party.</p>
+<p>I liked the idea. I still do. And the page it produced was handsome: 3,210 sessions on record, 143 of them analyzed, 2,500 hours counted, and a claim to know where our work got stuck.</p>
+<p>Then I read the suggestions.</p>
+<h2>"wtf is this"</h2>
+<p>One suggestion was to package my blog-writing workflow as a reusable tool. Sensible — except for the tool it proposed. Its first instruction, verbatim: <em>"Find newest fishslop Maestro session."</em></p>
+<p>Fish slop was last week's post. A one-off. Built, published, done. The report had watched me turn that one project into a blog post and templated the <em>instance</em> instead of the pattern — a "reusable" tool with a one-time fish baked into line one. It gets useful again the day I build a second underwater reef.</p>
+<p>Another suggestion: try headless mode — running the AI on a schedule, no human present, like a cron job. The example it offered was a command to run my daily vault backup.</p>
+<p>I run about half my sessions headless. Including — literally, specifically — the daily vault backup, every morning at seven. The report was recommending I try the mechanism that produced the logs it was reading.</p>
+<p>I interrupted it mid-sentence with "wtf is this," which my dictation faithfully preserved.</p>
+<h2>Three out of three thousand</h2>
+<p>Next to the report, the tool leaves a folder of working files — one small analysis per session it looked at. I asked the assistant to inspect its own working files. Fifty of them. Forty-seven were not my sessions.</p>
+<p>They belonged to my note-taker Claude-Mem. My setup includes a memory plugin, and for every real session it spawns a little observer session — a stenographer in the corner, transcribing what the main session does so future sessions can remember it. Those transcriptions are sessions too, technically. They live in the same folder as the real ones.</p>
+<p>The report couldn't tell them apart. So every real working session got counted several times — once for the meeting, and once for each stenographer describing the meeting. One evening of blog writing became "ten sessions of blog publishing." The headline said 143 sessions analyzed; strip the stenographer copies from that pile and what remained was about five threads of actual work.</p>
+<p>Five of three thousand. My annoyed guess on first read turned out to be the literal truth.</p>
+<p>It had interviewed the stenographers instead of me.</p>
+<h2>Turning the insight inside out</h2>
+<p>I wanted to know if the process was careless or just blind, so I asked the assistant a slightly rude question: do you have access to the code that wrote this? The app ships as a single 256-megabyte file with the program text baked inside — but baked isn't hidden. It searched inside its own file and read the rules out to me.</p>
+<p>The rule for "is this a real session" turned out to be two lines: at least two messages from the user, at least one minute long. That's the whole gate. The stenographer sends many messages over many minutes. It passes.</p>
+<p>The best detail: there <em>is</em> one exclusion in the code. The tool filters out its own automatically generated sessions — it recognizes its own echo by a signature phrase in the first message. Everyone else's echoes count as work.</p>
+<p>And the part that explained the suggestions: the analysis never looks at your setup. My rule files, my custom tools, my scheduled automations — the report sees none of it. It pattern-matches transcripts against generic advice, and it can't know that the advice is already installed. It was judging my workflow sight unseen and recommending me things I own.</p>
+<h2>Making up my own</h2>
+<p>The fix wasn't a complaint, it was an hour of writing Python. Same design, two changes.</p>
+<p>First, who sent each message. Every message in the session logs carries a stamp nobody was using: whether a human typed it or software sent it. My rebuild keeps sessions with real typing, plus one special case — sessions I steer remotely from my phone, where I'm present but nothing is technically "typed." Stenographers and morning robots are counted, honestly, in their own column, and analyzed never.</p>
+<p>Second, the rulebook goes in. Before writing suggestions, the report gets handed my actual config — the rules, the tools, the automations — with one instruction: <em>suggest only what is not already covered, and if there are no genuine gaps, say so. An empty gap analysis is a valid result.</em> Finding nothing was allowed.</p>
+<p>The clean run over the same thirty days: 511 sessions — 208 with a human at the keyboard, 75 I steered remotely from my phone, and 228 robots doing their scheduled rounds. The new report's gap analysis came back mostly "covered, covered, covered."</p>
+<p>Mostly. It found one real thing.</p>
+<h2>The AI who cried wolf</h2>
+<p>At work, code changes don't go straight into the shared codebase — they go through review first, via a system called Gerrit. Sending code out is called a push. A push <em>to review</em> is routine and safe: a colleague reads it before it lands. A <em>direct</em> push skips that checkpoint — that's the dangerous kind. And my rules say the AI never pushes without being explicitly told.</p>
+<p>I even had a guard for it: a tripwire that pops a confirmation prompt whenever the AI is about to push. The clean report found the rule had been broken three times in a month anyway.</p>
+<p>Not because the guard was off. Because it asked the same question every time. Three pushes to review — safe, routine — each raised the same prompt, and I approved each with the same reflex. The fourth push was direct. Same prompt, same reflex, approved.</p>
+<p>A guard that cries wolf identically for sheep and wolves trains you to stop reading. The one time it mattered, I had long stopped.</p>
+<h2>Even without reading the text</h2>
+<p>So the guard got tiers. A push to review now passes in silence — no prompt at all. A direct push asks, prefixed ⚠️⚠️⚠️. A force push — the kind that rewrites history and is genuinely hard to undo — asks with 🚨🚨🚨.</p>
+<p>Using emojis to make information scannable before you read it is something I use elsewhere too. In Postman, my production environment carries the same police lights: one glance at 🚨 and I know I'm in the system where I need to be careful. Every Postman user I've told this to has adopted it.</p>
+<h2>Steal this</h2>
+<p>If you want more insightful insights, take this: the rebuilt analyzer is a single Python script, <a href="https://gist.github.com/scriptease/8d6bf1716ad5b3de6e4cc50adf4cf069">insights-clean.py</a>. It focuses on the sessions that matter — the ones a human actually drove — it hands over your actual config, and it's even allowed to come back with nothing. Together they would have caught every issue I ran into with the stock <code>/insights</code>.</p>
+</article>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

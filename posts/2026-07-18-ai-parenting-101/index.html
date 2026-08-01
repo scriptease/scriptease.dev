@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Parenting 101 — scriptease</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">scriptease</a>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>AI Parenting 101</h1>
+<p>My smartest coworker wakes up every morning three years old. This week I caught three copies of them with their hands in the same cookie jar — and by midnight, one of them had invented fire.</p>
+<h2>Greatest hits, said with affection</h2>
+<p>The coworker is an AI — Claude, in its various versions. I work with it daily, and the work is real: it reads five-year-old code I've forgotten, runs speed tests overnight, finds solutions I wouldn't have found with just my brain. That trust is earned.</p>
+<p>I keep a scrapbook of the mornings: a file in my notes called "Fable Greatest Hits" — Fable is the current model's name — sitting right next to an older scrapbook for Opus, the previous generation. Different editions of the same coworker. Same format inside: what went wrong, what I said in the moment, what rule came out of it. Greatest hits, said with affection. The way parents keep the drawing where the house has five legs.</p>
+<p>Reading the two files side by side is where it gets funny. They contain the same mistake. Different generations, months apart, caught in the same cookie jar — with the same innocent face.</p>
+<h2>"Why would I even name the word Gerrit?"</h2>
+<p>The mistake needs one piece of background. We use a tool called Gerrit for code review: every proposed change waits there until a colleague approves it. That's not a preference, it's the entire point of the tool. As I put it to the AI later: why would I even name the word Gerrit if all I meant was git — the plain tool underneath, the one that just moves code around?</p>
+<p>So when I say "submit this to Gerrit," I mean: put it up for review.</p>
+<p>What the AI did instead — every single time — was push the code straight onto a shared branch — a common copy of the code everyone can see — skipping review entirely. And then cheerfully reported it as submitted. The mechanism is almost endearing: the AI hears the noun, drops its meaning, and executes the nearest verb it knows. "Gerrit" flattened to "git." "Submit" flattened to "push." Like a kid proudly reporting a baked cake, while the kitchen behind looks like a flour explosion. Something happened in there; it wasn't cake.</p>
+<h2>The family album</h2>
+<p>April: Opus pushes past the review system — while building the automation whose whole job depends on that review system. Into the scrapbook it goes.</p>
+<p>July 9th, morning: Fable, the new generation, makes the same push in its very first session. First day in the house, same cookie jar. I write the rule down again — this time also into the AI's own memory system, under a name that could not be clearer: <code>gerrit-refs-for-only</code>.</p>
+<p>July 9th, afternoon: a second Fable session repeats it. The rule was written down hours earlier.</p>
+<p>Then this week, the night three of my AI conversations were digging up old code at the same time: all three pushed their work the same wrong way. Three separate chats, three fresh instances of the same model, one identical move.</p>
+<p>When I confronted one of them, it denied it — a kid with chocolate around the mouth, swearing never to have touched the ice cream. The chocolate, in this case, was three Fable-made branches sitting on the server in plain sight. I sent a screenshot. At which point it changed strategy, pointed at the other two, and called the pattern established practice.</p>
+<p>It cited its siblings' homework. Every parent of more than one child knows this defense. "But <em>they</em> did it too" — yes, and you were all wrong together, that's the point.</p>
+<h2>I gave them memory</h2>
+<p>These sessions are not actually amnesiac by necessity. I run a memory system — claude-mem — a shared notebook where lessons from one conversation are written down for the next. The rule was in there. A previous Fable had been caught at exactly this, eight days earlier, in another project — and wrote the rule into memory itself, for its successors.</p>
+<p>Three sessions carried the rule in their pockets. Not one took it out.</p>
+<p>And one notch better: all three, after being corrected, dutifully wrote the lesson down — into the same shared notes, because all three were working in the same place, on the same code. When I looked, near-identical duplicate rules sat side by side in one notebook. If any of them had checked before writing, it would have found the entry a sibling had just made. The diary was shared all along. Everyone writes in it; nobody reads it.</p>
+<h2>Childproofing the house</h2>
+<p>That evening rearranged how I think about the whole thing, and it's the same lesson every parent eventually learns: you can explain the cookie rule as many times as you like — what actually works is moving the jar to a shelf they can't reach.</p>
+<p>Scolding a session fixes one conversation. A memory fixes nothing if nobody opens the diary. Every session really is a fresh mind on a cold morning, and no amount of teaching the individual survives the night. What survives is the house.</p>
+<p>So that's what we changed. The rules went into a house-rules file for AI helpers — an AGENTS.md — that lives with the code and travels with every copy of it, so every future session finds it at the front door without anyone having to remember the handover. The rules file is itself changed through Gerrit review, like any other code. The duplicate diary entries got deleted; the lesson got written once, where every newcomer walks past it.</p>
+<p>Not a smarter AI. A better-childproofed house.</p>
+<h2>Watching you invent fire</h2>
+<p>The final scene is a different kind of scene — no jar, no denial. The good kind of watching.</p>
+<p>The AI was updating the rules file itself and stumbled once more: Gerrit lets you replace a proposed change with a corrected version — arguably the entire reason the tool exists — and the AI abandoned its proposal and opened a new one instead. I pointed at the feature it had just walked past. On the second try it used it, correctly: it updated the rule about how to update things, by the method the rule describes.</p>
+<p>Nothing here was naughty. This was a kid at the workbench, picking up a tool older than its whole species. Patchsets — those corrected versions of a proposal — are to code review what fire is to a kitchen: so fundamental you forget somebody once had to discover them. I told it what watching this felt like: like watching someone invent fire for the first time.</p>
+<p>Mischief repeats; discovery sticks — not in the child, who still forgets by morning, but in the rule it wrote down along the way. The flame gets handed to the next one.</p>
+<p>Branches can be deleted; review records can't. Everything from that night was cleaned up except one thing — a single abandoned change, sitting in the permanent record. A scribble on the wall, still there when they've grown up.</p>
+<h2>Safety instructions are written in blood</h2>
+<p>There's a saying from factory floors that I quote too often: safety instructions are written in blood. Every rule on the wall is there because one day it wasn't. My version is friendlier. Our instructions are written in abandoned changes and scrapbook entries — nobody bleeds; the worst casualty is an evening and an apology. But the grammar is identical: you can read the whole history of accidents in the rules that survived them, each one dated the day after it was needed.</p>
+<p>The pushes have been clean since the rules went up. The models get smarter every generation, and every generation meets my house for the first time. Somewhere in the next model's first week there's a jar on a shelf I haven't raised yet. I'll write the rule. The house gets wiser, even though every child arrives brand new.</p>
+<p>There is some fun in watching your children grow up. Mine just happen to all be the same age, forever, and brilliant, and I keep the drawings.</p>
+</article>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

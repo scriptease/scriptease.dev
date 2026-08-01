@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tomato Maxing III — Only Six Percent Left — scriptease</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">scriptease</a>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Tomato Maxing III — Only Six Percent Left</h1>
+<p>My phone buzzed with a warning: <strong>6% left.</strong> Six percent of <em>what?</em> I didn't know I was spending anything — and when I went looking, the thing draining it wasn't my tomatoes. It was the robot vacuum, fast asleep in its dock.</p>
+<h2>The setup, for anyone just tuning in</h2>
+<p>Two summers of this on-and-off saga have been about one silly project: keeping tomatoes alive on a windy ninth-floor balcony while I'm not there to fuss over them.</p>
+<p>I water them by typing. There's a little command I wrote — I called it <code>water</code> — that talks to a €30 WiFi pump sitting in a 35-litre bucket. And last time, I moved the whole contraption into Apple's <strong>Home app</strong> — the built-in iPhone screen where your lights and locks live — using a free translator program called <strong>Homebridge</strong>. Homebridge sits on my Mac and tells the iPhone, in effect, "trust me, this bucket pump is a real smart-home device." While I was in there, I taught it about my <strong>robot vacuum</strong> too — a Lefant M310, one of those hockey-puck floor cleaners.</p>
+<p>Two gadgets, one translator, both answering to Siri. I was pleased with myself.</p>
+<p>That's the setup. Here's what I was actually doing the evening it bit me.</p>
+<h2>The rule I couldn't build</h2>
+<p>I hadn't opened all this back up for nothing. I wanted the pump to react to the <em>weather itself</em> — water hard when the air's hot and dry, ease off when it's cool and damp — without me deciding anything from another country.</p>
+<p>And it looked easy, because the iPhone can already build "when this, then that" rules by tapping — no code at all. Apple even hands you the right trigger out of the box: <em>when the room gets warmer than X,</em> or the air drier than some level. The sensor's already sitting there. All I had to say was: when it dries out, water the tomatoes.</p>
+<p>Except you can't. And the reason turned out to be a wall I didn't see coming.</p>
+<p>Those tap-to-build rules can only ever <strong>pull a trigger once.</strong> They fire the <em>instant</em> a line is crossed — the temperature ticks past 30° — and then they're finished. What they cannot do is <em>hold a thought</em>: "for as long as the air stays dry, keep watering every few hours." There is no "while." It's a doorbell, not a thermostat — it can ring the moment someone shows up, but it can't sit there minding a condition all afternoon.</p>
+<p>And watering isn't a single ring anyway. It's "run for two minutes, then stop." To even <em>offer</em> the pump to one of these rules, I'd had to dress it up as a plain on/off switch — and a one-shot pulse flipping a switch has no idea how to run a timed cycle, let alone when to shut itself off. So I built the switch, poked at it for an evening, and gave up. The one thing I actually wanted — a garden that waters itself by <em>feel</em> — the friendly no-code tool flatly refuses to do.</p>
+<p>I closed the laptop annoyed. That should have been the whole story of the evening.</p>
+<p>Then my phone buzzed.</p>
+<h2>Six percent of what?</h2>
+<p>The warning came from <strong>Tuya</strong> — the Chinese company that builds the electronic guts inside thousands of no-name smart gadgets, including both of mine. "ELESION," "Lefant" — those are just stickers on the box; underneath, both devices speak Tuya.</p>
+<p>Tuya gives you a free monthly allowance of what it calls <strong>API calls</strong> — think of them as little messages my code sends over the internet to reach the devices. Turn the pump on: one message. Ask if it's running: one message. I had apparently used 94% of the month's ration, and it was only the 15th.</p>
+<p>So I checked what the previous months looked like. About <strong>fifty</strong> messages each. Fifty. This month: over <strong>forty thousand</strong>.</p>
+<p>Fifty to forty thousand. Something had turned a trickle into a firehose, and I hadn't touched a thing.</p>
+<h2>The usage page that made no sense</h2>
+<p>The breakdown Tuya showed me was, frankly, unhinged. My messages were filed under categories like <em>"Standard Version for Hotel," "Premium Version for Hotel,"</em> and — my favourite — <em>"Commercial version of smart door lock open capability."</em> I don't run a hotel. I have never owned a smart door lock. And every one of those lines showed the <em>same</em> number: 22,242.</p>
+<p>My first, slightly cold thought: <em>is someone else on my account? Is there a hotel somewhere spending my tomatoes' allowance?</em></p>
+<p>No. It's just Tuya's accounting being Tuya's accounting. A single real message gets counted six times over, once under each product bucket it technically belongs to — hotel edition, door-lock edition, and so on. Six labels, one underlying stream. Strip the double-counting and the honest number was about <strong>22,000 calls</strong>, all mine, all from my own two gadgets. The tell was that every bucket moved in perfect lockstep — a hotel guest would have made the numbers drift apart. Nothing had broken in; my own code was the whole story.</p>
+<p>Which left the real question: 22,000 messages for two gadgets I barely touch — <em>how?</em></p>
+<h2>The thing that never sleeps, and the thing that always does</h2>
+<p>Here's the mechanism, because it's the whole trick.</p>
+<p>My code always tries the polite route first: reach the gadget over my home WiFi — fast, free, entirely inside my flat. Only if it can't find the device at home does it <strong>fall back</strong> to the internet, the slow route that Tuya counts. So the question narrowed to: which gadget kept vanishing from my own network, forcing my code to go the long, metered way around?</p>
+<p>The pump was innocent. It's plugged into the wall, always on, always listening. When my code knocks, it answers instantly, at home, for free.</p>
+<p>The vacuum was the culprit — and the reason is almost funny. A robot vacuum spends about 99% of its life asleep in its dock, charging. And a sleeping vacuum, to save power, <strong>stops listening on the WiFi.</strong> So every time my setup quietly asked, "hey, are you cleaning right now?", the docked robot didn't answer at home — and my code, hearing silence, assumed it must be <em>away</em>, and shouted the exact same question across the internet instead. That's the metered path. And it was doing this every thirty seconds, all day, all night — including while I sat ten feet away from the sleeping robot on my own sofa.</p>
+<p>The gadget I was watching was fine. The gadget I'd forgotten about was running up the bill, and the very thing that made it expensive was that it was <em>asleep</em>.</p>
+<p>There was one extra sting, and it points right back at the last chapter. The reason my code was asking questions so obsessively in the first place was the <strong>countdown</strong> I bragged about in Part II — the little "120, 119, 118…" ticking down on my phone while the pump waters. To keep a number like that alive on screen, something has to keep asking "how much time is left?" many times a minute. The feature I was proudest of last time was quietly part of the problem this time.</p>
+<h2>Teach it to whisper</h2>
+<p>The fix was almost embarrassingly small.</p>
+<p>I told the automatic questions to use the <strong>home route only</strong> — never fall back to the internet. If the vacuum's asleep and doesn't answer at home, fine: assume it's off (it is), and move on. Don't phone the cloud to double-check something you can already guess. Then I slowed the questions down for good measure — from every few seconds to once a minute.</p>
+<p>But I kept one door open on purpose. There's a difference between my code <em>quietly checking</em> on a gadget and me <em>deliberately telling</em> one to do something. The constant background checks now stay local and silent. But if I sit on a mountain in Austria and type "water the tomatoes," <em>that</em> command is still allowed out onto the internet to reach the balcony — because that was the whole point of this project in the first place. Listening is free and local; acting can still cross a border. It just can't happen 40,000 times behind my back.</p>
+<p>The meter stopped climbing that same afternoon.</p>
+<h2>What it actually cost me</h2>
+<p>The bill was never money — it's a free tier. The worst that happens if you blow through it is the gadgets go quiet until the month resets, and my tomatoes miss a drink. Annoying, not expensive.</p>
+<p>What it actually cost was an assumption: that "smart" is free and quiet. That once you've built the clever thing, it just sits there being clever at no charge. It doesn't. Every convenience you wire up runs a little meter somewhere, and most of the time you never see it — until a notification tells you you're at 6% and you realise you've been paying, in some currency, the whole time.</p>
+<p>And the thing burning it is almost never the thing you're looking at. I spent two summers watching the pump. The one quietly screaming into the internet was the vacuum, asleep in the corner, doing what I thought was nothing.</p>
+<h2>Tomato maxing</h2>
+<p>Part one's lesson was that code got cheap enough to automate your garden. Part two's was that the <em>second</em> gadget is nearly free, once you've built the translator in the middle.</p>
+<p>Part three is the bill for all of it — not a big bill, but a real one. Every gadget you add is another quiet mouth pointed at a meter you'd forgotten you had. The skill was never adding them. It's noticing what they get up to when you're not watching.</p>
+<p>Tomato maxing.</p>
+</article>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

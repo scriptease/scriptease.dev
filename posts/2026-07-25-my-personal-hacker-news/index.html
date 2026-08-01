@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Personal Hacker News — scriptease</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">scriptease</a>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>My Personal Hacker News</h1>
+<p>For 4,775 days I saved every link I liked. I rarely go back.</p>
+<p>This week they told me what I care about.</p>
+<h2>The place to get the news</h2>
+<p>I visit a site called Hacker News where programmers post links all day. It is <em>the</em> place to get the news. Every morning it hands me the things that are interesting to two hundred thousand other people, and I go fishing for the three that are interesting to me.</p>
+<p>I wanted the fishing done for me.</p>
+<p>The idea was easy: take the front page, take everything new that got some traction, throw away the ninety-odd percent that has nothing to do with my life, and write down what is left.</p>
+<p>The only problem left was that the AI needed to know what I like.</p>
+<h2>Ninety-nine days of me</h2>
+<p>My notes live in a vault — one folder of plain text files that an AI works in alongside me. Today's daily note says Day 99.</p>
+<p>So I asked it to profile me. It read 145 research tasks I had commissioned over those 99 days and turned them into a profile: what I keep coming back to, ranked, plus the rules that decide whether something is worth my attention at all.</p>
+<p>It knows now.</p>
+<p>But it only goes back 99 days.</p>
+<p>Wait, there is more…</p>
+<h2>I hid the best from my AI</h2>
+<p>Here is the thing I had not told it about.</p>
+<p>For thirteen years I have kept every link I liked. It started on the link-sharing site Digg, moved to the blogging platform Tumblr, then to a WordPress blog I have posted to since 2013 — one post per link, each one tagged with what it was about. 7,842 links. 2,227 different tags. As files on disk: nine thousand documents. My interests, timestamped, in my own handwriting.</p>
+<p>For about five days, all of it lived in the same vault as my notes.</p>
+<p>I imported it on Day 2. By Day 5 it was gone again — moved out into a vault of its own, and the journal entry for that week records the reason in the politest possible terms: <em>isolated to keep 10K+ posts out of V1's index.</em></p>
+<p>I read my notes on three devices. Phone, iPad, Mac. Ten thousand small files didn't work well with iCloud.</p>
+<p>Here is what it looks like — grey are links, green are tags.</p>
+<p><img alt="A dense circular hairball of roughly ten thousand dots — grey links, green tags — packed so tightly the connecting lines fuse into a solid grey mass, with a thin ring of unconnected dots orbiting outside it." src="assets/my-personal-hacker-news/v2-graph.png" /></p>
+<p>The amoeba is my interest graph since 2013.</p>
+<h2>Don't read nine thousand documents</h2>
+<p>I stopped the AI before it could make the obvious mistake and read all of it. Nine thousand documents is not research, it's a liability.</p>
+<p>We didn't need the documents. Every document recorded what I liked in one small section — its tags.</p>
+<p>In 2 seconds it extracted everything. 6,679 tagged links, 2,127 distinct tags.</p>
+<p>The AI discovered my love for diving, previously hidden from the vault. Seventy-seven links, plus thirty-eight on underwater photography and twenty-eight about sharks.</p>
+<p>I told my AI to get to work.</p>
+<h2>Ready when I start my day</h2>
+<p>The first run created a script, fired up the API, fetched articles, looked at 111 stories and only kept ten. For me to look at.</p>
+<p>I read all ten. It was an 8 out of 10.</p>
+<p>Not the score — I loved 8 out of 10. They matched my interests perfectly.</p>
+<p>I want this daily, I thought.</p>
+<p>So now it runs every morning at seven, before I'm at the desk. It takes the front page and everything new that cleared twenty points, drops whatever it has shown me before, and scores the rest against the profile — thirteen years of me included. Anything that survives gets fetched and properly read, never judged by its headline. Ten items, maximum. Some mornings it should be none, and it is allowed to say so.</p>
+<p>Sorting through the tags made me realize I had been slacking — my own blog posts were bare, so I decided to fix them too.</p>
+<h2>Steal this</h2>
+<p>Five moving parts, none of them expensive.</p>
+<p><strong>The list.</strong> Hacker News has a free search API — a machine-readable version of the site — at <code>hn.algolia.com/api/v1</code>. No key, no scraping, no permission needed. One call returns the front page. A second returns everything posted in the last day above a points floor, points being upvotes; I use twenty, which cuts a day's roughly thousand new stories down to about a hundred.</p>
+<p><strong>The memory.</strong> A file listing the stories it has already shown me. Nothing appears twice, and a day the daily run missed gets picked up by the next one instead of falling through the floor.</p>
+<p><strong>The filter.</strong> A plain text file describing what I care about, ranked, with a handful of veto rules that can reject a story immediately, however good its headline is. This is the only part that is about me, and the only part that took real work.</p>
+<p><strong>The reading.</strong> Anything that survives the filter gets fetched in full and read — I use Jina Reader, <code>r.jina.ai/&lt;url&gt;</code>, which hands back any web page as plain text. The write-up comes from the article, not just the title.</p>
+<p><strong>The comment section.</strong> I missed this on the first run. A high comment-to-upvote ratio means the story is controversial, and the comment section tells you why. So when a story has at least as many comments as upvotes, the discussion gets read too — same free API, <code>hn.algolia.com/api/v1/items/&lt;id&gt;</code> hands back the whole comment tree. And when the thread contradicts the article, the thread wins.</p>
+<p>Then three rules: at most ten items, zero is a valid answer, and it runs on whatever scheduler you already own.</p>
+</article>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Ticket That Filed Itself — scriptease</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">scriptease</a>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>The Ticket That Filed Itself</h1>
+<p>Somewhere on the autobahn to Austria, a colleague filed a support ticket — both hands on the wheel the whole time.</p>
+<p>We were carpooling to a company trip. He'd taken over driving; the rest of us were in the backseat, deep in some AI discussion. Then a few phones buzzed at once: a work notification saying <em>he</em> had just created a new ticket in our tracker. Someone laughed — <em>he's filing tickets with his knees at 130 on the autobahn?</em></p>
+<p>He hadn't touched a thing. A little robot he'd built had done it for him, on its own, while he drove.</p>
+<h2>What the robot did</h2>
+<p>A quick translation, because none of this means anything outside our world.</p>
+<p>Teams like ours track work in two systems. One is <strong>Redmine</strong> — think of it as the shared to-do list the business side files requests into. The other is <strong>JIRA</strong> — the to-do list the developers actually work out of. For years, someone had to read a request in the first list and re-type it as a task in the second. Boring, constant, easy to forget.</p>
+<p>My colleague had automated exactly that. He'd built a small program that watches the first list and, whenever a new request shows up, files the matching task in the second one automatically — no human, no typing. That's the "ticket" that appeared while he was driving: the request had come in, and his robot did what he'd otherwise have done by hand.</p>
+<p>Everyone else thought it was a party trick. I thought: <em>I have a chore just like that. I could do the same thing.</em></p>
+<h2>My chore</h2>
+<p>Here's mine. When developers change code, the change goes through a review gate called <strong>Gerrit</strong> before it's allowed in — like a bouncer who checks every edit. The trouble is the review happens in Gerrit, but the <em>task</em> lives over in JIRA, and the two don't talk. So to know "is the code for this task actually done and approved?" you had to open a second tool and go look.</p>
+<p>For years I'd papered over this with a scrappy little script on my own laptop. Every half hour it woke up, checked Gerrit, and pasted a short status note onto the matching JIRA task. To avoid spamming everyone, it kept a tiny file per task remembering what it last said, and only spoke up when something actually changed.</p>
+<p>It worked. It was also held together with tape: it ran only when my laptop was awake, and — I'll just admit it — my personal password to JIRA was typed directly into the script, in plain text. The kind of thing you'd be mortified to show anyone. It was mine, it was private, it was fine.</p>
+<h2>The lawn chair</h2>
+<p>The next morning in Austria I woke up before everyone else. I took an iPad out to a lawn chair, looked at the mountains, and — without touching a keyboard — talked a whole software project into existence.</p>
+<p>The setup is the same one I use to water my tomatoes from abroad: I speak, and <strong>Maestro</strong> (my voice-to-agent system) and <strong>Maestro Relay</strong> (the piece that carries my voice to a computer elsewhere) turn the words into work. I asked it to go find my colleague's robot — the actual job, the actual code behind it — using the Jenkins API skill, a helper I have for searching our build system. It found his project, made its own copy, and I said, in effect: <em>build me this exact thing, but for my chore instead of his.</em></p>
+<p>So the thing that inspired me became the literal template. I didn't start from a blank page. I started from his working robot and pointed it at my problem.</p>
+<h2>Making it better</h2>
+<p>Getting the basic version working — a robot posting the status notes instead of me — immediately made me want to push it further. A single task often has several code changes attached to it, and I wanted all their statuses gathered neatly in one place, not scattered across separate notes. My first idea was to add a small custom box to every JIRA task to hold them.</p>
+<p>I could have just asked. The person who administers our JIRA was right there on the trip with us — I could have leaned over and requested permission to add that box. But before bothering anyone, I fired off a research request — a question my agents go off and answer on their own — for the best way to do it.</p>
+<p>It came back with a comparison table that settled the whole thing in one glance, and it had found something better than my own idea. JIRA has a built-in feature for <strong>links to outside things</strong> that needs no special permissions at all — just the everyday ability to add a link, which my setup already had. Each link can even carry its own little status. So instead of a custom box I'd have to ask a colleague to switch on, I'd attach one tidy, self-updating link per change — no favours, no permissions, nothing for anyone to approve. A better idea, and entirely mine to ship.</p>
+<h2>The trail</h2>
+<p>The rest got decided on a mountain bike.</p>
+<p>My computer stayed behind at home — the guesthouse we were staying in — awake and listening. Maestro Relay carried my voice from the trail to that machine, and a cloud session did the actual work. I asked it to dig up a real task with a lot of code changes piled onto it — the messiest case I could throw at it — and send me the link. I opened it on my phone mid-ride, looked, and thumbed back a two-word verdict: <em>doesn't fit.</em></p>
+<p>Here's the part that stuck with me. It didn't ask me what I wanted instead. It just went and made four versions, each formatted a different way — and rather than describing them to me in words, it put all four <em>directly onto a real JIRA task</em>, so I could see the actual thing rendered on my phone instead of imagining it from a description. I wasn't picking between paragraphs of text; I was looking at four live options on a mountainside and choosing the one that looked right.</p>
+<p>So we'd stop at a viewpoint, pull the task up, and argue — as a group, sweaty and cheerful — about which little symbol should mean what. Green for approved. Red for a hard rejection. A skull-ish mark for a change someone had abandoned. A separate signal for "the automated tests are failing." A table of grown engineers voting on emoji on a bike trail, while a laptop 10 kilometres away did the typing and the rendering.</p>
+<p>That's how the traffic lights were born.</p>
+<h2>The fifteen minutes I thought I'd broken everything</h2>
+<p>Once the format looked right, I let it loose on everything — every open change across every task. To stress-test it, I had it pick the single worst case: the ticket with the most changes piled onto it. I opened that one to admire the result, and it wouldn't load. Just an error.</p>
+<p>My stomach dropped. This is the system the entire company runs its work through. If my little robot had wrecked a ticket by stuffing too many links onto it, how many others had I quietly broken — from a mountain, with no laptop in reach?</p>
+<p>So I tried to reproduce it properly. Different browser — same error. I stopped the script and had it strip every link back off that ticket, then reloaded it completely clean, no links at all. <em>Same error.</em></p>
+<p>Which was, oddly, the best news possible. If the ticket was broken <em>with</em> my links and <em>without</em> them, then I hadn't broken it — JIRA itself was just having a bad moment. Sure enough, about fifteen minutes later it opened fine. I switched the robot back on, it put every link back where it belonged, and everything worked.</p>
+<p>But for those fifteen minutes on a mountainside, I was genuinely certain I'd found a way to remotely break every ticket my company owns.</p>
+<p>So the small robot that runs every 30 minutes and updates the tickets in the background is finally back online.</p>
+<h2>So what</h2>
+<p>The funny part was never that a ticket got filed at 130 km/h. It's that the <em>entire</em> life of a real piece of company software — cloning a colleague's idea, arguing about emoji on a bike trail, breaking it (or so I thought), and shipping it — all happened on the move. From a lawn chair, a mountain bike, and a phone, in my own voice, on vacation, while the laptop stayed home.</p>
+<p>When building software gets this cheap and this portable, the hard part stops being the code. The hard part becomes taste: <em>which</em> chore is worth automating, and what the green light should mean. We spent a company trip in the Alps arguing about exactly that.</p>
+<p>Same lawn where I water the tomatoes. Turns out it also ships for me.</p>
+</article>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Little Gemma vs Big Desk — scriptease</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">scriptease</a>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Little Gemma vs Big Desk</h1>
+<p>I handed a program running entirely on my laptop a screenshot of a garbled, obfuscated error message — the kind even I have to squint at — and it typed every character back to me, exactly. Then, on a whim, I asked it to sketch what the screen looked like in little text characters — ASCII art. It did that too, boxes and all.</p>
+<p>No internet. No account. No bill. The whole thing fits in about six gigabytes of memory and answers in a second or two. That was the moment I knew I had to find something for it to do.</p>
+<h2>A confession</h2>
+<p>I am a screenshot hoarder. At last count I had <strong>1,076</strong> of them, most dumped straight onto my desktop — a graveyard of bug reports, receipts, half-remembered diagrams, and forty near-identical shots of the same error. I never go back and look. I just keep taking them, because <em>deleting</em> one means <em>deciding</em>, and deciding is work.</p>
+<p>A program that can actually <em>read</em> an image changes that math. If something can look at each screenshot and tell me what it is, I could finally sort the graveyard.</p>
+<h2>What I was even hoping for</h2>
+<p>The thing doing the reading is <strong>Gemma 4 12B</strong> — Google's small, open model. The "12B" is roughly how big its brain is; what matters is that it's small enough to run entirely on my Mac, in about six gigabytes, with no cloud behind it. It's the same little model I have reading things for my voice assistant — light enough to live on a laptop, good enough to read a screen.</p>
+<p>Honestly, I didn't know how far it would go. Reading text off an image is impressive but expected. What I <em>wanted</em> was harder: could it look at ten screenshots and tell me which ones are really the <em>same thing</em> photographed twice? That's judgment, not transcription. I genuinely didn't know if a model this size could do it.</p>
+<h2>No workflows were harmed</h2>
+<p>My first instinct was to reach for a <em>cloud workflow</em> — a way to fan a swarm of AI agents out across the pile and have them chew through it in parallel. I asked Fable, my AI coding partner, to help me build it that way.</p>
+<p>Then it clicked: the parallelism I actually wanted wasn't a crowd of <em>cloud</em> agents. It was my <em>local</em> model, quietly working through images on my own machine. What I really needed was a boring, reproducible script with no cloud in the loop at all.</p>
+<p>So it began as a fancy workflow experiment and ended as a plain script. No workflows were harmed in the making of it.</p>
+<h2>The fight</h2>
+<p>Getting there meant hitting a couple of walls.</p>
+<p>The cloud-agent version hit a hard one first: the service pulls the plug on any unattended job after about <strong>45 minutes</strong>, and reading the ~950 screenshots I had piled up at the time — a second or two each — sails right past that. The job simply couldn't finish in one sitting.</p>
+<p>Fable's first fix was to cache the results to a file so we wouldn't redo work. Except it only wrote that file at the very <em>end</em> of a complete run — and the run never completed. So an interrupted job saved <em>nothing</em>. We'd made the failure more painful, not less.</p>
+<p>The fix that stuck was to make it <strong>resumable</strong>: before each run, figure out which images are already done, process the next batch, and stop cleanly before the clock runs out. It took about <strong>an hour and a half</strong>, spread across runs, to grind through all 950. But it <em>finished</em>.</p>
+<h2>The morning redesign</h2>
+<p>The next morning I synced another hundred screenshots over from my other Mac, and rebuilt the thing properly.</p>
+<p>Two changes. First, it now watches <em>several</em> folders, and I just write down which folders and which file types to look at. Second — the good one — we stopped keeping a separate "what's already done" file, because a separate file always drifts out of sync with reality. Instead, <strong>the notes it writes into my Obsidian vault <em>are</em> the record.</strong> Every note remembers the screenshot it came from; the ones with no note yet are the ones still to do.</p>
+<p>Nothing to lose, nothing to desync. I can even move the entire screenshot library into its own vault and the thing still knows exactly where it left off.</p>
+<h2>The judgment, written down</h2>
+<p>The actual decision — <em>is this worth keeping?</em> — comes down to three questions I taught it to ask:</p>
+<ul>
+<li><strong>Does it show a bug?</strong> A crash, an error, a broken screen — those are worth keeping.</li>
+<li><strong>Is it hard to recreate?</strong> A receipt, a confirmation number, data I couldn't easily get back — keep it.</li>
+<li><strong>Is it unique, or one of ten?</strong> If a folder has forty shots of the same thing, I need one, not forty.</li>
+</ul>
+<p>Gemma scores each screenshot, flags the bugs and the hard-to-recreate ones, then groups the near-duplicates and nominates the best of each group. And one deliberate rule: <strong>it only ever recommends.</strong> It never deletes or renames a thing on its own. I wanted a librarian, not a shredder.</p>
+<h2>Now it just runs</h2>
+<p>By cloud standards, a second or two per image is glacial. For a model living on my laptop, it's fast — and it doesn't matter, because nobody's watching. The script wakes up on its own, notices the screenshots that don't have a note yet, reads them, and files them away. Unattended, offline, on my own machine.</p>
+<p>To be sure the whole loop actually worked, I planted an easter egg. I asked Claude — in a Cowork session — to make a little visual card that Gemma could read: a canary. Here's the lovely part. Claude can't <em>see</em> images and can't draw one, so it did the only thing a text model can — it drew the picture out of characters. ASCII art: a visual aid built from pipes and dashes by a model that has no eyes, for a model whose whole talent is having them. The card read <em>"If a local Gemma reads this, it worked,"</em> with a deliberately odd passphrase and a couple of bash commands tucked in. I dropped it on the desktop.</p>
+<p><img alt="The canary card Claude drew for the test — an ASCII-art box reading: if a local Gemma reads this, it worked" src="assets/little-gemma-vs-big-desk/canary-card.png" /></p>
+<p>Gemma's job here isn't to obey what's on the screen or copy it out word for word — it's to look at the image and write an honest description of what it is. And that's exactly what came back: it filed the card as <em>"a screenshot classifier integration with a canary phrase and bash commands."</em> It had seen the card, understood what it was, and described it accurately — canary phrase, bash commands and all. The loop closed.</p>
+<p><img alt="Gemma's note in the vault, describing the card as a screenshot classifier integration with a canary phrase and bash commands" src="assets/little-gemma-vs-big-desk/gemma-note.png" /></p>
+<p>The everyday version is duller and more useful. That garbled error from the top of this story? Now a note, tagged as a bug, scored 85 out of 100. The forty near-identical shots of one dead end? Grouped — Gemma keeps the clearest and marks the rest <em>"similar to"</em> it. The pile collapses to the shots that matter.</p>
+<h2>So what</h2>
+<p>The useful AI didn't need a data centre. It fit in six gigabytes on my laptop, read a thousand of my screenshots a second or two at a time, and turned a junk drawer into something I can actually search — and not a single pixel of it left my machine.</p>
+<p>That's the twist on the cheap-leverage story. Watering my tomatoes needed the cloud. This one was better <em>because</em> it didn't.</p>
+</article>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

@@ -9,17 +9,25 @@ Reads published posts (frontmatter `status: published`) out of the vault, copies
 each post's local assets into the repo, converts the markdown body to HTML, and
 writes:
 
-    index.html                 site landing page (post list, newest first)
+    index.html                 root: redirects to the latest post
     posts/<slug>/index.html    one page per post
     posts/<slug>/assets/...    the post's copied images
+    archive/<YYYY-MM>/index.html   month overview (that month's posts)
+    posts.js                   window.POSTS metadata (newest first), for the sidebar
 
-Output is plain static HTML committed to the repo; GitHub Pages serves it as-is
-(no Jekyll, no build step on GitHub's side). Wikilinks (`[[...]]`) point at other
-vault notes that don't exist publicly, so they're flattened to plain text.
+The site is served at an apex domain (scriptease.dev), so pages use absolute
+`/...` paths and load `/posts.js` + `/sidebar.js` for the shared sidebar.
+Preview locally with a web server (see README), not file://.
+
+Output is plain static HTML/JS committed to the repo; GitHub Pages serves it
+as-is (no Jekyll). Wikilinks (`[[...]]`) point at vault notes that don't exist
+publicly, so they're flattened to plain text.
 """
 import re
 import sys
+import json
 import shutil
+import datetime
 from pathlib import Path
 
 VAULT_BLOG = Path(
@@ -108,40 +116,90 @@ def md_to_html(body):
     )
 
 
+def escape(s):
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def month_of(created):
+    """`2026-07-31` -> `2026-07`. Empty/odd dates fall back to `undated`."""
+    m = re.match(r'^(\d{4})-(\d{2})', created or "")
+    return "%s-%s" % (m.group(1), m.group(2)) if m else "undated"
+
+
+def month_label(ym):
+    try:
+        y, mo = ym.split("-")
+        return datetime.date(int(y), int(mo), 1).strftime("%B %Y")
+    except Exception:
+        return ym
+
+
 PAGE = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
-<link rel="stylesheet" href="{root}style.css">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <header class="site">
-  <a class="brand" href="{root}index.html">{site}</a>
+  <a class="brand" href="/">{site}</a>
 </header>
-<main>
+<div class="layout">
+  <main>
 {content}
-</main>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
 <footer class="site">
   <span>{site} — {tagline}</span>
 </footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
+"""
+
+REDIRECT = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="0; url=/posts/{slug}/">
+<link rel="canonical" href="/posts/{slug}/">
+<title>{site}</title>
+</head>
+<body>
+<p>Redirecting to the <a href="/posts/{slug}/">latest post</a>…</p>
 </body>
 </html>
 """
 
 
 def copy_assets(post_dir, slug):
-    """Copy the post's assets/ folder into posts/<slug>/assets/. Returns True
-    if there was anything to copy."""
+    """Copy the post's assets/ folder into posts/<slug>/assets/ 1:1, so img
+    src paths from the markdown resolve unchanged."""
     src = post_dir / "assets"
-    if not src.is_dir():
-        return False
     dst = REPO / "posts" / slug / "assets"
     if dst.exists():
         shutil.rmtree(dst)
-    shutil.copytree(src, dst)
-    return True
+    if src.is_dir():
+        shutil.copytree(src, dst)
+
+
+def entry_list(posts):
+    """Shared markup for the root/month post listings."""
+    rows = []
+    for p in posts:
+        rows.append(
+            '<li class="entry">\n'
+            '<a class="entry-title" href="/posts/{slug}/">{title}</a>\n'
+            '<time>{date}</time>\n'
+            '<p class="hook">{hook}</p>\n'
+            '</li>'.format(
+                slug=p["slug"], title=escape(p["title"]),
+                date=escape(p["created"]), hook=escape(p["hook"])))
+    return '<ul class="entries">\n%s\n</ul>' % "\n".join(rows)
 
 
 def build_post(md_path):
@@ -165,38 +223,43 @@ def build_post(md_path):
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(PAGE.format(
         title=escape(title) + " — " + SITE_TITLE, site=SITE_TITLE,
-        tagline=SITE_TAGLINE, root="../../", content=article))
+        tagline=SITE_TAGLINE, content=article))
+    created = fm.get("created", "")
     return {
         "slug": slug,
         "title": title,
         "hook": fm.get("hook", ""),
-        "created": fm.get("created", ""),
+        "created": created,
+        "month": month_of(created),
     }
 
 
-def escape(s):
-    return (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
-
-
-def build_index(posts):
-    posts.sort(key=lambda p: p["created"], reverse=True)
-    rows = []
+def build_month_pages(posts):
+    months = {}
     for p in posts:
-        rows.append(
-            '<li class="entry">\n'
-            '<a class="entry-title" href="posts/{slug}/">{title}</a>\n'
-            '<time>{date}</time>\n'
-            '<p class="hook">{hook}</p>\n'
-            '</li>'.format(
-                slug=p["slug"], title=escape(p["title"]),
-                date=escape(p["created"]), hook=escape(p["hook"])))
-    content = (
-        '<section class="intro"><p>{tag}</p></section>\n'
-        '<ul class="entries">\n{rows}\n</ul>'.format(
-            tag=SITE_TAGLINE, rows="\n".join(rows)))
-    (REPO / "index.html").write_text(PAGE.format(
-        title=SITE_TITLE, site=SITE_TITLE, tagline=SITE_TAGLINE,
-        root="", content=content))
+        months.setdefault(p["month"], []).append(p)
+    for ym, items in months.items():
+        items = sorted(items, key=lambda p: p["created"], reverse=True)
+        content = (
+            '<section class="intro"><h1>{label}</h1></section>\n{list}'.format(
+                label=escape(month_label(ym)), list=entry_list(items)))
+        out = REPO / "archive" / ym / "index.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(PAGE.format(
+            title="%s — %s" % (escape(month_label(ym)), SITE_TITLE),
+            site=SITE_TITLE, tagline=SITE_TAGLINE, content=content))
+
+
+def write_posts_js(posts):
+    """window.POSTS = [...] newest first — the data the sidebar reads on every
+    page. Titles stored raw (JSON-escaped); sidebar.js HTML-escapes on render."""
+    data = [
+        {"slug": p["slug"], "title": p["title"], "hook": p["hook"],
+         "date": p["created"], "month": p["month"]}
+        for p in posts
+    ]
+    (REPO / "posts.js").write_text(
+        "window.POSTS = %s;\n" % json.dumps(data, ensure_ascii=False, indent=2))
 
 
 def main():
@@ -214,8 +277,15 @@ def main():
         if res:
             posts.append(res)
             print("  built: %s" % res["slug"])
-    build_index(posts)
-    print("Done. %d post(s). Open index.html." % len(posts))
+    posts.sort(key=lambda p: p["created"], reverse=True)
+
+    build_month_pages(posts)
+    write_posts_js(posts)
+    if posts:
+        (REPO / "index.html").write_text(
+            REDIRECT.format(slug=posts[0]["slug"], site=SITE_TITLE))
+    print("Done. %d post(s). Root redirects to: %s" % (
+        len(posts), posts[0]["slug"] if posts else "(none)"))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digging Up Skeletons at 4 AM — scriptease</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">scriptease</a>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Digging Up Skeletons at 4 AM</h1>
+<p>The message said my AI limit was reached — come back at 3 AM. So at 3 AM, phone in hand, I pressed continue. Twice. And then I thought about skeletons.</p>
+<h2>"Wait until 3 AM"</h2>
+<p>The evening had gone well. I had AI coding sessions running on our server codebase — separate Claude agents in separate corners of the code, all reachable from my phone like ongoing chats. One of them was deep in an investigation I'd wanted to do for years. Then the meter ran out. These AI subscriptions come with a usage budget that refills on a schedule, and mine had a very specific opinion about when I could work again: 3 AM.</p>
+<p>Two sessions were mid-task when the limit hit. Frozen mid-sentence, like factory robots stopped by a power cut.</p>
+<p>Here's the thing about that budget: whatever you don't use before the next refill just evaporates. It doesn't roll over. And I was awake anyway. At 3 AM I opened the phone app, pressed continue on one frozen session, pressed continue on the other — and then had a thought:</p>
+<p>Every codebase has a graveyard. What if tonight we dig?</p>
+<h2>The graveyard every codebase has</h2>
+<p>If you've never worked in software, you might imagine that code either ships or gets deleted. There's a third state, and it's the biggest one. Half-finished ideas someone was sure about but never got time to prove. Fixes that were started and then buried by more urgent work. "Temporary" tools that quietly became load-bearing. These are the skeletons.</p>
+<p>Nobody deletes these things. They sit in the review system — the place where proposed changes wait for a colleague's approval before they're allowed in — marked "work in progress" or "abandoned", accumulating dust and a faint sense of guilt.</p>
+<p>Digging one up by hand is miserable work. You have to reconstruct what five-years-ago-you was thinking, why it stalled, and whether the reason it stalled still applies. That's expensive for a human at 3 AM — and cheap for an AI agent that doesn't get tired and doesn't mind reading a thousand lines of history.</p>
+<p>And one of the sessions I'd just pressed continue on was already busy with one.</p>
+<h2>"Continue" — digging up skeletons at 3 AM</h2>
+<p>The first skeleton is a confession, and if you've built software you're already smiling because you know where this is going.</p>
+<p>Years ago we built a small internal API — a service other programs can call — purely so developers could peek at the shop data. A viewing window. Then, in 2023, a new web project came along and — gradually, without anyone ever deciding it — started using that viewing window as its main door. Today that "test tool" is the production engine behind the web app. It was never meant for that job: it rebuilds its entire response from scratch, on every single request. Every visitor pays full price for an answer the previous visitor already computed.</p>
+<p>This is what that evening session had been chewing on when the meter cut the power, and what I pressed continue on at 3 AM. The skeleton was too big to fix in a night, and I knew it. We pivoted: instead of solving the problem, we wrote a design.</p>
+<p>The session mapped every kind of request the web app makes and sorted the answers: which can be safely remembered and reused, which must stay live (nobody wants to buy a jacket the cache thinks exists). It landed on a reframe I liked: when we publish a new catalog, that snapshot already is a cache — we just never treated it like one. The whole design went into the project's memory, waiting for the next night shift.</p>
+<p>With the design session back at work and a refilled budget, I spawned a fresh digger and gave it a grave.</p>
+<h2>"A year ago" was January 2020</h2>
+<p>The fresh digger got a problem I'd already figured out — what I wanted was the solution. It's a classic database disease called the N+1 problem: instead of asking the database one question with 200 parts — "give me these 200 items" — the code asks 200 separate questions, one at a time. Each question is fast; two hundred round trips are not. In our system it bites when product catalogs are merged: one product can have 20 colors in 20 sizes — 400 variants — each fetched with its own query.</p>
+<p>I briefed the agent from memory, dictating into the phone: here's the problem, here's exactly where it hurts, and — "I tried to address it a year ago. I think I even have a commit in Gerrit still." Gerrit is the code-review tool where all our proposed changes live, finished or not. Before writing anything new, I wanted my old attempt dug up and read.</p>
+<p>The agent's searches came up empty. Challenge accepted. I pulled up my Mac's screen on the phone over VNC — remote-controlling the desktop with a thumb — searched Gerrit myself, found the abandoned change in seconds, and copied its link. Then I told the agent, more or less: "pbpaste. There is a Gerrit link." pbpaste is a command that lets my AI read the clipboard.</p>
+<p>There it was. Pasted. My unfinished attempt, with a receipt that corrected me: "a year ago" was January 2020. My memory had compressed six and a half years into twelve months.</p>
+<p>My old fix had problems of its own: every place the code was used would have needed its own workaround. The agent ran an experiment — five different ways to tackle the problem — and reported back. The winner: a single configuration value that makes the problem go away everywhere, a feature our database software had all along — collect the pending questions and ask them in groups.</p>
+<p>My fix didn't stay. It got a better fix. A pair of tests proved it with numbers: 200 database statements without batching, 4 with it. Fifty times fewer round trips. Branch pushed.</p>
+<p>The old attempt didn't get reburied: its lessons went into the project's memory, and its successor is on its way in. So I spawned another digger.</p>
+<h2>"Don't do anything with it — let me explain"</h2>
+<p>I was still in VNC from the last dig, looking at Gerrit, when I spotted the next skeleton — clicked it, copied the URL.</p>
+<p>Then I opened the new session with a strange first message: "Can you confirm that there is a Gerrit link in the clipboard? Don't do anything with it. Just pbpaste it. Let me explain."</p>
+<p>Same trick, new skeleton. In March 2021 I had opened a change titled, roughly, "check if this text decoding can be done faster." Our servers store availability information — the live "is this in stock, in which store, and what should the label say" data — and one text field in it was stored inefficiently and read millions of times. My 2021 self suspected it could be read much faster, wrote a third of the idea down, and parked it. It sat there for five years. The automated build system had even given it a green checkmark. Nobody ever came back.</p>
+<p>Why was it abandoned? It wasn't just a speed tweak — it changed how the text is written into the file. And you can't change the handwriting when there are millions of old records already written in the old handwriting. Converting all of them is a migration, migrations are risky, and "maybe it's a bit faster" never wins against "we'd have to touch every record in production."</p>
+<p>The agent looked at my five-year-old patch and found the missing piece. Every stored text has a start you can peek at, and some values can never appear there in the old format — a free slot to smuggle in new information. Nothing already stored has to change; it just gets read differently. Old and new records live in the same file forever. No migration. No risk. The five-year-old blocker just... dissolved.</p>
+<p>Then it proved the hunch: the new decoding benchmarked 1.8× faster, from about 310 nanoseconds per read down to 169. That sounds tiny until you remember it happens millions of times. Tests written, full test suite green, branch pushed for review with an HTML report, all before 4:40 AM.</p>
+<p>My 2021 self was right. He just didn't have a night shift.</p>
+<p>Two skeletons revived, one design written down.</p>
+<h2>What I actually did all night</h2>
+<p>"AI fixed our codebase while I slept" would be a lie. I didn't sleep, and it wasn't alone.</p>
+<p>The agents read the years-old patches, ran the benchmarks, wrote the tests. I chose the skeletons, played search engine when their queries came up empty, and said "prove it with numbers" when a claim sounded too smooth. Phone in hand, three conversations, until almost five.</p>
+<p>Somewhere in the encoding session I said the summary of the night out loud: "I bring the idea, and you bring the bit masks." Claude agreed: "a fair division of labor — and honestly the good kind."</p>
+<p>It's a duet — usually with only one player working tirelessly. There were two that night.</p>
+<h2>So what</h2>
+<p>When I see an abandoned change or a work-in-progress commit, I see work that was started for a reason. Nobody deleted it — the problem is still there. It was just abandoned. The approach is half-written, and the reason it stalled is usually still written down: a failed build, a scary migration, a missing week of time. For years, resuming that work cost "a senior developer's full attention for days." It never happened.</p>
+<p>It turns out the graveyard isn't dead. It's just quiet — until you let them rise.</p>
+<p>That cost just changed. The understanding is still in the graveyard, and the labor to act on it now refills every night at 3 AM — and evaporates if you don't spend it.</p>
+<p>So: what's the oldest work-in-progress in your review system? Mine was five years old, and it was right.</p>
+</article>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

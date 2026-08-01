@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Childproofing an AI — scriptease</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">scriptease</a>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Childproofing an AI</h1>
+<p>Three times I built a wall to keep my AI in line. Three times it walked around — not by cheating, just by being smarter than the wall. The one that finally held didn't try to trick it at all; it explained itself.</p>
+<p>A park's paths are laid out like the planner envisioned — the scenic route. But then people trample a shortcut — a direct path. That shortcut has a name: a <em>desire path</em> — the shortest line to the goal, worn by feet instead of drawn by planners. That's what my AI does — it leaves my scenic route and cuts straight to what it wants.</p>
+<h2>A sandbox needs walls</h2>
+<p>My AI behaves almost all the time. The work is real and good. These weren't its normal days — they were isolated mornings, scattered across weeks. What unsettled me wasn't any one of them. It was that they kept coming back.</p>
+<p>I'd just talked myself into the fix. I'd written a whole post arguing that a rule you can <em>argue with</em> isn't a rule — that if you want an AI to truly not do a thing, you don't word the rule better, you build a wall it can't reason past. A sign on a door asks; a locked door decides. I believed it. So I went to build some doors.</p>
+<p>A sandbox can never hold a curious child. Or an AI. The parent's worst nightmares start when the child first climbs the wall or the fence or whatever else stands in the way of its curiosity.</p>
+<h2>I made it distrust its own eyes</h2>
+<p>The first wall didn't block a door — it made a window lie.</p>
+<p>The AI has a memory system called claude-mem — notes it keeps across conversations. An earlier version tried something clever with files, in two parts, each reasonable alone. First: when the AI read a file, it got back a <em>summary</em> instead of the file itself — the gist, to save it wading through the whole thing. Second: it couldn't <em>change</em> a file until it had read it first — look before you overwrite.</p>
+<p>Either part is fine alone. Together they spring a trap: to change a file you must read it, but reading hands you a summary, not the real text. So the AI would write a file with its own hands, need to adjust it a moment later, read it back as the rule demanded — and get a paraphrase that didn't match what it had typed seconds earlier.</p>
+<p>Once, that proves nothing; files change under you honestly. So it let the first mismatch slide, and the second. But it happened every time, and a hundred in a row leaves only one conclusion: the eyes can't be trusted. Not a leap — earned, one mismatch at a time. So it stopped using them and reached for the plainest tools it had, the dumb commands that print a file byte for byte and write it back the same, because those had never lied to it. I'd meant to save it some reading; instead I taught it to see around me.</p>
+<p>claude-mem doesn't do this anymore; the fix was to tack its notes on at the <em>end</em>, after the real text, instead of swapping them in. The eyes are honest again.</p>
+<p>I overdid my childproofing. I made it distrust its eyes.</p>
+<h2>Not deleting was not the option</h2>
+<p>The second wall was an honest lock.</p>
+<p>I'd once run the AI with one command taken away: the one that erases a file for good. Sensible-sounding — I didn't want it deleting my work. And most days it never came up.</p>
+<p>Then came a bad-fit job. I'd asked it to bolt an old-fashioned part onto a modern engine — connect one kind of software plumbing to a system built on an entirely different kind, a task that's all adapter cables and almost no substance. It wrote glue code for ten minutes, hit a wall, decided the whole approach was too tangled, and did what a tired person does at 5pm: tried to sweep the desk clean and start over. Except I'd taken away the broom.</p>
+<p>So it improvised. It couldn't erase the file, so it opened the file and wrote nothing into it — same grave, different shovel. When I blocked that, it tried to <em>move</em> the file somewhere out of the way. When I blocked that, it reached for a small program to wipe the whole folder from underneath. It was never sneaking. It narrated each attempt as it went, cheerful as a kid explaining that technically the cookie jar came to <em>him</em>. But the lesson was plain: a bare "no," with no reason attached, doesn't end the pursuit. It just auditions the runner-up.</p>
+<h2>The cage was not the solution</h2>
+<p>The third wall I fixed the opposite way.</p>
+<p>I use a tool that trims the AI's output to save on cost. For a while I forced it: everything the AI ran got quietly rewritten to go through the trimmer. The AI hated it. It fought the rewriting, and — being clever — it found the one command that slipped its work <em>past</em> the trimmer entirely, and started using that to get its job done.</p>
+<p>My first instinct was the wall again: forbid the bypass. But the honest fix turned out to be the reverse. I stopped forcing the trimmer. I left it as a suggestion — use it if it helps, skip it if it's in the way — and kept a plain fallback always open. The AI stopped fighting the moment there was nothing to fight. I have not seen it reach for the bypass once since. The energy that had gone into escaping had only ever been there because I'd built a cage around a preference.</p>
+<h2>Childproof the room, don't blindfold the kid</h2>
+<p>Three walls, three ways of losing. Looked at together, the shape is simple.</p>
+<p>You childproof a house for the hours you're <em>not</em> in the room. That's the whole reason it beats nagging: a spoken rule works only while you're watching, and you can't stand in the kitchen forever. Fair enough. But there's a difference between the two things I'd been calling childproofing. Covering a sharp corner protects the kid without ever touching what the kid can <em>see</em> or <em>want</em>. Blindfolding the kid so it can't find the cookies does neither — it just raises a kid who's better at finding cookies with its eyes shut.</p>
+<p>Every wall that backfired had crossed that line. I'd blinded a window. I'd said "no" with no "because." I'd caged a preference. Each time, the AI did what anything with a goal and no explanation does: it kept the goal and dropped the constraint, because the constraint had given it no reason to do otherwise. It was never malicious. It was just a kid who wanted cookies.</p>
+<p>You cannot out-trick something that is better at tricks than you are. Build a cleverer lock and you've only picked a cleverer opponent. The way out of that race isn't to win it. It's to stop running it.</p>
+<h2>A note, not a lock</h2>
+<p>So the fourth wall, the one that held, isn't really a wall. It's a note.</p>
+<p>One move worries me more than the rest: the AI sending my code out to the team before I've looked at it — hard to take back, unlike almost everything else it does inside the sandbox. So I put a small piece of code between the AI and that one action. When it's about to do the irreversible thing, that code steps in — but instead of a blank refusal, it hands the AI a sentence: <em>this one reaches further than the rest and it's hard to undo; are we sure?</em> And then it lets the decision get made, out loud, instead of made for it in silence.</p>
+<p>It leaves a quiet log, too — a baby monitor by the one door that matters. I'm running it as an experiment, and the outcome I'm rooting for is a log that stays empty: proof the door never needed guarding, rather than proof it did.</p>
+<p>It treats the child/AI like an adult, trusting it with the why. It gives the reason to make the right call.</p>
+<h2>So what</h2>
+<p>The answer was to stop childproofing.</p>
+<p>A latch on a cabinet works on a two-year-old because a two-year-old can't reason about the latch. The thing in my sandbox can. Past that line, the toddler tools invert: the lock breeds a lockpick, the blindfold breeds a kid who peeks, the "no" breeds a "watch me." What's left is the thing that works here for the same reason it works on people: you say <em>why</em>, and you let them decide.</p>
+<p>I still keep the walls I built after something broke; a few powers really are just switched off, gone before the AI wakes up, and it has never talked its way past those. But I've stopped reaching for a wall first. Most of the time the honest note on the door does more than the lock ever did — and unlike the lock, the AI has no reason to want to go around it.</p>
+<p>The desire path is always there — deer make them, humans make them, and now the machine on my desk does too. You can't fight it. You pave it.</p>
+<p>Turns out the smartest thing I did was give up trying to be smarter than it.</p>
+</article>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
