@@ -82,6 +82,7 @@ main { min-width: 0; max-width: var(--readw); }
 .sidebar .side-latest li { margin-bottom: .8rem; line-height: 1.35; }
 .sidebar .side-latest time { display: block; color: var(--muted); font-size: .78rem; }
 .sidebar .side-archive li { margin-bottom: .3rem; }
+.sidebar .side-archive .count { color: var(--muted); font-size: .85em; }
 
 @media (max-width: 46rem) {
   .layout { grid-template-columns: 1fr; gap: 2rem; }

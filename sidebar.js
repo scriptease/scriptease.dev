@@ -17,12 +17,14 @@
       "<time>" + esc(p.date) + "</time></li>";
   }).join("");
 
-  var seen = {}, months = [];
+  var counts = {}, months = [];
   posts.forEach(function (p) {
-    if (!seen[p.month]) { seen[p.month] = 1; months.push(p.month); }
+    if (!counts[p.month]) months.push(p.month);
+    counts[p.month] = (counts[p.month] || 0) + 1;
   });
   var archive = months.map(function (m) {
-    return '<li><a href="/archive/' + m + '/">' + esc(m) + "</a></li>";
+    return '<li><a href="/archive/' + m + '/">' + esc(m) + "</a> " +
+      '<span class="count">(' + counts[m] + ")</span></li>";
   }).join("");
 
   el.innerHTML =
