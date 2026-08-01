@@ -200,6 +200,5 @@ a:hover { text-decoration: underline; }
   border-top: 1px solid var(--line);
   font-size: .9rem;
 }
-.post-nav a { max-width: 47%; color: var(--muted); }
-.post-nav a:hover { color: var(--accent); }
+.post-nav a { max-width: 47%; color: var(--accent); }
 .post-nav .next { margin-left: auto; text-align: right; }
