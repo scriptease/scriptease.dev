@@ -137,8 +137,14 @@ a:hover { text-decoration: underline; }
   font-size: 2.1rem;
   line-height: 1.2;
   letter-spacing: -.02em;
-  margin: 0 0 1.5rem;
+  margin: 0 0 .5rem;
 }
+.post-tags {
+  margin: 0 0 2rem;
+  color: var(--muted);
+  font-size: .85rem;
+}
+.post-tags span { margin-right: .5rem; }
 .post h2 { font-size: 1.4rem; margin: 2.5rem 0 .75rem; letter-spacing: -.01em; }
 .post h3 { font-size: 1.15rem; margin: 2rem 0 .5rem; }
 .post p { margin: 0 0 1.25rem; }

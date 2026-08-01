@@ -223,8 +223,13 @@ def build_post(md_path):
     # relative to the post page) and the assets tree is copied 1:1, so paths
     # match with no rewriting.
     html = md_to_html(body)
-    article = '<article class="post">\n<h1>{t}</h1>\n{h}\n</article>'.format(
-        t=escape(title), h=html)
+    tags = [t.strip().lstrip("#") for t in fm.get("tags", "").strip("[] ").split(",") if t.strip()]
+    tags_html = ""
+    if tags:
+        spans = " ".join('<span>#%s</span>' % escape(t) for t in tags)
+        tags_html = '<p class="post-tags">%s</p>\n' % spans
+    article = '<article class="post">\n<h1>{t}</h1>\n{tags}{h}\n</article>'.format(
+        t=escape(title), tags=tags_html, h=html)
     out = REPO / "posts" / slug / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(PAGE.format(
@@ -237,6 +242,7 @@ def build_post(md_path):
         "hook": fm.get("hook", ""),
         "created": created,
         "month": month_of(created),
+        "tags": tags,
     }
 
 
@@ -261,7 +267,7 @@ def write_posts_js(posts):
     page. Titles stored raw (JSON-escaped); sidebar.js HTML-escapes on render."""
     data = [
         {"slug": p["slug"], "title": p["title"], "hook": p["hook"],
-         "date": p["created"], "month": p["month"]}
+         "date": p["created"], "month": p["month"], "tags": p["tags"]}
         for p in posts
     ]
     (REPO / "posts.js").write_text(
