@@ -236,12 +236,9 @@ def build_post(md_path):
         tags_html = '<p class="post-tags">%s</p>\n' % links
     article = '<article class="post">\n<h1>{t}</h1>\n{tags}{h}\n</article>'.format(
         t=escape(title), tags=tags_html, h=html)
-    out = REPO / "posts" / slug / "index.html"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(PAGE.format(
-        title=escape(title) + " — " + SITE_TITLE, site=SITE_TITLE,
-        tagline=SITE_TAGLINE, content=article))
     created = fm.get("created", "")
+    # Page is written later by write_post_pages(), which appends prev/next nav
+    # once the full chronological order is known.
     return {
         "slug": slug,
         "title": title,
@@ -249,7 +246,33 @@ def build_post(md_path):
         "created": created,
         "month": month_of(created),
         "tags": tags,
+        "article": article,
     }
+
+
+def post_nav(older, newer):
+    """Bottom-of-post linear nav: chronologically older post on the left,
+    newer on the right. Oldest post has no left link, newest has no right."""
+    left = ('<a class="prev" href="/posts/%s/">← %s</a>'
+            % (older["slug"], escape(older["title"]))) if older else "<span></span>"
+    right = ('<a class="next" href="/posts/%s/">%s →</a>'
+             % (newer["slug"], escape(newer["title"]))) if newer else "<span></span>"
+    return '<nav class="post-nav">%s%s</nav>' % (left, right)
+
+
+def write_post_pages(chrono):
+    """Write each post page. `chrono` is oldest→newest, so a post's prev/next
+    are simply its neighbours in the list."""
+    n = len(chrono)
+    for i, p in enumerate(chrono):
+        older = chrono[i - 1] if i > 0 else None
+        newer = chrono[i + 1] if i < n - 1 else None
+        content = p["article"] + "\n" + post_nav(older, newer)
+        out = REPO / "posts" / p["slug"] / "index.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(PAGE.format(
+            title=escape(p["title"]) + " — " + SITE_TITLE, site=SITE_TITLE,
+            tagline=SITE_TAGLINE, content=content))
 
 
 def build_month_pages(posts):
@@ -349,6 +372,7 @@ def main():
             print("  built: %s" % res["slug"])
     posts.sort(key=lambda p: p["created"], reverse=True)
 
+    write_post_pages(sorted(posts, key=lambda p: (p["created"], p["slug"])))
     build_month_pages(posts)
     build_tag_pages(posts)
     write_posts_js(posts)
