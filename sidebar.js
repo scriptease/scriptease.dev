@@ -61,6 +61,30 @@
     '<li><a href="https://scripteasesite.wordpress.com">WordPress mirror</a></li>' +
     "</ul>";
 
+  // Dark/light toggle: flip the theme and remember it. theme-init.js set the
+  // initial value before paint.
+  var tt = document.getElementById("theme-toggle");
+  if (tt) {
+    tt.addEventListener("click", function () {
+      var root = document.documentElement;
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      function apply() {
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+      }
+      var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      // Circular reveal from the button's centre (View Transitions API).
+      if (!document.startViewTransition || reduce) { apply(); return; }
+      var r = tt.getBoundingClientRect();
+      var x = r.left + r.width / 2, y = r.top + r.height / 2;
+      var end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+      root.style.setProperty("--vt-x", x + "px");
+      root.style.setProperty("--vt-y", y + "px");
+      root.style.setProperty("--vt-r", end + "px");
+      document.startViewTransition(apply);
+    });
+  }
+
   // Hamburger toggle (only visible when the sidebar doesn't fit; see CSS).
   var btn = document.getElementById("menu-toggle");
   if (btn) {

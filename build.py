@@ -144,6 +144,7 @@ PAGE = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
 <title>{title}</title>
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -152,7 +153,13 @@ PAGE = """<!DOCTYPE html>
 <body>
 <header class="site">
   <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> {site}</a>
-  <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  <div class="header-actions">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
 </header>
 <div class="layout">
   <main>
@@ -173,10 +180,12 @@ REDIRECT = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script src="/theme-init.js"></script>
 <meta http-equiv="refresh" content="0; url=/posts/{slug}/">
 <link rel="canonical" href="/posts/{slug}/">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/style.css">
 <title>{site}</title>
 </head>
 <body>
