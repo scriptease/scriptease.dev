@@ -34,7 +34,7 @@ VAULT_BLOG = Path(
     "/Users/florian/Library/Mobile Documents/iCloud~md~obsidian/Documents/V1/Blog"
 )
 REPO = Path(__file__).resolve().parent
-SITE_TITLE = "scriptease"
+SITE_TITLE = "scriptease.dev"
 SITE_TAGLINE = "Notes from building with AI, one story at a time."
 
 
