@@ -1,5 +1,12 @@
 window.POSTS = [
   {
+    "slug": "2026-08-01-my-blog-has-a-new-home",
+    "title": "My Blog Has a New Home: scriptease.dev",
+    "hook": "It started with a fish tank. The next day that silly free fish tank had talked me out of paying to run my own blog.",
+    "date": "2026-08-01",
+    "month": "2026-08"
+  },
+  {
     "slug": "2026-08-01-making-up-insights",
     "title": "Making Up Insights",
     "hook": "I read that my coding assistant ships with a built-in command that studies how you work with it and reports back. The first section, 'At a Glance', looked fine. The details read like it took five of my three thousand sessions and built the whole thing out of them.",

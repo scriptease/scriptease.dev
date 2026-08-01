@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Blog Has a New Home: scriptease.dev — scriptease.dev</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>My Blog Has a New Home: scriptease.dev</h1>
+<p>It started with a fish tank. Not a real one — a cartoon coral reef on a web page, seventeen fish drifting through the coral, and a shark I could grab with the mouse and drag around to send them scattering. I built it to relax. Then I put it on the internet, for free, at its own address, and forgot about it — you can still find it <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">here</a>.</p>
+<p>The next day, that silly free fish tank had talked me out of paying to run my own blog.</p>
+<h2>The free fish tank</h2>
+<p>To share the reef, I'd used GitHub Pages. GitHub is where programmers keep their code; Pages is the free website hosting bolted onto the side of it — you hand it a folder of files and it serves them to the world, no server to rent, no monthly bill. The reef went up, and it's still there, costing nothing, doing its slow underwater thing whether anyone's watching or not.</p>
+<p>I didn't notice the string attached. GitHub Pages serves a folder for free <em>only if anyone is allowed to see it</em>. The reef was a toy — I had no reason on earth to hide it, so the string never pulled tight. Free felt like free.</p>
+<h2>Ads on my own words</h2>
+<p>My actual blog lived somewhere else, on WordPress — a hosted service that runs your blog for you. I was on the free tier, and the free tier has a way of paying for itself: it puts ads on your posts. Writing I give away, wrapped in adverts I never chose and don't earn a cent from. I'd made peace with it, the way you make peace with a squeaky door, because the alternative was renting a server and babysitting it forever.</p>
+<p>And it had served me well. When I moved off Tumblr years ago, WordPress swallowed the whole thing — every saved link migrated over, tags and all — and it had been hosting more than seven thousand of them ever since, basically for free.</p>
+<h2>A secure redirect</h2>
+<p>Then there was the domain. I own scriptease.dev — I rent that name from a company called IONOS. And <code>.dev</code> is a fussy kind of address: it's run by Google, and it has one iron rule — every <code>.dev</code> site <em>must</em> be served securely, over HTTPS. HTTPS is the little padlock in the address bar, the encrypted connection that stops strangers reading along. Browsers won't even open a <code>.dev</code> address without it. No padlock, no page.</p>
+<p>Here's the absurd part. At that point my domain barely did anything — typing scriptease.dev just bounced you onward to the WordPress address. A redirect, nothing more. And to add a padlock to the URL, IONOS offered to sell me a certificate. A yearly fee, to secure a page whose entire job was to point at a different page.</p>
+<p>I thought this was the way to go, but…</p>
+<h2>Moving in with the fish</h2>
+<p>So I moved the whole blog to where the fish already lived.</p>
+<p>It turned out to be less work than it sounds, because my posts are already just text files — written in Markdown, a plain way of writing where a <code>#</code> marks a heading and stars mean bold, no fancy editor required. I wrote a small script — a short program with one repetitive job — that reads every post, turns each into a web page, and drops the lot into a folder. That folder <em>is</em> the website. Push it to GitHub, and Pages serves it, exactly like the reef.</p>
+<p>And since the page was finally mine, I made it feel that way: I built a sidebar to hold links to wherever I wanted to send people, and I added the little shark from the reef.</p>
+<p>And since the whole folder runs on my machine, I can ask to spin up a private server and click through it before the world gets to meet the finished page.</p>
+<p>Then I pointed the domain at GitHub instead of at WordPress, and waited.</p>
+<h2>But the browser didn't like it</h2>
+<p>For a few minutes, my own site told visitors to run.</p>
+<p>Bright red warning, full width: <em>this connection is not private</em>. Because <code>.dev</code> demands the padlock and the free padlock hadn't been minted yet, the browser assumed the worst and slammed the door. I sat there refreshing, being warned off my own blog like it was a scam.</p>
+<p>Then it went green. GitHub had noticed the domain was mine and quietly issued a real HTTPS certificate for it — automatically, for free, from Let's Encrypt, a nonprofit that gives them away — and it renews itself from here on. The exact thing IONOS wanted to sell me every year, GitHub handed over for nothing while I watched.</p>
+<p>So I cancelled the certificate pack.</p>
+<p>What I was left with: my own domain, not a spare room in someone else's house. The padlock, free and self-renewing. Not a single ad on my words. And that same shark, shrunk to twenty pixels, even sits in the browser tab now as the site's little icon.</p>
+<h2>Open means everything</h2>
+<p>Here's the catch, said straight, because it's the whole point.</p>
+<p>GitHub gives you all of this — the hosting, the certificate, the traffic your site serves — and asks for exactly one thing in return: that everything is public. Not just the finished pages. The Markdown behind them. The script that builds them. Every edit I've ever made to any of it. Open source means open source, and open source means <em>everything</em> — the tooling and the page, all of it, out in the open where anyone can read it, copy it, or laugh at it.</p>
+<p>That's the trade. You give up any expectation of privacy, and the infrastructure costs nothing.</p>
+<p>A blog is writing I'm already handing to strangers. Making the posts public isn't a price — it's the job. And the little script that stitches them together? I had no reason to hide that either; if anything, someone might want it.</p>
+<p>If you want a private blog, you can stick to WordPress, or home-grow your own. But if you want global availability, free hosting, free everything — then GitHub is the best.</p>
+<h2>Steal me</h2>
+<p>If you want proof of everything I just said, it's the site itself. The blog you're reading, the little script that builds it, every edit I've ever made to any of it — all of it sits in one public repository — a project folder with its full history — at <a href="https://github.com/scriptease/scriptease.dev">github.com/scriptease/scriptease.dev</a>. Nothing behind a login, nothing held back. Open it, read it, or take the script and point it at your own folder of writing. That's the whole deal, and it's the same one for anyone willing to work in the open.</p>
+</article>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
