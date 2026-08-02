@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-08-02-connecting-50-databases-to-an-ai",
+    "title": "Connecting 50 Databases to an AI",
+    "hook": "The best idea in my database tool is stolen. I found it in a tool that edits Word documents.",
+    "date": "2026-08-02",
+    "month": "2026-08",
+    "tags": [
+      "ai",
+      "agent",
+      "database",
+      "commandline",
+      "security"
+    ]
+  },
+  {
     "slug": "2026-08-01-my-blog-has-a-new-home",
     "title": "My Blog Has a New Home: scriptease.dev",
     "hook": "It started with a fish tank. The next day that silly free fish tank had talked me out of paying to run my own blog.",
