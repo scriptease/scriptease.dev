@@ -64,7 +64,7 @@ header.site {
 
 .header-actions { display: flex; align-items: center; gap: .5rem; }
 
-.theme-toggle {
+.theme-toggle, .rss-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -76,7 +76,7 @@ header.site {
   cursor: pointer;
   color: var(--ink);
 }
-.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.theme-toggle:hover, .rss-link:hover { color: var(--accent); border-color: var(--accent); }
 .theme-toggle .icon-sun { display: none; }
 html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 html[data-theme="dark"] .theme-toggle .icon-sun { display: inline; }

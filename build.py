@@ -36,6 +36,7 @@ VAULT_BLOG = Path(
 REPO = Path(__file__).resolve().parent
 SITE_TITLE = "scriptease.dev"
 SITE_TAGLINE = "Notes from building with AI, one story at a time."
+SITE_URL = "https://scriptease.dev"
 
 
 def split_frontmatter(text):
@@ -148,12 +149,16 @@ PAGE = """<!DOCTYPE html>
 <title>{title}</title>
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="{site}" href="/feed.xml">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <header class="site">
   <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> {site}</a>
   <div class="header-actions">
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
       <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
@@ -364,6 +369,57 @@ def write_posts_js(posts):
         "window.POSTS = %s;\n" % json.dumps(data, ensure_ascii=False, indent=2))
 
 
+def rfc822(created):
+    """`2026-07-31` -> RFC-822 date at 00:00 UTC, for RSS pubDate."""
+    import email.utils
+    m = re.match(r'^(\d{4})-(\d{2})-(\d{2})', created or "")
+    if not m:
+        return email.utils.formatdate(0, usegmt=True)
+    dt = datetime.datetime(int(m.group(1)), int(m.group(2)), int(m.group(3)),
+                           tzinfo=datetime.timezone.utc)
+    return email.utils.format_datetime(dt)
+
+
+def write_feed(posts):
+    """RSS 2.0 feed at /feed.xml, newest first. `hook` is the plain-text
+    description; the rendered article HTML rides along in content:encoded."""
+    items = []
+    for p in posts:
+        url = "%s/posts/%s/" % (SITE_URL, p["slug"])
+        cats = "".join(
+            "<category>%s</category>" % escape(t) for t in p["tags"])
+        items.append(
+            "<item>\n"
+            "<title>%s</title>\n"
+            "<link>%s</link>\n"
+            "<guid isPermaLink=\"true\">%s</guid>\n"
+            "<pubDate>%s</pubDate>\n"
+            "%s"
+            "<description>%s</description>\n"
+            "<content:encoded><![CDATA[%s]]></content:encoded>\n"
+            "</item>" % (
+                escape(p["title"]), url, url, rfc822(p["created"]),
+                cats, escape(p["hook"]),
+                p["article"].replace("]]>", "]]]]><![CDATA[>")))
+    built = rfc822(posts[0]["created"]) if posts else rfc822("")
+    feed = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" '
+        'xmlns:atom="http://www.w3.org/2005/Atom">\n'
+        "<channel>\n"
+        "<title>%s</title>\n"
+        "<link>%s/</link>\n"
+        '<atom:link href="%s/feed.xml" rel="self" type="application/rss+xml"/>\n'
+        "<description>%s</description>\n"
+        "<language>en</language>\n"
+        "<lastBuildDate>%s</lastBuildDate>\n"
+        "%s\n"
+        "</channel>\n</rss>\n" % (
+            escape(SITE_TITLE), SITE_URL, SITE_URL, escape(SITE_TAGLINE),
+            built, "\n".join(items)))
+    (REPO / "feed.xml").write_text(feed)
+
+
 def main():
     only = set(sys.argv[1:])
     md_files = [
@@ -385,6 +441,7 @@ def main():
     build_month_pages(posts)
     build_tag_pages(posts)
     write_posts_js(posts)
+    write_feed(posts)
     if posts:
         (REPO / "index.html").write_text(
             REDIRECT.format(slug=posts[0]["slug"], site=SITE_TITLE))
