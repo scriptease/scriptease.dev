@@ -11,6 +11,7 @@ window.POSTS = [
       "agent",
       "game",
       "ios",
+      "shark",
       "saga"
     ]
   },
