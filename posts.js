@@ -10,7 +10,8 @@ window.POSTS = [
       "claude",
       "agent",
       "game",
-      "ios"
+      "ios",
+      "saga"
     ]
   },
   {
@@ -24,7 +25,8 @@ window.POSTS = [
       "claude",
       "agent",
       "game",
-      "ios"
+      "ios",
+      "saga"
     ]
   },
   {
@@ -37,7 +39,8 @@ window.POSTS = [
       "ai",
       "claude",
       "memory",
-      "agent"
+      "agent",
+      "saga"
     ]
   },
   {
@@ -94,7 +97,8 @@ window.POSTS = [
       "claude",
       "shark",
       "underwater",
-      "diving"
+      "diving",
+      "saga"
     ]
   },
   {
@@ -190,7 +194,8 @@ window.POSTS = [
       "agent",
       "claude",
       "security",
-      "git"
+      "git",
+      "saga"
     ]
   },
   {
@@ -216,7 +221,8 @@ window.POSTS = [
       "ai",
       "agent",
       "claude",
-      "talk"
+      "talk",
+      "saga"
     ]
   },
   {
@@ -270,7 +276,8 @@ window.POSTS = [
       "ai",
       "claude",
       "agent",
-      "codereview"
+      "codereview",
+      "saga"
     ]
   },
   {
@@ -309,7 +316,8 @@ window.POSTS = [
       "gardening",
       "automation",
       "performance",
-      "ai"
+      "ai",
+      "saga"
     ]
   },
   {
@@ -322,7 +330,8 @@ window.POSTS = [
       "ai",
       "claude",
       "memory",
-      "api"
+      "api",
+      "saga"
     ]
   },
   {
@@ -349,7 +358,8 @@ window.POSTS = [
       "obsidian",
       "memory",
       "ai",
-      "documentation"
+      "documentation",
+      "saga"
     ]
   },
   {
@@ -388,7 +398,8 @@ window.POSTS = [
       "gardening",
       "automation",
       "commandline",
-      "ai"
+      "ai",
+      "saga"
     ]
   },
   {
@@ -415,7 +426,8 @@ window.POSTS = [
       "gardening",
       "automation",
       "commandline",
-      "ai"
+      "ai",
+      "saga"
     ]
   },
   {
