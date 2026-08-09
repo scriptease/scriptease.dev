@@ -436,7 +436,7 @@ def main():
         if res:
             posts.append(res)
             print("  built: %s" % res["slug"])
-    posts.sort(key=lambda p: p["created"], reverse=True)
+    posts.sort(key=lambda p: (p["created"], p["slug"]), reverse=True)
 
     write_post_pages(sorted(posts, key=lambda p: (p["created"], p["slug"])))
     build_month_pages(posts)

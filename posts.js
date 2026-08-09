@@ -1,8 +1,8 @@
 window.POSTS = [
   {
-    "slug": "2026-08-09-mugging-the-mugger",
-    "title": "Mugging the mugger",
-    "hook": "One night I sat looking at the cartoon reef I'd built and decided it should be a game. Everything since has been an argument about details. A crab got away with a bottle, and that could not stand. The trash was mine.",
+    "slug": "2026-08-09-overachiever",
+    "title": "Overachiever",
+    "hook": "This morning I published a post that said my game had no goal. By lunch it had twenty, and I hadn't written a single one of them.",
     "date": "2026-08-09",
     "month": "2026-08",
     "tags": [
@@ -14,9 +14,9 @@ window.POSTS = [
     ]
   },
   {
-    "slug": "2026-08-09-overachiever",
-    "title": "Overachiever",
-    "hook": "This morning I published a post that said my game had no goal. By lunch it had twenty, and I hadn't written a single one of them.",
+    "slug": "2026-08-09-mugging-the-mugger",
+    "title": "Mugging the mugger",
+    "hook": "One night I sat looking at the cartoon reef I'd built and decided it should be a game. Everything since has been an argument about details. A crab got away with a bottle, and that could not stand. The trash was mine.",
     "date": "2026-08-09",
     "month": "2026-08",
     "tags": [
@@ -379,6 +379,19 @@ window.POSTS = [
     ]
   },
   {
+    "slug": "2026-07-11-tomato-maxing-ii",
+    "title": "Tomato Maxing II — The Pump Talks Back",
+    "hook": "Last time, I could water my tomatoes by voice from another country. What I couldn't do was watch it happen. This is the part where the pump started talking back.",
+    "date": "2026-07-11",
+    "month": "2026-07",
+    "tags": [
+      "gardening",
+      "automation",
+      "commandline",
+      "ai"
+    ]
+  },
+  {
     "slug": "2026-07-11-the-hill-i-climbed-twice",
     "title": "The Hill I Climbed Twice",
     "hook": "A year ago, getting our iPhone app through SonarQube was an uphill fight I kept losing. This week the same walls fell in an afternoon — and I barely touched the keyboard.",
@@ -389,19 +402,6 @@ window.POSTS = [
       "codereview",
       "security",
       "ios",
-      "ai"
-    ]
-  },
-  {
-    "slug": "2026-07-11-tomato-maxing-ii",
-    "title": "Tomato Maxing II — The Pump Talks Back",
-    "hook": "Last time, I could water my tomatoes by voice from another country. What I couldn't do was watch it happen. This is the part where the pump started talking back.",
-    "date": "2026-07-11",
-    "month": "2026-07",
-    "tags": [
-      "gardening",
-      "automation",
-      "commandline",
       "ai"
     ]
   },

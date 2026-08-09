@@ -9,76 +9,6 @@
 <language>en</language>
 <lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
 <item>
-<title>Mugging the mugger</title>
-<link>https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/</link>
-<guid isPermaLink="true">https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/</guid>
-<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
-<category>ai</category><category>claude</category><category>agent</category><category>game</category><category>ios</category><description>One night I sat looking at the cartoon reef I'd built and decided it should be a game. Everything since has been an argument about details. A crab got away with a bottle, and that could not stand. The trash was mine.</description>
-<content:encoded><![CDATA[<article class="post">
-<h1>Mugging the mugger</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/game/">#game</a> <a href="/tags/ios/">#ios</a></p>
-<p><em>The Fish Slop saga: <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">1. Hosting Fish Slop</a> · </em><em>2. Mugging the mugger</em><em> · <a href="https://scriptease.dev/posts/2026-08-09-overachiever/">3. Overachiever</a></em></p>
-<p>One night I sat looking at the cartoon reef I'd built and decided it should be a game.</p>
-<p>Everything since has been an argument about details. A crab got away with a bottle, and that could not stand. The trash was mine.</p>
-<h2>One big sentence that kicked it off</h2>
-<p>The reef was a web page. Fish, coral, a shark I could drag around with the cursor. Nothing to do in it, which was the point.</p>
-<p>Then it wasn't the point anymore.</p>
-<p>I dictated the whole game to Claude — the AI assistant I write code with — in one sentence, the way I talk to my computer at eleven at night: you pilot a little submarine that goes left and right and presses space to rise, plastic drops from the top and slowly sinks, there's bottles and bags and traffic pylons, avoid the fish, a turtle swims for any plastic bag so you have to beat it there, a fish costs one of your ten hearts, a shark costs five, and every ten pieces of trash gives one heart back.</p>
-<p>Ten minutes later I was playing it.</p>
-<p><img alt="The daylight reef: a yellow submarine with its headlight on, coral and fish across a sandy floor, a slinky and a crab among the litter, and a shark nosing in from the right edge." src="assets/mugging-the-mugger/day.png" /></p>
-<p>And then I was directing it.</p>
-<p>Everything after that — every evening since — has been small. Not features. Annoyances, mostly. Things I noticed while playing and wanted gone.</p>
-<h2>The tire looked out of place</h2>
-<p>The first batch of trash had a car tire in it. It was fine. It was also wrong — too heavy, too roadside, not the litter you find in water. I swapped it for a flip-flop.</p>
-<p>Then I wanted more variety, so I started describing objects out loud like a man ordering from a catalogue that doesn't exist. A yellow rubber duck. A can with a grey ribbed body and a red label — a tomato soup can, but with no writing on it, because writing would make it an advert. A coffee cup with a trapeze-shaped body, in grey, brown or green, with a red, beige or white lid. And later, a squeaky spiral thing — neon yellow, orange, blue and green, gradient down its length, five or six coils.</p>
-<p>Ten kinds of litter now, each falling at its own speed. The bag drifts and swings. The can plummets and barely wobbles; if you miss it early you don't get it at all.</p>
-<p>Somewhere in there I noticed only some of them had colour variants, and asked whether the pylon and the duck should get them too.</p>
-<p>Then I answered my own question: no. The bottles and bags show up dozens of times a run, so without variation you'd see the repeat. The duck appears once in a blue moon. If there were three ducks, spotting one would stop meaning anything. Rare things want a single unmistakable shape. Common things want variety so the eye doesn't catch on the sameness.</p>
-<h2>You can just swim left and right on the ground</h2>
-<p>The problem with a game about catching falling things is the floor.</p>
-<p>Everything ends up down there. The fish keep their distance from the sub, so the seabed was a safe lane — park at the bottom, sweep left and right, collect. No risk, no thought.</p>
-<p>So: crabs. They scuttle in from the left or right edge, grab the first piece of trash they find, and haul it off-screen. Touch one and you lose a heart. Let one escape with your bottle and you lose one too.</p>
-<p>That fixed the floor and broke something else. Two crabs walked into each other and just stood there, nose to nose, forever. A standoff. Neither would give way.</p>
-<p>Now a crab carrying trash has right of way, and the other one turns around.</p>
-<p>Then I asked for the fish to scatter when a crab approaches, which sounds cosmetic and isn't — crabs sweeping along the bottom push the fish upward and outward, so the whole lower half of the screen stays stirred up. The safe lane never comes back.</p>
-<p>The last loophole was the turtle. It swims for a plastic bag, and if you snatch the bag first, you rescued it and get a heart. I noticed I was getting three hearts from what felt like one turtle. I was: the turtle whose bag I'd stolen would calmly pick a new bag and hunt that one, paying out again each time. Now a rescued turtle heads for the surface and leaves. One turtle, one heart.</p>
-<h2>The krill were real</h2>
-<p>Not everything came from annoyance. Some of it came from water.</p>
-<p>At night in the game, the submarine leaves a trail of tiny glowing specks — plankton, lit up by the disturbance, hanging in the water where you were rather than following you. They fade a second or two after you've moved on, so your own path stays drawn behind you.</p>
-<p>That happens. I've seen it on a night dive: you sweep a hand through black water and it lights up around you, cold and blue-green and completely silent. Nothing about it looks like biology. I wanted it in the reef because it was real, not because the game needed more sparkle.</p>
-<p>And then it became part of the game by accident.</p>
-<p>I asked for one or two of the same glowing specks to cling to the trash drifting in the upper part of the screen at night. Just a hint. A twinkle high up where it's too dark to see shapes.</p>
-<p>That twinkle tells you something's coming, and roughly where. Night went from "harder because you can't see" to "harder unless you read the water." I didn't design that. I asked for a thing I'd seen in the sea, and it turned into the level's radar.</p>
-<p><img alt="The night stage: the reef in deep blue-black, the submarine inside a wobbling bubble, glowing specks trailing behind it, a turtle and a floating coffee cup up in the dark." src="assets/mugging-the-mugger/night.png" /></p>
-<h2>Into the abyss</h2>
-<p>Deeper still, the game stops drawing waves on the water's surface — you're far too deep to see them, and drawing them was a small lie. The kelp glows down here, but not uniformly: half the strands at half brightness, because a field of identical lamps looks like decoration and a field of uneven ones looks alive.</p>
-<p>The rest of the light is alive too. Down where it's genuinely pitch black I added anglerfish and jellyfish, each carrying its own small lamp through the dark — the only things that light the place at all.</p>
-<p>They also sting. Every one of those soft glows is two hearts if you swim into it, which means the abyss lights itself with the exact things you're meant to avoid.</p>
-<p><img alt="The abyss: almost black water lit only by an anglerfish's lamp and two drifting jellyfish, the shark a grey silhouette in the gloom, the submarine holding its bubble on the right." src="assets/mugging-the-mugger/abyss.png" /></p>
-<h2>The overachiever's bubble</h2>
-<p>Then came the mugging. Colliding with a crab always cost you a heart — but if the crab is carrying something, you now take the pinch <em>and</em> the loot. The stolen bottle scores as if you'd caught it. So a loaded crab isn't only a hazard, it's a decision: pay a heart now and maybe get it back, or let it walk and pay the heart anyway when it leaves the screen.</p>
-<p>The bubble isn't mine at all.</p>
-<p>Rescuing a turtle gives you a heart — unless you're already at ten out of ten, in which case the reward quietly evaporated. That bothered me, but I had no idea what to do about it, so I asked the question instead of giving an instruction: what <em>should</em> happen when I earn a heart I can't hold?</p>
-<p>I got three options back. The first one came recommended: bank it as a shield.</p>
-<p>I can't tell you what the other two were. I took the first one and never looked at the rest.</p>
-<p>So now the overflow becomes a bubble. It wobbles around the submarine and swallows exactly one hit.</p>
-<p>It bursts with a little plop.</p>
-<h2>Then it all had to happen twice</h2>
-<p>Somewhere in the middle of this, the game stopped being one thing.</p>
-<p>It's now also an iPhone app — not the web page in a picture frame, but the whole scene rebuilt for the phone. And it has sound, made from scratch rather than from recordings: rushing water, a deep drone, bubbles, and every so often something distant and whale-shaped in the dark.</p>
-<p>Which means every one of those small evening annoyances has to be fixed twice, in two programming languages, by two separate Claude chats that cannot see each other's work. I spent a lot of last night as a courier: <em>the web version fixed the coral bottoms — find that change and copy it here.</em></p>
-<p>A shark takes five hearts but only made one slashing sound, which felt thin. The phone version fixed it first: five slashes, eighty milliseconds apart, so a shark hit sounds like a shark hit. An hour later the web version copied it back.</p>
-<p>Each saved change quotes the other one's reference number. They read like letters.</p>
-<h2>You can try this</h2>
-<p>There's no goal. There's no design document. There was never a plan past that first dictated sentence.</p>
-<p>What's there instead is a record of small irritations, each one fixed the evening I felt it.</p>
-<p>You can play it in a browser: <a href="https://scriptease.github.io/underwater-reef/game.html">scriptease.github.io/underwater-reef/game.html</a>. Sound on, if you have a minute — the deeper you go, the more muffled everything gets.</p>
-<p>Watch the crabs. One of them has your bottle.</p>
-<p>And rescue a turtle while you're on full hearts, so you're carrying the bubble.</p>
-<p>Then: what happens if you hit the shark with it?</p>
-</article>]]></content:encoded>
-</item>
-<item>
 <title>Overachiever</title>
 <link>https://scriptease.dev/posts/2026-08-09-overachiever/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-09-overachiever/</guid>
@@ -146,6 +76,76 @@
 <p>One crabs harassed. The grammar is wrong on purpose — it got offered as a fix and I turned it down, because "1 crabs harassed" is funnier and this is my ocean.</p>
 <p>You can play it here: <a href="https://scriptease.github.io/underwater-reef/game.html">scriptease.github.io/underwater-reef/game.html</a>.</p>
 <p>It started endless and it's still endless — except now it keeps a tally, and the tally is quietly daring me to go and harass a second crab.</p>
+</article>]]></content:encoded>
+</item>
+<item>
+<title>Mugging the mugger</title>
+<link>https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/</guid>
+<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>claude</category><category>agent</category><category>game</category><category>ios</category><description>One night I sat looking at the cartoon reef I'd built and decided it should be a game. Everything since has been an argument about details. A crab got away with a bottle, and that could not stand. The trash was mine.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Mugging the mugger</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/game/">#game</a> <a href="/tags/ios/">#ios</a></p>
+<p><em>The Fish Slop saga: <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">1. Hosting Fish Slop</a> · </em><em>2. Mugging the mugger</em><em> · <a href="https://scriptease.dev/posts/2026-08-09-overachiever/">3. Overachiever</a></em></p>
+<p>One night I sat looking at the cartoon reef I'd built and decided it should be a game.</p>
+<p>Everything since has been an argument about details. A crab got away with a bottle, and that could not stand. The trash was mine.</p>
+<h2>One big sentence that kicked it off</h2>
+<p>The reef was a web page. Fish, coral, a shark I could drag around with the cursor. Nothing to do in it, which was the point.</p>
+<p>Then it wasn't the point anymore.</p>
+<p>I dictated the whole game to Claude — the AI assistant I write code with — in one sentence, the way I talk to my computer at eleven at night: you pilot a little submarine that goes left and right and presses space to rise, plastic drops from the top and slowly sinks, there's bottles and bags and traffic pylons, avoid the fish, a turtle swims for any plastic bag so you have to beat it there, a fish costs one of your ten hearts, a shark costs five, and every ten pieces of trash gives one heart back.</p>
+<p>Ten minutes later I was playing it.</p>
+<p><img alt="The daylight reef: a yellow submarine with its headlight on, coral and fish across a sandy floor, a slinky and a crab among the litter, and a shark nosing in from the right edge." src="assets/mugging-the-mugger/day.png" /></p>
+<p>And then I was directing it.</p>
+<p>Everything after that — every evening since — has been small. Not features. Annoyances, mostly. Things I noticed while playing and wanted gone.</p>
+<h2>The tire looked out of place</h2>
+<p>The first batch of trash had a car tire in it. It was fine. It was also wrong — too heavy, too roadside, not the litter you find in water. I swapped it for a flip-flop.</p>
+<p>Then I wanted more variety, so I started describing objects out loud like a man ordering from a catalogue that doesn't exist. A yellow rubber duck. A can with a grey ribbed body and a red label — a tomato soup can, but with no writing on it, because writing would make it an advert. A coffee cup with a trapeze-shaped body, in grey, brown or green, with a red, beige or white lid. And later, a squeaky spiral thing — neon yellow, orange, blue and green, gradient down its length, five or six coils.</p>
+<p>Ten kinds of litter now, each falling at its own speed. The bag drifts and swings. The can plummets and barely wobbles; if you miss it early you don't get it at all.</p>
+<p>Somewhere in there I noticed only some of them had colour variants, and asked whether the pylon and the duck should get them too.</p>
+<p>Then I answered my own question: no. The bottles and bags show up dozens of times a run, so without variation you'd see the repeat. The duck appears once in a blue moon. If there were three ducks, spotting one would stop meaning anything. Rare things want a single unmistakable shape. Common things want variety so the eye doesn't catch on the sameness.</p>
+<h2>You can just swim left and right on the ground</h2>
+<p>The problem with a game about catching falling things is the floor.</p>
+<p>Everything ends up down there. The fish keep their distance from the sub, so the seabed was a safe lane — park at the bottom, sweep left and right, collect. No risk, no thought.</p>
+<p>So: crabs. They scuttle in from the left or right edge, grab the first piece of trash they find, and haul it off-screen. Touch one and you lose a heart. Let one escape with your bottle and you lose one too.</p>
+<p>That fixed the floor and broke something else. Two crabs walked into each other and just stood there, nose to nose, forever. A standoff. Neither would give way.</p>
+<p>Now a crab carrying trash has right of way, and the other one turns around.</p>
+<p>Then I asked for the fish to scatter when a crab approaches, which sounds cosmetic and isn't — crabs sweeping along the bottom push the fish upward and outward, so the whole lower half of the screen stays stirred up. The safe lane never comes back.</p>
+<p>The last loophole was the turtle. It swims for a plastic bag, and if you snatch the bag first, you rescued it and get a heart. I noticed I was getting three hearts from what felt like one turtle. I was: the turtle whose bag I'd stolen would calmly pick a new bag and hunt that one, paying out again each time. Now a rescued turtle heads for the surface and leaves. One turtle, one heart.</p>
+<h2>The krill were real</h2>
+<p>Not everything came from annoyance. Some of it came from water.</p>
+<p>At night in the game, the submarine leaves a trail of tiny glowing specks — plankton, lit up by the disturbance, hanging in the water where you were rather than following you. They fade a second or two after you've moved on, so your own path stays drawn behind you.</p>
+<p>That happens. I've seen it on a night dive: you sweep a hand through black water and it lights up around you, cold and blue-green and completely silent. Nothing about it looks like biology. I wanted it in the reef because it was real, not because the game needed more sparkle.</p>
+<p>And then it became part of the game by accident.</p>
+<p>I asked for one or two of the same glowing specks to cling to the trash drifting in the upper part of the screen at night. Just a hint. A twinkle high up where it's too dark to see shapes.</p>
+<p>That twinkle tells you something's coming, and roughly where. Night went from "harder because you can't see" to "harder unless you read the water." I didn't design that. I asked for a thing I'd seen in the sea, and it turned into the level's radar.</p>
+<p><img alt="The night stage: the reef in deep blue-black, the submarine inside a wobbling bubble, glowing specks trailing behind it, a turtle and a floating coffee cup up in the dark." src="assets/mugging-the-mugger/night.png" /></p>
+<h2>Into the abyss</h2>
+<p>Deeper still, the game stops drawing waves on the water's surface — you're far too deep to see them, and drawing them was a small lie. The kelp glows down here, but not uniformly: half the strands at half brightness, because a field of identical lamps looks like decoration and a field of uneven ones looks alive.</p>
+<p>The rest of the light is alive too. Down where it's genuinely pitch black I added anglerfish and jellyfish, each carrying its own small lamp through the dark — the only things that light the place at all.</p>
+<p>They also sting. Every one of those soft glows is two hearts if you swim into it, which means the abyss lights itself with the exact things you're meant to avoid.</p>
+<p><img alt="The abyss: almost black water lit only by an anglerfish's lamp and two drifting jellyfish, the shark a grey silhouette in the gloom, the submarine holding its bubble on the right." src="assets/mugging-the-mugger/abyss.png" /></p>
+<h2>The overachiever's bubble</h2>
+<p>Then came the mugging. Colliding with a crab always cost you a heart — but if the crab is carrying something, you now take the pinch <em>and</em> the loot. The stolen bottle scores as if you'd caught it. So a loaded crab isn't only a hazard, it's a decision: pay a heart now and maybe get it back, or let it walk and pay the heart anyway when it leaves the screen.</p>
+<p>The bubble isn't mine at all.</p>
+<p>Rescuing a turtle gives you a heart — unless you're already at ten out of ten, in which case the reward quietly evaporated. That bothered me, but I had no idea what to do about it, so I asked the question instead of giving an instruction: what <em>should</em> happen when I earn a heart I can't hold?</p>
+<p>I got three options back. The first one came recommended: bank it as a shield.</p>
+<p>I can't tell you what the other two were. I took the first one and never looked at the rest.</p>
+<p>So now the overflow becomes a bubble. It wobbles around the submarine and swallows exactly one hit.</p>
+<p>It bursts with a little plop.</p>
+<h2>Then it all had to happen twice</h2>
+<p>Somewhere in the middle of this, the game stopped being one thing.</p>
+<p>It's now also an iPhone app — not the web page in a picture frame, but the whole scene rebuilt for the phone. And it has sound, made from scratch rather than from recordings: rushing water, a deep drone, bubbles, and every so often something distant and whale-shaped in the dark.</p>
+<p>Which means every one of those small evening annoyances has to be fixed twice, in two programming languages, by two separate Claude chats that cannot see each other's work. I spent a lot of last night as a courier: <em>the web version fixed the coral bottoms — find that change and copy it here.</em></p>
+<p>A shark takes five hearts but only made one slashing sound, which felt thin. The phone version fixed it first: five slashes, eighty milliseconds apart, so a shark hit sounds like a shark hit. An hour later the web version copied it back.</p>
+<p>Each saved change quotes the other one's reference number. They read like letters.</p>
+<h2>You can try this</h2>
+<p>There's no goal. There's no design document. There was never a plan past that first dictated sentence.</p>
+<p>What's there instead is a record of small irritations, each one fixed the evening I felt it.</p>
+<p>You can play it in a browser: <a href="https://scriptease.github.io/underwater-reef/game.html">scriptease.github.io/underwater-reef/game.html</a>. Sound on, if you have a minute — the deeper you go, the more muffled everything gets.</p>
+<p>Watch the crabs. One of them has your bottle.</p>
+<p>And rescue a turtle while you're on full hearts, so you're carrying the bubble.</p>
+<p>Then: what happens if you hit the shark with it?</p>
 </article>]]></content:encoded>
 </item>
 <item>
@@ -1602,52 +1602,6 @@ I own the story and supply the lived details. You supply digging and craft.
 </article>]]></content:encoded>
 </item>
 <item>
-<title>The Hill I Climbed Twice</title>
-<link>https://scriptease.dev/posts/2026-07-11-the-hill-i-climbed-twice/</link>
-<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-11-the-hill-i-climbed-twice/</guid>
-<pubDate>Sat, 11 Jul 2026 00:00:00 +0000</pubDate>
-<category>ci</category><category>codereview</category><category>security</category><category>ios</category><category>ai</category><description>A year ago, getting our iPhone app through SonarQube was an uphill fight I kept losing. This week the same walls fell in an afternoon — and I barely touched the keyboard.</description>
-<content:encoded><![CDATA[<article class="post">
-<h1>The Hill I Climbed Twice</h1>
-<p class="post-tags"><a href="/tags/ci/">#ci</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/security/">#security</a> <a href="/tags/ios/">#ios</a> <a href="/tags/ai/">#ai</a></p>
-<p>A year ago, getting our iPhone app through <strong>SonarQube</strong> — the code scanner we use at work — was an uphill fight I kept losing. This week I watched the same walls fall in a single afternoon, and I barely touched the keyboard.</p>
-<p>SonarQube is a <strong>code health inspector</strong>. You point it at your source code and it hands back a report card: here are the likely bugs, here are the security holes, here's the sloppy stuff, and here's how all of it is trending over time. We wanted one because it turns a vague sense that code is rotting into an actual list. Ours ran for about five minutes, a year ago, before I gave up on half of it.</p>
-<h2>The first climb</h2>
-<p>Setting it up the first time was miserable. It needed a database of a very specific vintage, hand-installed, and every version had opinions about every other version. I fought it into place and got it grading our behind-the-scenes server code. A win, sort of.</p>
-<p>Then I turned it on the <strong>iPhone app</strong>, and it just… wouldn't. The scan would churn for ages and hand back nothing — no bugs, no findings, a blank report for tens of thousands of lines of code. I'd tweak something, run it again, wait, get nothing. It felt like pushing a boulder uphill and watching it roll back every single time.</p>
-<p>Eventually I did the thing every developer does with a fight they're losing: I wrote myself a ticket, assigned it to me, and marked it <em>someday</em>. That's the professional version of shoving something in a drawer. The drawer stayed shut for a year.</p>
-<h2>Coming back to nothing</h2>
-<p>Last week, <em>someday</em> arrived. I opened the drawer.</p>
-<p>It was empty — and that didn't surprise me, because I'd emptied it myself. When I gave up, I didn't just walk away; I ran the one command that tears the whole thing down and switched it off on purpose. So I wasn't dusting off an old setup. I was rebuilding from scratch, exactly as I'd left it: nothing.</p>
-<p>And in a year, the ground had shifted under every piece. The database no longer came in the box — I had to bring my own. The old one couldn't come along anyway: the new version wanted a newer kind of database than my year-old data lived in, and hauling that data across would have been fiddly, high-stakes surgery. So I didn't. I let the old projects go and rebuilt from scratch — which sounds insane until you notice that rebuilding is now the <em>cheap</em> option, because the AI does the repetitive part. (The free edition had also grown a trap: miss one hidden switch and it quietly installs the <em>paid</em> version instead. I did not miss it.)</p>
-<p>Exactly one thing survived the year intact. When the fresh install asked me to set a password, my keychain offered up the one from a year ago — still remembered, still valid. Everything else had to be rebuilt; that password was the only piece of past-me that made it across. Then I turned to the door that had beaten me last time: the iPhone app.</p>
-<h2>The same walls, in the same order</h2>
-<p>That was the part I'd been dreading, for a specific reason. SonarQube doesn't understand Apple's code out of the box; you have to bolt on a separate <strong>plugin</strong> — an add-on that teaches it the language — and a year ago, wrestling that plugin into place had been its own miserable afternoon. This time it was smooth sailing: in a whole year the plugin had crept forward by the tiniest possible update, sitting almost exactly where I'd left it while everything else lurched years ahead. From its point of view, the year had never happened.</p>
-<p>That was the good news. The bad news was everything the plugin then had to look at — because every other enemy from a year ago was still standing, in formation.</p>
-<p>The scan that runs forever and reports nothing: back. The app going in and coming out the far side with no trace of its code — the report insisting I'd apparently written twenty thousand lines in one afternoon, because it couldn't actually <em>see</em> any of them: back. Same fights, same losses, exactly where I'd left them.</p>
-<p>At the bottom of it all was a gloriously stupid root cause. Years ago someone had made a <strong>shortcut</strong> — a folder pretending to be another folder, the two names differing by a single capital letter. I'd been running the scanner <em>through the shortcut</em>. So the scanner filed its notes under one address, and the style-checker filed its complaints under the other, almost-identical address — and because the two addresses didn't match, SonarQube decided none of the complaints belonged to this project and threw <strong>every last one in the bin.</strong> Twenty-seven thousand five hundred and seven of them. Point the scanner at the real folder instead of the shortcut, and 0 findings became 27,507.</p>
-<p>A year of "it just doesn't work on iOS." The monster in the drawer was a shortcut with a typo in its name.</p>
-<h2>The difference was who showed up</h2>
-<p>Here's what actually changed between the two climbs. It wasn't the walls — the walls were identical. It was that this time I wasn't climbing alone.</p>
-<p>The tool hands out two kinds of key. A <strong>narrow</strong> one that can only push and pull a single project's data, and a <strong>master</strong> one that can do anything, including create projects and mint those narrow keys itself. I didn't hand over a standing personal key. I minted a fresh master key <em>just for this session</em> — one meant to be thrown away — and gave that to my AI with a list: five projects, set them all up.</p>
-<p>And it did. For each one it cut its own narrow key, ran the analysis, set the project private the way I like, and applied a rule change I'd asked for. (SonarQube grades every project against a pass/fail checklist. One default rule was failing our decade-old apps merely for not yet reporting any automated-test numbers — which told me nothing — so I changed that rule.) The barriers that had cost me a year — the shortcut, the endless scans, the reports full of nothing — fell in the time it took to make coffee. I wasn't heaving the boulder anymore. I was pointing at the hill and saying <em>that one</em>.</p>
-<h2>Then I burned the key</h2>
-<p>Here's the part I'm proudest of. The moment the setup was done, I <strong>destroyed that master key.</strong></p>
-<p>And this is the quietly clever bit: it no longer matters that the key passed through the AI — that it's sitting in the session's history, that it was, in the loosest sense, <em>leaked</em>. A revoked key is a dead key. You could read it straight off my screen and it would open nothing. The risk was neutralised the instant I switched it off, by design rather than by trust.</p>
-<p>What's left behind is only the good part: the AI wrote itself a note on exactly how the job is done. So next time there's no master key at all — I hand it one narrow, single-project key, it reads its own notes, and it runs the whole dance again, strictly inside the lines I've drawn. The capability stayed; the risk went back in the box.</p>
-<h2>A million lines, and a little time travel</h2>
-<p>Because that workflow was now repeatable, I stopped doing one project at a time. They piled in fast — three iPhone apps, seven server projects. At some point I glanced at the running total and stopped: <strong>a million lines of code</strong>, all under one health inspection.</p>
-<p>And here's the fun fact that stuck with me. Software quietly keeps a logbook of who last touched every single line, and when. So a lot of what the scanner flagged didn't just arrive with a description — it arrived with a <strong>name and a date attached, some of them a decade old.</strong> Security issues in code written before the phone in my pocket existed, still sitting there, now politely surfaced with the original author's name beside them.</p>
-<p>It's a strange kind of time travel. The tool doesn't care that a line is ten years old; to it, an issue is an issue. Turn the lights on in a room nobody's swept since 2015 and you see all of it at once — including who tracked in the dirt.</p>
-<p>And that's the honest, slightly deflating truth about these inspectors: point one at a big old codebase and it hands you a mountain you will never finish. Thousands of findings — enough to fill hours, then months, then years. You don't clear the list; you triage it, forever.</p>
-<p>Which is what makes the last one such a happy ending — though it didn't start that way. The newest and smallest project — a little service we'd recently built that catches payment notifications from a payment provider — showed up to its first inspection with <strong>thirteen issues</strong> on the report card. Not a mountain, but not nothing. The difference was that I could hand it straight back to the same AI that had built the service, with a single instruction: upload it to SonarQube, read what the inspector flagged, fix it, upload again, check again. It ran that loop — detect, fix, re-check — until thirteen became zero and the board went green: <strong>97% of the code checked by automated tests, and not a single issue left.</strong> The only project in the whole million-line pile to get there — not because it was born clean, but because, for once, something worked the list all the way to the end.</p>
-<h2>So what</h2>
-<p>The problem never got easier. The shortcut was still there, the scans were still slow, the tool had if anything grown <em>more</em> finicky in a year. Nothing about the hill had softened.</p>
-<p>What changed is that I no longer had to climb it myself. I could hand the climb to something tireless, watch it write the route down, and take the keys back when it was done.</p>
-<p>The password from a year ago still worked. So did the problems. The only thing that had changed was who showed up to solve them.</p>
-</article>]]></content:encoded>
-</item>
-<item>
 <title>Tomato Maxing II — The Pump Talks Back</title>
 <link>https://scriptease.dev/posts/2026-07-11-tomato-maxing-ii/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-11-tomato-maxing-ii/</guid>
@@ -1700,6 +1654,52 @@ I own the story and supply the lived details. You supply digging and craft.
 <p>The lesson from part one was that code got cheap enough to automate your garden. Part two adds the sequel to that: the <em>second</em> thing is cheaper than the first, and the third is nearly free — because the hard part was never the pump or the vacuum. It was building the translator in the middle. Once that exists, every new gadget is a couple of lines and an afternoon.</p>
 <p>You don't automate one thing. You build the thing that automates things. Then you go looking for what else in the apartment secretly speaks the same language.</p>
 <p>Tomato maxing.</p>
+</article>]]></content:encoded>
+</item>
+<item>
+<title>The Hill I Climbed Twice</title>
+<link>https://scriptease.dev/posts/2026-07-11-the-hill-i-climbed-twice/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-11-the-hill-i-climbed-twice/</guid>
+<pubDate>Sat, 11 Jul 2026 00:00:00 +0000</pubDate>
+<category>ci</category><category>codereview</category><category>security</category><category>ios</category><category>ai</category><description>A year ago, getting our iPhone app through SonarQube was an uphill fight I kept losing. This week the same walls fell in an afternoon — and I barely touched the keyboard.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>The Hill I Climbed Twice</h1>
+<p class="post-tags"><a href="/tags/ci/">#ci</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/security/">#security</a> <a href="/tags/ios/">#ios</a> <a href="/tags/ai/">#ai</a></p>
+<p>A year ago, getting our iPhone app through <strong>SonarQube</strong> — the code scanner we use at work — was an uphill fight I kept losing. This week I watched the same walls fall in a single afternoon, and I barely touched the keyboard.</p>
+<p>SonarQube is a <strong>code health inspector</strong>. You point it at your source code and it hands back a report card: here are the likely bugs, here are the security holes, here's the sloppy stuff, and here's how all of it is trending over time. We wanted one because it turns a vague sense that code is rotting into an actual list. Ours ran for about five minutes, a year ago, before I gave up on half of it.</p>
+<h2>The first climb</h2>
+<p>Setting it up the first time was miserable. It needed a database of a very specific vintage, hand-installed, and every version had opinions about every other version. I fought it into place and got it grading our behind-the-scenes server code. A win, sort of.</p>
+<p>Then I turned it on the <strong>iPhone app</strong>, and it just… wouldn't. The scan would churn for ages and hand back nothing — no bugs, no findings, a blank report for tens of thousands of lines of code. I'd tweak something, run it again, wait, get nothing. It felt like pushing a boulder uphill and watching it roll back every single time.</p>
+<p>Eventually I did the thing every developer does with a fight they're losing: I wrote myself a ticket, assigned it to me, and marked it <em>someday</em>. That's the professional version of shoving something in a drawer. The drawer stayed shut for a year.</p>
+<h2>Coming back to nothing</h2>
+<p>Last week, <em>someday</em> arrived. I opened the drawer.</p>
+<p>It was empty — and that didn't surprise me, because I'd emptied it myself. When I gave up, I didn't just walk away; I ran the one command that tears the whole thing down and switched it off on purpose. So I wasn't dusting off an old setup. I was rebuilding from scratch, exactly as I'd left it: nothing.</p>
+<p>And in a year, the ground had shifted under every piece. The database no longer came in the box — I had to bring my own. The old one couldn't come along anyway: the new version wanted a newer kind of database than my year-old data lived in, and hauling that data across would have been fiddly, high-stakes surgery. So I didn't. I let the old projects go and rebuilt from scratch — which sounds insane until you notice that rebuilding is now the <em>cheap</em> option, because the AI does the repetitive part. (The free edition had also grown a trap: miss one hidden switch and it quietly installs the <em>paid</em> version instead. I did not miss it.)</p>
+<p>Exactly one thing survived the year intact. When the fresh install asked me to set a password, my keychain offered up the one from a year ago — still remembered, still valid. Everything else had to be rebuilt; that password was the only piece of past-me that made it across. Then I turned to the door that had beaten me last time: the iPhone app.</p>
+<h2>The same walls, in the same order</h2>
+<p>That was the part I'd been dreading, for a specific reason. SonarQube doesn't understand Apple's code out of the box; you have to bolt on a separate <strong>plugin</strong> — an add-on that teaches it the language — and a year ago, wrestling that plugin into place had been its own miserable afternoon. This time it was smooth sailing: in a whole year the plugin had crept forward by the tiniest possible update, sitting almost exactly where I'd left it while everything else lurched years ahead. From its point of view, the year had never happened.</p>
+<p>That was the good news. The bad news was everything the plugin then had to look at — because every other enemy from a year ago was still standing, in formation.</p>
+<p>The scan that runs forever and reports nothing: back. The app going in and coming out the far side with no trace of its code — the report insisting I'd apparently written twenty thousand lines in one afternoon, because it couldn't actually <em>see</em> any of them: back. Same fights, same losses, exactly where I'd left them.</p>
+<p>At the bottom of it all was a gloriously stupid root cause. Years ago someone had made a <strong>shortcut</strong> — a folder pretending to be another folder, the two names differing by a single capital letter. I'd been running the scanner <em>through the shortcut</em>. So the scanner filed its notes under one address, and the style-checker filed its complaints under the other, almost-identical address — and because the two addresses didn't match, SonarQube decided none of the complaints belonged to this project and threw <strong>every last one in the bin.</strong> Twenty-seven thousand five hundred and seven of them. Point the scanner at the real folder instead of the shortcut, and 0 findings became 27,507.</p>
+<p>A year of "it just doesn't work on iOS." The monster in the drawer was a shortcut with a typo in its name.</p>
+<h2>The difference was who showed up</h2>
+<p>Here's what actually changed between the two climbs. It wasn't the walls — the walls were identical. It was that this time I wasn't climbing alone.</p>
+<p>The tool hands out two kinds of key. A <strong>narrow</strong> one that can only push and pull a single project's data, and a <strong>master</strong> one that can do anything, including create projects and mint those narrow keys itself. I didn't hand over a standing personal key. I minted a fresh master key <em>just for this session</em> — one meant to be thrown away — and gave that to my AI with a list: five projects, set them all up.</p>
+<p>And it did. For each one it cut its own narrow key, ran the analysis, set the project private the way I like, and applied a rule change I'd asked for. (SonarQube grades every project against a pass/fail checklist. One default rule was failing our decade-old apps merely for not yet reporting any automated-test numbers — which told me nothing — so I changed that rule.) The barriers that had cost me a year — the shortcut, the endless scans, the reports full of nothing — fell in the time it took to make coffee. I wasn't heaving the boulder anymore. I was pointing at the hill and saying <em>that one</em>.</p>
+<h2>Then I burned the key</h2>
+<p>Here's the part I'm proudest of. The moment the setup was done, I <strong>destroyed that master key.</strong></p>
+<p>And this is the quietly clever bit: it no longer matters that the key passed through the AI — that it's sitting in the session's history, that it was, in the loosest sense, <em>leaked</em>. A revoked key is a dead key. You could read it straight off my screen and it would open nothing. The risk was neutralised the instant I switched it off, by design rather than by trust.</p>
+<p>What's left behind is only the good part: the AI wrote itself a note on exactly how the job is done. So next time there's no master key at all — I hand it one narrow, single-project key, it reads its own notes, and it runs the whole dance again, strictly inside the lines I've drawn. The capability stayed; the risk went back in the box.</p>
+<h2>A million lines, and a little time travel</h2>
+<p>Because that workflow was now repeatable, I stopped doing one project at a time. They piled in fast — three iPhone apps, seven server projects. At some point I glanced at the running total and stopped: <strong>a million lines of code</strong>, all under one health inspection.</p>
+<p>And here's the fun fact that stuck with me. Software quietly keeps a logbook of who last touched every single line, and when. So a lot of what the scanner flagged didn't just arrive with a description — it arrived with a <strong>name and a date attached, some of them a decade old.</strong> Security issues in code written before the phone in my pocket existed, still sitting there, now politely surfaced with the original author's name beside them.</p>
+<p>It's a strange kind of time travel. The tool doesn't care that a line is ten years old; to it, an issue is an issue. Turn the lights on in a room nobody's swept since 2015 and you see all of it at once — including who tracked in the dirt.</p>
+<p>And that's the honest, slightly deflating truth about these inspectors: point one at a big old codebase and it hands you a mountain you will never finish. Thousands of findings — enough to fill hours, then months, then years. You don't clear the list; you triage it, forever.</p>
+<p>Which is what makes the last one such a happy ending — though it didn't start that way. The newest and smallest project — a little service we'd recently built that catches payment notifications from a payment provider — showed up to its first inspection with <strong>thirteen issues</strong> on the report card. Not a mountain, but not nothing. The difference was that I could hand it straight back to the same AI that had built the service, with a single instruction: upload it to SonarQube, read what the inspector flagged, fix it, upload again, check again. It ran that loop — detect, fix, re-check — until thirteen became zero and the board went green: <strong>97% of the code checked by automated tests, and not a single issue left.</strong> The only project in the whole million-line pile to get there — not because it was born clean, but because, for once, something worked the list all the way to the end.</p>
+<h2>So what</h2>
+<p>The problem never got easier. The shortcut was still there, the scans were still slow, the tool had if anything grown <em>more</em> finicky in a year. Nothing about the hill had softened.</p>
+<p>What changed is that I no longer had to climb it myself. I could hand the climb to something tireless, watch it write the route down, and take the keys back when it was done.</p>
+<p>The password from a year ago still worked. So did the problems. The only thing that had changed was who showed up to solve them.</p>
 </article>]]></content:encoded>
 </item>
 <item>
