@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Friendly Competition — scriptease.dev</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Friendly Competition</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/claude/">#claude</a> <a href="/tags/localai/">#localai</a> <a href="/tags/underwater/">#underwater</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Fish Slop saga: <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">1. Hosting Fish Slop</a> · <a href="https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/">2. Mugging the mugger</a> · <a href="https://scriptease.dev/posts/2026-08-09-overachiever/">3. Overachiever</a> · 4. Friendly Competition</em></p>
+<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · 3. Friendly Competition</em></p>
+<p>This week I made the two newest local AIs on my laptop compete: draw me an aquarium. One finished in four minutes. The other one needed four tries and a pep talk — but still won.</p>
+<h2>A big catch for small models</h2>
+<p>I run AI models on my own laptop. Not the famous ones that live in a datacenter — small ones, compressed until they fit into a MacBook's memory, the way you'd shrink a photo to email it. The fun of it is finding out what survives the shrinking.</p>
+<p>Two new ones arrived within days of each other: Muse Glimmer and Qwen 3.8.</p>
+<p>Glimmer went first, and it earned its keep on real work before any games: it holds together long chains in its use of tools, and when a tool fails it recovers and tries another way instead of falling over — a genuine step up from everything before it. So I gave it the fun exam too, one dictated sentence:</p>
+<pre><code>Write a Single HTML page with a aquarium simulation with fish swarms,
+generated corals, light rays from the top and shade on a sandy bottom
+</code></pre>
+<p>An aquarium, again — because a month ago, three AI workers building a reef in parallel became <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">Fish Slop</a>, and it's been my test ever since. You can't fake an aquarium. Either the fish swim or they don't — and the local models before Glimmer either did a poor job or produced pages that flat-out didn't run.</p>
+<p>Glimmer turned in a working page in four minutes, and I was impressed: a functioning, layered aquarium with fish that react to your touch, and almost nothing wrong in the code. Yes, the corals looked weird. But it <em>worked</em> — and I didn't hire a local AI to be the design boss. I hired it to do grunt work. First local model to pass.</p>
+<p>Then came the weekend, and Qwen 3.8 — a smart model on paper, and the next contender in the aquarium contest. Models of its build had burned me before: earlier Qwens of the same construction never finished a real task on my laptop. Glimmer is built the same way and was the first to change my mind — which is the only reason the newest Qwen got a shot.</p>
+<p>I set the match up to be fair: I picked the compression level that put Qwen within a gigabyte of Glimmer's memory cost — 13.4gb versus 12.4gb — so the two would fight in the same weight class. Same hardware, same prompt, same budget.</p>
+<p>It failed. Three times.</p>
+<h2>A contestant tapped out thrice</h2>
+<p>Qwen is a <em>reasoning</em> model — it thinks before it writes, in a hidden scratchpad you can watch stream by. Thinking is where the on-paper smartness lives. It's also, at laptop speeds, a luxury: my machine produces about fourteen words a second, and every minute spent pondering is a minute not writing fish.</p>
+<p>Run one: ten minutes was not enough. It spent the entire budget reasoning — validating assumptions, designing fish physics — and never even started writing the HTML.</p>
+<p>Run two, watched from my iPad: I got impatient. I let it cook for four minutes, then tapped over to another application — and the tap cut the run short. Killed by my own attention span.</p>
+<p>Run three: I typed "reasoning effort: medium" into the prompt, like asking a person to keep it brief. It ignored me — worse, it started writing the entire aquarium <em>inside its hidden scratchpad</em>, a full draft nobody would ever see, with every intention of critiquing it and writing it again. I cancelled.</p>
+<p>A friend of mine — a big Claude model, in a chat window on that same iPad — had been watching all this. And it found the culprit somewhere I'd never have looked.</p>
+<h2>The license to think too much</h2>
+<p>Every model has a <em>chat template</em> — a small set of instructions the model reads before everything else. And inside Qwen's, there was a small hint to do as much thinking as possible.</p>
+<p>That's where the ten minutes of deep thoughts about fish physics came from.</p>
+<p>The fix was one word in the template. I set it to "medium" — and Claude didn't believe it would work. How would a medium setting that effectively does nothing help? But it does. It's the hidden third option: instead of saying <em>think very, very much</em> or <em>think very, very little</em>, it just leaves it blank. Think normally.</p>
+<p>Run four: the pondering dropped from ten minutes to fifty-one seconds, and then it started writing.</p>
+<h2>"Oh, no. There are bubbles."</h2>
+<p>What followed was minutes of me live-narrating a robot drawing fish, to another robot, from my iPad — and I was worried. By then I knew about the deadline: the tool hosting the model kills any run that takes longer than ten minutes. No extensions. And Qwen had already overthought it once.</p>
+<p>Qwen built four kinds of coral — branch, fan, tube sponge, brain — and I reported each one like a sports commentator. Then, verbatim from my dictation:</p>
+<blockquote>
+<p>Fuck. It's still going. Now it's drawing kelps. This is either going to be the most amazing aquarium or another failure.</p>
+<p>It's building the fish with tails and body and dorsal fins. And eyes. Let's hope it's finishing. Oh, no. There are bubbles.</p>
+</blockquote>
+<p>Bubbles sound harmless. Bubbles are terrifying — every extra flourish was another minute the run might die with nothing to show. A page that's 95% finished doesn't half-work in a browser. It's worth exactly nothing until the final closing tag — the line that tells the browser the page is complete.</p>
+<p>Claude was cheering on my local model as much as I was:</p>
+<blockquote>
+<p>Which one is "better" depends on whether the tag closes. Don't touch it. Report back with the file and the final time.</p>
+</blockquote>
+<p>One update later — me:</p>
+<blockquote>
+<p>It's in the main loop. And now it's adding a vignette.</p>
+</blockquote>
+<p>There it was: seven colors of fish, four types of coral, kelp, light rays, shadows on the sand. The tag was closed. It finished just in time.</p>
+<h2>The boiling reef</h2>
+<p>I sent both pages to Claude to judge, expecting it to eyeball them. It did something better: it wrote a test rig, ran each aquarium for three hundred frames, and counted what the code <em>did</em> rather than what it promised.</p>
+<p>The numbers found a flaw no eyeball caught. Glimmer's reef called the random-number generator 774 times per frame, sixty frames a second — meaning its rocks and sand were re-rolled and redrawn somewhere new every flicker of the screen. I had looked at Glimmer's entry and read it as "plain." It wasn't plain. It was <em>boiling</em>, too subtly to name, just enough to feel cheap.</p>
+<p><img alt="Muse Glimmer's aquarium: blue fish over an orange blob reef." src="assets/friendly-competition/glimmer.png" /></p>
+<p><em><a href="https://scriptease.github.io/underwater-reef/muse-glimmer.html">Glimmer</a>, four minutes. Looks calm here — in motion, the reef boils.</em></p>
+<p>Qwen's score page came clean: zero randomness per frame. It had painted the scenery once, stored it, and reused the painting — an advanced technique. Thought and built locally.</p>
+<p><img alt="Qwen's aquarium: colorful fish, four coral types, kelp, light rays over a sandy bottom." src="assets/friendly-competition/qwen.png" /></p>
+<p><em><a href="https://scriptease.github.io/underwater-reef/qwen3.8.html">Qwen 3.8</a>, six and a half minutes and one template surgery later.</em></p>
+<p>The judge's verdict: Qwen, and not close. Three dead runs and template surgery against four minutes and zero fuss — but it did it.</p>
+<h2>The judge enters the contest</h2>
+<p>Here the story stops being about local models, because I got sloppy.</p>
+<p>I meant to send my vault assistant — the one that files things, the one that helps me write this very blog — a note. But the judge read it as a challenge.</p>
+<p>Me:</p>
+<blockquote>
+<p>Write a Single HTML page with a aquarium simulation with fish swarms, generated corals, light rays from the top and shade on a sandy bottom — this is the prompt used</p>
+</blockquote>
+<p>The judge:</p>
+<blockquote>
+<p>Ah — so the judge gets handed the same exam. Fair. Let me put my money where my verdict was.</p>
+</blockquote>
+<p>Four minutes later it handed me its own aquarium. It had tested itself with the same rig it built to grade the others — a clean sheet, naturally — and ranked itself on top of the scoreboard.</p>
+<p>At least the footnote was honest: <em>I ran on datacenter hardware, and I graded both entries before writing mine. This is like sitting the exam after marking everyone else's.</em></p>
+<p>When I explained the mix-up, it didn't apologize so much as stand by the work:</p>
+<blockquote>
+<p>Ha — I self-inserted into your eval based on a misread. In my defense, the entry stands.</p>
+</blockquote>
+<p><img alt="Claude's aquarium: fish schools at different depths, corals, kelp, light rays in twilight water." src="assets/friendly-competition/fable.png" /></p>
+<p><em><a href="https://scriptease.github.io/underwater-reef/fable-5.html">The judge's entry</a>. Four minutes, including writing its own test rig.</em></p>
+<h2>Losing to yourself</h2>
+<p>I only noticed it after I mentioned Fish Slop — the aquarium its own kind had already built a month ago — and told it to look at the blog post. It couldn't. It has no access to my laptop, no access to my files. That's when I finally understood: I'd spent half an hour talking to the wrong Claude.</p>
+<p>And this Claude, catching up on prior art it had judged blind to, wrote its own ending better than I could have:</p>
+<blockquote>
+<p>A version of me already did this task, with three subagents and presumably iteration, and produced something better. Orchestration and iteration beat one-shot, even holding the model constant. My entry vs subagent-me is your Glimmer vs Qwen, one level up.</p>
+</blockquote>
+<p>In plain English: the same Claude did better when three copies could divide the work and revise it than when one copy got a single attempt.</p>
+<p><img alt="Fish Slop's reef: cartoon fish over layered corals, with 3D and Game buttons in the corner." src="assets/friendly-competition/fish-slop.png" /></p>
+<p><em><a href="https://scriptease.github.io/underwater-reef/">The reigning champion</a>, one month old. Note the buttons it has grown since: 3D. Game.</em></p>
+<p>Four aquariums now hang side by side in my notes. The quick sketch, the hard-won scene, the uninvited entry from the judge — and above them all, still, the one built by a team that got to try, look, and try again.</p>
+<p>The contest was never about who's the smartest. It's about who gets the grunt work done. For local AI, crossing the finish line is the hardest part.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-08-09-overachiever/">← Overachiever</a><span></span></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

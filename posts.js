@@ -1,5 +1,20 @@
 window.POSTS = [
   {
+    "slug": "2026-08-16-friendly-competition",
+    "title": "Friendly Competition",
+    "hook": "This week I made the two newest local AIs on my laptop compete: draw me an aquarium. One finished in four minutes. The other one needed four tries and a pep talk — but still won.",
+    "date": "2026-08-16",
+    "month": "2026-08",
+    "tags": [
+      "ai",
+      "llm",
+      "claude",
+      "localai",
+      "underwater",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-08-09-overachiever",
     "title": "Overachiever",
     "hook": "This morning I published a post that said my game had no goal. By lunch it had twenty, and I hadn't written a single one of them.",
@@ -126,7 +141,9 @@ window.POSTS = [
       "llm",
       "macos",
       "claude",
-      "automation"
+      "automation",
+      "localai",
+      "saga"
     ]
   },
   {
@@ -456,7 +473,9 @@ window.POSTS = [
       "llm",
       "ml",
       "macos",
-      "privacy"
+      "privacy",
+      "localai",
+      "saga"
     ]
   }
 ];
