@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-08-19-revisiting-impossible-counters",
+    "title": "Revisiting Impossible Counters",
+    "hook": "The first countdown I ever shipped was rigged. It sat on our graduating class's website, counting down to the Abitur, our final exams — and it lied: faster during the day, slower at night.",
+    "date": "2026-08-19",
+    "month": "2026-08",
+    "tags": [
+      "agi",
+      "ai",
+      "claude",
+      "web",
+      "github"
+    ]
+  },
+  {
     "slug": "2026-08-17-95-done-100-blue-sky",
     "title": "95% Done, 100% Blue Sky",
     "hook": "I asked a 13-gigabyte model on my laptop to build me a Japanese temple. It designed something beautiful, and then spent all evening failing to show it to me. It still has never seen it.",

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Revisiting Impossible Counters — scriptease.dev</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Revisiting Impossible Counters</h1>
+<p class="post-tags"><a href="/tags/agi/">#agi</a> <a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/web/">#web</a> <a href="/tags/github/">#github</a></p>
+<p>The first countdown I ever shipped was rigged. It sat on our graduating class's website, counting down to the Abitur, our final exams — and it lied: faster during the day, slower at night. Averaged over a full day it was perfectly accurate. But nobody checks a countdown at four in the morning. If you looked at it over lunch, watching your remaining time drain visibly quicker than it should, it was built to make you a little bit mad.</p>
+<p>Twenty-something years later, I shipped another dishonest clock. This one runs the other way.</p>
+<h2>The domain predated the pun</h2>
+<p>My name is Florian Agsteiner, but nobody who has known me for more than five minutes calls me that. I'm Agi. Years ago I registered agionline.de — my nickname, online, nothing more.</p>
+<p>Then the AI world decided that AGI means artificial general intelligence, the machine that can do everything a person can and the three-letter word of the decade. Suddenly every keynote, every forecast, every funding round orbited around when AGI would arrive. And my old nickname domain had quietly become the best pun I own: AGI, online. Well .de.</p>
+<p>For years the domain did nothing but forward visitors to my blog. This week it finally got a site of its own — built in one evening, me dictating at my AI assistant while it typed.</p>
+<h2>An announcement for nothing</h2>
+<p>I didn't want a portfolio. Portfolios beg. I wanted the page to take the other reading seriously: a product announcement for AGI, in the house style of every tech company that has ever announced nothing with total confidence.</p>
+<p>So the page opens with a label — "AGI Announcement." Technically correct on both readings: it announces AGI, and it is Agi's announcement. Below it, one screen at a time, the corporate liturgy: <em>Something is coming. It's been a long wait. The specifics are confidential. Thank you for your continued patience.</em> In each line, exactly one word flashes blue and fades back into the gray.</p>
+<p>Behind it all, a wall of flickering characters rains down the left edge of the screen, and every few seconds the noise resolves into a real word — a topic from this blog, <em>gardening</em>, <em>debugging</em>, <em>shark</em> — glows blue, and dissolves again. The static knows things. It isn't telling yet.</p>
+<h2>The date has moved. It will move again.</h2>
+<p>The centerpiece is the timer, and the timer is the Abitur clock's revenge.</p>
+<p>It looks like a countdown: years, days, hours, minutes, seconds, down to an estimated arrival date. It counts <strong>up</strong>. Two years and change until launch, and climbing. Every few seconds the whole clock flashes blue, a small note appears — <em>Schedule revised</em> — and the remaining time jumps forward by two hours to eleven days. The revision counter next to it started at 1,247. This has been slipping since long before you opened the page.</p>
+<p>That is every AGI forecast ever made, told as a user interface: always about two years out, always confident to the minute, always revised before it arrives.</p>
+<p>My school clock lied so the future would feel closer than it was. This one lies so it never arrives at all. I'd like to claim decades of careful artistic development between the two, but honestly it's the same joke, aimed better.</p>
+<h2>For once, the launch date wasn't rigged</h2>
+<p>Halfway through the build, my rigged clock did the one thing it was never designed to do. It stopped.</p>
+<p>I reloaded the page and reported the bug to my assistant exactly as I saw it: the counter is stuck, and the scrolling is dead too. The cause turned out to be one line of code asking for a value that didn't exist yet — and a browser handles that by silently giving up on all of the page's code. Clock frozen, animations dark.</p>
+<p>There's something ironic about a fake counter being broken. So now it has its own test suite — an automated check that runs the whole page for eight fake seconds and fails loudly if the clock doesn't tick.</p>
+<p>So it can be reliably dishonest.</p>
+<h2>There is no product</h2>
+<p>If you keep scrolling past the vagueness — and the page gives you no reason to, which is the point — the announcement finally cracks. Two lines, alone on the screen:</p>
+<p><em>There is no product.</em></p>
+<p><em>It is a human.</em></p>
+<p>Below that, the site drops the act. A plain text window looks the domain up — the way you'd look up who owns any website — and reports what it finds: full name, Artificial General Intelligence. Also known as: Agi, which is what people actually call me. Location, Munich. Alignment: opinionated, correctable.</p>
+<p>And one more line: <strong>uptime</strong> — how long a machine has been running — counting up. It's the only honest counter on the page. The product above it counts up because it keeps slipping. This one counts up because I've been running for forty-two years.</p>
+<h2>It might be right, this time</h2>
+<p>The site went live the same evening. The domain that had waited years needed four address-book entries, and the padlock in the browser's address bar took about two minutes. The product that will never arrive took one evening to ship.</p>
+<p>Back then I rigged a clock to make a real deadline feel unbearable. Now I've rigged one to make an unreal deadline feel familiar. And the new clock might simply be right. Two years and change, pending revision — that's a defensible AGI forecast. It has 1,200 revisions of prior art.</p>
+<p>Both clocks lie about time. Neither one lies about us.</p>
+<p>You can watch the schedule slip at <a href="https://agionline.de">agionline.de</a>.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-08-17-95-done-100-blue-sky/">← 95% Done, 100% Blue Sky</a><span></span></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
