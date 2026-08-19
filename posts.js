@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-08-17-95-done-100-blue-sky",
+    "title": "95% Done, 100% Blue Sky",
+    "hook": "I asked a 13-gigabyte model on my laptop to build me a Japanese temple. It designed something beautiful, and then spent all evening failing to show it to me. It still has never seen it.",
+    "date": "2026-08-17",
+    "month": "2026-08",
+    "tags": [
+      "ai",
+      "llm",
+      "localai",
+      "webgl",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-08-16-friendly-competition",
     "title": "Friendly Competition",
     "hook": "This week I made the two newest local AIs on my laptop compete: draw me an aquarium. One finished in four minutes. The other one needed four tries and a pep talk — but still won.",

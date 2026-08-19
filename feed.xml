@@ -7,7 +7,74 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sun, 16 Aug 2026 00:00:00 +0000</lastBuildDate>
+<lastBuildDate>Mon, 17 Aug 2026 00:00:00 +0000</lastBuildDate>
+<item>
+<title>95% Done, 100% Blue Sky</title>
+<link>https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/</guid>
+<pubDate>Mon, 17 Aug 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>llm</category><category>localai</category><category>webgl</category><category>saga</category><description>I asked a 13-gigabyte model on my laptop to build me a Japanese temple. It designed something beautiful, and then spent all evening failing to show it to me. It still has never seen it.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>95% Done, 100% Blue Sky</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/localai/">#localai</a> <a href="/tags/webgl/">#webgl</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a> · 4. 95% Done, 100% Blue Sky</em></p>
+<p>I asked a 13-gigabyte model on my laptop to build me a Japanese temple. It designed something beautiful, and then spent all evening failing to show it to me. It still has never seen it.</p>
+<h2>Let's try something harder</h2>
+<p>Last week I made the small AIs on my laptop draw an aquarium, and one of them finally passed. An aquarium is a flat drawing that moves — fish, corals, a bit of light. Good enough as an entrance exam.</p>
+<p>So I wrote a harder one. A temple, in three dimensions, that you can turn around and look at from any side. Cherry blossom trees swaying in the wind. Working on an iPad.</p>
+<p>And one extra rule, which turned out to be the downfall: no libraries.</p>
+<p>A library is somebody else's prewritten helper code — the scaffolding almost every programmer stands on. Banning it means doing every piece of the 3D bookkeeping yourself.</p>
+<p>So I asked:</p>
+<pre><code>Build a single page HTML file with the Japanese temple, surrounded by
+cherry blossom trees, swinging in the wind as a 3-D scene without using
+any libraries, and it must render even in Safari on the iPad
+</code></pre>
+<p>It thought deep and took twenty-five minutes. For seventeen of them nothing appeared at all, while it worked out how to build a temple before building one.</p>
+<p>Then four hundred lines of code came out.</p>
+<p>I opened it.</p>
+<h2>Blue. Just blue.</h2>
+<p>An empty blue screen, with the title text I had asked for floating uselessly at the top. No temple, no trees, no error, no complaint. Just a browser calmly showing me nothing at all.</p>
+<p>There was nothing to work with. A page that fails usually tells you something — a red line, a warning, half a drawing. This told me nothing, and I had four hundred lines of unfamiliar code and no idea which one of them was lying.</p>
+<p>I gave the small model a chance to fix its own mistakes first. It came back with solutions that didn't fix the problem.</p>
+<p>Then I took it to a big model — one of the hosted ones, smarter, less compressed. Here's my code. Here's the fix that didn't fix it. How do I fix this?</p>
+<h2>To debug something you have to be smarter than who wrote it</h2>
+<p>It took three passes, but that's fine. Handing somebody else's code to someone and saying "fix this" is a hard thing to ask. Anyone who has inherited a colleague's project knows the feeling: writing it fresh is sometimes easier than repairing it.</p>
+<p>Three passes in, the temple appeared. Roofs, gate, lanterns — and bare trunks with not one blossom on them. I reported that in four words: not a single leaf shows. One more round and the blossoms came too, though the big model's way of making them visible was to grow them and add more. Later I put the small model's original numbers back, and fewer, smaller blossoms looked better. It had been right about that all along.</p>
+<p>I had already seen it, but that was only the beginning...</p>
+<h2>The creative and 3D part was solid</h2>
+<p>Here is the reason why I'm writing this down. None of the mistakes was about three dimensions.</p>
+<p>They were all bureaucratic. A list that needed six entries and got four. A note to itself that accidentally swallowed the line underneath. A switch left in the wrong position. Nothing you could see, nothing that complained.</p>
+<p>Not the geometry of a pagoda roof. Not the math of a camera orbiting a scene. Not the physics of wind in a tree. It got all of that right the first time, unaided, on a 13-gigabyte file sitting on my own hard drive.</p>
+<p>It got the paperwork wrong.</p>
+<h2>The temple it never got to see.</h2>
+<p>Which left one question worth an evening. The design was the small model's. The repairs were the big model's. Could the small one close its own last five percent?</p>
+<p>So I set up a relay. This time I didn't ask the big model to repair anything. I asked it to write instructions: what's broken, where it sits, what to do about it. Then I carried the list to my local model and handed it over.</p>
+<p>It did the job well. It read the instructions, went looking, found the spot, understood what was wrong with it, and changed it. Every single round. It never argued, never missed the point, never fixed the wrong thing.</p>
+<p>But it didn't hand me back a corrected line. It handed me back the whole file — four hundred lines, written out again from memory. And somewhere in those four hundred, a detail it had gotten right the round before came back a little different. A number nudged. A step in a different order. Nothing you would catch reading it.</p>
+<p>So every round closed one hole and quietly opened another, somewhere I wasn't looking.</p>
+<p>Five times. My side of the conversation got shorter as the evening went on. "It failed :(" became just ":(", then "Still broken", then "Still just blue", then "It drifted again."</p>
+<p>It wasn't for lack of trying, and it wasn't stupidity — it did the thinking part right every time. It simply couldn't hold the other forty-nine things still while it fixed the fiftieth. I never got a single pixel out of it.</p>
+<p><img alt="A red temple with two tiered black roofs on stone steps, a torii gate and a stone lantern beside a paved path, surrounded by cherry blossom trees, with petals drifting past the camera." src="assets/95-done-100-blue-sky/qwen-temple.png" /></p>
+<p><em>The small model's design — its ten trees, its four hundred and twenty petals, its colors and camera angle — running on somebody else's plumbing.</em></p>
+<p>That is its temple. Its proportions, its gate, its lanterns, its blossom. It has never seen it.</p>
+<h2>Juggling fifty things at once</h2>
+<p>When I ended my last post with the thought that 95% doesn't cross the finish line, I didn't know it would happen the next time.</p>
+<p>There are something like fifty separate details you have to keep exactly right for a 3D scene to appear: which slot each number lives in, which order the steps run, which switches are on when you draw. Drop one and you don't get a temple with a missing roof. You get the blue screen. The same blue screen you get if you'd written nothing at all.</p>
+<p>Forty-nine out of fifty looks precisely like zero out of fifty.</p>
+<p>An AI improves by trying, reading the complaint, and aiming better. Here there is no complaint. Blank is the only outcome, whether you're one typo away or hopelessly lost — so every attempt is a blind guess, and each rewrite risks knocking over the forty-nine you already had.</p>
+<p>The big model named the same thing from its own side: no safety nets, over fifty interdependent details, and every time it fixed the two bugs I'd pointed at, its memory drifted on one small thing somewhere else in the file. I told it that juggling fifty balls at once was too much to ask of anyone.</p>
+<p>But the 95% was only the code. The design was 100%, or everything I asked for in the beginning.</p>
+<h2>3D is hard, but there's help</h2>
+<p>The big model said the sensible thing out loud. Three.js, the standard helper kit for putting 3D in a browser, exists to handle exactly this plumbing and leave the model free to do what it is actually good at — composing a scene, placing the light, getting the proportions of a roof right.</p>
+<p>Which is when I noticed I had built the trap myself. <em>Without using any libraries</em> was my rule, typed into my own prompt, closing the one door everybody else walks through without thinking about it.</p>
+<p>By then I was curious about one last thing, so I asked the big model to stop repairing and start designing: forget that file, build your own temple.</p>
+<p>It planned an island in a pond, with a three-tier pagoda and an arched red bridge. What appeared was nothing but pink clouds floating over water. The trees had no trunks. The temple was invisible. It was just cloud, no content. It took three attempts before I saw it.</p>
+<p><img alt="A three-tiered red pagoda on a small island in a pond, with an arched red bridge, cherry blossom trees and petals drifting across a dawn sky." src="assets/95-done-100-blue-sky/gemini-island.png" /></p>
+<p><em>The big model's own design — after a failed attempt with flowers and no structure, after the small model failed with structure and no flowers.</em></p>
+<p>Together they had built a complete scene, but neither knew, because the only hint was a blue sky.</p>
+<p>Some things have to be perfect — a file exchange format, the code that draws a 3D temple. When 95% gets you nowhere, crossing the finish line is the hardest part.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Friendly Competition</title>
 <link>https://scriptease.dev/posts/2026-08-16-friendly-competition/</link>
@@ -18,7 +85,7 @@
 <h1>Friendly Competition</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/claude/">#claude</a> <a href="/tags/localai/">#localai</a> <a href="/tags/underwater/">#underwater</a> <a href="/tags/saga/">#saga</a></p>
 <p><em>The Fish Slop saga: <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">1. Hosting Fish Slop</a> · <a href="https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/">2. Mugging the mugger</a> · <a href="https://scriptease.dev/posts/2026-08-09-overachiever/">3. Overachiever</a> · 4. Friendly Competition</em></p>
-<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · 3. Friendly Competition</em></p>
+<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · 3. Friendly Competition · <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">4. 95% Done, 100% Blue Sky</a></em></p>
 <p>This week I made the two newest local AIs on my laptop compete: draw me an aquarium. One finished in four minutes. The other one needed four tries and a pep talk — but still won.</p>
 <h2>A big catch for small models</h2>
 <p>I run AI models on my own laptop. Not the famous ones that live in a datacenter — small ones, compressed until they fit into a MacBook's memory, the way you'd shrink a photo to email it. The fun of it is finding out what survives the shrinking.</p>
@@ -556,7 +623,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>OCR — Three Letters, Three Completely Different Things</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/macos/">#macos</a> <a href="/tags/claude/">#claude</a> <a href="/tags/automation/">#automation</a> <a href="/tags/localai/">#localai</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · 2. Three Different OCRs · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a></em></p>
+<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · 2. Three Different OCRs · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a> · <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">4. 95% Done, 100% Blue Sky</a></em></p>
 <p>I typed a three-letter command to run an AI code reviewer. It ran a screenshot reader instead. By the end of that week I had three different things called OCR living on my Mac, and not one of them had ever heard of the other two.</p>
 <h2>Same three letters, three strangers</h2>
 <p>OCR normally means one thing: optical character recognition — pulling the words out of a picture, so a photo of a page turns into text you can copy. That's the textbook definition, and it was the least of my problems.</p>
@@ -1911,7 +1978,7 @@ I own the story and supply the lived details. You supply digging and craft.
 <content:encoded><![CDATA[<article class="post">
 <h1>Little Gemma vs Big Desk</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/ml/">#ml</a> <a href="/tags/macos/">#macos</a> <a href="/tags/privacy/">#privacy</a> <a href="/tags/localai/">#localai</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Local AI saga: 1. Little Gemma vs Big Desk · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a></em></p>
+<p><em>The Local AI saga: 1. Little Gemma vs Big Desk · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a> · <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">4. 95% Done, 100% Blue Sky</a></em></p>
 <p>I handed a program running entirely on my laptop a screenshot of a garbled, obfuscated error message — the kind even I have to squint at — and it typed every character back to me, exactly. Then, on a whim, I asked it to sketch what the screen looked like in little text characters — ASCII art. It did that too, boxes and all.</p>
 <p>No internet. No account. No bill. The whole thing fits in about six gigabytes of memory and answers in a second or two. That was the moment I knew I had to find something for it to do.</p>
 <h2>A confession</h2>
