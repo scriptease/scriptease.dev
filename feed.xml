@@ -13,9 +13,10 @@
 <link>https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/</guid>
 <pubDate>Sat, 22 Aug 2026 00:00:00 +0000</pubDate>
-<description>What did I do this Sunday? I went public with my first homegrown model — and added a demo Space where anyone can try it out for free, thanks to Hugging Face.</description>
+<category>ai</category><category>llm</category><category>ml</category><category>saga</category><description>What did I do this Sunday? I went public with my first homegrown model — and added a demo Space where anyone can try it out for free, thanks to Hugging Face.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Colormaxing III — In Public</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/ml/">#ml</a> <a href="/tags/saga/">#saga</a></p>
 <p><em>The Colormaxing saga: <a href="https://scriptease.dev/posts/2026-07-30-a-color-speaks-more-than-a-thousand-words/">0. The Prequel</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/">1. One Simple Job</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark/">2. Benchmaxing My Own Benchmark</a> · 3. In Public</em></p>
 <p>What did I do this Sunday? I went public with my first homegrown model — and added a demo Space where anyone can try it out for free, thanks to Hugging Face.</p>
 <p>The step itself sounded trivial, and I had the research already done: upload the model, give it a public page. It took a paywall, two permission gates, one wrong key, and a merge that silently did nothing.</p>

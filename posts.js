@@ -5,7 +5,12 @@ window.POSTS = [
     "hook": "What did I do this Sunday? I went public with my first homegrown model — and added a demo Space where anyone can try it out for free, thanks to Hugging Face.",
     "date": "2026-08-22",
     "month": "2026-08",
-    "tags": []
+    "tags": [
+      "ai",
+      "llm",
+      "ml",
+      "saga"
+    ]
   },
   {
     "slug": "2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark",
