@@ -754,10 +754,10 @@ Ah an idea can we test that you can drag the shark?
 <link>https://scriptease.dev/posts/2026-07-30-a-color-speaks-more-than-a-thousand-words/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-30-a-color-speaks-more-than-a-thousand-words/</guid>
 <pubDate>Thu, 30 Jul 2026 00:00:00 +0000</pubDate>
-<category>ai</category><category>llm</category><category>agent</category><category>automation</category><description>Three years ago, I demoed a new customer's product catalog in our app. My scripts had pulled the category tree, the products, the prices. Only the colors couldn't be scripted: the data held just names.</description>
+<category>ai</category><category>llm</category><category>agent</category><category>automation</category><category>saga</category><description>Three years ago, I demoed a new customer's product catalog in our app. My scripts had pulled the category tree, the products, the prices. Only the colors couldn't be scripted: the data held just names.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>A Color Speaks More Than a Thousand Words</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a></p>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
 <p><em>The Colormaxing saga: 0. The Prequel · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/">1. One Simple Job</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark/">2. Benchmaxing My Own Benchmark</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/">3. In Public</a></em></p>
 <p>Three years ago, I demoed a new customer's product catalog in our app. My scripts had pulled the category tree, the products, the prices. Only the colors couldn't be scripted: the data held just names.</p>
 <p>"Hellblau." "Anthracite." A name is not a swatch. "Hellblau" means light blue, but <em>which</em> light blue? No file anywhere held the answer, because the answer isn't data. It's something a human just knows by looking.</p>
