@@ -7,7 +7,149 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Wed, 19 Aug 2026 00:00:00 +0000</lastBuildDate>
+<lastBuildDate>Sat, 22 Aug 2026 00:00:00 +0000</lastBuildDate>
+<item>
+<title>Colormaxing III — In Public</title>
+<link>https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/</guid>
+<pubDate>Sat, 22 Aug 2026 00:00:00 +0000</pubDate>
+<description>What did I do this Sunday? I went public with my first homegrown model — and added a demo Space where anyone can try it out for free, thanks to Hugging Face.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Colormaxing III — In Public</h1>
+<p><em>The Colormaxing saga: <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/">1. One Simple Job</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark/">2. Benchmaxing My Own Benchmark</a> · 3. In Public</em></p>
+<p>What did I do this Sunday? I went public with my first homegrown model — and added a demo Space where anyone can try it out for free, thanks to Hugging Face.</p>
+<p>The step itself sounded trivial, and I had the research already done: upload the model, give it a public page. It took a paywall, two permission gates, one wrong key, and a merge that silently did nothing.</p>
+<h2>Going public requires paperwork</h2>
+<p>One of the experts from part two had already done the homework. Publishing the model is allowed — the original model's license permits sharing fine-tunes like mine, as long as its public description keeps the required notices and says honestly what it was trained with. The surprise was on the hosting side: Hugging Face's demo pages, called Spaces, stopped being free this summer. The one loophole left for a free account: two slots on ZeroGPU, where free demos take turns on shared graphics hardware.</p>
+<p>I wanted to test the waters before paying. ZeroGPU it is.</p>
+<h2>Works only on my machine</h2>
+<p>Then the first surprise from my own side of the fence. The model existed on my laptop in exactly one shareable form — the packed version from part two, baked to run there and nowhere else. The public demo needed the opposite: one complete model, the original plus everything I had taught it, fused into a single file. That didn't exist yet. My training was only a thin add-on layer, so fusing meant downloading the original first.</p>
+<p>The original model's official page sat behind a click-to-accept license wall my account had never accepted. While I did that, the merge found a better door: an identical, ungated copy — the very one my add-on had actually been trained against.</p>
+<h2>Back to square one</h2>
+<p>The standard merge tool ran, reported success, and produced a model that answered ten different color names with the same six-character code: magenta, <code>#FF00FF</code>.</p>
+<p>Nothing had merged. My add-on was stored in the training tool's own custom format — close enough for the standard tool to accept, far enough for it to apply none of it. No error, no warning: success, garbage.</p>
+<p>The fix was to stop trusting tools and do the arithmetic directly: read the add-on's learned numbers, scale them, add them onto the original model's numbers, save. Forty-five lines. A quick test came back speaking colors again — <code>hellblau</code> a pale blue, <code>fehér</code> white, <code>navy blau</code> navy.</p>
+<h2>Handing over the key</h2>
+<p>Uploading needed me to log in with an access key, and the key I had was read-only — good for downloading models, useless for creating one. Making a new one with write rights gave me pause: I didn't want to hand an AI a key it could do real damage with. The login command resolved it — I pasted the key into my own terminal, so the AI drove the upload without ever seeing the key. And once everything was up, I expired the key. No key with write access to my account is floating around anywhere.</p>
+<p>One fresh login later, the model went up for real: <a href="https://huggingface.co/Scriptease/colorhex-1b">Scriptease/colorhex-1b</a>, both downloadable versions side by side, with all the required license notes.</p>
+<p>The license had demands, and they landed on the model card — the public page that states what a model is. Mine tells the truth in plain text: a fine-tune of Google's Gemma, taught by roughly 25,000 answers from a production color-mapping service, speaking one strict dialect — ten numbered names per batch, JSON only, and the literal word <em>colorful</em> reserved for genuinely multicolored products. Parts one and two, summarized on official paper.</p>
+<p>The two downloads carry two different futures. The safetensors half is the model as raw tensors — its trainable form, kept ready in case a fifth dataset ever arrives. The GGUF half is the opposite ambition: this exact ability pressed into the smallest file that still works, small enough for anyone to run a color specialist on their own machine.</p>
+<p><img alt="My Hugging Face profile after the upload: one model, one Space, running on ZeroGPU." src="assets/colormaxing-iii-in-public/hf-profile-public.jpg" /></p>
+<p>Next step: building my own Space — and the paywall from the research already mentioned: creating the demo page defaults now to the paid tier. The trick is to use free ZeroGPU hardware at creation time. Second attempt: created, building.</p>
+<h2>Watching it come to life</h2>
+<p>The build ran live, and I watched every step. The developer console showed a machine spinning itself up: installing dependencies, downloading the model files, setting up Gradio — the web framework the demo page runs on. Then the console went quiet and the page came to life: an empty input field, a cursor blinking, waiting for its first color name.</p>
+<p>I never told my AI what the demo should look like. I just trusted it would build something cool.</p>
+<p>It did.</p>
+<h2>Try it yourself</h2>
+<p>The demo is one text box: color names, one per line, up to ten. Behind the scenes, the app fills the empty slots until the model sees the ten-item list it grew up with.</p>
+<p>The shared hardware turns out to be fast in practice: you click, a GPU gets reserved for you, and about ten seconds later your colors are on the page.</p>
+<p>My first public test typed <code>Blau</code>, <code>Teal</code>, <code>Orange</code>, <code>Azul</code>. Four swatches came back — and <code>Blau</code> and <code>Azul</code> landed on the exact same blue, <code>#0000ff</code>. German and Spanish, one color, one answer. The claim I argued about in part two, sitting right there in two matching rectangles.</p>
+<p><img alt="Right after the console went quiet: my first four names typed into the field that had just come to life — Blau and Azul landing on the same blue." src="assets/colormaxing-iii-in-public/space-demo-live.jpg" /></p>
+<p>So that's where the question from part one ends up. How many parameters does one simple job need? A billion of them fit in a gigabyte, train in an afternoon on a laptop, argue back about Turkish color words, refuse the questions that deserve refusing — and now it takes visitors: <a href="https://huggingface.co/spaces/Scriptease/colorhex-demo">colorhex-demo</a>. Type a color. Any language. See what comes back.</p>
+<p>One or ten colors at a time.</p>
+</article>]]></content:encoded>
+</item>
+<item>
+<title>Colormaxing II — Benchmaxing My Own Benchmark</title>
+<link>https://scriptease.dev/posts/2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark/</guid>
+<pubDate>Sat, 22 Aug 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>llm</category><category>ml</category><category>saga</category><description>The initial plan was simple: run a test over all 60,000 colors and see how good the new model really is. The plan didn't hold for long. By the end of the day two models were competing — and even the original dataset was on trial.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Colormaxing II — Benchmaxing My Own Benchmark</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/ml/">#ml</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Colormaxing saga: <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/">1. One Simple Job</a> · 2. Benchmaxing My Own Benchmark · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/">3. In Public</a></em></p>
+<p>The initial plan was simple: run a test over all 60,000 colors and see how good the new model really is. The plan didn't hold for long. By the end of the day two models were competing — and even the original dataset was on trial.</p>
+<h2>The first data set: Trusting the old model</h2>
+<p>Everything my model knows, it learned from 25,000 answers the old model had already given. That was the first dataset, and it rested on one silent assumption: that those answers were correct.</p>
+<p>The AI world has a word for grading a model against the very data it trained on: benchmaxing. It's an accusation — a perfect score proves copying, nothing more. I did it anyway, on purpose, because the score wasn't what I was after. Each time I trained a new version, a small pattern appeared: on the messy names, the new model's answer sometimes looked <em>better</em> than the answer it was supposed to copy. A hunch is not a finding. To check it, I needed both models' answers side by side — for every one of the 60,223 color names the live service had ever translated.</p>
+<h2>The second data set: Tuning down the noise</h2>
+<p>But the model heading into that test was already one repair beyond those original 25,000 answers — because the names in it carry noise, and the noise is ours, not the shops'. When the same color name appears on two versions of a product, the two entries have to stay distinguishable — two blues are not the same blue — so our system appends a number: <code>blau 2764</code>. The first version read meaning into those digits. So the second dataset taught it, with eight thousand digit-suffixed examples, that the number is bookkeeping: answer the color, ignore the number.</p>
+<p>The same round turned the color <em>up</em>. The service reserves one special answer, the literal word <code>colorful</code>, for genuinely multicolored products — kunterbunt, if you read part one. In 25,000 cached answers the old model had never used it once, so the rule was unlearnable from those answers alone; made-up examples put it within reach.</p>
+<p>Less noise, more color: version two. That's the model that took the 60,000-name test.</p>
+<h2>60,000 rows — we're going to need a bigger boat</h2>
+<p>The run took the afternoon, ten names at a time, with the same safety net the live service uses: one retry, give up only after a second failure.</p>
+<p><img alt="Unsloth Studio's live traffic page during the run: 51 requests in the window, zero errors, 1.4 seconds per batch." src="assets/colormaxing-ii-benchmaxing-my-own-benchmark/unsloth-api-live-60k.png" /></p>
+<p>Halfway through I checked the failure counter. Previous incarnations had struggled with the output format, but this fight was over: three broken answers in over three thousand batches.</p>
+<p>Now I had sixty thousand rows — enough to fill a spreadsheet, but not a spreadsheet you'd want to read. It was time to build a tool. Or two, or three.</p>
+<p>Tool one was an explorer: one web page, every name, old model's color and new model's color as swatches side by side, filterable by how different the two colors are. Beautiful, honest — and useless for a verdict, because staring at it mostly proves you can't hold sixty thousand judgments in your head.</p>
+<p>Tool two had opinions. For the ten thousand names where the two models really diverged, it looked up every real color word in the name — across German, English, French, Spanish, Turkish and friends — and asked one question: whose answer is close to what the name actually says? Every disagreement landed in a bucket, and the buckets became clickable verdict cards.</p>
+<h2>Reading the results reveals the flaws</h2>
+<p>The cards said: old model clearly wrong, 1,415 times. New model clearly wrong, 706. Both wrong, 495. Then the two biggest buckets: 4,773 split decisions — names like <code>weiss/türkis</code> where one model picked the white and the other the turquoise, both defensible — and 3,410 names with no color you could work out from the words at all. Nobody can be wrong about <code>top secret</code>.</p>
+<p>But the analysis had shifted: it was no longer a before-and-after comparison being graded — the colors themselves became the grade. And when the colors become visible, the original dataset gets graded with them. Where a name contains a checkable color word, the old model was wrong twice as often as the new one.</p>
+<p>The same sixty thousand rows exposed the training data's own flaws. A huge part of it came from a single sports shop's catalog — the same base colors repeated over and over, teaching the model the wrong lesson. The results also looked worse for some colors in languages like Turkish, French and Spanish. And the format itself had taught a bad habit: always ten names per batch. Ask for a single color and the model panicked — seven answers came back, the right one first, then six invented from words in the prompt.</p>
+<h2>Calling in the experts</h2>
+<p>By the end of the day, several AI conversations were running in parallel, each with its own job.</p>
+<p>For the language gap I wrote a handoff and spawned an expert whose entire world was one task: collect objective color-name lists in every language the shops speak. It came back with 11,377 color names and their codes across thirteen languages — Wikipedia's color lists, official industrial palettes, every source license-checked.</p>
+<p>Another expert had researched something else entirely: how to host the finished model on Hugging Face, the public site where anyone could try it — more on that in part three. That research is what surfaced the single-color question in the first place: a visitor to a public demo types one color name, never ten. And it made the caching argument click — every answered name is stored and reused, so what a live model actually sees is a handful of <em>new</em> names at a time. Batches of ten are the exception, not the rule.</p>
+<p>And one more expert sat quietly to the side, writing down everything that happened — to turn it into a blog post. Or better: a series of them.</p>
+<p>None of them started as an expert. Each got one small document — here, work on this, come back with the result — and the task is what made them one.</p>
+<p><img alt="The training job board: version 3 finished, version 4 already running — the day's whole lineage on one screen." src="assets/colormaxing-ii-benchmaxing-my-own-benchmark/studio-training-lineage.jpg" /></p>
+<p>My machine spent the whole day on fire — fans blasting.</p>
+<h2>The third data set: The one that never got to be</h2>
+<p>The single-color fix became the third dataset: the same names, now also served in batches of every size from one to nine, so a lonely single name would no longer be a sight the model had never seen. Version three trained beautifully on it, getting better and better at the examples it was studying, all the way to the end.</p>
+<p>It never shipped. But a little U-turn in the learning graph made it interesting.</p>
+<p>When training models, the interesting part is not the data the model knows — it's the data it doesn't: a secret test the model never sees during training, kept aside to check whether its answers are actually getting better. Version three's secret-test score improved for one pass through the data, then made a U-turn and got steadily <em>worse</em> the longer training ran. It turns out training a model too much is a bad thing.</p>
+<h2>The fourth data set: Bringing in the colors</h2>
+<p>The fourth dataset got everything at once. The sports catalog was finally capped — thousands of rows collapsed to their stem by name, so they could no longer drown out everything else. The mixed batch sizes stayed. And the experts' harvest came in: thirteen languages of real color words.</p>
+<p>And my AI told me about a cool feature: training takes snapshots every now and then, so you can look at the nice graph of the secret-test score and min-max it — just pick the best snapshot. That's what we did: the final model is the snapshot right at the sweet spot, at the bottom of the curve.</p>
+<p>Then the same test again, all 60,000 names, three columns side by side: the old model, version two, version four. And the results were promising — not perfect, but what we lost in memorization we gained in language accuracy.</p>
+<h2>Mystery of the missing colors</h2>
+<p>The third tool — the three-way visualization — also showed something I hadn't ordered: refusals. Version four sometimes gives no answer at all. The page had no such number for the previous version, so I asked for it — and the refusals had increased sevenfold.</p>
+<p><img alt="Rows from the three-way comparison: long compound names where the old model and version two return exactly the same colors, while version four's column reads &quot;no answer&quot;." src="assets/colormaxing-ii-benchmaxing-my-own-benchmark/showdown-refusals.png" /></p>
+<p>But it's not what it seems. That isn't seven times the errors; it uncovered a scheme. The previous version had memorized those answers: instead of finding the color in a convoluted brand-color name, it had used a cheat sheet. The refusal is actually the correct response to ambiguity — and dealing with those long names is a task for another dataset.</p>
+<h2>The fifth data set?</h2>
+<p>Somewhere in those refusals, a fifth dataset is waiting. I left the question unanswered.</p>
+<p>That's where I left the model too: good enough, and better than expected. There's a packaged version sitting on my computer that can run anywhere.</p>
+<p>But that would not be the way to end this saga. In part three, it goes public.</p>
+</article>]]></content:encoded>
+</item>
+<item>
+<title>Colormaxing I — How Many Parameters Does One Simple Job Need?</title>
+<link>https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/</guid>
+<pubDate>Sat, 22 Aug 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>llm</category><category>ml</category><category>saga</category><description>I just watched a video about fine-tuning small AI models, and it overlaps with an experiment I ran the week before — my attempt to see whether naming colors could run entirely on my own laptop. After watching the video, I had one question: how many parameters would it take to do the job?</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Colormaxing I — How Many Parameters Does One Simple Job Need?</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/ml/">#ml</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Colormaxing saga: 1. One Simple Job · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark/">2. Benchmaxing My Own Benchmark</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/">3. In Public</a></em></p>
+<p>I just watched a video about fine-tuning small AI models, and it overlaps with an experiment I ran the week before — my attempt to see whether naming colors could run entirely on my own laptop. After watching the video, I had one question: how many parameters would it take to do the job?</p>
+<p>Parameters are the knobs inside an AI model — the numbers that hold everything it knows. The models everyone talks about have hundreds of billions of them and live in a data center. The one this story ends with has 270 million, lives on my MacBook, and was trained in eight minutes.</p>
+<h2>The job interview: twenty-five thousand questions</h2>
+<p>Online shops use a wide array of marketing and colorful language to describe products — a hard job for the AI: <code>glühendes orange-arktikblau</code>, <code>kunterbunt</code>, <code>sun down</code>. A service I built turns each one into a hex code — the six-character <code>#ff6600</code> notation a screen needs to show a color. The names come in German, Spanish, Greek, Hungarian and Turkish, which is why language knowledge matters more than size here.</p>
+<p>For years a hosted AI model did that translation. The early ones, from the davinci era, were terrible at it in a way nobody warned me about: not at the colors — at the JSON, the rigid bracket-and-quote format computers exchange data in. They would forget quotation marks and drop commas, so I built a harness that babysat them: ask for ten colors, and if the answer didn't parse, split the batch in half, try again, split again, down to a single color, then give up on it. We fought the punctuation more than the colors.</p>
+<p>Today's model, GPT-4.1 mini, got the punctuation under control — and left me a cache: about 25,000 color names it had already answered. Twenty-five thousand question-answer pairs is a textbook. And a textbook means you can send a much smaller model to school.</p>
+<h2>Not every model can do the job</h2>
+<p>I had read just enough to be dangerous: the base model should be an <em>instruct</em> version (trained to follow directions, no thinking-out-loud), and it has to come as <em>safetensors</em>, not <em>GGUF</em>. I asked my AI assistant to sort out what that actually meant.</p>
+<p>The distinction turns out to be simple: safetensors is the editable original, GGUF is the baked export — a project file versus a PDF. You train on the original; you run the fast, flattened copy. My confusion peaked when the plan said to download both formats of the same model, until it clicked that they had two different jobs: the safetensors to learn, the GGUF to answer.</p>
+<p>We picked Google's Gemma 3 family — strong on languages for its size, which the Greek and Hungarian color names would punish — in two sizes: 1 billion parameters, plus a deliberately tiny 270-million-parameter comparison — the "surely this is too small" model.</p>
+<p>Before training, a baseline: how do the untrained models do on my 100-name test set? The answer justified the whole experiment. The untrained 1-billion-parameter model answered only 16 of 100 names and matched none exactly. The untrained 270-million one answered 79, but its colors were no better than darts thrown at a paint catalog.</p>
+<h2>Difficulties on the first day</h2>
+<p>The first training run failed in twenty-five seconds with the least helpful sentence of the week: <code>[grad] Must specify at least one argument.</code></p>
+<p>The second run, on the other model, failed identically. Digging into the training tool's own source code found the culprit: two parts of the program disagreed about a default. The interface I was calling silently marked every single layer of the model as frozen — not trainable — unless told otherwise, while the trainer underneath assumed the opposite. Net effect: it was being asked to teach a student in which nothing was allowed to learn. Three explicit flags fixed it, and a bug report is drafted for the maintainers.</p>
+<p>I find this failure oddly comforting. The exotic part — teaching a language model — worked on the first honest attempt. What broke was the oldest kind of software bug there is: two functions with different opinions about a default value.</p>
+<h2>Eight minutes of preparation</h2>
+<p>The 270M model trained in eight minutes on the MacBook. Loss — the running measure of how wrong the model still is — fell from 0.89 to 0.35 over 459 steps, which is the graph equivalent of watching a student stop guessing.</p>
+<p>Then I opened a chat window and typed "hex for red". Junk came back.</p>
+<p>That was the first real lesson about specialists. The model hadn't learned <em>about</em> colors; it had learned a dialect — the exact question format from its 25,000-example textbook, ten names at a time, every bracket and quotation mark in place. Ask in the trained dialect and it performs; ask casually and you get a generic small model shrugging at you. My assistant built me the properly formatted prompt, I pasted it into the side-by-side comparison view — untrained model on the left, my fine-tune on the right — and ran it.</p>
+<p>The left side answered <code>#rrggbb</code> — the placeholder from my own prompt — parroted seven times for ten questions. It couldn't even count to ten. The right side returned all ten names, perfect JSON, plausible colors.</p>
+<p>It's magical, I wrote.</p>
+<h2>The results are in: Kunterbunt</h2>
+<p>Benchmarks are easy to fool, so I added my own twist: ten color names I invented on the spot — <code>frog color</code>, <code>top secret</code>, <code>kunterbunt</code>, <code>marisol</code>, <code>sun down</code>, <code>Aubergine</code> — none of them in the training data, several of them barely colors at all. I pasted the model's answers back to my assistant and had it grade them, then turned the results into a web page where every answer renders as a color swatch next to the judgment.</p>
+<p><img alt="The ten invented names as a table: each with its color swatch, hex code, and a verdict badge — from &quot;good&quot; for concrete down to kunterbunt's dispute." src="assets/colormaxing-i-how-many-parameters-does-one-job-need/manual-test-10-custom-names.png" /></p>
+<p><code>kunterbunt</code> — German for "riotously multicolored" — came back as a warm salmon. Wrong, arguably; charming, definitely. <code>marine</code> came back navy. <code>concrete</code> came back concrete. For a model that fits in a phone's memory, invented names in two languages landing this close is the moment the question from the video stopped being theoretical.</p>
+<p>One more thing surprised me: asked about colors in plain chat, the fine-tune now <em>reasons</em> — blue is like the sky, red is like a tomato. We never taught it that. The training touched only about one percent of its weights, so the base model's chattiness survived underneath, now steered toward color. School didn't replace its personality; it gave the personality a profession.</p>
+<h2>A rematch against the local champion</h2>
+<p>Then the real exam: the same 100-name test I had run against six full-sized local models the week before, none of the names in the training data.</p>
+<p>The fine-tuned 270M scored 21 exact matches. My daily 35-billion-parameter model — the best off-the-shelf contender — scored 18. A model one 100th the size beat it at this one job. The fine-tuned 1B pushed further: 29 exact, over half of all answers within close visual range of the reference, at 0.12 seconds per color.</p>
+<p>So: how many parameters does one simple job need? A quarter of a billion for a specialist is already promising. But we decided to continue with the 1-billion-parameter model — roughly a gigabyte on disk, and slightly more proficient across languages.</p>
+<h2>The exam: Will the student outperform the teacher?</h2>
+<p>In each iteration of the training, a small pattern appeared in the answers: I started to suspect the student might be <em>more right</em> where the teacher was sloppy. But how could I visually check whether my hunch was correct?</p>
+<p>I know! Let's build a dataset!</p>
+<p>A bigger exam is running now: all 60,000 color names saved by the live service, student versus teacher, disagreement by disagreement. That's the next part of this story.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Revisiting Impossible Counters</title>
 <link>https://scriptease.dev/posts/2026-08-19-revisiting-impossible-counters/</link>

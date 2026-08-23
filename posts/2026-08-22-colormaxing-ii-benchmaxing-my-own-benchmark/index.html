@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Colormaxing II — Benchmaxing My Own Benchmark — scriptease.dev</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Colormaxing II — Benchmaxing My Own Benchmark</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/ml/">#ml</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Colormaxing saga: <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/">1. One Simple Job</a> · 2. Benchmaxing My Own Benchmark · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/">3. In Public</a></em></p>
+<p>The initial plan was simple: run a test over all 60,000 colors and see how good the new model really is. The plan didn't hold for long. By the end of the day two models were competing — and even the original dataset was on trial.</p>
+<h2>The first data set: Trusting the old model</h2>
+<p>Everything my model knows, it learned from 25,000 answers the old model had already given. That was the first dataset, and it rested on one silent assumption: that those answers were correct.</p>
+<p>The AI world has a word for grading a model against the very data it trained on: benchmaxing. It's an accusation — a perfect score proves copying, nothing more. I did it anyway, on purpose, because the score wasn't what I was after. Each time I trained a new version, a small pattern appeared: on the messy names, the new model's answer sometimes looked <em>better</em> than the answer it was supposed to copy. A hunch is not a finding. To check it, I needed both models' answers side by side — for every one of the 60,223 color names the live service had ever translated.</p>
+<h2>The second data set: Tuning down the noise</h2>
+<p>But the model heading into that test was already one repair beyond those original 25,000 answers — because the names in it carry noise, and the noise is ours, not the shops'. When the same color name appears on two versions of a product, the two entries have to stay distinguishable — two blues are not the same blue — so our system appends a number: <code>blau 2764</code>. The first version read meaning into those digits. So the second dataset taught it, with eight thousand digit-suffixed examples, that the number is bookkeeping: answer the color, ignore the number.</p>
+<p>The same round turned the color <em>up</em>. The service reserves one special answer, the literal word <code>colorful</code>, for genuinely multicolored products — kunterbunt, if you read part one. In 25,000 cached answers the old model had never used it once, so the rule was unlearnable from those answers alone; made-up examples put it within reach.</p>
+<p>Less noise, more color: version two. That's the model that took the 60,000-name test.</p>
+<h2>60,000 rows — we're going to need a bigger boat</h2>
+<p>The run took the afternoon, ten names at a time, with the same safety net the live service uses: one retry, give up only after a second failure.</p>
+<p><img alt="Unsloth Studio's live traffic page during the run: 51 requests in the window, zero errors, 1.4 seconds per batch." src="assets/colormaxing-ii-benchmaxing-my-own-benchmark/unsloth-api-live-60k.png" /></p>
+<p>Halfway through I checked the failure counter. Previous incarnations had struggled with the output format, but this fight was over: three broken answers in over three thousand batches.</p>
+<p>Now I had sixty thousand rows — enough to fill a spreadsheet, but not a spreadsheet you'd want to read. It was time to build a tool. Or two, or three.</p>
+<p>Tool one was an explorer: one web page, every name, old model's color and new model's color as swatches side by side, filterable by how different the two colors are. Beautiful, honest — and useless for a verdict, because staring at it mostly proves you can't hold sixty thousand judgments in your head.</p>
+<p>Tool two had opinions. For the ten thousand names where the two models really diverged, it looked up every real color word in the name — across German, English, French, Spanish, Turkish and friends — and asked one question: whose answer is close to what the name actually says? Every disagreement landed in a bucket, and the buckets became clickable verdict cards.</p>
+<h2>Reading the results reveals the flaws</h2>
+<p>The cards said: old model clearly wrong, 1,415 times. New model clearly wrong, 706. Both wrong, 495. Then the two biggest buckets: 4,773 split decisions — names like <code>weiss/türkis</code> where one model picked the white and the other the turquoise, both defensible — and 3,410 names with no color you could work out from the words at all. Nobody can be wrong about <code>top secret</code>.</p>
+<p>But the analysis had shifted: it was no longer a before-and-after comparison being graded — the colors themselves became the grade. And when the colors become visible, the original dataset gets graded with them. Where a name contains a checkable color word, the old model was wrong twice as often as the new one.</p>
+<p>The same sixty thousand rows exposed the training data's own flaws. A huge part of it came from a single sports shop's catalog — the same base colors repeated over and over, teaching the model the wrong lesson. The results also looked worse for some colors in languages like Turkish, French and Spanish. And the format itself had taught a bad habit: always ten names per batch. Ask for a single color and the model panicked — seven answers came back, the right one first, then six invented from words in the prompt.</p>
+<h2>Calling in the experts</h2>
+<p>By the end of the day, several AI conversations were running in parallel, each with its own job.</p>
+<p>For the language gap I wrote a handoff and spawned an expert whose entire world was one task: collect objective color-name lists in every language the shops speak. It came back with 11,377 color names and their codes across thirteen languages — Wikipedia's color lists, official industrial palettes, every source license-checked.</p>
+<p>Another expert had researched something else entirely: how to host the finished model on Hugging Face, the public site where anyone could try it — more on that in part three. That research is what surfaced the single-color question in the first place: a visitor to a public demo types one color name, never ten. And it made the caching argument click — every answered name is stored and reused, so what a live model actually sees is a handful of <em>new</em> names at a time. Batches of ten are the exception, not the rule.</p>
+<p>And one more expert sat quietly to the side, writing down everything that happened — to turn it into a blog post. Or better: a series of them.</p>
+<p>None of them started as an expert. Each got one small document — here, work on this, come back with the result — and the task is what made them one.</p>
+<p><img alt="The training job board: version 3 finished, version 4 already running — the day's whole lineage on one screen." src="assets/colormaxing-ii-benchmaxing-my-own-benchmark/studio-training-lineage.jpg" /></p>
+<p>My machine spent the whole day on fire — fans blasting.</p>
+<h2>The third data set: The one that never got to be</h2>
+<p>The single-color fix became the third dataset: the same names, now also served in batches of every size from one to nine, so a lonely single name would no longer be a sight the model had never seen. Version three trained beautifully on it, getting better and better at the examples it was studying, all the way to the end.</p>
+<p>It never shipped. But a little U-turn in the learning graph made it interesting.</p>
+<p>When training models, the interesting part is not the data the model knows — it's the data it doesn't: a secret test the model never sees during training, kept aside to check whether its answers are actually getting better. Version three's secret-test score improved for one pass through the data, then made a U-turn and got steadily <em>worse</em> the longer training ran. It turns out training a model too much is a bad thing.</p>
+<h2>The fourth data set: Bringing in the colors</h2>
+<p>The fourth dataset got everything at once. The sports catalog was finally capped — thousands of rows collapsed to their stem by name, so they could no longer drown out everything else. The mixed batch sizes stayed. And the experts' harvest came in: thirteen languages of real color words.</p>
+<p>And my AI told me about a cool feature: training takes snapshots every now and then, so you can look at the nice graph of the secret-test score and min-max it — just pick the best snapshot. That's what we did: the final model is the snapshot right at the sweet spot, at the bottom of the curve.</p>
+<p>Then the same test again, all 60,000 names, three columns side by side: the old model, version two, version four. And the results were promising — not perfect, but what we lost in memorization we gained in language accuracy.</p>
+<h2>Mystery of the missing colors</h2>
+<p>The third tool — the three-way visualization — also showed something I hadn't ordered: refusals. Version four sometimes gives no answer at all. The page had no such number for the previous version, so I asked for it — and the refusals had increased sevenfold.</p>
+<p><img alt="Rows from the three-way comparison: long compound names where the old model and version two return exactly the same colors, while version four's column reads &quot;no answer&quot;." src="assets/colormaxing-ii-benchmaxing-my-own-benchmark/showdown-refusals.png" /></p>
+<p>But it's not what it seems. That isn't seven times the errors; it uncovered a scheme. The previous version had memorized those answers: instead of finding the color in a convoluted brand-color name, it had used a cheat sheet. The refusal is actually the correct response to ambiguity — and dealing with those long names is a task for another dataset.</p>
+<h2>The fifth data set?</h2>
+<p>Somewhere in those refusals, a fifth dataset is waiting. I left the question unanswered.</p>
+<p>That's where I left the model too: good enough, and better than expected. There's a packaged version sitting on my computer that can run anywhere.</p>
+<p>But that would not be the way to end this saga. In part three, it goes public.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/">← Colormaxing I — How Many Parameters Does One Simple Job Need?</a><a class="next" href="/posts/2026-08-22-colormaxing-iii-in-public/">Colormaxing III — In Public →</a></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

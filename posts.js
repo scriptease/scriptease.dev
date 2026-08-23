@@ -1,5 +1,39 @@
 window.POSTS = [
   {
+    "slug": "2026-08-22-colormaxing-iii-in-public",
+    "title": "Colormaxing III — In Public",
+    "hook": "What did I do this Sunday? I went public with my first homegrown model — and added a demo Space where anyone can try it out for free, thanks to Hugging Face.",
+    "date": "2026-08-22",
+    "month": "2026-08",
+    "tags": []
+  },
+  {
+    "slug": "2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark",
+    "title": "Colormaxing II — Benchmaxing My Own Benchmark",
+    "hook": "The initial plan was simple: run a test over all 60,000 colors and see how good the new model really is. The plan didn't hold for long. By the end of the day two models were competing — and even the original dataset was on trial.",
+    "date": "2026-08-22",
+    "month": "2026-08",
+    "tags": [
+      "ai",
+      "llm",
+      "ml",
+      "saga"
+    ]
+  },
+  {
+    "slug": "2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need",
+    "title": "Colormaxing I — How Many Parameters Does One Simple Job Need?",
+    "hook": "I just watched a video about fine-tuning small AI models, and it overlaps with an experiment I ran the week before — my attempt to see whether naming colors could run entirely on my own laptop. After watching the video, I had one question: how many parameters would it take to do the job?",
+    "date": "2026-08-22",
+    "month": "2026-08",
+    "tags": [
+      "ai",
+      "llm",
+      "ml",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-08-19-revisiting-impossible-counters",
     "title": "Revisiting Impossible Counters",
     "hook": "The first countdown I ever shipped was rigged. It sat on our graduating class's website, counting down to the Abitur, our final exams — and it lied: faster during the day, slower at night.",
