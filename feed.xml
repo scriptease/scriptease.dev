@@ -16,7 +16,7 @@
 <description>What did I do this Sunday? I went public with my first homegrown model — and added a demo Space where anyone can try it out for free, thanks to Hugging Face.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Colormaxing III — In Public</h1>
-<p><em>The Colormaxing saga: <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/">1. One Simple Job</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark/">2. Benchmaxing My Own Benchmark</a> · 3. In Public</em></p>
+<p><em>The Colormaxing saga: <a href="https://scriptease.dev/posts/2026-07-30-a-color-speaks-more-than-a-thousand-words/">0. The Prequel</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/">1. One Simple Job</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark/">2. Benchmaxing My Own Benchmark</a> · 3. In Public</em></p>
 <p>What did I do this Sunday? I went public with my first homegrown model — and added a demo Space where anyone can try it out for free, thanks to Hugging Face.</p>
 <p>The step itself sounded trivial, and I had the research already done: upload the model, give it a public page. It took a paywall, two permission gates, one wrong key, and a merge that silently did nothing.</p>
 <h2>Going public requires paperwork</h2>
@@ -58,7 +58,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Colormaxing II — Benchmaxing My Own Benchmark</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/ml/">#ml</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Colormaxing saga: <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/">1. One Simple Job</a> · 2. Benchmaxing My Own Benchmark · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/">3. In Public</a></em></p>
+<p><em>The Colormaxing saga: <a href="https://scriptease.dev/posts/2026-07-30-a-color-speaks-more-than-a-thousand-words/">0. The Prequel</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/">1. One Simple Job</a> · 2. Benchmaxing My Own Benchmark · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/">3. In Public</a></em></p>
 <p>The initial plan was simple: run a test over all 60,000 colors and see how good the new model really is. The plan didn't hold for long. By the end of the day two models were competing — and even the original dataset was on trial.</p>
 <h2>The first data set: Trusting the old model</h2>
 <p>Everything my model knows, it learned from 25,000 answers the old model had already given. That was the first dataset, and it rested on one silent assumption: that those answers were correct.</p>
@@ -113,7 +113,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Colormaxing I — How Many Parameters Does One Simple Job Need?</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/ml/">#ml</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Colormaxing saga: 1. One Simple Job · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark/">2. Benchmaxing My Own Benchmark</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/">3. In Public</a></em></p>
+<p><em>The Colormaxing saga: <a href="https://scriptease.dev/posts/2026-07-30-a-color-speaks-more-than-a-thousand-words/">0. The Prequel</a> · 1. One Simple Job · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark/">2. Benchmaxing My Own Benchmark</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/">3. In Public</a></em></p>
 <p>I just watched a video about fine-tuning small AI models, and it overlaps with an experiment I ran the week before — my attempt to see whether naming colors could run entirely on my own laptop. After watching the video, I had one question: how many parameters would it take to do the job?</p>
 <p>Parameters are the knobs inside an AI model — the numbers that hold everything it knows. The models everyone talks about have hundreds of billions of them and live in a data center. The one this story ends with has 270 million, lives on my MacBook, and was trained in eight minutes.</p>
 <h2>The job interview: twenty-five thousand questions</h2>
@@ -758,6 +758,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>A Color Speaks More Than a Thousand Words</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a></p>
+<p><em>The Colormaxing saga: 0. The Prequel · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/">1. One Simple Job</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark/">2. Benchmaxing My Own Benchmark</a> · <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/">3. In Public</a></em></p>
 <p>Three years ago, I demoed a new customer's product catalog in our app. My scripts had pulled the category tree, the products, the prices. Only the colors couldn't be scripted: the data held just names.</p>
 <p>"Hellblau." "Anthracite." A name is not a swatch. "Hellblau" means light blue, but <em>which</em> light blue? No file anywhere held the answer, because the answer isn't data. It's something a human just knows by looking.</p>
 <h2>I was the color mapper</h2>
@@ -796,7 +797,6 @@ Ah an idea can we test that you can drag the shark?
 <h2>So what</h2>
 <p>If you're looking for a job to do with AI without supervision, pick one where getting the wrong answers doesn't change the outcome. Mine was a color mapper. That's why a script from April 2023, from the Davinci era, from my first-ever API call to a model, is still working in production.</p>
 <p>But don't get me wrong — it matters. A color speaks more than a thousand words. It made the demo then, and it makes the demo now — powering just an innocent-looking square that only reveals its name when you click on it.</p>
-<p><em>This service grew a sequel: the <a href="https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/">Colormaxing saga</a>, where its own 25,000 answers became the textbook for a homegrown model trained on my laptop.</em></p>
 </article>]]></content:encoded>
 </item>
 <item>
