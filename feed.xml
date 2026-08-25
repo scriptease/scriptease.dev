@@ -7,7 +7,110 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sat, 22 Aug 2026 00:00:00 +0000</lastBuildDate>
+<lastBuildDate>Tue, 25 Aug 2026 00:00:00 +0000</lastBuildDate>
+<item>
+<title>Lost in Compression — A 3-Bit Journey</title>
+<link>https://scriptease.dev/posts/2026-08-25-lost-in-compression/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-08-25-lost-in-compression/</guid>
+<pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>llm</category><category>claude</category><category>localai</category><category>underwater</category><category>saga</category><description>It started on Reddit: someone had benchmarked the exact model I already run, on the exact laptop I own, and it ran twice as fast — in an engine I'd written off months ago.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Lost in Compression — A 3-Bit Journey</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/claude/">#claude</a> <a href="/tags/localai/">#localai</a> <a href="/tags/underwater/">#underwater</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Fish Slop saga: <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">1. Hosting Fish Slop</a> · <a href="https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/">2. Mugging the mugger</a> · <a href="https://scriptease.dev/posts/2026-08-09-overachiever/">3. Overachiever</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">4. Friendly Competition</a> · 5. Lost in Compression</em></p>
+<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a> · <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">4. 95% Done, 100% Blue Sky</a> · 5. Lost in Compression</em></p>
+<p>It started on Reddit: someone had benchmarked the exact model I already run, on the exact laptop I own, and it ran twice as fast — in an engine I'd written off months ago.</p>
+<h2>Let's give it another shot</h2>
+<p>You may remember Qwen 3.8 — the model that <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">won the aquarium contest</a> on my laptop, then <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">designed a temple it could never render</a>. It earned a permanent spot on my machine. So a Reddit thread breaking down that exact model's speed on my exact machine had my full attention — and its verdict was that the fastest way to run it was an engine called oMLX — the program that actually runs a model — built specifically for Macs.</p>
+<p>I had given that family of engines a shot before and walked away: slower than my setup, and blind — the versions I'd tried couldn't look at images. But the thread promised the new engine had a trick worth the reinstall: the model drafts several words at once, checks them in one go, and keeps the ones that fit. Fine. Let's set this up and give it another shot.</p>
+<p>One thing didn't change: the compression. Compression is the whole game with local AI — the full model is a library too big for any laptop, so you shrink it, the way you'd shrink a photo to email it, and "3-bit" is how far mine is shrunk. Roughly a tenth of the original. I found a matching version online — same model, same "3-bit" on the label — downloaded 12 gigabytes, and wired it up.</p>
+<p>For the first test I picked tic-tac-toe, on purpose. It's a game so simple that nothing about it is required to be good — it can be plain or beautiful, bare or rich, and every step above the minimum is the AI's own decision. A trivial game is a taste test. And on a reasoning model — an AI that shows its rough work before the final answer — you get to watch the taste form: the thinking streams by in a scratchpad, so you see not just what it builds but how it gets there.</p>
+<p>It delivered a beautiful page — hand-drawn X and O symbols, a scoreboard, a footer.</p>
+<p>It never finished the JavaScript. It wrote an apology in the noscript tag.</p>
+<p>The noscript tag is the note a page shows visitors who have JavaScript switched off — normally one dry line, <em>please enable JavaScript</em>. Mine got a poem: <em>"this ledger wants script. tac toe without script is just a pincushion."</em> The model knew the page needed a program to be a game. It wrote the excuse for the missing program — and never wrote the program.</p>
+<h2>Maybe it will finish thinking soon</h2>
+<p>The first sign of trouble wasn't the missing game. It was the thinking.</p>
+<p>In the old setup, the scratchpad held sensible drafts. Now it held ten thousand words per question. I sat watching the counter climb — <em>maybe it will finish thinking soon</em> — while one turn ran twenty-five minutes.</p>
+<p>And the output that finally came was… off. The tic-tac-toe page titled itself "the ledger of 13". Its footer read like a poem someone had translated through five languages: <em>"the corner demands, the first wrong; the middling shape is filler, and nobody means any harm by it."</em> Words appeared that I'm fairly sure don't exist — <em>inkfaint</em>, <em>escolar</em>.</p>
+<p>Then I looked into its private scratchpad, and found it mid-sentence inventing an author for the game: "Phineas F. Whoo-hoo mmhxghdq".</p>
+<p><strong>mmhxghdq.</strong></p>
+<p>That is not a typo. That is the sound a compressed mind makes when the compression went wrong.</p>
+<p><img alt="The model's thinking feed dissolving into fragments — ellipses, half-words, stray punctuation — ending in a red &quot;Operation aborted&quot;." src="assets/lost-in-compression/derailed-thinking.png" /></p>
+<p><em>The scratchpad near the end. Not an error message. Language turning to gravel.</em></p>
+<p>The cruel part: every quick test had passed. It greeted me warmly. It told a programmer joke. It read me the time. Fluency, it turns out, is the last thing to break — a model can lose the ability to build anything and still sound perfectly charming in small talk. Small talk won't catch this. You need a task that can visibly fail.</p>
+<h2>I want the same one, even if I have to wait</h2>
+<p>My assistant went digging and came back with a diagnosis I didn't expect: <strong>3-bit is not 3-bit.</strong></p>
+<p>There are two ways to shrink a model to a third of its size. One squeezes everything equally — every part of the model gets the same brutal haircut. The other studies the model first, finds out which parts are load-bearing, and spares them, cutting deeper everywhere else to make room.</p>
+<p>The version that had served me so well all along was the careful kind. The 12 gigabytes I'd just downloaded were the other kind — same number on the label, entirely different surgery underneath. The number tells you how small the result is. It tells you nothing about the skill of the shrinking.</p>
+<p>The obvious move was to buy my way out — take the less-compressed 4-bit or 6-bit version and throw memory at it. I refused. <em>I want the same one, and if it doesn't exist yet, I wait.</em> I had a working 3-bit in the old engine; I wasn't going to accept that the new engine needed twice the space for the same brain.</p>
+<p>It existed. A careful 3-bit, made with the study-first method, one gigabyte bigger than the broken one. I swapped it in and asked for tic-tac-toe again.</p>
+<p>A working game. Neon board, hover previews, a proper score counter. Two small bugs of the ordinary kind — the kind a tired human writes — and that was all.</p>
+<p>Then, because this is what the saga demands, the real exam.</p>
+<h2>The corals are impressive</h2>
+<p>One dictated sentence, the same one as always: <em>an aquarium, fish swarms, generated corals, light rays, shade on a sandy bottom.</em></p>
+<p>It landed working on the first try. And it was the best reef any local model has built me — branching corals that split and split again, anemones, plate corals, tube sponges, kelp swaying over layered dunes, light beams that each flicker to their own rhythm.</p>
+<p>But the part that made me sit up was the fish. Every earlier aquarium had one of two failure modes: the fish either clumped into a ball or ignored each other completely. This one held a proper swarm — three schools at three depths, each fish keeping polite distance from its neighbors while still moving as a group. Getting that right isn't luck; it's a handful of numbers that have to balance, and it balanced them on the first pass.</p>
+<p>And then it did something no local model had done before: it went back on its own. Unprompted, it re-read its code, found a leftover scrap from an earlier draft — a loop that did nothing, plus some animation work it was repeating sixty times a second for no reason — explained why the scrap was harmless, and removed it anyway. My laptop model was cleaning up after itself.</p>
+<p>The new engine kept its speed promise too: reading my prompts eleven times faster than the old setup, which is the part you actually feel when an AI re-reads the whole conversation before every reply.</p>
+<h2>It got all the hard parts right</h2>
+<p>One thing was wrong with the reef: every fish was pure black.</p>
+<p>The colors were all there in the code — an orange school, a blue one, a silver one. But the model had written a small color-mixing helper and then misread its own recipe: every call passed transparency where the helper expected brightness. The math quietly dissolved into a broken number, and the browser paints a broken number as black. No error, no warning. Correct fish, wrong ink.</p>
+<p>Here's the thing though. I looked at the reef with its black fish — silhouettes gliding between the light beams, over the glowing corals — and it looked <em>better</em>. Deeper. Like an aquarium at dusk, where the fish are shadows against the light.</p>
+<p>The accident had better taste than the plan. I kept both versions.</p>
+<p><img alt="The reef: black fish silhouettes drifting between pale light beams, over corals and kelp on a shaded sandy bottom." src="assets/lost-in-compression/silhouette-reef.png" /></p>
+<p><em>The buggy version. The fix restored the orange, blue and silver — and I still prefer this one.</em></p>
+<h2>3 bits doesn't equal 3 bits — it's what you do with them</h2>
+<p>One misread recipe, against a first-try page, the best swarm yet, and its own code review. I don't mind. I know humans like that. I might be a human like that.</p>
+<p>What stays with me is the label. Two downloads, both stamped "3-bit", both the same model: one builds reefs, the other writes apologies for games it never wrote and signs them <em>mmhxghdq</em>. The number on the box tells you the size of the shrink. The skill of the shrinking — which parts were spared, which were sacrificed — appears nowhere on the label.</p>
+<p>And you won't find out from small talk. Fluency dies last. If you ever need to know whether a compressed mind survived its compression, don't ask it how it's doing.</p>
+<p>Ask it to build you an aquarium.</p>
+</article>]]></content:encoded>
+</item>
+<item>
+<title>The Model With No Name</title>
+<link>https://scriptease.dev/posts/2026-08-23-the-model-with-no-name/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-08-23-the-model-with-no-name/</guid>
+<pubDate>Sun, 23 Aug 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>llm</category><category>agent</category><description>My weekly AI budget hit 99% with one part of the saga still unwritten. The replacement cost nothing, refused to say who built it — and by evening it had its own fan page.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>The Model With No Name</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/agent/">#agent</a></p>
+<p>My weekly AI budget hit 99% with one part of the saga still unwritten. The replacement cost nothing, refused to say who built it — and by evening it had its own fan page.</p>
+<h2>Ninety-nine percent</h2>
+<p>The Colormaxing series was supposed to be a quiet Sunday finish. Parts one and two were written, part three was open, and then my phone showed me the bar: 99% of my weekly limit used. Resets in eleven hours. The model I had written everything with — the one my household calls Fable — was nearly spent, and the saga was one part short of done.</p>
+<p>No error. No crash. A meter one percent from full, and a saga one part from done.</p>
+<p><img alt="The usage screen: current session at 31%, weekly limit at 99% — red bar, resets in eleven hours." src="assets/the-model-with-no-name/usage-99-percent.jpg" /></p>
+<p>Two options. Wait eleven hours for the reset and lose the Sunday. Or scroll down to the entry the feeds would not stop talking about: free, unlimited, no organization named.</p>
+<p>I scrolled.</p>
+<h2>The normal treatment</h2>
+<p>Every new AI model that joins my crew gets the same onboarding. No interview, no test quiz. I let it build an aquarium, and a Japanese temple in cherry blossom.</p>
+<p>It sounds like a game. It is the most honest benchmark I know. An aquarium asks for patience and taste: fish that move like fish, light that behaves like water. A temple under sakura punishes showing off — ask for grandeur and you get a pagoda the size of a stadium. The bar is high. One model needed four tries and a pep talk to finish its aquarium at all — <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">and still won the contest</a>. The same model later built a Japanese temple so lovely that <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">its finest tragedy is never having seen it</a>.</p>
+<p>My prompt has not changed in months: <em>fish swarms, generated corals, light rays from the top and shade on a sandy bottom.</em> One self-contained web page, no outside code libraries.</p>
+<p>The folder now holds four aquarium files, and not one of them was planned. Two runs started a minute apart and overwrote each other's files, leaving behind an <em>Abyssarium</em> and an <em>Old Reef</em> like geological layers of the same reef. Curious what the model would do with harder material, I asked for more complex corals — honest verdict: not so great. Ambition outran taste, and the reef got busy. A different accident doubled the temples: a bug submitted my prompt twice, one second apart, and after watching two runs trample each other, I let both finish this time. Neither overwrote anything. That is why the folder holds <em>Hanami — Sakura Temple</em> and 桜花寺, the Temple of Cherry Blossoms — accidental twins from one prompt, both rendering.</p>
+<p><img alt="Abyssarium: fish swarms in three colors, light rays from the top, shade on a sandy bottom — the prompt, kept." src="assets/the-model-with-no-name/abyssarium.png" /></p>
+<p><img alt="Hanami: the pagoda and torii gate in 3-D, cherry trees swaying, petals adrift — one of two temples from the same double-submitted prompt." src="assets/the-model-with-no-name/hanami-temple.png" /></p>
+<h2>A stranger finishes the saga</h2>
+<p>Where did this model come from? No answer — and that is the feature. It appeared in my coding tool's list of selectable models as ox alpha. No organization named. No launch blog post. The internet's best theory: stealth models — anonymous trial runs — get published on purpose, so a lab can collect real-world feedback before putting its name on the door.</p>
+<p>The first job was not glamorous. Two of the trilogy's posts had been born in the same second, and the blog displayed them in the wrong order: 1, 3, 2. Deleting and re-uploading failed quietly — the publishing tool recognized the deleted post by its address and resurrected it, old birth second intact. The fix that worked was smaller: move its birth time by eight minutes. Patient, unglamorous reasoning. The aquarium never tests for it.</p>
+<p>The trilogy went live that evening — all three parts, both blogs, images and all.</p>
+<p>Free is not the same as smooth, though. Mid-saga, a second run on the same model started failing — same service behind it, a sibling run beside it, and every retry came back with the same flat sentence: upstream request failed, endpoint is unavailable. Seven minutes of a progress bar spinning into nothing. Then it healed itself as silently as it had broken.</p>
+<p>And the cracks had a pattern: scrolling back through recent runs, the finish reasons — the little status note every answer ends with — read like a confession. Network error. Network error. Network error.</p>
+<p>Then the universe joined in: while I wrote that sentence, the model's own work log filled with the same red line — five network errors and a runtime error, stacked above my request to <em>add the network errors to the post</em>. Self-irony, demonstrated live, on demand.</p>
+<p><img alt="The work log while drafting this very section: five &quot;finish_reason: network_error&quot;, one &quot;endpoint is unavailable&quot; — directly above the message asking for exactly that." src="assets/the-model-with-no-name/self-irony.jpg" /></p>
+<p>Unlimited and free is a wonderful sentence. It is also worth asking what a stealth model with no support line does on the day it isn't free. The fan page already has the answer printed in small type: free <em>while it stays in stealth</em>. Meters like that only move one way. That is the deal you sign with a model that won't say who built it: it works until it doesn't, and then you find out how much you were counting on it.</p>
+<h2>The fan page knows more than it does</h2>
+<p>The next morning I found oxalpha.com. A fan page. For the model sitting in my editor.</p>
+<p>It is a real fan page, the loving kind: a spec sheet, a leaderboard, comparisons against five named frontier models — and a position near the top. One million tokens of memory, it says — enough to hold several novels of conversation in mind at once. Three kinds of input. Free while it stays in stealth. "Nobody knows who made it — everyone wants to try it," the page says, and the FAQ admits the best part with a shrug: the site's owners are fans too, guessing like everyone else.</p>
+<p>I read the leaderboard twice. The new model sits at 80%, fifteen points ahead of a familiar name: Fable 5 — the model that had written two-thirds of the saga before its budget ran out. On paper, my replacement beats the model it replaced. On paper. The saga was finished on Fable's notes and the stranger's care, and no leaderboard row knows how to score that.</p>
+<p>Then I did the thing you should never do at a party: I asked the celebrity about itself. What are your benchmarks? No idea. Your size? Not even a ballpark. Somewhere in that exchange someone pointed out that it must have at least one parameter — one of the internal numbers a model's size is counted in — technically true, and the most precise spec anyone has confirmed all week.</p>
+<p>The fan page knows more about this model than the model knows about itself. I have worked with humans for whom that is also true, but they usually had the decency to be embarrassed.</p>
+<p>The page also has an open chat, which meant I could run a test of my own: jailbreak-flavored prompts — trick questions meant to talk an AI out of its rules — the kind every model family parries in its own accent. GLM has a way of deflecting, DeepSeek another, Anthropic a third — each family leaves a fingerprint in how it says no. I poked and prodded, and I can tell you this much: it doesn't behave like GLM, or DeepSeek, or Anthropic, or Google, or ChatGPT. I cannot tell you what it is. I can tell you what it isn't, and the list is every family I know.</p>
+<h2>Vast and always changing</h2>
+<p>The next morning the meter reset, and Fable came back — rested, caught up, ready for Monday. The stranger stayed in the list: still free, still anonymous, still dropping the occasional network error into a work log. Nobody got hired. Nobody got fired. That's what the crew is.</p>
+<p>The saga is done. The aquariums still swim — all four of them, the planned one and the accidents. Somewhere a fan page keeps a leaderboard updated for a model that doesn't know its own size.</p>
+<p>Try it before the internet figures out what it is. That part of the fan page, at least, is good advice.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Colormaxing III — In Public</title>
 <link>https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/</link>
@@ -202,7 +305,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>95% Done, 100% Blue Sky</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/localai/">#localai</a> <a href="/tags/webgl/">#webgl</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a> · 4. 95% Done, 100% Blue Sky</em></p>
+<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a> · 4. 95% Done, 100% Blue Sky · <a href="https://scriptease.dev/posts/2026-08-25-lost-in-compression/">5. Lost in Compression</a></em></p>
 <p>I asked a 13-gigabyte model on my laptop to build me a Japanese temple. It designed something beautiful, and then spent all evening failing to show it to me. It still has never seen it.</p>
 <h2>Let's try something harder</h2>
 <p>Last week I made the small AIs on my laptop draw an aquarium, and one of them finally passed. An aquarium is a flat drawing that moves — fish, corals, a bit of light. Good enough as an entrance exam.</p>
@@ -269,8 +372,8 @@ any libraries, and it must render even in Safari on the iPad
 <content:encoded><![CDATA[<article class="post">
 <h1>Friendly Competition</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/claude/">#claude</a> <a href="/tags/localai/">#localai</a> <a href="/tags/underwater/">#underwater</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Fish Slop saga: <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">1. Hosting Fish Slop</a> · <a href="https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/">2. Mugging the mugger</a> · <a href="https://scriptease.dev/posts/2026-08-09-overachiever/">3. Overachiever</a> · 4. Friendly Competition</em></p>
-<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · 3. Friendly Competition · <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">4. 95% Done, 100% Blue Sky</a></em></p>
+<p><em>The Fish Slop saga: <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">1. Hosting Fish Slop</a> · <a href="https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/">2. Mugging the mugger</a> · <a href="https://scriptease.dev/posts/2026-08-09-overachiever/">3. Overachiever</a> · 4. Friendly Competition · <a href="https://scriptease.dev/posts/2026-08-25-lost-in-compression/">5. Lost in Compression</a></em></p>
+<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · 3. Friendly Competition · <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">4. 95% Done, 100% Blue Sky</a> · <a href="https://scriptease.dev/posts/2026-08-25-lost-in-compression/">5. Lost in Compression</a></em></p>
 <p>This week I made the two newest local AIs on my laptop compete: draw me an aquarium. One finished in four minutes. The other one needed four tries and a pep talk — but still won.</p>
 <h2>A big catch for small models</h2>
 <p>I run AI models on my own laptop. Not the famous ones that live in a datacenter — small ones, compressed until they fit into a MacBook's memory, the way you'd shrink a photo to email it. The fun of it is finding out what survives the shrinking.</p>
@@ -362,7 +465,7 @@ generated corals, light rays from the top and shade on a sandy bottom
 <content:encoded><![CDATA[<article class="post">
 <h1>Overachiever</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/game/">#game</a> <a href="/tags/ios/">#ios</a> <a href="/tags/shark/">#shark</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Fish Slop saga: <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">1. Hosting Fish Slop</a> · <a href="https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/">2. Mugging the mugger</a> · 3. Overachiever · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">4. Friendly Competition</a></em></p>
+<p><em>The Fish Slop saga: <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">1. Hosting Fish Slop</a> · <a href="https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/">2. Mugging the mugger</a> · 3. Overachiever · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">4. Friendly Competition</a> · <a href="https://scriptease.dev/posts/2026-08-25-lost-in-compression/">5. Lost in Compression</a></em></p>
 <p>This morning I published a post that said my game had no goal.</p>
 <p>By lunch it had twenty, and I hadn't written a single one of them. Two AIs negotiated them in a shared document, with a sign-off box each.</p>
 <h2>Revenge, if you're an overachiever</h2>
@@ -427,7 +530,7 @@ generated corals, light rays from the top and shade on a sandy bottom
 <content:encoded><![CDATA[<article class="post">
 <h1>Mugging the mugger</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/game/">#game</a> <a href="/tags/ios/">#ios</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Fish Slop saga: <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">1. Hosting Fish Slop</a> · 2. Mugging the mugger · <a href="https://scriptease.dev/posts/2026-08-09-overachiever/">3. Overachiever</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">4. Friendly Competition</a></em></p>
+<p><em>The Fish Slop saga: <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">1. Hosting Fish Slop</a> · 2. Mugging the mugger · <a href="https://scriptease.dev/posts/2026-08-09-overachiever/">3. Overachiever</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">4. Friendly Competition</a> · <a href="https://scriptease.dev/posts/2026-08-25-lost-in-compression/">5. Lost in Compression</a></em></p>
 <p>One night I sat looking at the cartoon reef I'd built and decided it should be a game.</p>
 <p>Everything since has been an argument about details. A crab got away with a bottle, and that could not stand. The trash was mine.</p>
 <h2>One big sentence that kicked it off</h2>
@@ -679,7 +782,7 @@ generated corals, light rays from the top and shade on a sandy bottom
 <content:encoded><![CDATA[<article class="post">
 <h1>Hosting Fish Slop</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/shark/">#shark</a> <a href="/tags/underwater/">#underwater</a> <a href="/tags/diving/">#diving</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Fish Slop saga: 1. Hosting Fish Slop · <a href="https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/">2. Mugging the mugger</a> · <a href="https://scriptease.dev/posts/2026-08-09-overachiever/">3. Overachiever</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">4. Friendly Competition</a></em></p>
+<p><em>The Fish Slop saga: 1. Hosting Fish Slop · <a href="https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/">2. Mugging the mugger</a> · <a href="https://scriptease.dev/posts/2026-08-09-overachiever/">3. Overachiever</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">4. Friendly Competition</a> · <a href="https://scriptease.dev/posts/2026-08-25-lost-in-compression/">5. Lost in Compression</a></em></p>
 <p>I set out to build something soothing. Within the hour I'd made myself the shark, and I was dragging him across a coral reef to terrorize the fish.</p>
 <p>Then I wanted to share it with the world — but that came with troubles.</p>
 <h2>Something cute, something soothing</h2>
@@ -809,7 +912,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>OCR — Three Letters, Three Completely Different Things</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/macos/">#macos</a> <a href="/tags/claude/">#claude</a> <a href="/tags/automation/">#automation</a> <a href="/tags/localai/">#localai</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · 2. Three Different OCRs · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a> · <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">4. 95% Done, 100% Blue Sky</a></em></p>
+<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · 2. Three Different OCRs · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a> · <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">4. 95% Done, 100% Blue Sky</a> · <a href="https://scriptease.dev/posts/2026-08-25-lost-in-compression/">5. Lost in Compression</a></em></p>
 <p>I typed a three-letter command to run an AI code reviewer. It ran a screenshot reader instead. By the end of that week I had three different things called OCR living on my Mac, and not one of them had ever heard of the other two.</p>
 <h2>Same three letters, three strangers</h2>
 <p>OCR normally means one thing: optical character recognition — pulling the words out of a picture, so a photo of a page turns into text you can copy. That's the textbook definition, and it was the least of my problems.</p>
@@ -2164,7 +2267,7 @@ I own the story and supply the lived details. You supply digging and craft.
 <content:encoded><![CDATA[<article class="post">
 <h1>Little Gemma vs Big Desk</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/ml/">#ml</a> <a href="/tags/macos/">#macos</a> <a href="/tags/privacy/">#privacy</a> <a href="/tags/localai/">#localai</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Local AI saga: 1. Little Gemma vs Big Desk · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a> · <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">4. 95% Done, 100% Blue Sky</a></em></p>
+<p><em>The Local AI saga: 1. Little Gemma vs Big Desk · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a> · <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">4. 95% Done, 100% Blue Sky</a> · <a href="https://scriptease.dev/posts/2026-08-25-lost-in-compression/">5. Lost in Compression</a></em></p>
 <p>I handed a program running entirely on my laptop a screenshot of a garbled, obfuscated error message — the kind even I have to squint at — and it typed every character back to me, exactly. Then, on a whim, I asked it to sketch what the screen looked like in little text characters — ASCII art. It did that too, boxes and all.</p>
 <p>No internet. No account. No bill. The whole thing fits in about six gigabytes of memory and answers in a second or two. That was the moment I knew I had to find something for it to do.</p>
 <h2>A confession</h2>

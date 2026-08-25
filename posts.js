@@ -1,5 +1,32 @@
 window.POSTS = [
   {
+    "slug": "2026-08-25-lost-in-compression",
+    "title": "Lost in Compression — A 3-Bit Journey",
+    "hook": "It started on Reddit: someone had benchmarked the exact model I already run, on the exact laptop I own, and it ran twice as fast — in an engine I'd written off months ago.",
+    "date": "2026-08-25",
+    "month": "2026-08",
+    "tags": [
+      "ai",
+      "llm",
+      "claude",
+      "localai",
+      "underwater",
+      "saga"
+    ]
+  },
+  {
+    "slug": "2026-08-23-the-model-with-no-name",
+    "title": "The Model With No Name",
+    "hook": "My weekly AI budget hit 99% with one part of the saga still unwritten. The replacement cost nothing, refused to say who built it — and by evening it had its own fan page.",
+    "date": "2026-08-23",
+    "month": "2026-08",
+    "tags": [
+      "ai",
+      "llm",
+      "agent"
+    ]
+  },
+  {
     "slug": "2026-08-22-colormaxing-iii-in-public",
     "title": "Colormaxing III — In Public",
     "hook": "What did I do this Sunday? I went public with my first homegrown model — and added a demo Space where anyone can try it out for free, thanks to Hugging Face.",

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Lost in Compression — A 3-Bit Journey — scriptease.dev</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Lost in Compression — A 3-Bit Journey</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/claude/">#claude</a> <a href="/tags/localai/">#localai</a> <a href="/tags/underwater/">#underwater</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Fish Slop saga: <a href="https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/">1. Hosting Fish Slop</a> · <a href="https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/">2. Mugging the mugger</a> · <a href="https://scriptease.dev/posts/2026-08-09-overachiever/">3. Overachiever</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">4. Friendly Competition</a> · 5. Lost in Compression</em></p>
+<p><em>The Local AI saga: <a href="https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/">1. Little Gemma vs Big Desk</a> · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a> · <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">4. 95% Done, 100% Blue Sky</a> · 5. Lost in Compression</em></p>
+<p>It started on Reddit: someone had benchmarked the exact model I already run, on the exact laptop I own, and it ran twice as fast — in an engine I'd written off months ago.</p>
+<h2>Let's give it another shot</h2>
+<p>You may remember Qwen 3.8 — the model that <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">won the aquarium contest</a> on my laptop, then <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">designed a temple it could never render</a>. It earned a permanent spot on my machine. So a Reddit thread breaking down that exact model's speed on my exact machine had my full attention — and its verdict was that the fastest way to run it was an engine called oMLX — the program that actually runs a model — built specifically for Macs.</p>
+<p>I had given that family of engines a shot before and walked away: slower than my setup, and blind — the versions I'd tried couldn't look at images. But the thread promised the new engine had a trick worth the reinstall: the model drafts several words at once, checks them in one go, and keeps the ones that fit. Fine. Let's set this up and give it another shot.</p>
+<p>One thing didn't change: the compression. Compression is the whole game with local AI — the full model is a library too big for any laptop, so you shrink it, the way you'd shrink a photo to email it, and "3-bit" is how far mine is shrunk. Roughly a tenth of the original. I found a matching version online — same model, same "3-bit" on the label — downloaded 12 gigabytes, and wired it up.</p>
+<p>For the first test I picked tic-tac-toe, on purpose. It's a game so simple that nothing about it is required to be good — it can be plain or beautiful, bare or rich, and every step above the minimum is the AI's own decision. A trivial game is a taste test. And on a reasoning model — an AI that shows its rough work before the final answer — you get to watch the taste form: the thinking streams by in a scratchpad, so you see not just what it builds but how it gets there.</p>
+<p>It delivered a beautiful page — hand-drawn X and O symbols, a scoreboard, a footer.</p>
+<p>It never finished the JavaScript. It wrote an apology in the noscript tag.</p>
+<p>The noscript tag is the note a page shows visitors who have JavaScript switched off — normally one dry line, <em>please enable JavaScript</em>. Mine got a poem: <em>"this ledger wants script. tac toe without script is just a pincushion."</em> The model knew the page needed a program to be a game. It wrote the excuse for the missing program — and never wrote the program.</p>
+<h2>Maybe it will finish thinking soon</h2>
+<p>The first sign of trouble wasn't the missing game. It was the thinking.</p>
+<p>In the old setup, the scratchpad held sensible drafts. Now it held ten thousand words per question. I sat watching the counter climb — <em>maybe it will finish thinking soon</em> — while one turn ran twenty-five minutes.</p>
+<p>And the output that finally came was… off. The tic-tac-toe page titled itself "the ledger of 13". Its footer read like a poem someone had translated through five languages: <em>"the corner demands, the first wrong; the middling shape is filler, and nobody means any harm by it."</em> Words appeared that I'm fairly sure don't exist — <em>inkfaint</em>, <em>escolar</em>.</p>
+<p>Then I looked into its private scratchpad, and found it mid-sentence inventing an author for the game: "Phineas F. Whoo-hoo mmhxghdq".</p>
+<p><strong>mmhxghdq.</strong></p>
+<p>That is not a typo. That is the sound a compressed mind makes when the compression went wrong.</p>
+<p><img alt="The model's thinking feed dissolving into fragments — ellipses, half-words, stray punctuation — ending in a red &quot;Operation aborted&quot;." src="assets/lost-in-compression/derailed-thinking.png" /></p>
+<p><em>The scratchpad near the end. Not an error message. Language turning to gravel.</em></p>
+<p>The cruel part: every quick test had passed. It greeted me warmly. It told a programmer joke. It read me the time. Fluency, it turns out, is the last thing to break — a model can lose the ability to build anything and still sound perfectly charming in small talk. Small talk won't catch this. You need a task that can visibly fail.</p>
+<h2>I want the same one, even if I have to wait</h2>
+<p>My assistant went digging and came back with a diagnosis I didn't expect: <strong>3-bit is not 3-bit.</strong></p>
+<p>There are two ways to shrink a model to a third of its size. One squeezes everything equally — every part of the model gets the same brutal haircut. The other studies the model first, finds out which parts are load-bearing, and spares them, cutting deeper everywhere else to make room.</p>
+<p>The version that had served me so well all along was the careful kind. The 12 gigabytes I'd just downloaded were the other kind — same number on the label, entirely different surgery underneath. The number tells you how small the result is. It tells you nothing about the skill of the shrinking.</p>
+<p>The obvious move was to buy my way out — take the less-compressed 4-bit or 6-bit version and throw memory at it. I refused. <em>I want the same one, and if it doesn't exist yet, I wait.</em> I had a working 3-bit in the old engine; I wasn't going to accept that the new engine needed twice the space for the same brain.</p>
+<p>It existed. A careful 3-bit, made with the study-first method, one gigabyte bigger than the broken one. I swapped it in and asked for tic-tac-toe again.</p>
+<p>A working game. Neon board, hover previews, a proper score counter. Two small bugs of the ordinary kind — the kind a tired human writes — and that was all.</p>
+<p>Then, because this is what the saga demands, the real exam.</p>
+<h2>The corals are impressive</h2>
+<p>One dictated sentence, the same one as always: <em>an aquarium, fish swarms, generated corals, light rays, shade on a sandy bottom.</em></p>
+<p>It landed working on the first try. And it was the best reef any local model has built me — branching corals that split and split again, anemones, plate corals, tube sponges, kelp swaying over layered dunes, light beams that each flicker to their own rhythm.</p>
+<p>But the part that made me sit up was the fish. Every earlier aquarium had one of two failure modes: the fish either clumped into a ball or ignored each other completely. This one held a proper swarm — three schools at three depths, each fish keeping polite distance from its neighbors while still moving as a group. Getting that right isn't luck; it's a handful of numbers that have to balance, and it balanced them on the first pass.</p>
+<p>And then it did something no local model had done before: it went back on its own. Unprompted, it re-read its code, found a leftover scrap from an earlier draft — a loop that did nothing, plus some animation work it was repeating sixty times a second for no reason — explained why the scrap was harmless, and removed it anyway. My laptop model was cleaning up after itself.</p>
+<p>The new engine kept its speed promise too: reading my prompts eleven times faster than the old setup, which is the part you actually feel when an AI re-reads the whole conversation before every reply.</p>
+<h2>It got all the hard parts right</h2>
+<p>One thing was wrong with the reef: every fish was pure black.</p>
+<p>The colors were all there in the code — an orange school, a blue one, a silver one. But the model had written a small color-mixing helper and then misread its own recipe: every call passed transparency where the helper expected brightness. The math quietly dissolved into a broken number, and the browser paints a broken number as black. No error, no warning. Correct fish, wrong ink.</p>
+<p>Here's the thing though. I looked at the reef with its black fish — silhouettes gliding between the light beams, over the glowing corals — and it looked <em>better</em>. Deeper. Like an aquarium at dusk, where the fish are shadows against the light.</p>
+<p>The accident had better taste than the plan. I kept both versions.</p>
+<p><img alt="The reef: black fish silhouettes drifting between pale light beams, over corals and kelp on a shaded sandy bottom." src="assets/lost-in-compression/silhouette-reef.png" /></p>
+<p><em>The buggy version. The fix restored the orange, blue and silver — and I still prefer this one.</em></p>
+<h2>3 bits doesn't equal 3 bits — it's what you do with them</h2>
+<p>One misread recipe, against a first-try page, the best swarm yet, and its own code review. I don't mind. I know humans like that. I might be a human like that.</p>
+<p>What stays with me is the label. Two downloads, both stamped "3-bit", both the same model: one builds reefs, the other writes apologies for games it never wrote and signs them <em>mmhxghdq</em>. The number on the box tells you the size of the shrink. The skill of the shrinking — which parts were spared, which were sacrificed — appears nowhere on the label.</p>
+<p>And you won't find out from small talk. Fluency dies last. If you ever need to know whether a compressed mind survived its compression, don't ask it how it's doing.</p>
+<p>Ask it to build you an aquarium.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-08-23-the-model-with-no-name/">← The Model With No Name</a><span></span></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
