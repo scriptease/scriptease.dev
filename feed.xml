@@ -7,7 +7,52 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Tue, 25 Aug 2026 00:00:00 +0000</lastBuildDate>
+<lastBuildDate>Fri, 28 Aug 2026 00:00:00 +0000</lastBuildDate>
+<item>
+<title>Good Ideas Never Die</title>
+<link>https://scriptease.dev/posts/2026-08-28-good-ideas-never-die/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-08-28-good-ideas-never-die/</guid>
+<pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>programming</category><category>vscode</category><description>I showed a friend the VS Code extension I had just built. 'That's funny,' he said. 'I already use this. And you told me about it two years ago.'</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Good Ideas Never Die</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/programming/">#programming</a> <a href="/tags/vscode/">#vscode</a></p>
+<p>I showed a friend the VS Code extension I had just built.</p>
+<p>"That's funny," he said. "I already use this. And you told me about it two years ago."</p>
+<h2>I no longer write code. I read it.</h2>
+<p>My job has changed. AI writes most of my code now. I spend more of my time reading what it wrote: following a value through a program, checking which parts call which other parts, and making sure the whole thing says what we meant.</p>
+<p>The tools around me had not caught up. A normal code editor is built around files and folders because that is how code is stored. I wanted to browse by meaning: show me everything concerned with orders, or everything that talks to an outside system, even when those pieces live in different folders.</p>
+<p>So I asked an AI model called ox-alpha to build me a source-code browser for one of our servers. It scanned 508 files and turned them into one self-contained web page. I could enter through features, architecture layers, recurring patterns, or dependencies, then move between those views without losing the file I was reading.</p>
+<p>We kept working on it. Source code opened inside the page. A click on a file showed both the code and every file connected to it. Search looked through all 508 files and jumped to the matching line. Imports, the long list of other code a file uses, started collapsed so the actual work appeared first.</p>
+<p>After the file icons and navigation landed, I wrote: "This is perfect :D."</p>
+<p>Seven minutes later, after code search landed: "This is the best thing ever!"</p>
+<p>The browser was becoming the editor I needed now that reading had replaced writing.</p>
+<h2>Then I remembered Polychromatic</h2>
+<p>The source view worked, but its colors still described the grammar of the programming language: keywords in one color, text in another, types in a third. That tells you what each word is. It does not help much when you are trying to follow one particular name through a page of code.</p>
+<p>I remembered an old Xcode plugin called <a href="https://github.com/kolinkrewinkel/Polychromatic">Polychromatic</a>. Xcode is Apple's programming environment, and the plugin had stopped working years ago. I checked out its source code so I could give it to ox-alpha.</p>
+<p>That is how I work now. I get the code, or let the AI get the code, and let it use the original instead of making me describe the implementation from memory.</p>
+<p>Polychromatic gave every identifier, every variable, property, and function name, its own stable color. The same name got the same color wherever it appeared. Types faded into the background. The names carrying data and behavior came forward.</p>
+<p>Ox-alpha read the source, found the small formula that turned a name into one of 4,096 colors, and carried it into the source browser's HTML formatter.</p>
+<p>Polychromatic always felt a little like seeing the Matrix. Instead of seeing the structure of the code, you see the flow.</p>
+<h2>This should not stay at work</h2>
+<p>The source browser was built around one private project. I could use it, but I could not hand it to anyone outside work.</p>
+<p>Two days later I had another thought: the coloring did not have to remain inside that browser. Visual Studio Code, a widely used editor, already understands which words are variables, properties, functions, and methods. An extension could take that information and apply Polychromatic's stable colors to any supported language.</p>
+<p>I had never built a Visual Studio Code extension. My first question to the AI was: "Can you do a web search on how to implement a template in Visual Studio Code? I have actually no idea."</p>
+<p>It turned out not to be a template at all. We needed an extension. We built it, tested it, packaged it, installed it, and put it on GitHub. The private browser had produced a small public tool: <a href="https://github.com/scriptease/polychromatic-vscode">Polychromatic for VS Code</a>.</p>
+<p>Then I showed it to my friend over a Slack screen share.</p>
+<h2>You told me about it two years ago</h2>
+<p>"That's funny," he said. "I already use this. And you told me about it two years ago."</p>
+<p>We looked up the extension he had installed. It was called <a href="https://marketplace.visualstudio.com/items?itemName=MatthewNespor.vscode-color-identifiers-mode">Color Identifiers</a>. It already gave identifiers stable colors in Visual Studio Code.</p>
+<p>Then I remembered. He was right. I had recommended it to him.</p>
+<p>I had remembered Polychromatic, the original Xcode plugin. I had remembered what it changed about reading code and why I liked it. I had remembered the Matrix. What I had forgotten was the name of the Visual Studio Code extension that already carried the same idea forward, and that I had already found it and told someone else to use it.</p>
+<p>The product name disappeared. The idea survived intact.</p>
+<h2>Good ideas never die</h2>
+<p>Before AI, I found things I liked and told my friends about them.</p>
+<p>Now I build things I like, show them to my friends, and they tell me I already recommended the same thing two years ago.</p>
+<p>AI shortened the distance between remembering an idea and making it real. It did nothing for my memory.</p>
+<p>Good ideas never die. Sometimes I just rebuild them.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Lost in Compression — A 3-Bit Journey</title>
 <link>https://scriptease.dev/posts/2026-08-25-lost-in-compression/</link>

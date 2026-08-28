@@ -1,5 +1,17 @@
 window.POSTS = [
   {
+    "slug": "2026-08-28-good-ideas-never-die",
+    "title": "Good Ideas Never Die",
+    "hook": "I showed a friend the VS Code extension I had just built. 'That's funny,' he said. 'I already use this. And you told me about it two years ago.'",
+    "date": "2026-08-28",
+    "month": "2026-08",
+    "tags": [
+      "ai",
+      "programming",
+      "vscode"
+    ]
+  },
+  {
     "slug": "2026-08-25-lost-in-compression",
     "title": "Lost in Compression — A 3-Bit Journey",
     "hook": "It started on Reddit: someone had benchmarked the exact model I already run, on the exact laptop I own, and it ran twice as fast — in an engine I'd written off months ago.",
