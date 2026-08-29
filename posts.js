@@ -1,5 +1,33 @@
 window.POSTS = [
   {
+    "slug": "2026-08-29-sharing-a-chat-with-myself-too",
+    "title": "Sharing a Chat With Myself Too",
+    "hook": "This morning an AI and I built a tool for finding my old conversations. Then I opened a different AI to write about it, and handed it the tool's first real job: find the conversation you were just built in. It came back empty-handed.",
+    "date": "2026-08-29",
+    "month": "2026-08",
+    "tags": [
+      "ai",
+      "claude",
+      "memory",
+      "skills",
+      "obsidian",
+      "saga"
+    ]
+  },
+  {
+    "slug": "2026-08-28-tackling-complexity-through-visual-lenses",
+    "title": "Everything Was Correct. Nothing Was Interesting.",
+    "hook": "The source-code browser from yesterday's story let me enter the same project through features, structure, patterns, or dependencies. The next morning, I pointed the idea at my Obsidian vault. It came back with folders, broken links, and a list of notes that linked to each other. I had turned a way to explore into a plumbing report.",
+    "date": "2026-08-28",
+    "month": "2026-08",
+    "tags": [
+      "obsidian",
+      "ai",
+      "agent",
+      "visualisation"
+    ]
+  },
+  {
     "slug": "2026-08-28-good-ideas-never-die",
     "title": "Good Ideas Never Die",
     "hook": "I showed a friend the VS Code extension I had just built. 'That's funny,' he said. 'I already use this. And you told me about it two years ago.'",

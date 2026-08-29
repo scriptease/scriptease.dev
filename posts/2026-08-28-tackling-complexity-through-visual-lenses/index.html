@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Everything Was Correct. Nothing Was Interesting. — scriptease.dev</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Everything Was Correct. Nothing Was Interesting.</h1>
+<p class="post-tags"><a href="/tags/obsidian/">#obsidian</a> <a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/visualisation/">#visualisation</a></p>
+<!-- Working slug: tackling-complexity-through-visual-lenses -->
+
+<p>The source-code browser from <a href="https://scriptease.dev/posts/2026-08-28-good-ideas-never-die/">yesterday's story</a> let me enter the same project through features, structure, patterns, or dependencies. The next morning, I pointed the idea at my Obsidian vault.</p>
+<p>It came back with folders, broken links, and a list of notes that linked to each other. I had turned a way to explore into a plumbing report.</p>
+<h2>Four ways into the same project</h2>
+<p>The original browser never made me start with folders; I only needed to know what interested me. I asked the AI to bring that into my Obsidian vault — the notes app where everything I keep lives — and opened the result on my iPad.</p>
+<p>I did not like what I saw.</p>
+<h2>The same mess, prettier</h2>
+<p>The Insights tab showed the first problem. It listed my most-linked notes, broken links, and notes linking nowhere — accurate, measurable, and I had no interest in browsing any of it. My decision notes, deliberately linked to everything they touch, overshadowed the rest.</p>
+<p>The tag cloud had drowned too: machine-classified screenshots had flooded it with hundreds of tags nobody authored. Curated tags invite you to look around; generated ones are noise.</p>
+<p>The viewer showed the exact mess I was already dealing with, just through a different lens.</p>
+<h2>I had made the problem harder</h2>
+<p>The AI was not at fault. My vault is organized for a different job.</p>
+<p>My vault is mostly chronological. Research and tasks live in folders indexed by month and date. The actual summary inside each task folder is called <code>📌 Overview.md</code>.</p>
+<p>That structure works. I can jump to the newest work, close a month, or browse backward through the history. It does not tell a script what hundreds of files named “Overview” are about.</p>
+<p>You can order books by size, by color, by year, by topic. Every ordering is right for one question and wrong for all the others. Mine was ordered by date, and I was asking about topics.</p>
+<p>The labels on my notes were uneven too. Blog posts carried tags with a vocabulary built from thirteen years of my saved link collection. My research had none. So I asked my AI to build them retroactively.</p>
+<p>The first viewer had exposed the flaws. I decided to fix the notes before pointing the script at them again.</p>
+<h2>Dates stay inside the notes</h2>
+<p>I told the AI what I actually wanted: “The most important thing for me is the relationship of the different topics, not the relationship to time. I want to explore the topics. That's the whole idea of this.”</p>
+<p>Then I suggested a two-dimensional graph. The size of a circle could show how much material belonged to a subject. Lines could show where subjects shared material.</p>
+<p>The folders disappeared. Eleven territories took their place.</p>
+<p><img alt="A map of the vault as colored topic territories. Agents is selected in the center, connected to Local AI, Vault, Work, Apple, Teaching, and other subjects; three smaller circles expose its research, projects, and blog posts." src="assets/tackling-complexity-through-visual-lenses/knowledge-territories.png" /></p>
+<p>Agents sat in the middle with 155 notes, projects, and posts. The lines showed what the territories shared — 39 pieces between Agents and Local AI alone.</p>
+<p>When I hovered over a territory, three smaller circles appeared: Research, Projects, and Blog. I could see whether I had only explored a subject, built something from it, or written about it. Clicking one jumped straight to those notes.</p>
+<p>For the first time, opening the viewer did not begin with knowing a filename.</p>
+<h2>What lives between two circles?</h2>
+<p>The lines soon became more interesting than the circles.</p>
+<p>I asked what else the lines could tell. The AI proposed treating each one as a crossroads, and I opened one to see.</p>
+<p>Clicking the line between Agents and Teaching opened the 16 pieces that belonged to both. The page pulled out what they had in common: presentations, memory systems, and the difference between a claim and its substance.</p>
+<p><img alt="The crossroads between Agents and Teaching. A constellation of shared entities sits above the underlying work, divided into Explore, Build and decide, and Share." src="assets/tackling-complexity-through-visual-lenses/crossroads-agents-teaching.png" /></p>
+<p>Below the constellation, the material formed a trail. Research sat under Explore. Things I had made or decided would sit in the middle. Two published posts waited under Share.</p>
+<p>The same notes were no longer merely connected. The connection had contents.</p>
+<h2>It looked like a modern art painting</h2>
+<p>Dates had been a problem for the first versions of this map, but I still cared about them. So I asked how I could visualize my attention over time.</p>
+<p>The first version put circles on a timeline, and they refused to come out right. We kept steering — through a subway map, into flowing lanes.</p>
+<p>The final result stacked the topics into colored streams. Each topic received a percentage. Underneath, grey bars showed the absolute amount of activity, and clicking a month opened everything that happened during it.</p>
+<p>We agreed that writing counted more. A subject that stayed in my head long enough to write about it was more important.</p>
+<p><img alt="A stacked stream graph from April to August showing Work dominating April, Local AI growing in May, Agents becoming the largest area in June and July, and AI discourse expanding in August." src="assets/tackling-complexity-through-visual-lenses/attention-timeline.png" /></p>
+<p>In April, Work occupied almost the whole picture — that was me setting up the project docs inside the vault. Local AI expanded in May. Agents became the largest stream through June and July. AI discourse widened sharply in August.</p>
+<p>After some tries to make everything look equidistant, I said: “I think I like it more. Now it looks like a modern art painting.”</p>
+<h2>The vault is a machine</h2>
+<p>I wanted one more view, of the machinery itself — the pipelines and rules that run the vault. “I have no idea how I would visualize that,” I wrote, “but I trust you.”</p>
+<p>The result arranged the vault into four layers: things coming in, rules acting on them, durable knowledge, and things going out. Selecting one flow dimmed everything else.</p>
+<p><img alt="The vault drawn as an operational machine. The Research pipeline is selected, tracing requests, reminders, external signals, orchestration, research dossiers, and Discord notifications across four layers." src="assets/tackling-complexity-through-visual-lenses/vault-operational-architecture.png" /></p>
+<p>The screenshot follows one research request. It enters through the queue, can be promoted from reminders or suggested by external signals, passes through the research worker, becomes a dossier, and ends with a Discord notification. Clicking a component shows what it receives, what it emits, and which documents define it.</p>
+<p>The four images here are the views that can explain themselves without opening the private notes beneath them. I had renamed the employer territory to Work while we were still building — I wanted maps I could share without cleaning them afterward. The Decisions view stayed out for the opposite reason: its shape is striking, but it means nothing without showing the decisions themselves.</p>
+<h2>Make it your own</h2>
+<p>The first Python script could scan every file, count every link, and draw every relationship. That was enough to produce a plumbing report. A visually pleasing plumbing report.</p>
+<p>If you want one for your own notes, the secret is that you never need to specify the result. Point the AI at something you liked — mine was the source-code browser — and say what you liked about it. Look at every attempt and say what you don't want to see. When a lens exposes messy notes, fix the notes, not the lens. And let every view hide almost everything, so one relationship becomes visible.</p>
+<p>The plumbing was still there. Yesterday's story ended with a plugin that felt like seeing the Matrix: the structure of the code fades, the flow shows. A day later, my notes learned the same trick.</p>
+<!-- EDITORIAL / ASSET NOTES
+
+- Show, do not tell: do not describe the viewer as powerful, intuitive, visual,
+or explorable, and do not turn the four lenses into a feature list. Introduce each image through the concrete problem or question that caused it to exist, then let the visible result and Florian's reaction demonstrate its value.
+- The first result was not only the model's failure. The vault made meaning hard
+to recover: month folders contain dated slug folders, and the note holding the actual dossier is commonly named only `📌 Overview.md`. Dates and paths make recent material easy to file and find, but neither the folder hierarchy nor the filename explains what a note means when generating a visualization.
+- The early viewer had separate **Tags** and **Insights** tabs. Tags became
+unusable because machine-classified screenshots contributed hundreds of tags that did not follow the authored-note schema. Insights listed graph statistics: the most-linked notes (hubs), notes with the most outgoing links, dead ends or orphans, and broken links. The lists were measurable and accurate, but Florian had no interest in browsing any of them.
+- Decisions appeared prominently in the hub lists because decision notes are
+intentionally highly interlinked. That was not a newly discovered relationship; it was an implementation detail of the decision system. Broken links and dead ends belonged in a linter for an agent to fix, not in a human exploration tool.
+- Show this through the actual corrections: Florian excluded screenshots from
+the tag cloud and rejected the Insights view as plumbing. The insight was not that tags, decisions, or link checks were bad; it was that generic graph metrics answered maintenance questions instead of the questions that made him curious.
+- The viewer also exposed weaknesses in the underlying data. Earlier research
+dossiers did not consistently carry tags, while blog posts used a separate tag vocabulary. Florian was already revisiting research tasks and grouping related work; building the viewer made it clear that shared metadata had to express those relationships before a script could visualize them usefully.
+- Keep this reciprocal rather than presenting the script as magic: Florian
+improved the data so the viewer had meaningful signals, then kept steering the viewer away from mechanical outputs that were easy to calculate but dull to inspect. The process alternated between making the vault more legible and making the visualization more selective.
+- A useful line of thought for the prose: writing a Python script that can count,
+group, and connect everything is the easy part. If the data does not express what matters, the script only produces a polished view of things you do not want to see.
+- Place that obstacle after the plumbing report. Then show persistence rather
+than claiming it: Florian kept correcting the viewer, first removing dates as visual structure, then asking for topic relationships, a 2D graph, crossroads, trails, a timeline, and finally the vault's operational architecture.
+- Preserve the emotional turn in Florian's own terms: the awkward storage model
+did not stop him from trying, and the result became more interesting than what he could have specified at the beginning. Demonstrate that expansion through the four screenshots rather than summarizing it as AI magic.
+- The four selected screenshots are intentional: territories, crossroads,
+timeline, and operational architecture each remain meaningful without exposing the private notes behind them.
+- Do not add the Decisions view. It is visually extraordinary, but explaining it
+without showing the underlying decisions would make the image meaningless; showing those decisions would expose private material.
+- "Work" is not a publication-time redaction. Florian anticipated sharing the
+visualization while building it and asked the agent to rename the employer-specific territory to "Work" in the generated viewer itself. -->
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-08-28-good-ideas-never-die/">← Good Ideas Never Die</a><a class="next" href="/posts/2026-08-29-sharing-a-chat-with-myself-too/">Sharing a Chat With Myself Too →</a></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
