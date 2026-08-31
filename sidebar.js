@@ -104,4 +104,81 @@
       if (!el.contains(e.target) && e.target !== btn) setOpen(false);
     });
   }
+  // Header search: the magnifier expands into an input; the full-text index
+  // (/search-index.js) is loaded lazily the first time it opens.
+  var sWrap = document.getElementById("site-search");
+  var sBtn = document.getElementById("search-toggle");
+  var sInput = document.getElementById("search-input");
+  var sRes = document.getElementById("search-results");
+  if (sWrap && sBtn && sInput && sRes) {
+    var indexLoading = false;
+
+    function loadIndex() {
+      if (window.SEARCH_INDEX || indexLoading) return;
+      indexLoading = true;
+      var s = document.createElement("script");
+      s.src = "/search-index.js";
+      s.onload = function () { runSearch(); };
+      document.head.appendChild(s);
+    }
+
+    function setSearchOpen(open) {
+      sWrap.classList.toggle("open", open);
+      sBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) { loadIndex(); sInput.focus(); }
+      else { sRes.hidden = true; }
+    }
+
+    function snippet(text, q) {
+      var i = text.toLowerCase().indexOf(q);
+      if (i < 0) return "";
+      var start = Math.max(0, i - 40);
+      return (start > 0 ? "…" : "") + esc(text.slice(start, i)) +
+        "<mark>" + esc(text.slice(i, i + q.length)) + "</mark>" +
+        esc(text.slice(i + q.length, i + q.length + 60)) + "…";
+    }
+
+    function runSearch() {
+      var q = sInput.value.trim().toLowerCase();
+      if (q.length < 2) { sRes.hidden = true; return; }
+      var idx = window.SEARCH_INDEX || {};
+      var hits = [];
+      posts.forEach(function (p) {
+        var inTitle = p.title.toLowerCase().indexOf(q) >= 0;
+        var inMeta = (p.hook + " " + (p.tags || []).join(" "))
+          .toLowerCase().indexOf(q) >= 0;
+        var body = idx[p.slug] || "";
+        var bi = body.toLowerCase().indexOf(q);
+        if (inTitle || inMeta || bi >= 0)
+          hits.push({ p: p, body: body, bi: bi,
+                      rank: inTitle ? 0 : inMeta ? 1 : 2 });
+      });
+      hits.sort(function (a, b) { return a.rank - b.rank; });
+      if (!hits.length) {
+        sRes.innerHTML = '<p class="search-empty">No posts found.</p>';
+        sRes.hidden = false;
+        return;
+      }
+      sRes.innerHTML = hits.slice(0, 8).map(function (h) {
+        var sn = h.bi >= 0 ? snippet(h.body, q) : esc(h.p.hook);
+        return '<a href="/posts/' + h.p.slug + '/">' +
+          "<strong>" + esc(h.p.title) + "</strong>" +
+          "<time>" + esc(h.p.date) + "</time>" +
+          '<span class="snippet">' + sn + "</span></a>";
+      }).join("");
+      sRes.hidden = false;
+    }
+
+    sBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      setSearchOpen(!sWrap.classList.contains("open"));
+    });
+    sInput.addEventListener("input", runSearch);
+    sInput.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setSearchOpen(false);
+    });
+    document.addEventListener("click", function (e) {
+      if (!sWrap.contains(e.target)) setSearchOpen(false);
+    });
+  }
 })();

@@ -156,6 +156,13 @@ PAGE = """<!DOCTYPE html>
 <header class="site">
   <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> {site}</a>
   <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
     <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
     </a>
@@ -369,6 +376,19 @@ def write_posts_js(posts):
         "window.POSTS = %s;\n" % json.dumps(data, ensure_ascii=False, indent=2))
 
 
+def write_search_index(posts):
+    """window.SEARCH_INDEX = {slug: plain body text} — lazy-loaded by the
+    header search only when it's opened, so it never weighs down page load."""
+    def plain(html):
+        text = re.sub(r'<[^>]+>', ' ', html)
+        text = (text.replace("&amp;", "&").replace("&lt;", "<")
+                .replace("&gt;", ">").replace("&quot;", '"').replace("&#39;", "'"))
+        return re.sub(r'\s+', ' ', text).strip()
+    data = {p["slug"]: plain(p["article"]) for p in posts}
+    (REPO / "search-index.js").write_text(
+        "window.SEARCH_INDEX = %s;\n" % json.dumps(data, ensure_ascii=False))
+
+
 def rfc822(created):
     """`2026-07-31` -> RFC-822 date at 00:00 UTC, for RSS pubDate."""
     import email.utils
@@ -442,6 +462,7 @@ def main():
     build_month_pages(posts)
     build_tag_pages(posts)
     write_posts_js(posts)
+    write_search_index(posts)
     write_feed(posts)
     if posts:
         (REPO / "index.html").write_text(
