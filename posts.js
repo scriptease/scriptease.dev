@@ -1,5 +1,20 @@
 window.POSTS = [
   {
+    "slug": "2026-09-05-redacted",
+    "title": "Redacted",
+    "hook": "I watched a video about a new Claude Code feature, hooks that can rewrite what the AI reads, and knew within a minute what I'd use it for. Then my research agent came back with its verdict: the feature doesn't exist.",
+    "date": "2026-09-05",
+    "month": "2026-09",
+    "tags": [
+      "ai",
+      "claude",
+      "agent",
+      "security",
+      "plugins",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-08-30-the-checklist-id-been-following",
     "title": "The Checklist I'd Been Following for Ten Years",
     "hook": "A stranger's blog post gave a name to something I'd been doing for ten years without noticing. An hour later I was checking my own work against his ten rules.",
