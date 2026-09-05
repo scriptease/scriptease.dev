@@ -51,7 +51,7 @@
 <p>A deny list is a sign on a door. A model has a thousand doors.</p>
 <h2>Discovered by someone on YouTube</h2>
 <p>On Friday evening a video turned up in my feed: "Anthropic Just Dropped the Biggest Claude Code Update Yet." I'm allergic to the title format, but I watched.</p>
-<p>The feature was called function hooks. Claude Code already has hooks. In <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">Childproofing an AI</a>, one stepped in before the AI sent my code to the team and asked <em>are we sure?</em> Today's hooks can say yes or no and leave a note. They cannot change what the AI <em>reads</em>. They stand outside the conversation.</p>
+<p>The feature was called <a href="https://claudefa.st/blog/tools/hooks/function-hooks">function hooks</a>. Claude Code already has hooks. In <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">Childproofing an AI</a>, one stepped in before the AI sent my code to the team and asked <em>are we sure?</em> Today's hooks can say yes or no and leave a note. They cannot change what the AI <em>reads</em>. They stand outside the conversation.</p>
 <p>Function hooks stand inside it. They're a chain of checkpoints: each one sees the message, can rewrite it, then passes it on.</p>
 <p>The very first demo in the video was redaction. A secret goes in, a placeholder reaches the AI, and when the AI later uses the placeholder in a command the real value is put back in. The AI never holds the secret. The command still works.</p>
 <p>That was my problem, solved by someone else on YouTube. It was late, and I had just hit the five-hour usage limit on my AI, so I couldn't try anything myself. I sent the link to my research queue instead, the automated agent that reads things properly for me and files a report, knowing the answer would be waiting in the morning. Then I went to bed.</p>
@@ -82,6 +82,7 @@
 <p>I went back to the report and corrected it. The machinery is in the public version, and it only turns on with that extra startup switch. What hasn't shipped is a decision: the feature is marked early access, the design is still open for comments, and the way plugins talk to it may change without notice.</p>
 <p>"It hasn't shipped" was the accurate answer to a question I hadn't asked. Mine was whether I could use it on Saturday morning.</p>
 <p>The video's title was clickbait. It was also a door for building something cool.</p>
+<p>If you want to try it out yourself, <a href="https://claudefa.st/blog/tools/hooks/function-hooks">here is the unofficial documentation</a>.</p>
 </article>
 <nav class="post-nav"><a class="prev" href="/posts/2026-08-30-the-checklist-id-been-following/">← The Checklist I'd Been Following for Ten Years</a><span></span></nav>
   </main>
