@@ -63,7 +63,7 @@
 <p>I went back to the report and corrected it. The machinery is in the public version, and it only turns on with that extra startup switch. What hasn't shipped is a decision: the feature is marked early access, the design is still open for comments, and the way plugins talk to it may change without notice.</p>
 <p>"It hasn't shipped" was the accurate answer to a question I hadn't asked. Mine was whether I could use it on Saturday morning.</p>
 <p>The video's title was clickbait. It was also a door for building something cool.</p>
-<p>If you want to try it out yourself, <a href="https://claudefa.st/blog/tools/hooks/function-hooks">here is the unofficial documentation</a>.</p>
+<p>Here is <a href="https://github.com/scriptease/claude-code-redact-plugin">the plugin described in this post</a>, and here is <a href="https://claudefa.st/blog/tools/hooks/function-hooks">the unofficial documentation</a> if you want to learn more.</p>
 </article>]]></content:encoded>
 </item>
 <item>
