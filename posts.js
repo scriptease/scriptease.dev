@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-09-06-qwen-revisited",
+    "title": "Qwen Revisited",
+    "hook": "Three weeks ago a model on my laptop designed a Japanese temple and never got to see it. On Sunday I gave it a third try. The temple appeared on my iPad on the first attempt — and by evening the model had looked at a photo of it and pointed at its own mistakes.",
+    "date": "2026-09-06",
+    "month": "2026-09",
+    "tags": [
+      "ai",
+      "llm",
+      "localai",
+      "webgl",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-09-05-redacted",
     "title": "Redacted",
     "hook": "I watched a video about a new Claude Code feature, hooks that can rewrite what the AI reads, and knew within a minute what I'd use it for. Then my research agent came back with its verdict: the feature doesn't exist.",
