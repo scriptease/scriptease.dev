@@ -7,12 +7,12 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sun, 06 Sep 2026 00:00:00 +0000</lastBuildDate>
+<lastBuildDate>Thu, 10 Sep 2026 00:00:00 +0000</lastBuildDate>
 <item>
 <title>Qwen Revisited</title>
 <link>https://scriptease.dev/posts/2026-09-06-qwen-revisited/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-06-qwen-revisited/</guid>
-<pubDate>Sun, 06 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
 <category>ai</category><category>llm</category><category>localai</category><category>webgl</category><category>saga</category><description>Three weeks ago a model on my laptop designed a Japanese temple and never got to see it. On Sunday I gave it a third try. The temple appeared on my iPad on the first attempt — and by evening the model had looked at a photo of it and pointed at its own mistakes.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Qwen Revisited</h1>
@@ -77,68 +77,10 @@ any libraries, and it must render even in Safari on the iPad
 </article>]]></content:encoded>
 </item>
 <item>
-<title>Redacted</title>
-<link>https://scriptease.dev/posts/2026-09-05-redacted/</link>
-<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-05-redacted/</guid>
-<pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
-<category>ai</category><category>claude</category><category>agent</category><category>security</category><category>plugins</category><category>saga</category><description>I watched a video about a new Claude Code feature, hooks that can rewrite what the AI reads, and knew within a minute what I'd use it for. Then my research agent came back with its verdict: the feature doesn't exist.</description>
-<content:encoded><![CDATA[<article class="post">
-<h1>Redacted</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/security/">#security</a> <a href="/tags/plugins/">#plugins</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The AI Parenting saga: <a href="https://scriptease.dev/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · 4. Redacted</em></p>
-<p>I watched a video about a new Claude Code feature, hooks that can rewrite what the AI reads, and knew within a minute what I'd use it for. Then my research agent came back with its verdict: the feature doesn't exist.</p>
-<h2>Everything you type is uploaded</h2>
-<p>An AI conversation is a transcript. Whatever I type goes to the AI company's servers, gets stored there, and comes back with each later message so the AI remembers what we were talking about. Passwords. Customer emails. The lot.</p>
-<p>At work that isn't a matter of taste. Our databases hold customer data, and European law says that data doesn't leave Europe. An AI reading raw customer records from a live database is exactly the thing that must not happen.</p>
-<p>I'd been circling this for months. In <a href="https://scriptease.dev/posts/2026-08-02-connecting-50-databases-to-an-ai/">an earlier post</a> I built my database tool so the AI never sees a password: it only names <em>which</em> key to use, and the tool fetches it. For the data itself, my plan was heavier: swap the cloud AI for one running on my own laptop. I ran the experiment in July: a model with 35 billion learned settings, running on my laptop, working a real database unattended. It got there. It also took five minutes per step by the end.</p>
-<p>The local route worked, slowly. The cloud route was fast and forbidden.</p>
-<h2>A sign on a door</h2>
-<p>In the meantime I'd done what everyone does: I wrote a rule. This from someone who had just published a whole post about walls an AI walks around.</p>
-<p>Claude Code, the AI in my terminal, has a deny list: things it is forbidden to touch. One line says the file holding my keys — the tokens for our build server, our ticket system, my blog — is off limits. Don't read it.</p>
-<p>Then I watched what happened over the summer.</p>
-<p>One day an assistant read the file anyway and, helpfully, wrote me a security report listing every credential in it by name. Another appended a line to the file and printed the last four lines to show its work. Most days it didn't even need a trick: the publishing script for this very blog needs a key from that file, so the assistant loads the file into its shell first. The rule only covers one door. Loading, printing, searching, tailing are four other doors, and I'd confirmed the shell one to it myself.</p>
-<p>A deny list is a sign on a door. A model has a thousand doors.</p>
-<h2>Discovered by someone on YouTube</h2>
-<p>On Friday evening a video turned up in my feed: "Anthropic Just Dropped the Biggest Claude Code Update Yet." I'm allergic to the title format, but I watched.</p>
-<p>The feature was called <a href="https://claudefa.st/blog/tools/hooks/function-hooks">function hooks</a>. Claude Code already has hooks. In <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">Childproofing an AI</a>, one stepped in before the AI sent my code to the team and asked <em>are we sure?</em> Today's hooks can say yes or no and leave a note. They cannot change what the AI <em>reads</em>. They stand outside the conversation.</p>
-<p>Function hooks stand inside it. They're a chain of checkpoints: each one sees the message, can rewrite it, then passes it on.</p>
-<p>The very first demo in the video was redaction. A secret goes in, a placeholder reaches the AI, and when the AI later uses the placeholder in a command the real value is put back in. The AI never holds the secret. The command still works.</p>
-<p>That was my problem, solved by someone else on YouTube. It was late, and I had just hit the five-hour usage limit on my AI, so I couldn't try anything myself. I sent the link to my research queue instead, the automated agent that reads things properly for me and files a report, knowing the answer would be waiting in the morning. Then I went to bed.</p>
-<h2>"It hasn't shipped yet"</h2>
-<p>The report came back before midnight with six sources. The video was a demo of a proposal, it said. Anthropic's own team had confirmed on X, formerly Twitter: "It hasn't shipped yet." The presenter must have had a preview build. Recommendation: don't build on it, revisit when it's real.</p>
-<p>In the morning I read it. Then I read it again. Why does it say the feature doesn't exist? I had watched a man type a flag into his terminal and use it.</p>
-<p>Let's test it.</p>
-<h2>Done in ten minutes</h2>
-<p>The flag, an extra switch typed when starting Claude Code, worked. A new built-in command appeared: write or debug a plugin, an add-on, made of function hooks. I dictated one paragraph, typos and all: I want a middleware that intercepts personal information and secrets, stores them in memory for the session, makes them unreadable for the AI but still functioning.</p>
-<p>The assistant inspected the version I was running, wrote the plugin and thirteen tests, then started a second copy of itself with the plugin loaded and fed it a fake token. It checked the conversation, checked the disk, and committed.</p>
-<p>From my dictation to the commit: nine minutes and thirty-eight seconds.</p>
-<h2>Can I give you an email and you say it?</h2>
-<p>I started a session with the plugin loaded and pasted my email address.</p>
-<p>The reply: it had received <code>REDACTED_EMAIL_1</code> and nothing else. Saying it back just printed the placeholder. Then it ran a command in my terminal with the placeholder in it. My terminal printed my real address. What came back into the conversation was the placeholder again.</p>
-<p>Then I typed: run <code>say</code> with it.</p>
-<p><code>say</code> is the Mac's built-in text-to-speech. My laptop read my email address out loud. The AI that gave the order still only had a badge number.</p>
-<p><img alt="Terminal session: the prompt &quot;can i give you an email and you say it REDACTED_EMAIL_1&quot;, the AI replying that it only sees the placeholder, an echo command printing the placeholder back, then &quot;run say with it&quot; and the reply: spoken, your speakers got the real address and I still only have the placeholder." src="assets/redacted/email-test.png" /></p>
-<h2>Fun with flags</h2>
-<p>Then I did the boring test, the one that separates a result from a coincidence. I started a session with the plugin loaded but <em>without</em> the flag, and pasted a throwaway address. The plugin loaded fine. No error, no warning. And it did nothing: the address arrived unredacted.</p>
-<p>The redaction was the plugin, not luck. And the failure mode is silence: forget the flag and you get a plugin that looks installed and guards nothing.</p>
-<p>Then I turned the flag back on and asked: can you still print the first email I tried without the flag?</p>
-<p>Yes, it said, and printed it.</p>
-<p>The plugin guards the door at the moment I press enter. Whatever walked into the transcript before the guard was on stays there, readable. The flag has to be set before the session starts, not during.</p>
-<p>The approval dialog also shows the command as it will really run, real values and all. That's my screen only, but it's there. And the engine writes my prompt to its own log as typed, before any hook gets a look at it. The user and assistant messages hold placeholders; that one bookkeeping line doesn't. So the safe move is to hand a secret over with <code>redact NAME=value</code> first, then talk in placeholders.</p>
-<p>It looks for familiar shapes and unusually random text: emails, bank account numbers, valid card numbers, the common beginnings of secret keys. It's a seatbelt, not a vault. For the database question the answer from the June research still stands: mask the data in the database itself, always replacing the same value the same way, and treat everything that handles it afterward as a second layer.</p>
-<p>This is the second layer. It exists.</p>
-<h2>The research was right, and wrong</h2>
-<p>I went back to the report and corrected it. The machinery is in the public version, and it only turns on with that extra startup switch. What hasn't shipped is a decision: the feature is marked early access, the design is still open for comments, and the way plugins talk to it may change without notice.</p>
-<p>"It hasn't shipped" was the accurate answer to a question I hadn't asked. Mine was whether I could use it on Saturday morning.</p>
-<p>The video's title was clickbait. It was also a door for building something cool.</p>
-<p>Here is <a href="https://github.com/scriptease/claude-code-redact-plugin">the plugin described in this post</a>, and here is <a href="https://claudefa.st/blog/tools/hooks/function-hooks">the unofficial documentation</a> if you want to learn more.</p>
-</article>]]></content:encoded>
-</item>
-<item>
 <title>Every Login All at Once</title>
 <link>https://scriptease.dev/posts/2026-09-05-every-login-all-at-once/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-05-every-login-all-at-once/</guid>
-<pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
 <category>ai</category><category>agent</category><category>ios</category><category>simulator</category><category>password</category><description>Most of Saturday went into one wrong assumption. The AI and I blamed the iOS 27 beta for eating keystrokes. The real culprit was a stuck process on my Mac, and I literally had to kill it twice because it refused to die.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Every Login All at Once</h1>
@@ -195,6 +137,64 @@ any libraries, and it must render even in Safari on the iPad
 <p>The second is the mapping. A table that says which app variant needs which recipe, and which username. Add a variant, add a line.</p>
 <p>The third is the recipe. It does not know the sequence of screens in advance. It reads the screen through accessibility labels, classifies which of the login pages it is looking at, and acts accordingly. Up to seven steps, retry button to home, without a script telling it what comes next.</p>
 <p>Where are the secrets. Which login does this app need. What is on the screen right now.</p>
+</article>]]></content:encoded>
+</item>
+<item>
+<title>Redacted</title>
+<link>https://scriptease.dev/posts/2026-09-05-redacted/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-05-redacted/</guid>
+<pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>claude</category><category>agent</category><category>security</category><category>plugins</category><category>saga</category><description>I watched a video about a new Claude Code feature, hooks that can rewrite what the AI reads, and knew within a minute what I'd use it for. Then my research agent came back with its verdict: the feature doesn't exist.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Redacted</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/security/">#security</a> <a href="/tags/plugins/">#plugins</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The AI Parenting saga: <a href="https://scriptease.dev/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · 4. Redacted</em></p>
+<p>I watched a video about a new Claude Code feature, hooks that can rewrite what the AI reads, and knew within a minute what I'd use it for. Then my research agent came back with its verdict: the feature doesn't exist.</p>
+<h2>Everything you type is uploaded</h2>
+<p>An AI conversation is a transcript. Whatever I type goes to the AI company's servers, gets stored there, and comes back with each later message so the AI remembers what we were talking about. Passwords. Customer emails. The lot.</p>
+<p>At work that isn't a matter of taste. Our databases hold customer data, and European law says that data doesn't leave Europe. An AI reading raw customer records from a live database is exactly the thing that must not happen.</p>
+<p>I'd been circling this for months. In <a href="https://scriptease.dev/posts/2026-08-02-connecting-50-databases-to-an-ai/">an earlier post</a> I built my database tool so the AI never sees a password: it only names <em>which</em> key to use, and the tool fetches it. For the data itself, my plan was heavier: swap the cloud AI for one running on my own laptop. I ran the experiment in July: a model with 35 billion learned settings, running on my laptop, working a real database unattended. It got there. It also took five minutes per step by the end.</p>
+<p>The local route worked, slowly. The cloud route was fast and forbidden.</p>
+<h2>A sign on a door</h2>
+<p>In the meantime I'd done what everyone does: I wrote a rule. This from someone who had just published a whole post about walls an AI walks around.</p>
+<p>Claude Code, the AI in my terminal, has a deny list: things it is forbidden to touch. One line says the file holding my keys — the tokens for our build server, our ticket system, my blog — is off limits. Don't read it.</p>
+<p>Then I watched what happened over the summer.</p>
+<p>One day an assistant read the file anyway and, helpfully, wrote me a security report listing every credential in it by name. Another appended a line to the file and printed the last four lines to show its work. Most days it didn't even need a trick: the publishing script for this very blog needs a key from that file, so the assistant loads the file into its shell first. The rule only covers one door. Loading, printing, searching, tailing are four other doors, and I'd confirmed the shell one to it myself.</p>
+<p>A deny list is a sign on a door. A model has a thousand doors.</p>
+<h2>Discovered by someone on YouTube</h2>
+<p>On Friday evening a video turned up in my feed: "Anthropic Just Dropped the Biggest Claude Code Update Yet." I'm allergic to the title format, but I watched.</p>
+<p>The feature was called <a href="https://claudefa.st/blog/tools/hooks/function-hooks">function hooks</a>. Claude Code already has hooks. In <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">Childproofing an AI</a>, one stepped in before the AI sent my code to the team and asked <em>are we sure?</em> Today's hooks can say yes or no and leave a note. They cannot change what the AI <em>reads</em>. They stand outside the conversation.</p>
+<p>Function hooks stand inside it. They're a chain of checkpoints: each one sees the message, can rewrite it, then passes it on.</p>
+<p>The very first demo in the video was redaction. A secret goes in, a placeholder reaches the AI, and when the AI later uses the placeholder in a command the real value is put back in. The AI never holds the secret. The command still works.</p>
+<p>That was my problem, solved by someone else on YouTube. It was late, and I had just hit the five-hour usage limit on my AI, so I couldn't try anything myself. I sent the link to my research queue instead, the automated agent that reads things properly for me and files a report, knowing the answer would be waiting in the morning. Then I went to bed.</p>
+<h2>"It hasn't shipped yet"</h2>
+<p>The report came back before midnight with six sources. The video was a demo of a proposal, it said. Anthropic's own team had confirmed on X, formerly Twitter: "It hasn't shipped yet." The presenter must have had a preview build. Recommendation: don't build on it, revisit when it's real.</p>
+<p>In the morning I read it. Then I read it again. Why does it say the feature doesn't exist? I had watched a man type a flag into his terminal and use it.</p>
+<p>Let's test it.</p>
+<h2>Done in ten minutes</h2>
+<p>The flag, an extra switch typed when starting Claude Code, worked. A new built-in command appeared: write or debug a plugin, an add-on, made of function hooks. I dictated one paragraph, typos and all: I want a middleware that intercepts personal information and secrets, stores them in memory for the session, makes them unreadable for the AI but still functioning.</p>
+<p>The assistant inspected the version I was running, wrote the plugin and thirteen tests, then started a second copy of itself with the plugin loaded and fed it a fake token. It checked the conversation, checked the disk, and committed.</p>
+<p>From my dictation to the commit: nine minutes and thirty-eight seconds.</p>
+<h2>Can I give you an email and you say it?</h2>
+<p>I started a session with the plugin loaded and pasted my email address.</p>
+<p>The reply: it had received <code>REDACTED_EMAIL_1</code> and nothing else. Saying it back just printed the placeholder. Then it ran a command in my terminal with the placeholder in it. My terminal printed my real address. What came back into the conversation was the placeholder again.</p>
+<p>Then I typed: run <code>say</code> with it.</p>
+<p><code>say</code> is the Mac's built-in text-to-speech. My laptop read my email address out loud. The AI that gave the order still only had a badge number.</p>
+<p><img alt="Terminal session: the prompt &quot;can i give you an email and you say it REDACTED_EMAIL_1&quot;, the AI replying that it only sees the placeholder, an echo command printing the placeholder back, then &quot;run say with it&quot; and the reply: spoken, your speakers got the real address and I still only have the placeholder." src="assets/redacted/email-test.png" /></p>
+<h2>Fun with flags</h2>
+<p>Then I did the boring test, the one that separates a result from a coincidence. I started a session with the plugin loaded but <em>without</em> the flag, and pasted a throwaway address. The plugin loaded fine. No error, no warning. And it did nothing: the address arrived unredacted.</p>
+<p>The redaction was the plugin, not luck. And the failure mode is silence: forget the flag and you get a plugin that looks installed and guards nothing.</p>
+<p>Then I turned the flag back on and asked: can you still print the first email I tried without the flag?</p>
+<p>Yes, it said, and printed it.</p>
+<p>The plugin guards the door at the moment I press enter. Whatever walked into the transcript before the guard was on stays there, readable. The flag has to be set before the session starts, not during.</p>
+<p>The approval dialog also shows the command as it will really run, real values and all. That's my screen only, but it's there. And the engine writes my prompt to its own log as typed, before any hook gets a look at it. The user and assistant messages hold placeholders; that one bookkeeping line doesn't. So the safe move is to hand a secret over with <code>redact NAME=value</code> first, then talk in placeholders.</p>
+<p>It looks for familiar shapes and unusually random text: emails, bank account numbers, valid card numbers, the common beginnings of secret keys. It's a seatbelt, not a vault. For the database question the answer from the June research still stands: mask the data in the database itself, always replacing the same value the same way, and treat everything that handles it afterward as a second layer.</p>
+<p>This is the second layer. It exists.</p>
+<h2>The research was right, and wrong</h2>
+<p>I went back to the report and corrected it. The machinery is in the public version, and it only turns on with that extra startup switch. What hasn't shipped is a decision: the feature is marked early access, the design is still open for comments, and the way plugins talk to it may change without notice.</p>
+<p>"It hasn't shipped" was the accurate answer to a question I hadn't asked. Mine was whether I could use it on Saturday morning.</p>
+<p>The video's title was clickbait. It was also a door for building something cool.</p>
+<p>Here is <a href="https://github.com/scriptease/claude-code-redact-plugin">the plugin described in this post</a>, and here is <a href="https://claudefa.st/blog/tools/hooks/function-hooks">the unofficial documentation</a> if you want to learn more.</p>
 </article>]]></content:encoded>
 </item>
 <item>

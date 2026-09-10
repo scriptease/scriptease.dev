@@ -3,7 +3,7 @@ window.POSTS = [
     "slug": "2026-09-06-qwen-revisited",
     "title": "Qwen Revisited",
     "hook": "Three weeks ago a model on my laptop designed a Japanese temple and never got to see it. On Sunday I gave it a third try. The temple appeared on my iPad on the first attempt — and by evening the model had looked at a photo of it and pointed at its own mistakes.",
-    "date": "2026-09-06",
+    "date": "2026-09-10",
     "month": "2026-09",
     "tags": [
       "ai",
@@ -11,6 +11,20 @@ window.POSTS = [
       "localai",
       "webgl",
       "saga"
+    ]
+  },
+  {
+    "slug": "2026-09-05-every-login-all-at-once",
+    "title": "Every Login All at Once",
+    "hook": "Most of Saturday went into one wrong assumption. The AI and I blamed the iOS 27 beta for eating keystrokes. The real culprit was a stuck process on my Mac, and I literally had to kill it twice because it refused to die.",
+    "date": "2026-09-10",
+    "month": "2026-09",
+    "tags": [
+      "ai",
+      "agent",
+      "ios",
+      "simulator",
+      "password"
     ]
   },
   {
@@ -26,20 +40,6 @@ window.POSTS = [
       "security",
       "plugins",
       "saga"
-    ]
-  },
-  {
-    "slug": "2026-09-05-every-login-all-at-once",
-    "title": "Every Login All at Once",
-    "hook": "Most of Saturday went into one wrong assumption. The AI and I blamed the iOS 27 beta for eating keystrokes. The real culprit was a stuck process on my Mac, and I literally had to kill it twice because it refused to die.",
-    "date": "2026-09-05",
-    "month": "2026-09",
-    "tags": [
-      "ai",
-      "agent",
-      "ios",
-      "simulator",
-      "password"
     ]
   },
   {
