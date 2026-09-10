@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Every Login All at Once — scriptease.dev</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Every Login All at Once</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/ios/">#ios</a> <a href="/tags/simulator/">#simulator</a> <a href="/tags/password/">#password</a></p>
+<p>Most of Saturday went into one wrong assumption. The AI and I blamed the iOS 27 beta for eating keystrokes. The real culprit was a stuck process on my Mac, and I literally had to kill it twice because it refused to die.</p>
+<h2>Continue three times, select login, continue twice, enter code, continue again</h2>
+<p>Logging into the app I work on is not one step. The app ships in several variants, and they log in three different ways. The simplest is a list of users and a PIN pad. The second goes through Keycloak, a service that first asks you to pick how you want to sign in, then hands you on. The third is Microsoft's corporate login: an email form that bounces you through two more pages and ends at a six-digit code from an authenticator app. All of that before you are in our app.</p>
+<p>Once you are in, you stay in. The problem is not repetition. We have many customers and multiple servers and each has its own flow, its own username, its own password. Remembering which combination opens which app is always a hassle. And in the age of AI I want to hand the app to an AI: set it up, drive it, run its own tests. It can't do anything stuck on a login screen. I want to give my fingerprint once and have the AI run every variant we ship.</p>
+<p>A single sign-on for all of them wouldn't work. The login token has to come from the identity systems behind Keycloak and Microsoft, not from us. There is no way around it: every login has to walk the same path a human walks.</p>
+<p>So the plan was a script that looks at the screen, decides which of the login pages it is on, and acts, instead of replaying a fixed list of taps. The knowledge of how to log in lives in code. The passwords live in 1Password.</p>
+<h2>Sharing secrets without spilling secrets</h2>
+<p>That last part had a history.</p>
+<p>1Password protects everything behind a fingerprint. If my scripts talk to it, it can pass a password straight to the program that needs it, sealed, behind the script's back. I knew that. My problem was discovery. Before you can fetch a password you have to find the right one, and the search costs a fingerprint too. The two prompts look exactly the same.</p>
+<p>Two prompts in a row, and I could not tell whether that was "search, then password" or "search, then search again because the first came back empty". Add an AI to the loop and every wrong guess is another prompt. I was pressing the sensor three times in a row with no idea what each press did.</p>
+<p>A while back I sat down with an AI and designed a way out. The insight was that the <em>address</em> of a secret is not a secret. Which vault, which saved login inside it, which box on that login: writing that down reveals nothing. So: search once, deliberately, and keep the addresses in a catalog. From then on every fingerprint during work means exactly one saved login, known in advance.</p>
+<p>The whole design hung on one question: does 1Password ask once per program, or once per address? I built a proof of concept with two test entries and ran it. "It only showed one confirm."</p>
+<p>I wrote a README, committed it, and let it sit.</p>
+<h2>Automating something you shouldn't automate</h2>
+<p>A login script needed credentials. A script that types passwords into login forms is frowned upon, for good reason, and it is a necessary evil here: the screens are the only way in, and an AI that cannot get past them cannot test anything. I said "I want to use a mechanism like the one I had", and the proof of concept got its first job.</p>
+<p>The PIN login came together on Friday afternoon. I test the app in the iOS simulator, a fake iPad running on my Mac. The script reads the simulator's screen through a tool called Argent, over the same channel a screen reader uses, finds the user row, taps the digits, and lands on the home screen. All in one fell swoop.</p>
+<p>One detail I wanted: the row for each user carries that user's login name as its accessibility label, the hidden name a screen reader would read out. The same name is the username in 1Password, so the screen and the vault agree on who is logging in and the script picks the right one.</p>
+<p>By evening it had an interactive mode. Run it with no arguments, it lists the running simulators, you type a number, you pick login or logout. Usable without an AI.</p>
+<h2>Everything I tried made it worse</h2>
+<p>The web flow worked once. Chooser, email, password, six-digit code, home. Thirty seconds.</p>
+<p>Then the email field got the <code>@</code> sign as a <code>"</code>. Then it typed spaces. Then, on the next run, <code>tytytyty</code>. Then <code>hhzzzz</code>. Then <code>zu zuzu zu</code>.</p>
+<p>Argent types by pretending to be the hardware keyboard, and it sends key <em>positions</em>, not letters, assuming a US layout. My Mac is German. On a German keyboard the key in the Y position is Z, and the key that gives <code>@</code> on a US layout gives <code>"</code>. iOS kept reading the US positions as German keys. The password had a lowercase y in it, and y sits in a different place on the two keyboards.</p>
+<p>The fix seemed simple: switch the on-screen keyboard to English before typing. Except while a hardware keyboard is connected, iOS hides the on-screen keyboard, and with it the globe key you switch layouts with. The one control we needed was behind the one thing we were doing.</p>
+<p>I got annoyed with the simulator constantly flipping to English, deleted the English keyboard, and recreated it. Badly. From then on the keyboard rendered as a half-screen bar whose buttons were not where the screen said they were.</p>
+<p>Then I updated Argent, and it had renamed a parameter with the opposite meaning.</p>
+<p>By now nothing worked, not even the parts that had worked in the morning. "Can you revert the changes before we dealt with the keyboard? Now everything is broken and I want to check in a solution that at least somewhat works." We rolled back to the last commit that had logged in.</p>
+<h2>"Really interesting, it tried not to get killed"</h2>
+<p>Saturday morning I had a theory. I had two Xcodes installed, the release and the iOS 27 beta, and the command line was pointing at the wrong one. Half right, the AI said after testing: taps worked on both simulated iOS versions, but typing only reached the iOS 26.5 iPad. Verdict: the iOS 27 simulator drops keystrokes.</p>
+<p>We built on that verdict for hours. Trying again, taking other routes, and a rule that refused to type a password unless the layout switch had been confirmed, so a third wrong attempt could not lock the test account.</p>
+<p>Then typing died on the 26.5 iPad too.</p>
+<p>The thing that had actually broken was CoreSimulatorService, the switchboard between the fake iPad and the Mac. Every fake keystroke and every tap on a system dialog goes through it, and it was stuck. I killed it. It came back. I killed it again, harder.</p>
+<p>Fresh boot, and typing worked again. On both iOS versions. The verdict had been wrong all day.</p>
+<p>Three more things had to hold before the script was robust. The keyboard named "Deutsch u. English" is German too, so only a keyboard whose name starts with "English" counts. On iOS 27 the globe key cycles through the Emoji keyboard, where the globe stops being a globe, so the script keeps cycling until it sees English. And the beta's new simulator window has no switch to disconnect the hardware keyboard, but if you open the old Simulator app on the same device, its window still has one.</p>
+<h2>"We are in!"</h2>
+<pre><code>[applogin] round 1: screen = app-retry
+[applogin] round 2: screen = entra-email
+[applogin] round 3: screen = entra-password
+[applogin] round 4: screen = entra-otp
+[applogin] round 5: screen = entra-kmsi
+[applogin] round 7: screen = home
+[applogin] logged in
+</code></pre>
+<p>All three recipes, PIN pad, Keycloak and Microsoft, in every variant we ship, on both iOS versions. One command, one fingerprint, logged in.</p>
+<p>Before shipping I handed the script to a second AI for review. It made good suggestions and we fixed and hardened how the secrets are transmitted.</p>
+<p>I still have to demo it and clean it up, but it's already a Swiss Army knife for logins.</p>
+<h2>The right amount of indirection</h2>
+<p>Developers wrap everything in layers. Each layer is an indirection: instead of doing the thing, you point at something that does the thing. Every additional step costs you, and most systems have too many.</p>
+<p>This script has three, and all carefully chosen.</p>
+<p>The first is the catalog. It knows what exists in 1Password and where, and it can rebuild itself with one command. Nothing else in the script ever talks to 1Password. And it only contains pointers.</p>
+<p>The second is the mapping. A table that says which app variant needs which recipe, and which username. Add a variant, add a line.</p>
+<p>The third is the recipe. It does not know the sequence of screens in advance. It reads the screen through accessibility labels, classifies which of the login pages it is looking at, and acts accordingly. Up to seven steps, retry button to home, without a script telling it what comes next.</p>
+<p>Where are the secrets. Which login does this app need. What is on the screen right now.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-08-30-the-checklist-id-been-following/">← The Checklist I'd Been Following for Ten Years</a><a class="next" href="/posts/2026-09-05-redacted/">Redacted →</a></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

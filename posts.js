@@ -15,6 +15,20 @@ window.POSTS = [
     ]
   },
   {
+    "slug": "2026-09-05-every-login-all-at-once",
+    "title": "Every Login All at Once",
+    "hook": "Most of Saturday went into one wrong assumption. The AI and I blamed the iOS 27 beta for eating keystrokes. The real culprit was a stuck process on my Mac, and I literally had to kill it twice because it refused to die.",
+    "date": "2026-09-05",
+    "month": "2026-09",
+    "tags": [
+      "ai",
+      "agent",
+      "ios",
+      "simulator",
+      "password"
+    ]
+  },
+  {
     "slug": "2026-08-30-the-checklist-id-been-following",
     "title": "The Checklist I'd Been Following for Ten Years",
     "hook": "A stranger's blog post gave a name to something I'd been doing for ten years without noticing. An hour later I was checking my own work against his ten rules.",
