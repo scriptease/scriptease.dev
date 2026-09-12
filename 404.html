@@ -21,6 +21,7 @@
   .suggestions a:hover { color: var(--accent); text-decoration: none; }
   .suggestions time { display: block; color: var(--muted); font-size: .8rem; margin-top: .2rem; }
   .suggestions .hook { color: var(--muted); font-size: .9rem; margin: .3rem 0 0; }
+  .suggestions .read-more { display: block; text-align: right; margin-top: .5rem; font-size: .9rem; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -57,7 +58,8 @@
     var li = document.createElement('li');
     li.innerHTML = '<a href="/posts/' + p.slug + '/">' + p.title + '</a>'
       + '<time>' + p.date + '</time>'
-      + (p.hook ? '<p class="hook">' + p.hook + '</p>' : '');
+      + (p.hook ? '<p class="hook">' + p.hook + '</p>' : '')
+      + '<a class="read-more" href="/posts/' + p.slug + '/">Read more →</a>';
     list.appendChild(li);
   });
 })();
