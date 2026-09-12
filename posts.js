@@ -1,5 +1,18 @@
 window.POSTS = [
   {
+    "slug": "2026-09-12-a-hoarders-dream",
+    "title": "couch-serve: A Hoarder's Dream",
+    "hook": "I'd spent months making everything on my Mac reachable from my iPad. On Saturday I noticed the one thing that wasn't: the movies on my external hard drive.",
+    "date": "2026-09-12",
+    "month": "2026-09",
+    "tags": [
+      "nodejs",
+      "ipad",
+      "streaming",
+      "ai"
+    ]
+  },
+  {
     "slug": "2026-09-06-qwen-revisited",
     "title": "Qwen Revisited",
     "hook": "Three weeks ago a model on my laptop designed a Japanese temple and never got to see it. On Sunday I gave it a third try. The temple appeared on my iPad on the first attempt — and by evening the model had looked at a photo of it and pointed at its own mistakes.",

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>couch-serve: A Hoarder's Dream — scriptease.dev</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>couch-serve: A Hoarder's Dream</h1>
+<p class="post-tags"><a href="/tags/nodejs/">#nodejs</a> <a href="/tags/ipad/">#ipad</a> <a href="/tags/streaming/">#streaming</a> <a href="/tags/ai/">#ai</a></p>
+<p>I'd spent months making everything on my Mac reachable from my iPad. Databases, servers, even the Mac's screen. On Saturday I noticed the one thing that wasn't: the movies on my external hard drive.</p>
+<p>There are media centers for this. Every one I've looked at wants an account, a scan of every file, and a settings page longer than the movie. My movies are scattered across two hard drives, in folders still bearing the names they arrived with, nested inside more folders only I can navigate by memory. A media center looks at that and asks me to clean up before I'm allowed to watch anything.</p>
+<p>I wanted to know how far I'd get if I just asked Claude to build the thing from scratch.</p>
+<h2>Point it at a folder and go</h2>
+<p>The brief was short. A service that runs on my Mac, that I can open on my iPad, that streams whatever I point it at. No accounts, no metadata, no library scan. Just a folder.</p>
+<p>The first version landed in minutes. A single JavaScript file running Node.js and Express, a small framework that turns a Mac into a web server. A dark page that listed video files and played them. MP4 worked out of the box. My assistant sent me the link directly to my iPad. I tapped it and there it was: my files, on the couch.</p>
+<p>I expected the browsing to feel sluggish. A web page asking a server to read a directory over Wi-Fi, every time I tap a folder. It didn't. Each tap reads one directory level, a few bytes, and the result is back before my finger lifts. I started clicking deeper. Subfolders, shortcuts, an external USB drive. All instant.</p>
+<p>That was the moment the scope changed. If navigation is free, I don't need to flatten anything. I can just browse.</p>
+<h2>Videos come in all shapes and sizes</h2>
+<p>MP4 played. Everything else didn't. An AVI from 2019, a Flash video, an MKV rip. Safari can only play what Safari can play, and that's a short list.</p>
+<p>This is the point where a normal project would tell me to install a dedicated video player, or to convert every file on my Mac first. I asked Claude a different question: can FFmpeg, a video conversion tool, convert a movie while sending it straight to the browser?</p>
+<p>You can convert the whole file first, or you can cut it into small pieces and let the browser fetch them one at a time. The second one is called HLS. It's how Netflix works. And Safari speaks it natively.</p>
+<h2>Eighty-seven minutes and sound</h2>
+<p>I plugged in my external hard drive and pointed the server at a real movie. An AVI, eighty-seven minutes, a format my iPad has never heard of.</p>
+<p>The first attempt said "Live Broadcast" and played nothing. The second showed about thirty frames and froze. The third waited for the entire file to finish converting before it would start, which doesn't work when the movie is an hour and a half long.</p>
+<p>We kept tweaking how the segments were produced and when the browser was allowed to start pulling them. Wait for two segments instead of the whole file. Read the playlist in one piece so Safari doesn't get a half-written version. Let it start playing while the rest is still encoding.</p>
+<p>Then the picture moved. But there was no sound. The movie's audio was surround sound, and the conversion had silently dropped it. We forced it down to stereo and turned up the quality.</p>
+<p>When the first attempt stuttered, we overreacted. We built a progress indicator that kept asking the server how far it had got, updating live on screen. Then the real fixes landed and videos started in under a second. We removed the whole thing.</p>
+<p>Sound came through. I dragged the playback bar to the middle and it jumped. I dragged it to the end and it jumped. My laptop converts at about fifty times playback speed, so by the time I'd watched the opening scene, the whole file was ready. An eighty-seven-minute AVI on an iPad, with working scrubbing and sound, from a server that didn't exist that morning.</p>
+<h2>One feature led to another</h2>
+<p>The first version served one folder. Then I wanted subfolders. Then sorting. Then a search that reaches five levels deep. Then double-tap to skip ten seconds, because that's how every streaming app works and my hands expected it. Then a loop button for short clips. Then the browser's back button had to work, because on an iPad there's no address bar to retype.</p>
+<p>The server stayed a single file.</p>
+<p>The biggest jump was adding every drive to the start page. My Mac has its internal drive and two external ones. Now the start page shows three purple icons, and tapping one browses that drive. I'm on the couch, reaching into hardware I can't even see from here.</p>
+<h2>The mess is not the problem</h2>
+<p>I know where things are. The path makes no sense to anyone else, but I've built a mental map over years of saving things wherever felt right at the time. No folder hierarchy will improve that. It would only force me to maintain two systems, the map in my head and the one on disk, and the disk one would rot the moment I stop caring.</p>
+<p>So instead of organizing, I added favorites. Long-press a video, tap the star. It shows up on the start page. Long-press the favorite, tap "Go to folder." Now I'm in the folder it came from, seeing what's next to it. Maybe there's a sequel I forgot about. Star that too.</p>
+<p>The favorites aren't bookmarks. They're threads in a web. Each one connects to a corner of the mess, and the "go to folder" button connects the corners to each other. I didn't build a library. I grew a web in the chaos, and it connects parts that were never connected before.</p>
+<h2>One file, no config, everything under your fingertips</h2>
+<p>It still fits in one JavaScript file. Point it at a folder, open the browser, and it removes the temporary video pieces when it stops.</p>
+<pre><code>node server.js ~/Movies
+</code></pre>
+<p>That's the setup.</p>
+<p>I didn't need to reorganize my drives. I needed a file browser that learned to play video.</p>
+<h2>Clone it, steal it, make it your own</h2>
+<p>The whole project is open source: <a href="https://github.com/scriptease/couch-serve">github.com/scriptease/couch-serve</a>.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-09-06-qwen-revisited/">← Qwen Revisited</a><span></span></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
