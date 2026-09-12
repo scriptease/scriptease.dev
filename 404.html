@@ -17,8 +17,8 @@
   .suggestions ul { list-style: none; margin: 0; padding: 0; }
   .suggestions li { padding: 1rem 0; border-bottom: 1px solid var(--line); }
   .suggestions li:last-child { border-bottom: none; }
-  .suggestions a { font-size: 1.15rem; font-weight: 600; color: var(--ink); }
-  .suggestions a:hover { color: var(--accent); text-decoration: none; }
+  .suggestions .entry-link { font-size: 1.15rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+  .suggestions .entry-link:hover { color: var(--accent); }
   .suggestions time { display: block; color: var(--muted); font-size: .8rem; margin-top: .2rem; }
   .suggestions .hook { color: var(--muted); font-size: .9rem; margin: .3rem 0 0; }
   .suggestions .read-more { display: block; text-align: right; margin-top: .5rem; font-size: .9rem; font-weight: 600; }
@@ -56,7 +56,7 @@
   var posts = (window.POSTS || []).slice(0, 5);
   posts.forEach(function(p) {
     var li = document.createElement('li');
-    li.innerHTML = '<a href="/posts/' + p.slug + '/">' + p.title + '</a>'
+    li.innerHTML = '<a class="entry-link" href="/posts/' + p.slug + '/">' + p.title + '</a>'
       + '<time>' + p.date + '</time>'
       + (p.hook ? '<p class="hook">' + p.hook + '</p>' : '')
       + '<a class="read-more" href="/posts/' + p.slug + '/">Read more →</a>';
