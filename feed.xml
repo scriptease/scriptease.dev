@@ -20,6 +20,7 @@
 <p>I'd spent months making everything on my Mac reachable from my iPad. Databases, servers, even the Mac's screen. On Saturday I noticed the one thing that wasn't: the movies on my external hard drive.</p>
 <p>There are media centers for this. Every one I've looked at wants an account, a scan of every file, and a settings page longer than the movie. My movies are scattered across two hard drives, in folders still bearing the names they arrived with, nested inside more folders only I can navigate by memory. A media center looks at that and asks me to clean up before I'm allowed to watch anything.</p>
 <p>I wanted to know how far I'd get if I just asked Claude to build the thing from scratch.</p>
+<p><img alt="couch-serve on an iPad: volumes, favorites, folders, and videos on a dark UI" src="assets/a-hoarders-dream/couch-serve-ipad.png" /></p>
 <h2>Point it at a folder and go</h2>
 <p>The brief was short. A service that runs on my Mac, that I can open on my iPad, that streams whatever I point it at. No accounts, no metadata, no library scan. Just a folder.</p>
 <p>The first version landed in minutes. A single JavaScript file running Node.js and Express, a small framework that turns a Mac into a web server. A dark page that listed video files and played them. MP4 worked out of the box. My assistant sent me the link directly to my iPad. I tapped it and there it was: my files, on the couch.</p>
