@@ -1,6 +1,6 @@
 window.POSTS = [
   {
-    "slug": "2026-09-14-devboard-ipad",
+    "slug": "2026-09-14-the-couch-group",
     "title": "The couch group",
     "hook": "I keep notes on every service I run. Which port, which address, which flags for the home network — keeping track of them is a hassle. So I started a research project to offload all of it to a tool. It found exactly what I wanted.",
     "date": "2026-09-14",

@@ -10,8 +10,8 @@
 <lastBuildDate>Mon, 14 Sep 2026 00:00:00 +0000</lastBuildDate>
 <item>
 <title>The couch group</title>
-<link>https://scriptease.dev/posts/2026-09-14-devboard-ipad/</link>
-<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-14-devboard-ipad/</guid>
+<link>https://scriptease.dev/posts/2026-09-14-the-couch-group/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-14-the-couch-group/</guid>
 <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
 <category>ipad</category><category>ai</category><category>agent</category><category>automation</category><category>saga</category><description>I keep notes on every service I run. Which port, which address, which flags for the home network — keeping track of them is a hassle. So I started a research project to offload all of it to a tool. It found exactly what I wanted.</description>
 <content:encoded><![CDATA[<article class="post">
@@ -35,7 +35,7 @@
 <p>The copy button was dead. Browsers only let pages copy things on secure connections. A home-network address doesn't count.</p>
 <p>I addressed both. Links that know which services leave the machine and which don't. A fallback for the copy button. By evening the group was complete: movies, Unsloth Studio, and the MTPLX server. Each row shows its port and a switch.</p>
 <p>The network ones get something extra. A small orange asterisk after the port, with a matching legend at the bottom of the screen.</p>
-<p><img alt="The devboard couch group: couch-serve, Unsloth Studio, and MTPLX — couch-serve has the orange network asterisk" src="assets/devboard-ipad/devboard-couch.png" />
+<p><img alt="The devboard couch group: couch-serve, Unsloth Studio, and MTPLX — couch-serve has the orange network asterisk" src="assets/the-couch-group/devboard-couch.png" />
 <em>The first three services I added, couch-serve with the orange asterisk</em></p>
 <h2>Too many doors</h2>
 <p>I noticed the couch services from <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">the previous post</a> were also reachable from outside, through the work VPN. The default was to bind to every interface, every network. That's what made it work from the iPad without configuration, but it also meant anyone on the VPN could reach them.</p>
@@ -61,7 +61,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>couch-serve: A Hoarder's Dream</h1>
 <p class="post-tags"><a href="/tags/nodejs/">#nodejs</a> <a href="/tags/ipad/">#ipad</a> <a href="/tags/streaming/">#streaming</a> <a href="/tags/ai/">#ai</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Couch computing saga: <a href="https://scriptease.dev/posts/2026-07-26-one-more-hop/">1. One More Hop</a> · 2. A Hoarder's Dream · <a href="https://scriptease.dev/posts/2026-09-14-devboard-ipad/">3. The couch group</a></em></p>
+<p><em>The Couch computing saga: <a href="https://scriptease.dev/posts/2026-07-26-one-more-hop/">1. One More Hop</a> · 2. A Hoarder's Dream · <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">3. The couch group</a></em></p>
 <p>I'd spent months making everything on my Mac reachable from my iPad. Databases, servers, even the Mac's screen. On Saturday I noticed the one thing that wasn't: the movies on my external hard drive.</p>
 <p>There are media centers for this. Every one I've looked at wants an account, a scan of every file, and a settings page longer than the movie. My movies are scattered across two hard drives, in folders still bearing the names they arrived with, nested inside more folders only I can navigate by memory. A media center looks at that and asks me to clean up before I'm allowed to watch anything.</p>
 <p>I wanted to know how far I'd get if I just asked Claude to build the thing from scratch.</p>
@@ -1531,7 +1531,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>One More Hop Is All You Need</h1>
 <p class="post-tags"><a href="/tags/networking/">#networking</a> <a href="/tags/macos/">#macos</a> <a href="/tags/llm/">#llm</a> <a href="/tags/automation/">#automation</a> <a href="/tags/ai/">#ai</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Couch computing saga: 1. One More Hop · <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">2. A Hoarder's Dream</a> · <a href="https://scriptease.dev/posts/2026-09-14-devboard-ipad/">3. The couch group</a></em></p>
+<p><em>The Couch computing saga: 1. One More Hop · <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">2. A Hoarder's Dream</a> · <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">3. The couch group</a></em></p>
 <p>At home, at my desk, my Mac can reach everything I need for a day's work. Some of it runs <em>on</em> the Mac — a local AI I chat with, an AI model that lives on my own computer instead of on someone else's servers. And some of it runs somewhere else entirely: the internal work tools that only my Mac can open, because my Mac sits on my company's private network and knows the secret handshake. At my desk, all of it is one click away. The moment I leave the house, the door shuts.</p>
 <h2>Screensharing on the go is clunky</h2>
 <p>I wasn't starting from nothing. I already had RustDesk — a free, open cousin of TeamViewer, the kind of app that mirrors one computer's screen onto another so you can click around from far away. From a café I can pull up my Mac's whole desktop on my phone and poke at it.</p>
