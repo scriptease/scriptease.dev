@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>The couch group — scriptease.dev</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>The couch group</h1>
+<p class="post-tags"><a href="/tags/ipad/">#ipad</a> <a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Couch computing saga: <a href="https://scriptease.dev/posts/2026-07-26-one-more-hop/">1. One More Hop</a> · <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">2. A Hoarder's Dream</a> · 3. The couch group</em></p>
+<p>I keep notes on every service I run. Which port, which address, which flags for the home network — keeping track of them is a hassle. So I started a research project to offload all of it to a tool. It found exactly what I wanted.</p>
+<h2>The notes</h2>
+<p>The day before, I had built a movie server for the iPad. Point it at a folder, open the browser on port 8080, watch. That part was done. Running it meant remembering the command: which folder, which port, which flags.</p>
+<p>Same for the AI models on the same Mac. One answers on port 8888. Another hides behind a helper script that wants its addresses typed out twice, comma-separated, once for the Mac itself and once for the home network. Every launch was a remembered command, and the notes kept growing.</p>
+<h2>Two finalists</h2>
+<p>The research came back with two finalists: a small open-source dashboard called devboard, and Harbr. Sidebar of servers, switches, logs. I opened both side by side before touching anything.</p>
+<p>Devboard's page had a great screenshot. Exactly the thing I wanted to look at. Harbr's page had a word that ended it: AppleScript. It runs its servers by remote-controlling terminal windows, typing commands into them for you.</p>
+<p>If I was going to operate on this thing, I wanted source code I could change.</p>
+<h2>I opened the door myself</h2>
+<p>I cloned it and asked the obvious question: can it run on the network, not just on the Mac itself? The answer was in the code, then in capital letters in the manual. The server only listens on localhost. Never otherwise. No remote mode, no login, by design. Its buttons can kill processes and run saved commands.</p>
+<p>Fair. So we added an allowlist file with the addresses allowed in. The Mac, the iPad, and Tailscale — the private tunnel that connects my devices even when they're apart. The checks came back green one by one. The iPad reached the dashboard.</p>
+<p>The tunnel gives every device its own name. My Mac refused to resolve its own. Asking for itself by name got "unknown host." The iPad across the room opened it fine.</p>
+<h2>I opened more doors for my iPad</h2>
+<p>Then the next two problems. The dashboard's "open" button pointed every service at localhost. That only works on the Mac. On the iPad, I got an empty screen.</p>
+<p>The copy button was dead. Browsers only let pages copy things on secure connections. A home-network address doesn't count.</p>
+<p>I addressed both. Links that know which services leave the machine and which don't. A fallback for the copy button. By evening the group was complete: movies, Unsloth Studio, and the MTPLX server. Each row shows its port and a switch.</p>
+<p>The network ones get something extra. A small orange asterisk after the port, with a matching legend at the bottom of the screen.</p>
+<p><img alt="The devboard couch group: couch-serve, Unsloth Studio, and MTPLX — couch-serve has the orange network asterisk" src="assets/devboard-ipad/devboard-couch.png" />
+<em>The first three services I added, couch-serve with the orange asterisk</em></p>
+<h2>Too many doors</h2>
+<p>I noticed the couch services from <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">the previous post</a> were also reachable from outside, through the work VPN. The default was to bind to every interface, every network. That's what made it work from the iPad without configuration, but it also meant anyone on the VPN could reach them.</p>
+<p>So I adjusted the binding. Instead of every interface, the server now listens on the ones it needs: the Mac, the local network, the tunnel. The zero-configuration flavor stays — you still just run it and it works from the iPad. It just stops answering where it shouldn't.</p>
+<h2>The list kept growing</h2>
+<p>I went through my notes looking for every time I had to look up a start command or tell an AI to launch something. Every one of those became a devboard entry. The website folder, so I can start a dev server and check the current state from my iPad. The work setup: app server and database, both behind switches now.</p>
+<p>One of the AIs misunderstood me again while I was adding a service. I asked it to add a server to devboard and it started editing devboard's source code. I had to stop it and remind it that everything was just one CLI command away.</p>
+<h2>From the couch</h2>
+<p>That night: iPad on the couch, the dashboard open through Tailscale. All the services I care about, ready to be started with one tap.</p>
+<p>The research wasn't wrong. It filtered devboard out for showing no signs of life: two days old, zero stars. But in the age of AI, zero stars aren't a turnoff anymore. You just check out the repository and look at the code.</p>
+<p>Then I published my changes, left a note on the original project pointing at the updates, and gave it its first star. I left the rest to the maintainer.</p>
+<p>The notes are still there. They now point to a different note that says: devboard takes care of them.</p>
+<h2>Take it, it's yours</h2>
+<p>The dashboard updates are open source: <a href="https://github.com/scriptease/devboard">github.com/scriptease/devboard</a>. The allowlist and the asterisk are in there.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-09-12-a-hoarders-dream/">← couch-serve: A Hoarder's Dream</a><span></span></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

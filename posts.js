@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-09-14-devboard-ipad",
+    "title": "The couch group",
+    "hook": "I keep notes on every service I run. Which port, which address, which flags for the home network — keeping track of them is a hassle. So I started a research project to offload all of it to a tool. It found exactly what I wanted.",
+    "date": "2026-09-14",
+    "month": "2026-09",
+    "tags": [
+      "ipad",
+      "ai",
+      "agent",
+      "automation",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-09-12-a-hoarders-dream",
     "title": "couch-serve: A Hoarder's Dream",
     "hook": "I'd spent months making everything on my Mac reachable from my iPad. On Saturday I noticed the one thing that wasn't: the movies on my external hard drive.",
@@ -9,7 +23,8 @@ window.POSTS = [
       "nodejs",
       "ipad",
       "streaming",
-      "ai"
+      "ai",
+      "saga"
     ]
   },
   {
@@ -375,7 +390,8 @@ window.POSTS = [
       "macos",
       "llm",
       "automation",
-      "ai"
+      "ai",
+      "saga"
     ]
   },
   {
