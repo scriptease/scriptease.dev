@@ -7,7 +7,44 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Mon, 14 Sep 2026 00:00:00 +0000</lastBuildDate>
+<lastBuildDate>Sat, 19 Sep 2026 00:00:00 +0000</lastBuildDate>
+<item>
+<title>Extending the Tail</title>
+<link>https://scriptease.dev/posts/2026-09-19-extending-the-tail/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-19-extending-the-tail/</guid>
+<pubDate>Sat, 19 Sep 2026 00:00:00 +0000</pubDate>
+<category>networking</category><category>macos</category><category>ai</category><category>automation</category><category>saga</category><description>An AI had submitted code for review. I was on the couch with my iPad and wanted to review it there. The review tool only works from my desk. I had a recipe in my notes for exactly this — written three months ago, never turned into a script. Today I handed those notes to an AI and said: make this work.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Extending the Tail</h1>
+<p class="post-tags"><a href="/tags/networking/">#networking</a> <a href="/tags/macos/">#macos</a> <a href="/tags/ai/">#ai</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Couch computing saga: <a href="https://scriptease.dev/posts/2026-07-26-one-more-hop/">1. One More Hop</a> · <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">2. A Hoarder's Dream</a> · <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">3. The couch group</a> · 4. Extending the Tail</em></p>
+<p>An AI had submitted code for review. I was on the couch with my iPad and wanted to review it there. The review tool only works from my desk — it sits behind the company's private network, and only my Mac knows the way in. I could walk to the desk. Or I could pick up a recipe I'd left in my notes three months ago.</p>
+<h2>I left myself breadcrumbs</h2>
+<p>Back in July I'd proved one thing: my iPad can reach a service that only my Mac can open, if there's a relay in between. Tailscale — the private tunnel that connects my devices — runs beside the operating system rather than inside it. It can't use the work VPN — the private connection that lets my Mac into the company network. But a relay sitting on the Mac can. It takes the request from Tailscale, carries it through the VPN, and hands back the answer.</p>
+<p>I'd documented all of this in a file in my vault. Why the relay is needed, what I'd tried, sample code that worked. I hadn't turned it into a proper script. The notes sat there for three months, waiting. Today I had a reason: a code review on the couch.</p>
+<h2>We picked up where we left off</h2>
+<p>I pointed Claude at those notes and said: make this a script for Gerrit, the code review tool. Claude read the documentation, wrote the script, ran it.</p>
+<p>The relay connected. But instead of showing an error or leaving me waiting, it sent me to the wrong address. The relay from my notes was too simple. It passed data along without reading it, and the work services needed more than the test service I'd tried in July. The relay was the right idea. This one wasn't up to the job.</p>
+<h2>Get it to work, then get it right</h2>
+<p>Claude replaced the raw pipe with a proper proxy. Same idea: sit between Tailscale and the VPN. But instead of passing bytes blindly, it speaks HTTP. It rewrites the name on the request to the site's real name, makes the VPN hop, and rewrites the response back to the tailnet address. One Python script, nothing beyond the standard library.</p>
+<p>In <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">the previous post</a> I'd set up a dashboard called devboard to manage all my local services — start, stop, see what's running. I wanted the new proxy in there immediately, so I could watch the green dot appear while Claude was still working on it. Claude registered the service, the dot turned green, and devboard printed a link. I tapped it on the iPad. Gerrit loaded. The code review was right there.</p>
+<h2>One down, and then three more</h2>
+<p>"Can you add Nexus and Jenkins?" Nexus stores our builds; Jenkins runs our deployments. Same setup — all three sites live at the same internal address. One copy of the script per name, one command each. Then I asked for the internal links page, a different server but the same pattern.</p>
+<p>I got all four services running in the time it took to fix the first one. Three of them just worked. Jenkins sent me from page to page five times and landed on a white screen.</p>
+<h2>Single sign-out</h2>
+<p>Claude pointed me at the login page instead.</p>
+<p>I tried the credentials I had stored. None of them went through. The company had moved to single sign-on — one shared company login across all work tools — since I'd last logged in from outside the office. My old username-and-password pair was dead.</p>
+<p>Single sign-on can't survive the proxy. When you click "log in," Jenkins redirects you to the company login and tells it: when you're done, send the user back to the real Jenkins address. No proxy trick changes it — it would bounce me right back to the blank page I'd already seen.</p>
+<p>Claude remembered another way into Jenkins: an automation token — a digital key our scripts use to check our builds. It verified that the same key works for the website too. So we made the login configurable: the script sends the key with every request. No login required.</p>
+<p>I tapped back to my browser. I didn't even have to reload the page. The dashboard was there. I was logged in as myself. Magical.</p>
+<h2>All four dots green</h2>
+<p><img alt="The devboard Tailnet project: gerrit, nexus, jenkins, and links — all four running" src="assets/extending-the-tail/devboard-tailnet.jpg" />
+<em>Four services, managed from the dashboard</em></p>
+<p>Four green dots in <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">the dashboard</a> from five days ago. I extended the project and added a devboard command to start all four at once. Gerrit for reviewing code, Nexus for builds, Jenkins for deployments, and the internal links page for finding things. All reachable from the iPad, through my Mac that stays awake at home.</p>
+<p>I'd had a recipe for opening one door. It sat in my notes for three months. Today I handed those notes to an AI and said: make it real.</p>
+<p>Now I can access it from anywhere.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>The couch group</title>
 <link>https://scriptease.dev/posts/2026-09-14-the-couch-group/</link>
@@ -17,7 +54,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>The couch group</h1>
 <p class="post-tags"><a href="/tags/ipad/">#ipad</a> <a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Couch computing saga: <a href="https://scriptease.dev/posts/2026-07-26-one-more-hop/">1. One More Hop</a> · <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">2. A Hoarder's Dream</a> · 3. The couch group</em></p>
+<p><em>The Couch computing saga: <a href="https://scriptease.dev/posts/2026-07-26-one-more-hop/">1. One More Hop</a> · <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">2. A Hoarder's Dream</a> · 3. The couch group · <a href="https://scriptease.dev/posts/2026-09-19-extending-the-tail/">4. Extending the Tail</a></em></p>
 <p>I keep notes on every service I run. Which port, which address, which flags for the home network — keeping track of them is a hassle. So I started a research project to offload all of it to a tool. It found exactly what I wanted.</p>
 <h2>The notes</h2>
 <p>The day before, I had built a movie server for the iPad. Point it at a folder, open the browser on port 8080, watch. That part was done. Running it meant remembering the command: which folder, which port, which flags.</p>
@@ -61,7 +98,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>couch-serve: A Hoarder's Dream</h1>
 <p class="post-tags"><a href="/tags/nodejs/">#nodejs</a> <a href="/tags/ipad/">#ipad</a> <a href="/tags/streaming/">#streaming</a> <a href="/tags/ai/">#ai</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Couch computing saga: <a href="https://scriptease.dev/posts/2026-07-26-one-more-hop/">1. One More Hop</a> · 2. A Hoarder's Dream · <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">3. The couch group</a></em></p>
+<p><em>The Couch computing saga: <a href="https://scriptease.dev/posts/2026-07-26-one-more-hop/">1. One More Hop</a> · 2. A Hoarder's Dream · <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">3. The couch group</a> · <a href="https://scriptease.dev/posts/2026-09-19-extending-the-tail/">4. Extending the Tail</a></em></p>
 <p>I'd spent months making everything on my Mac reachable from my iPad. Databases, servers, even the Mac's screen. On Saturday I noticed the one thing that wasn't: the movies on my external hard drive.</p>
 <p>There are media centers for this. Every one I've looked at wants an account, a scan of every file, and a settings page longer than the movie. My movies are scattered across two hard drives, in folders still bearing the names they arrived with, nested inside more folders only I can navigate by memory. A media center looks at that and asks me to clean up before I'm allowed to watch anything.</p>
 <p>I wanted to know how far I'd get if I just asked Claude to build the thing from scratch.</p>
@@ -1531,7 +1568,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>One More Hop Is All You Need</h1>
 <p class="post-tags"><a href="/tags/networking/">#networking</a> <a href="/tags/macos/">#macos</a> <a href="/tags/llm/">#llm</a> <a href="/tags/automation/">#automation</a> <a href="/tags/ai/">#ai</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Couch computing saga: 1. One More Hop · <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">2. A Hoarder's Dream</a> · <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">3. The couch group</a></em></p>
+<p><em>The Couch computing saga: 1. One More Hop · <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">2. A Hoarder's Dream</a> · <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">3. The couch group</a> · <a href="https://scriptease.dev/posts/2026-09-19-extending-the-tail/">4. Extending the Tail</a></em></p>
 <p>At home, at my desk, my Mac can reach everything I need for a day's work. Some of it runs <em>on</em> the Mac — a local AI I chat with, an AI model that lives on my own computer instead of on someone else's servers. And some of it runs somewhere else entirely: the internal work tools that only my Mac can open, because my Mac sits on my company's private network and knows the secret handshake. At my desk, all of it is one click away. The moment I leave the house, the door shuts.</p>
 <h2>Screensharing on the go is clunky</h2>
 <p>I wasn't starting from nothing. I already had RustDesk — a free, open cousin of TeamViewer, the kind of app that mirrors one computer's screen onto another so you can click around from far away. From a café I can pull up my Mac's whole desktop on my phone and poke at it.</p>

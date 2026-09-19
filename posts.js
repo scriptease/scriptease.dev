@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-09-19-extending-the-tail",
+    "title": "Extending the Tail",
+    "hook": "An AI had submitted code for review. I was on the couch with my iPad and wanted to review it there. The review tool only works from my desk. I had a recipe in my notes for exactly this — written three months ago, never turned into a script. Today I handed those notes to an AI and said: make this work.",
+    "date": "2026-09-19",
+    "month": "2026-09",
+    "tags": [
+      "networking",
+      "macos",
+      "ai",
+      "automation",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-09-14-the-couch-group",
     "title": "The couch group",
     "hook": "I keep notes on every service I run. Which port, which address, which flags for the home network — keeping track of them is a hassle. So I started a research project to offload all of it to a tool. It found exactly what I wanted.",

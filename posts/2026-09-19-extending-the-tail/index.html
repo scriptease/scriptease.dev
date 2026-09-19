@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Extending the Tail — scriptease.dev</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Extending the Tail</h1>
+<p class="post-tags"><a href="/tags/networking/">#networking</a> <a href="/tags/macos/">#macos</a> <a href="/tags/ai/">#ai</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Couch computing saga: <a href="https://scriptease.dev/posts/2026-07-26-one-more-hop/">1. One More Hop</a> · <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">2. A Hoarder's Dream</a> · <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">3. The couch group</a> · 4. Extending the Tail</em></p>
+<p>An AI had submitted code for review. I was on the couch with my iPad and wanted to review it there. The review tool only works from my desk — it sits behind the company's private network, and only my Mac knows the way in. I could walk to the desk. Or I could pick up a recipe I'd left in my notes three months ago.</p>
+<h2>I left myself breadcrumbs</h2>
+<p>Back in July I'd proved one thing: my iPad can reach a service that only my Mac can open, if there's a relay in between. Tailscale — the private tunnel that connects my devices — runs beside the operating system rather than inside it. It can't use the work VPN — the private connection that lets my Mac into the company network. But a relay sitting on the Mac can. It takes the request from Tailscale, carries it through the VPN, and hands back the answer.</p>
+<p>I'd documented all of this in a file in my vault. Why the relay is needed, what I'd tried, sample code that worked. I hadn't turned it into a proper script. The notes sat there for three months, waiting. Today I had a reason: a code review on the couch.</p>
+<h2>We picked up where we left off</h2>
+<p>I pointed Claude at those notes and said: make this a script for Gerrit, the code review tool. Claude read the documentation, wrote the script, ran it.</p>
+<p>The relay connected. But instead of showing an error or leaving me waiting, it sent me to the wrong address. The relay from my notes was too simple. It passed data along without reading it, and the work services needed more than the test service I'd tried in July. The relay was the right idea. This one wasn't up to the job.</p>
+<h2>Get it to work, then get it right</h2>
+<p>Claude replaced the raw pipe with a proper proxy. Same idea: sit between Tailscale and the VPN. But instead of passing bytes blindly, it speaks HTTP. It rewrites the name on the request to the site's real name, makes the VPN hop, and rewrites the response back to the tailnet address. One Python script, nothing beyond the standard library.</p>
+<p>In <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">the previous post</a> I'd set up a dashboard called devboard to manage all my local services — start, stop, see what's running. I wanted the new proxy in there immediately, so I could watch the green dot appear while Claude was still working on it. Claude registered the service, the dot turned green, and devboard printed a link. I tapped it on the iPad. Gerrit loaded. The code review was right there.</p>
+<h2>One down, and then three more</h2>
+<p>"Can you add Nexus and Jenkins?" Nexus stores our builds; Jenkins runs our deployments. Same setup — all three sites live at the same internal address. One copy of the script per name, one command each. Then I asked for the internal links page, a different server but the same pattern.</p>
+<p>I got all four services running in the time it took to fix the first one. Three of them just worked. Jenkins sent me from page to page five times and landed on a white screen.</p>
+<h2>Single sign-out</h2>
+<p>Claude pointed me at the login page instead.</p>
+<p>I tried the credentials I had stored. None of them went through. The company had moved to single sign-on — one shared company login across all work tools — since I'd last logged in from outside the office. My old username-and-password pair was dead.</p>
+<p>Single sign-on can't survive the proxy. When you click "log in," Jenkins redirects you to the company login and tells it: when you're done, send the user back to the real Jenkins address. No proxy trick changes it — it would bounce me right back to the blank page I'd already seen.</p>
+<p>Claude remembered another way into Jenkins: an automation token — a digital key our scripts use to check our builds. It verified that the same key works for the website too. So we made the login configurable: the script sends the key with every request. No login required.</p>
+<p>I tapped back to my browser. I didn't even have to reload the page. The dashboard was there. I was logged in as myself. Magical.</p>
+<h2>All four dots green</h2>
+<p><img alt="The devboard Tailnet project: gerrit, nexus, jenkins, and links — all four running" src="assets/extending-the-tail/devboard-tailnet.jpg" />
+<em>Four services, managed from the dashboard</em></p>
+<p>Four green dots in <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">the dashboard</a> from five days ago. I extended the project and added a devboard command to start all four at once. Gerrit for reviewing code, Nexus for builds, Jenkins for deployments, and the internal links page for finding things. All reachable from the iPad, through my Mac that stays awake at home.</p>
+<p>I'd had a recipe for opening one door. It sat in my notes for three months. Today I handed those notes to an AI and said: make it real.</p>
+<p>Now I can access it from anywhere.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-09-14-the-couch-group/">← The couch group</a><span></span></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
