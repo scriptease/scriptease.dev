@@ -7,7 +7,49 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sat, 19 Sep 2026 00:00:00 +0000</lastBuildDate>
+<lastBuildDate>Sun, 20 Sep 2026 00:00:00 +0000</lastBuildDate>
+<item>
+<title>Voice Input Revisited</title>
+<link>https://scriptease.dev/posts/2026-09-20-voice-input-revisited/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-20-voice-input-revisited/</guid>
+<pubDate>Sun, 20 Sep 2026 00:00:00 +0000</pubDate>
+<category>voice</category><category>ai</category><category>opensource</category><category>macos</category><category>localai</category><category>saga</category><description>I asked my AI to build a plugin for the newest speech model I'd heard about that morning. It came back: done, everything streams, just start it on your GPU box. I don't have a GPU box.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Voice Input Revisited</h1>
+<p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/macos/">#macos</a> <a href="/tags/localai/">#localai</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Whisper saga: <a href="https://scriptease.dev/posts/the-fork-i-was-happy-to-delete/">1. The Fork I Was Happy to Delete</a> · 2. Voice Input Revisited</em></p>
+<p>I asked my AI to build a plugin for the newest speech model I'd heard about that morning. It came back: done, everything streams, just start it on your GPU box. I don't have a GPU box.</p>
+<h2>Some words it would always mess up</h2>
+<p>Ten weeks ago I wrote about deleting my private copy of a dictation app and going back to OpenWispr, the open-source app that turns my voice into text. The glossary feature had landed, my private vocabulary was finally getting through, and the story had a neat ending. The ending was mostly true.</p>
+<p>I don't read my transcripts before sending them anymore. My agents know everything arrives through speech recognition, and decoding what I meant is their job. Most of the time this works. Sometimes the substitutions give me a chuckle -- like "vault" being constantly replaced by "world" -- two very similar words.</p>
+<p>The other thing was the pause. The Whisper model underneath OpenWispr only starts working after you stop talking. And you feel every second you have to wait. This was the exact trade-off that sent me from OpenWispr to Ghost Pepper and back again: you're always paying quality for latency or latency for quality, and whichever side you pick, the other one nags.</p>
+<h2>Whisper isn't Whisper</h2>
+<p>In September I asked my research automation to look into "Qwen3-ASR", a newer speech model that was beating Whisper on benchmarks. The answer closed the door: the model could not plug into the way my dictation app was built. Not "hard to swap in". Impossible. In order to try it, I'd need a different program to drive it.</p>
+<h2>Trying out a new Whisper</h2>
+<p>TypeWhisper is that different program. Same idea -- hold a key, talk, text appears -- but with a plugin architecture. Third-party engines slot in without touching the app's own code. It already shipped a Qwen3-ASR plugin. I tried it. The transcription quality was noticeably better than I expected -- cleaner on technical terms, fewer phantom words.</p>
+<p>But it didn't support a glossary. TypeWhisper has a dictionary feature for spelling corrections, but the Qwen3-ASR plugin didn't send the glossary to the model. My company name went back to being two innocent English words. After the July saga, glossary support wasn't a nice-to-have anymore. It was the line.</p>
+<h2>"Just start it on your GPU box"</h2>
+<p>That same morning I'd seen a new model mentioned online: Confucius4-R2T2. Streaming speech recognition -- the kind where text appears while you're still talking, not after you stop. Two billion parameters, built by NetEase's research lab. No existing TypeWhisper plugin for it.</p>
+<p>So I asked my AI to build one. It checked -- no plugin exists. It read TypeWhisper's plugin documentation, read the R2T2 model's documentation, and wrote a Swift plugin from scratch. Tests passed. Everything streamed. Then it told me how to start the server: a Python process that needs a CUDA GPU.</p>
+<p>CUDA is Nvidia's toolkit for running heavy computation on their graphics cards. I have a MacBook. No Nvidia card. No GPU box. No server rack in the basement. The plugin was technically perfect and practically useless. I told the AI to scrap it.</p>
+<h2>Selecting a new model</h2>
+<p>Here's the thing about popular AI models: they get repackaged. The same R2T2 model had been converted to GGUF -- a compressed format that runs on anything, including a Mac's own chip -- exactly one day earlier. One day. No wonder there was no plugin for it yet.</p>
+<p>I told the AI: forget the Python server, use this instead. It rewired the plugin to talk to a small program running on my Mac that runs the GGUF model on the Mac's own graphics chip. I held the key and talked.</p>
+<p>Text appeared while I was still speaking.</p>
+<h2>Vault is vault not world</h2>
+<p>It worked. Text appeared while I was speaking, the streaming felt immediate, and the transcription was clean. Then I noticed what was missing: the glossary. The plugin didn't pass TypeWhisper's dictionary through to the model. It messed up the words again.</p>
+<p>Make it work, then make it right.</p>
+<p>So I built that too. The plugin now reads the dictionary and passes it to R2T2 as a prompt -- a hint that biases the model toward your spellings. I imported my sixteen terms from OpenWispr: the company name, the tools, the platforms.</p>
+<p>I dictated a sentence full of project names, every one landed -- even the usual suspect "vault".</p>
+<p>With Whisper, you speak into silence and wait for the result. With R2T2, the words chase your voice -- a fraction of a second behind, refining as they go. By the time I release the key, the model is almost done. The dead pause is gone.</p>
+<p>It even works when I switch languages mid-sentence.</p>
+<h2>My new stack</h2>
+<p>The setup is three things now: audio.cpp, a small local program running the R2T2 model; a Swift plugin that talks to it; and TypeWhisper, the app that hosts the plugin. Every part does its thing, and I can switch out the model when a new one comes along.</p>
+<p>Last time I won by deleting my private copy and going back to the original project. This time I won by building something new -- but on top of a plugin system instead of inside someone else's app. A fork is stitched into the thing it copies. A plugin clicks in and clicks out. I can delete this one too, and nothing else breaks.</p>
+<p>This article was dictated through the setup it describes. Every technical term in it landed correctly while the words were still chasing my voice. Even my AI noticed.</p>
+<p>I'll keep you posted -- releasing the plugin currently depends on <a href="https://github.com/0xShug0/audio.cpp/pull/618">a pull request for audio.cpp</a> that hasn't landed yet.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Extending the Tail</title>
 <link>https://scriptease.dev/posts/2026-09-19-extending-the-tail/</link>
@@ -2537,10 +2579,11 @@ I own the story and supply the lived details. You supply digging and craft.
 <link>https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/</guid>
 <pubDate>Sun, 12 Jul 2026 00:00:00 +0000</pubDate>
-<category>voice</category><category>ai</category><category>opensource</category><category>macos</category><description>This spring I spent weeks patching a dictation app until it behaved. This morning I threw all of that work away — and it was the best upgrade I've made this year.</description>
+<category>voice</category><category>ai</category><category>opensource</category><category>macos</category><category>saga</category><description>This spring I spent weeks patching a dictation app until it behaved. This morning I threw all of that work away — and it was the best upgrade I've made this year.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>The Fork I Was Happy to Delete</h1>
-<p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/macos/">#macos</a></p>
+<p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/macos/">#macos</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Whisper saga: 1. The Fork I Was Happy to Delete · <a href="https://scriptease.dev/posts/voice-input-revisited/">2. Voice Input Revisited</a></em></p>
 <p>This spring I spent weeks patching a dictation app until it behaved. This morning I threw all of that work away — and it was the best upgrade I've made this year.</p>
 <p>I barely type to my computer anymore. Most of my working day is a conversation with AI agents — programs that can dig through files, run tools, and build things while I steer. Speaking is simply faster than typing: hold a key, talk, release, and the words appear in the terminal, the plain text window where I work. When the loop works, it feels like thinking out loud and having the thoughts executed.</p>
 <p>It took four stages of trust to get here. In the beginning I typed my prompts carefully, like little letters. Then I realized the AI doesn't care about typos, and stopped fixing them. Then I started dictating, but proofread every transcript before sending. Today I dictate and press send without looking at the text at all — my agents carry a standing instruction that everything I say arrives through speech recognition, and that decoding what I meant is their job, not mine.</p>

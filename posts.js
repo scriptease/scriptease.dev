@@ -1,5 +1,20 @@
 window.POSTS = [
   {
+    "slug": "2026-09-20-voice-input-revisited",
+    "title": "Voice Input Revisited",
+    "hook": "I asked my AI to build a plugin for the newest speech model I'd heard about that morning. It came back: done, everything streams, just start it on your GPU box. I don't have a GPU box.",
+    "date": "2026-09-20",
+    "month": "2026-09",
+    "tags": [
+      "voice",
+      "ai",
+      "opensource",
+      "macos",
+      "localai",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-09-19-extending-the-tail",
     "title": "Extending the Tail",
     "hook": "An AI had submitted code for review. I was on the couch with my iPad and wanted to review it there. The review tool only works from my desk. I had a recipe in my notes for exactly this — written three months ago, never turned into a script. Today I handed those notes to an AI and said: make this work.",
@@ -625,7 +640,8 @@ window.POSTS = [
       "voice",
       "ai",
       "opensource",
-      "macos"
+      "macos",
+      "saga"
     ]
   },
   {
