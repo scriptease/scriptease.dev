@@ -14,6 +14,20 @@ window.POSTS = [
     ]
   },
   {
+    "slug": "2026-09-26-axi-all-the-things",
+    "title": "AXI All the Things",
+    "hook": "I just got a notification on my phone: one of my testers' apps had crashed. It didn't say where.",
+    "date": "2026-09-26",
+    "month": "2026-09",
+    "tags": [
+      "ai",
+      "agent",
+      "commandline",
+      "skills",
+      "automation"
+    ]
+  },
+  {
     "slug": "2026-09-26-a-team-of-strangers",
     "title": "A Team of Strangers",
     "hook": "I've never met most of my team. One made the model, one ported it, one shrank it, one merges the code, one tested it in Andalusian Spanish. I learned who most of them were from a page my AI kept.",

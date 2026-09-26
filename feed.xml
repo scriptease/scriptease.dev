@@ -57,6 +57,58 @@
 </article>]]></content:encoded>
 </item>
 <item>
+<title>AXI All the Things</title>
+<link>https://scriptease.dev/posts/2026-09-26-axi-all-the-things/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-axi-all-the-things/</guid>
+<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>agent</category><category>commandline</category><category>skills</category><category>automation</category><description>I just got a notification on my phone: one of my testers' apps had crashed. It didn't say where.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>AXI All the Things</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/skills/">#skills</a> <a href="/tags/automation/">#automation</a></p>
+<p>I just got a notification on my phone: one of my testers' apps had crashed. It didn't say where.</p>
+<h2>Why do I look for the crashes myself?</h2>
+<p>Before an iPad app ships, testers get it early through TestFlight, Apple's app for beta versions. When it crashes on them, I get a report. What reached me was a note about a crash, without the report.</p>
+<p>The actual crash reports live somewhere else: Firebase Crashlytics, Google's black box recorder for apps. Every time an app dies, it writes down where, on which device, and in which version. So I went looking for this one. I couldn't find it.</p>
+<p>Then I thought: why do I look for the crashes myself, if I can let AI do it for me?</p>
+<h2>"Is there a CLI version of it?"</h2>
+<p>I asked my AI whether there was a way to read Firebase crash reports. There was: install a plug-in. MCP, the standard way to hook an AI up to a tool.</p>
+<p>The catch is how plug-ins work. The AI reads the plug-in's whole menu at the start of every conversation, and thinking about crashes will always be in the back of its mind. I told it: I don't like the MCP server, because then I will always have it in my context. Is there a CLI version of it, a plain command instead?</p>
+<p>No. Google's command-line tool can upload crash data, but not read it. For reading, the plug-in is the only way in.</p>
+<p>So the AI suggested the obvious workaround: a small command that starts the plug-in, asks it, gets the answer and shuts it down again. The AI only knows about looking up crashes when needed.</p>
+<h2>"Let's create a folder"</h2>
+<p>I dictate everything, and what I said came out as "let's create a folder". The AI asked whether I meant skill. I did. Skills are recipes for AIs, and I've been writing them for work for a while.</p>
+<p>A month earlier I'd written <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">a post about AXI</a>: ten rules for commands whose reader is an AI instead of a person. Lead with the answer, keep it to a few columns, say "none" when there's nothing. That same night I'd put the ten rules into the recipe my AI uses to write new recipes.</p>
+<p>While the AI was building, I sent one line after it: "Make sure we follow the axi markdown file." The new command came back named <code>crashlytics-axi</code>, with every AXI rule checked off in its summary.</p>
+<p>My plan was to point it at the one app that started the quest as soon as it worked. I never had to. To test its own work, the AI needed a sample app, and for some reason it picked exactly the one I'd been looking for. Its summary ended with that app's crashes from the last three months.</p>
+<p>But the workaround needs patience. Every command takes about fifteen seconds.</p>
+<h2>"From when were they?"</h2>
+<p>Its summary listed three crashes. I recognised one: a crash I'd written a ticket for days earlier. The AI found the ticket, matched it to the crash in Firebase, and posted a comment. I asked it to add that the comment was made using a new skill.</p>
+<p>The other two came without dates, so I had to ask. Both were from July. None of the three was the crash I was looking for.</p>
+<p>That's rule seven: hand over the obvious next piece of information without being asked. The AI got back to work, and now the date comes with the first answer.</p>
+<h2>"Already reserved"</h2>
+<p>One of the July crashes had no ticket, so I had it create one. The AI wrote down its best guess at the cause. It added that the code hadn't changed since, so the crash might still happen.</p>
+<p>Minutes later I opened a second AI session and gave it the ticket to analyze.</p>
+<p>It came back with: "The ticket's hypothesis is wrong." The crash was already fixed.</p>
+<p>One AI wrote the ticket. Another AI closed it. I dictated "report it as already reserved", but meant resolved. Five minutes after it was created, the ticket was done.</p>
+<p>Half an hour after my first question, the skill was up for review with my colleagues.</p>
+<h2>"Call it standup"</h2>
+<p>The crash from that notification still wasn't there. So I wanted the checking to happen without me: the day it shows up, I want to know. My vault, the folder of notes, already runs a small job every morning. I asked for one more step at the end: look for new crash reports and ping me on Discord if there are any.</p>
+<p>Across all our customers, test versions included, that's 57 apps in Firebase. At fifteen seconds of startup per command, a full round would take fourteen minutes.</p>
+<p>The AI's first version worked around that by fiddling with the AXI tool we'd just built. It worked, but it could break any day. While it was still at it, I asked whether we shouldn't just add this to the command itself.</p>
+<p>So the command got a new verb for exactly that. I dictated "call it um stand up", and it became <code>standup</code>, next to the old per-app command, still untouched. One go, all 57 apps, thirty seconds. The morning job keeps a list of the crashes it has seen and only tells me when a new one appears.</p>
+<p>To test it, the AI made the job forget one crash it had already seen.</p>
+<h2>"Just got the notification"</h2>
+<p>My phone buzzed. One new crash, the app, the version, two users. That one was a test.</p>
+<p>I've never typed any of these commands or tools myself, and I never will. An AI wrote them, and an AI is the only one that runs them.</p>
+<p>That's the idea behind AXI: code written by AI, for AI. No person reads its output. Its whole job is to have the next answer ready, so the AI can keep going instead of spending tokens to dig it up. When I had to ask for the dates, that wasn't a missing feature. It was the command failing at its only job. The checklist is in the recipe that writes the commands, so every new one comes out AXI.</p>
+<h2>"I mentioned axi in my request"</h2>
+<p>To write this post, I had an AI read back the sessions where all of this was built. It reported I had never asked for AXI.</p>
+<p>I had, and I had the receipt. "Make sure we follow the axi markdown file." It searched again and found the line I'd sent while the first AI was busy building. The tool that reads my sessions had skipped every message I'd typed while an AI was working: hundreds of them, across many sessions.</p>
+<p>So the post about AXI turned into a side quest: fixing another tool written by AI, for AI, that had failed at its only job. It reads those messages now. It also got a new name: <code>load-session-axi</code>.</p>
+<p>All three crashes the crash command found are fixed by now. The one I'm actually interested in hasn't arrived yet. Tomorrow, or on Monday, my phone will tell me.</p>
+</article>]]></content:encoded>
+</item>
+<item>
 <title>A Team of Strangers</title>
 <link>https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/</guid>
