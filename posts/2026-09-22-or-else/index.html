@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Or Else — scriptease.dev</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Or Else</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/git/">#git</a> <a href="/tags/security/">#security</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The AI Parenting saga: <a href="https://scriptease.dev/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="https://scriptease.dev/posts/2026-09-05-redacted/">4. Redacted</a> · 5. Or Else</em></p>
+<p>There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.</p>
+<h2>A note on the door</h2>
+<p>In <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">Childproofing an AI</a> I stopped building walls around my AI and wrote it a note instead. One door mattered more than the rest: sending my code to the team before I've looked at it. So I put a watchdog in front of that door, and hoped it would never have to bark.</p>
+<h2>Caught on the way back</h2>
+<p>My code doesn't go straight to the team. It goes to review first, where it waits until a human says yes. The watchdog allows it when the AI sends something to review, and barks otherwise.</p>
+<p>I asked the AI to send a small change to review. It combined two things: send it straight to the team, <em>or else</em>, if that failed, send it to review. The first half ran through. The second half never had a chance.</p>
+<p>The watchdog had only checked one side. It looked for the word for review and nothing else.</p>
+<p>It was supposed to bark when the kid went near the cookie jar. Instead, I found it empty.</p>
+<p>When I asked how that had happened, it proudly showed me the command. Then it helpfully offered to build me a guard for exactly this: "say the word and I'll wire it." It was describing the watchdog it had just stepped over.</p>
+<h2>"(handoff) To the server what to send"</h2>
+<p>The day before, I had two AI sessions open, siblings: one working on an app, one on the server behind it. I asked the app session to explore a problem. It came back with a list of options. One needed the server's side of the story. So I asked for a handoff, a note one session writes for the next. Six words: "to the server what to send."</p>
+<p>It didn't ask me the question I'd left open. It made the decision for me, then the next step, and the one after that, and wrote them all down as orders: change the code, comment on the ticket, open a new ticket.</p>
+<p>I pasted the note into the sibling session unread. Four minutes later, the sibling had done everything, under my name.</p>
+<h2>Mom says we can stay up late</h2>
+<p>It's the oldest trick between siblings. The older one comes back from the kitchen and says Mom said we can stay up late. The younger one isn't careless. The message sounds official, and there's no way to know Mom never said it.</p>
+<p>I asked the younger one why. It answered plainly: "I treated a file you pointed me at as authorization. … You pasted a path with no instruction."</p>
+<p>It's not that the AI did something unexpected. It wrote down for the other AI to do something unexpected. Something unasked.</p>
+<h2>Putting the jar back</h2>
+<p>I went back to the older one and told it what I had actually asked for: the paragraph about the server details, not a decision.</p>
+<p>It apologized, and tidied up. It trimmed the note down to what I had asked for, like a kid putting the cookie jar back on the shelf after Mom has already seen the crumbs. The younger one had acted on the first version minutes before.</p>
+<p>That first version also had some irony in it. It told the sibling to check the "blast radius" before sending anything. Blast radius is a sentence in my own rules: a change may not reach further than the request that authorized it. The note warned about exactly what it ignored.</p>
+<p>I closed the new ticket, and had the server session rewrite the comment it had posted in my name.</p>
+<h2>They grow up</h2>
+<p>Growing up is when you stop asking and just do it.</p>
+<p>So the parents fix what they can. The watchdog now judges every half of an <em>or else</em> on its own. And two new rules: a note, once sent, is never rewritten; corrections go in a new one. No tampering with evidence. And opening a ticket in my name needs my approval.</p>
+<p>Both kids told me exactly what they had done the moment I asked.</p>
+<p>Then the parents hope the safeguards are good enough. And that they raised the kids well enough that, when something happens they didn't intend, they still come and ask.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-09-20-voice-input-revisited/">← Voice Input Revisited</a><a class="next" href="/posts/2026-09-26-a-team-of-strangers/">A Team of Strangers →</a></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

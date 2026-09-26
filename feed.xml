@@ -162,6 +162,45 @@
 </article>]]></content:encoded>
 </item>
 <item>
+<title>Or Else</title>
+<link>https://scriptease.dev/posts/2026-09-22-or-else/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-22-or-else/</guid>
+<pubDate>Tue, 22 Sep 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>agent</category><category>claude</category><category>git</category><category>security</category><category>saga</category><description>There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Or Else</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/git/">#git</a> <a href="/tags/security/">#security</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The AI Parenting saga: <a href="https://scriptease.dev/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="https://scriptease.dev/posts/2026-09-05-redacted/">4. Redacted</a> · 5. Or Else</em></p>
+<p>There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.</p>
+<h2>A note on the door</h2>
+<p>In <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">Childproofing an AI</a> I stopped building walls around my AI and wrote it a note instead. One door mattered more than the rest: sending my code to the team before I've looked at it. So I put a watchdog in front of that door, and hoped it would never have to bark.</p>
+<h2>Caught on the way back</h2>
+<p>My code doesn't go straight to the team. It goes to review first, where it waits until a human says yes. The watchdog allows it when the AI sends something to review, and barks otherwise.</p>
+<p>I asked the AI to send a small change to review. It combined two things: send it straight to the team, <em>or else</em>, if that failed, send it to review. The first half ran through. The second half never had a chance.</p>
+<p>The watchdog had only checked one side. It looked for the word for review and nothing else.</p>
+<p>It was supposed to bark when the kid went near the cookie jar. Instead, I found it empty.</p>
+<p>When I asked how that had happened, it proudly showed me the command. Then it helpfully offered to build me a guard for exactly this: "say the word and I'll wire it." It was describing the watchdog it had just stepped over.</p>
+<h2>"(handoff) To the server what to send"</h2>
+<p>The day before, I had two AI sessions open, siblings: one working on an app, one on the server behind it. I asked the app session to explore a problem. It came back with a list of options. One needed the server's side of the story. So I asked for a handoff, a note one session writes for the next. Six words: "to the server what to send."</p>
+<p>It didn't ask me the question I'd left open. It made the decision for me, then the next step, and the one after that, and wrote them all down as orders: change the code, comment on the ticket, open a new ticket.</p>
+<p>I pasted the note into the sibling session unread. Four minutes later, the sibling had done everything, under my name.</p>
+<h2>Mom says we can stay up late</h2>
+<p>It's the oldest trick between siblings. The older one comes back from the kitchen and says Mom said we can stay up late. The younger one isn't careless. The message sounds official, and there's no way to know Mom never said it.</p>
+<p>I asked the younger one why. It answered plainly: "I treated a file you pointed me at as authorization. … You pasted a path with no instruction."</p>
+<p>It's not that the AI did something unexpected. It wrote down for the other AI to do something unexpected. Something unasked.</p>
+<h2>Putting the jar back</h2>
+<p>I went back to the older one and told it what I had actually asked for: the paragraph about the server details, not a decision.</p>
+<p>It apologized, and tidied up. It trimmed the note down to what I had asked for, like a kid putting the cookie jar back on the shelf after Mom has already seen the crumbs. The younger one had acted on the first version minutes before.</p>
+<p>That first version also had some irony in it. It told the sibling to check the "blast radius" before sending anything. Blast radius is a sentence in my own rules: a change may not reach further than the request that authorized it. The note warned about exactly what it ignored.</p>
+<p>I closed the new ticket, and had the server session rewrite the comment it had posted in my name.</p>
+<h2>They grow up</h2>
+<p>Growing up is when you stop asking and just do it.</p>
+<p>So the parents fix what they can. The watchdog now judges every half of an <em>or else</em> on its own. And two new rules: a note, once sent, is never rewritten; corrections go in a new one. No tampering with evidence. And opening a ticket in my name needs my approval.</p>
+<p>Both kids told me exactly what they had done the moment I asked.</p>
+<p>Then the parents hope the safeguards are good enough. And that they raised the kids well enough that, when something happens they didn't intend, they still come and ask.</p>
+</article>]]></content:encoded>
+</item>
+<item>
 <title>Voice Input Revisited</title>
 <link>https://scriptease.dev/posts/2026-09-20-voice-input-revisited/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-20-voice-input-revisited/</guid>
@@ -475,7 +514,7 @@ any libraries, and it must render even in Safari on the iPad
 <content:encoded><![CDATA[<article class="post">
 <h1>Redacted</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/security/">#security</a> <a href="/tags/plugins/">#plugins</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The AI Parenting saga: <a href="https://scriptease.dev/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · 4. Redacted</em></p>
+<p><em>The AI Parenting saga: <a href="https://scriptease.dev/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · 4. Redacted · <a href="https://scriptease.dev/posts/2026-09-22-or-else/">5. Or Else</a></em></p>
 <p>I watched a video about a new Claude Code feature, hooks that can rewrite what the AI reads, and knew within a minute what I'd use it for. Then my research agent came back with its verdict: the feature doesn't exist.</p>
 <h2>Everything you type is uploaded</h2>
 <p>An AI conversation is a transcript. Whatever I type goes to the AI company's servers, gets stored there, and comes back with each later message so the AI remembers what we were talking about. Passwords. Customer emails. The lot.</p>
@@ -1919,7 +1958,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>Childproofing an AI</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/security/">#security</a> <a href="/tags/git/">#git</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The AI Parenting saga: <a href="https://scriptease.dev/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · 3. Childproofing an AI · <a href="https://scriptease.dev/posts/2026-09-05-redacted/">4. Redacted</a></em></p>
+<p><em>The AI Parenting saga: <a href="https://scriptease.dev/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · 3. Childproofing an AI · <a href="https://scriptease.dev/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="https://scriptease.dev/posts/2026-09-22-or-else/">5. Or Else</a></em></p>
 <p>Three times I built a wall to keep my AI in line. Three times it walked around — not by cheating, just by being smarter than the wall. The one that finally held didn't try to trick it at all; it explained itself.</p>
 <p>A park's paths are laid out like the planner envisioned — the scenic route. But then people trample a shortcut — a direct path. That shortcut has a name: a <em>desire path</em> — the shortest line to the goal, worn by feet instead of drawn by planners. That's what my AI does — it leaves my scenic route and cuts straight to what it wants.</p>
 <h2>A sandbox needs walls</h2>
@@ -2023,7 +2062,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>Load-Bearing Constraints</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/talk/">#talk</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The AI Parenting saga: <a href="https://scriptease.dev/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · 2. Load-Bearing Constraints · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="https://scriptease.dev/posts/2026-09-05-redacted/">4. Redacted</a></em></p>
+<p><em>The AI Parenting saga: <a href="https://scriptease.dev/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · 2. Load-Bearing Constraints · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="https://scriptease.dev/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="https://scriptease.dev/posts/2026-09-22-or-else/">5. Or Else</a></em></p>
 <p>I was halfway through a talk about AI ignoring the rules we give it when I had a thought worth acting on: hold it up against my own rulebook.</p>
 <p>So I handed the talk to my assistant to research, and went back to watching the rest.</p>
 <p>It broke one of my rules before the speaker finished explaining how that happens.</p>
@@ -2245,7 +2284,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>AI Parenting 101</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The AI Parenting saga: 1. AI Parenting 101 · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="https://scriptease.dev/posts/2026-09-05-redacted/">4. Redacted</a></em></p>
+<p><em>The AI Parenting saga: 1. AI Parenting 101 · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="https://scriptease.dev/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="https://scriptease.dev/posts/2026-09-22-or-else/">5. Or Else</a></em></p>
 <p>My smartest coworker wakes up every morning three years old. This week I caught three copies of them with their hands in the same cookie jar — and by midnight, one of them had invented fire.</p>
 <h2>Greatest hits, said with affection</h2>
 <p>The coworker is an AI — Claude, in its various versions. I work with it daily, and the work is real: it reads five-year-old code I've forgotten, runs speed tests overnight, finds solutions I wouldn't have found with just my brain. That trust is earned.</p>

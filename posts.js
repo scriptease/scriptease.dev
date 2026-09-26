@@ -42,6 +42,21 @@ window.POSTS = [
     ]
   },
   {
+    "slug": "2026-09-22-or-else",
+    "title": "Or Else",
+    "hook": "There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.",
+    "date": "2026-09-22",
+    "month": "2026-09",
+    "tags": [
+      "ai",
+      "agent",
+      "claude",
+      "git",
+      "security",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-09-20-voice-input-revisited",
     "title": "Voice Input Revisited",
     "hook": "I asked my AI to build a plugin for the newest speech model I'd heard about that morning. It came back: done, everything streams, just start it on your GPU box. I don't have a GPU box.",
