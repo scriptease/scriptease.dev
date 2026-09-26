@@ -7,7 +7,60 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sun, 20 Sep 2026 00:00:00 +0000</lastBuildDate>
+<lastBuildDate>Sat, 26 Sep 2026 00:00:00 +0000</lastBuildDate>
+<item>
+<title>A Team of Strangers</title>
+<link>https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/</guid>
+<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+<category>voice</category><category>ai</category><category>opensource</category><category>github</category><category>saga</category><description>I've never met most of my team. One made the model, one ported it, one shrank it, one merges the code, one tested it in Andalusian Spanish. I learned who most of them were from a page my AI kept.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>A Team of Strangers</h1>
+<p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/github/">#github</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Whisper saga: <a href="https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/">1. The Fork I Was Happy to Delete</a> · <a href="https://scriptease.dev/posts/2026-09-20-voice-input-revisited/">2. Voice Input Revisited</a> · 3. A Team of Strangers</em></p>
+<p>I've never met most of my team. One made the model, one ported it, one shrank it, one merges the code, one tested it in Andalusian Spanish. I learned who most of them were from a page my AI kept.</p>
+<h2>"Sometimes it takes ten seconds or more"</h2>
+<p>Last time I ended on the dead pause being gone. I'd switched to R2T2, a speech model that writes while you talk instead of after you stop, and the words chased my voice a fraction of a second behind.</p>
+<p>Mostly. Every now and then, after a long sentence, I let go of the key and nothing happened. The graphics chip sat at 100%, and ten seconds later the text arrived all at once. The pause was back, and it was worse than the one I'd left.</p>
+<p>We had tried the obvious knobs. Longer listening windows made it slow. Shorter windows made it worse.</p>
+<h2>Rereading everything</h2>
+<p>The model listens in slices of a third of a second. For each new slice it went back and re-listened to everything I had said so far, from the first word. Imagine writing a letter where you reread the whole thing from the top every time you add a word. The first line is fine. By the second page you're falling behind.</p>
+<p>That's what happened. Once re-listening took longer than the slice it was listening to, the slices piled up in a queue. When I stopped talking, the model was still working through my last ten seconds. Shorter slices meant more rereading.</p>
+<p>The fix was to remember. The model hears audio in four-second blocks, and a finished block never changes, so its work can be kept and only the unfinished tail redone. On a one-minute recording, the wait after the last word went from 24.9 seconds to 0.37.</p>
+<p>I tried it on myself first: "I dictated for over a minute and it immediately returns like I wanted it to."</p>
+<h2>"I don't want to bulldoze over his code"</h2>
+<p>Then I went to send the fix back and found someone had got there first.</p>
+<p>R2T2 runs on my Mac through audio.cpp, an open-source program that runs speech models on the Mac's own graphics chip. A developer named David Feng had brought R2T2 into audio.cpp, and he had also packed the model into the file format my setup uses. His own copy of the project had a branch, a side version of the code, with the same three ideas as mine, written two days earlier, with stricter safety checks. He'd never sent it in.</p>
+<p>I could have sent mine straight to 0xShug0, who maintains audio.cpp. What I told my AI was: "I don't want to override his intentions and basically bulldoze over his code." David's copy had no place to file an issue, so I sent my fix to him directly, as a draft: here's mine, yours is better, how do you want to do this?</p>
+<p>Then nothing. He had also gone quiet after the maintainer reviewed another change from him.</p>
+<h2>We kept everything in a note</h2>
+<p>This team has no office, no chat and no meetings. It's a scatter of discussions across GitHub, where the code lives, and Hugging Face, where the models live. Nobody reads all of them.</p>
+<p>My AI does. That first night I asked it to write everything into a note in my Obsidian vault, the folder where I keep my notes. It had been keeping its own private memory too, and I dictated back: "You can remove the memory. I don't need it. The Obsidian void is the memory."</p>
+<p>That note started at 38 lines. It's 111 now, and it links 15 discussions across five projects: who asked what, who answered, who went quiet, and what we're waiting on. When I asked it to check for anything new, it read the discussions, checked them against the note, and answered from both.</p>
+<h2>A week in AI is like a month</h2>
+<p>Four days later I released version 0.2.0 of my plugin with my fixed server inside. The release notes said plainly that it came from my copy, not the official one.</p>
+<p>By then I wasn't the only user. A colleague, hooked by my rambling about it, had installed it and battle-tested it in Andalusian Spanish. The model nailed it, no issue whatsoever. So I asked my AI whether it was time to go over David's head. "It's also like a week, and in a week in AI is like a month."</p>
+<p>It said yes, with conditions: tell David first, credit his work, link his branch, and offer to close mine the moment he wants to send his. So I opened a pull request, a proposed change the maintainer can accept or reject, and dictated why I cared: "Somebody else can find the PR and get their bug fixed. So it's basically spreading the idea how to fix the bug. I don't care if it gets merged. That's a lie. I care a little bit that it gets merged."</p>
+<h2>Details added by Claude</h2>
+<p>That same afternoon the note turned up a stranger. Someone called NairoDorian had shrunk R2T2 to half its size, 1.2 gigabytes instead of 2.5, and reported it ran about 20% faster with no loss in quality. Shrinking a model like this is called quantizing. You store every number in the model with fewer digits, like rounding prices to the nearest euro.</p>
+<p>My AI downloaded it, and audio.cpp refused to load it. A check in the code allowed only the bigger model files. My AI's advice was to wait for the person who made it to fix audio.cpp.</p>
+<p>I didn't want to wait. If rebuilding was five minutes of work, I could test the stranger's model and tell them what fixed it. It was one line. It ran, so I dictated a thank-you through it: "I transcribed the very text you're reading right now using your quant, and the only fix that's needed is to allow your quant."</p>
+<p>My AI turned that into a nicer comment, full of things I had never said. Worse, it still claimed I had dictated every word of it.</p>
+<p>"But now it's a lie because you basically put in a bunch of stuffs that I never actually dictated."</p>
+<p>We settled on my dictation as spoken, followed by a section headed <em>Details added by Claude</em> with the error message and the one-line change. That's what got posted. My plugin's page got a table of all three model sizes that now exist. "It's cool to give people options." I put out 0.2.1 with the smaller model working. "I'm not paying for the traffic GitHub does."</p>
+<h2>"Fixed as suggested"</h2>
+<p>By that night the maintainer had made the one-line change in the official audio.cpp and closed the discussion with three words: "Fixed as suggested."</p>
+<p>He also tested my bigger fix, and found a real hole in it. If you start quietly and then speak up, the model adjusts to the new volume. That changes the early audio too. My remembered blocks were remembered at the old volume. In a test with a quiet first eight seconds, 18 of the slices came out different from the original. My shortcut had changed the answer.</p>
+<p>The fix was to keep a copy of what each remembered block looked like and compare it every time. If anything changed, redo that block. It cost no speed: the one-minute recording still finished in 36 seconds against 80. At a quarter to four in the morning the change was up and my reply was posted.</p>
+<p>That check was exactly the kind David's branch had from the start. The hole the maintainer found was the one the first stranger had already closed.</p>
+<p>Meanwhile on Hugging Face, someone had asked David whether the smaller format would work. He answered in Chinese: probably, he just hadn't tested the quality and was short on disk space. Nobody handed out roles. Everybody did one anyway.</p>
+<h2>Waiting on audio.cpp</h2>
+<p>The last section of the note is called <em>waiting on audio.cpp</em>. My fix is in front of the maintainer again. The stranger hasn't answered my thank-you yet. David hasn't answered my draft.</p>
+<p>My plugin is supposed to disappear. TypeWhisper, the dictation app it plugs into, takes new plugins into its own code, and I've asked in their discussion board how they'd like it. Once everything lands in the official projects, my copy of audio.cpp, my plugin page and my self-built server can all go. The new plugin would download the official audio.cpp and the model size you pick, and start them on its own.</p>
+<p>I thought about waiting for the merge before writing this. Then this whole week would have been one section in a post about a finished plugin.</p>
+<p>The first time in this saga, I won by deleting my copy. I'm hoping to win the same way again.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Voice Input Revisited</title>
 <link>https://scriptease.dev/posts/2026-09-20-voice-input-revisited/</link>
@@ -17,7 +70,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Voice Input Revisited</h1>
 <p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/macos/">#macos</a> <a href="/tags/localai/">#localai</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Whisper saga: <a href="https://scriptease.dev/posts/the-fork-i-was-happy-to-delete/">1. The Fork I Was Happy to Delete</a> · 2. Voice Input Revisited</em></p>
+<p><em>The Whisper saga: <a href="https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/">1. The Fork I Was Happy to Delete</a> · 2. Voice Input Revisited · <a href="https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/">3. A Team of Strangers</a></em></p>
 <p>I asked my AI to build a plugin for the newest speech model I'd heard about that morning. It came back: done, everything streams, just start it on your GPU box. I don't have a GPU box.</p>
 <h2>Some words it would always mess up</h2>
 <p>Ten weeks ago I wrote about deleting my private copy of a dictation app and going back to OpenWispr, the open-source app that turns my voice into text. The glossary feature had landed, my private vocabulary was finally getting through, and the story had a neat ending. The ending was mostly true.</p>
@@ -2586,7 +2639,7 @@ I own the story and supply the lived details. You supply digging and craft.
 <content:encoded><![CDATA[<article class="post">
 <h1>The Fork I Was Happy to Delete</h1>
 <p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/macos/">#macos</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Whisper saga: 1. The Fork I Was Happy to Delete · <a href="https://scriptease.dev/posts/voice-input-revisited/">2. Voice Input Revisited</a></em></p>
+<p><em>The Whisper saga: 1. The Fork I Was Happy to Delete · <a href="https://scriptease.dev/posts/2026-09-20-voice-input-revisited/">2. Voice Input Revisited</a> · <a href="https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/">3. A Team of Strangers</a></em></p>
 <p>This spring I spent weeks patching a dictation app until it behaved. This morning I threw all of that work away — and it was the best upgrade I've made this year.</p>
 <p>I barely type to my computer anymore. Most of my working day is a conversation with AI agents — programs that can dig through files, run tools, and build things while I steer. Speaking is simply faster than typing: hold a key, talk, release, and the words appear in the terminal, the plain text window where I work. When the loop works, it feels like thinking out loud and having the thoughts executed.</p>
 <p>It took four stages of trust to get here. In the beginning I typed my prompts carefully, like little letters. Then I realized the AI doesn't care about typos, and stopped fixing them. Then I started dictating, but proofread every transcript before sending. Today I dictate and press send without looking at the text at all — my agents carry a standing instruction that everything I say arrives through speech recognition, and that decoding what I meant is their job, not mine.</p>

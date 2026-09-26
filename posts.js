@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-09-26-a-team-of-strangers",
+    "title": "A Team of Strangers",
+    "hook": "I've never met most of my team. One made the model, one ported it, one shrank it, one merges the code, one tested it in Andalusian Spanish. I learned who most of them were from a page my AI kept.",
+    "date": "2026-09-26",
+    "month": "2026-09",
+    "tags": [
+      "voice",
+      "ai",
+      "opensource",
+      "github",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-09-20-voice-input-revisited",
     "title": "Voice Input Revisited",
     "hook": "I asked my AI to build a plugin for the newest speech model I'd heard about that morning. It came back: done, everything streams, just start it on your GPU box. I don't have a GPU box.",
