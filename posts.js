@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-09-26-dashboard-for-one",
+    "title": "Dashboard for One",
+    "hook": "When AI 10x's your work, it 10x's your tickets too. The tracker I had didn't show them the way I work anymore. I could keep my work in two places, or write myself a different view.",
+    "date": "2026-09-26",
+    "month": "2026-09",
+    "tags": [
+      "ai",
+      "claude",
+      "dashboard",
+      "ipad",
+      "productivity"
+    ]
+  },
+  {
     "slug": "2026-09-26-a-team-of-strangers",
     "title": "A Team of Strangers",
     "hook": "I've never met most of my team. One made the model, one ported it, one shrank it, one merges the code, one tested it in Andalusian Spanish. I learned who most of them were from a page my AI kept.",
