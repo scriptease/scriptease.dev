@@ -10,7 +10,8 @@ window.POSTS = [
       "webdesign",
       "rss",
       "easteregg",
-      "claude"
+      "claude",
+      "shark"
     ]
   },
   {
