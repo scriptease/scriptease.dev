@@ -215,10 +215,10 @@ window.POSTS = [
     ]
   },
   {
-    "slug": "2026-08-28-tackling-complexity-through-visual-lenses",
+    "slug": "2026-08-29-everything-was-correct-nothing-was-interesting",
     "title": "Everything Was Correct. Nothing Was Interesting.",
     "hook": "The source-code browser from yesterday's story let me enter the same project through features, structure, patterns, or dependencies. The next morning, I pointed the idea at my Obsidian vault. It came back with folders, broken links, and a list of notes that linked to each other. I had turned a way to explore into a plumbing report.",
-    "date": "2026-08-28",
+    "date": "2026-08-29",
     "month": "2026-08",
     "tags": [
       "obsidian",
