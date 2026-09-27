@@ -42,13 +42,23 @@
     return mx === mn ? "0.9" : (0.75 + (n - mn) / (mx - mn) * (1.15 - 0.75)).toFixed(2);
   }
   tagNames.sort(function (a, b) { return tagCounts[b] - tagCounts[a] || (a < b ? -1 : 1); });
-  // On a post page, highlight that post's own tags (blue) and dim the rest (gray).
+  // Highlight the tags of the posts this page shows (blue) and dim the rest (gray):
+  // a post page shows one post, a tag or month page shows all posts listed on it.
   var pm = location.pathname.match(/\/posts\/([^\/]+)\/?$/);
-  var current = pm && posts.filter(function (p) { return p.slug === pm[1]; })[0];
+  var tm = location.pathname.match(/\/tags\/([^\/]+)\/?$/);
+  var am = location.pathname.match(/\/archive\/([^\/]+)\/?$/);
+  var shown = posts.filter(function (p) {
+    if (pm) return p.slug === pm[1];
+    if (tm) return (p.tags || []).some(function (t) { return tslug(t) === tm[1]; });
+    if (am) return p.month === am[1];
+    return false;
+  });
   var onTags = {};
-  if (current) (current.tags || []).forEach(function (t) { onTags[t] = 1; });
+  shown.forEach(function (p) {
+    (p.tags || []).forEach(function (t) { onTags[t] = 1; });
+  });
   var cloud = tagNames.map(function (t) {
-    var cls = current ? (onTags[t] ? ' class="on"' : ' class="off"') : "";
+    var cls = shown.length ? (onTags[t] ? ' class="on"' : ' class="off"') : "";
     return "<a" + cls + ' href="/tags/' + tslug(t) + '/" style="font-size:' +
       tsize(tagCounts[t]) + 'rem">#' + esc(t) + "</a>";
   }).join(" ");
