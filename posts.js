@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-09-27-how-i-spend-my-tokens",
+    "title": "How I Spend My Tokens",
+    "hook": "The last thing the AI told me before my allowance ran out was that it was pushing my page to Confluence. It wasn't. When the allowance came back, I typed \\\"Continue\\\", and it did the exact same thing again.",
+    "date": "2026-09-27",
+    "month": "2026-09",
+    "tags": [
+      "claude",
+      "copilot",
+      "agent",
+      "automation",
+      "ai"
+    ]
+  },
+  {
     "slug": "2026-09-27-its-about-the-little-things",
     "title": "It's About the Little Things",
     "hook": "This evening I asked Claude why my blog links show up in the chat app Discord as a bare link. I ended up with a perfect little card with my signature shark.",

@@ -7,7 +7,50 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sun, 27 Sep 2026 19:55:50 +0200</lastBuildDate>
+<lastBuildDate>Sun, 27 Sep 2026 21:26:44 +0200</lastBuildDate>
+<item>
+<title>How I Spend My Tokens</title>
+<link>https://scriptease.dev/posts/2026-09-27-how-i-spend-my-tokens/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-27-how-i-spend-my-tokens/</guid>
+<pubDate>Sun, 27 Sep 2026 21:26:44 +0200</pubDate>
+<category>claude</category><category>copilot</category><category>agent</category><category>automation</category><category>ai</category><description>The last thing the AI told me before my allowance ran out was that it was pushing my page to Confluence. It wasn't. When the allowance came back, I typed \"Continue\", and it did the exact same thing again.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>How I Spend My Tokens</h1>
+<p class="post-tags"><a href="/tags/claude/">#claude</a> <a href="/tags/copilot/">#copilot</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/ai/">#ai</a></p>
+<p>The last thing the AI told me before my allowance ran out was that it was pushing my page to Confluence. It wasn't. When the allowance came back, I typed "Continue", and it did the exact same thing again.</p>
+<h2>Infinite tokens</h2>
+<p>In the beginning, it felt like I had infinite tokens. My AI subscription came from work, GitHub Copilot, and it didn't count words. It counted requests. One question was one request, no matter how much work the answer took.</p>
+<p>That changes how you talk to an AI. A small instruction costs as much as a big one, so I stopped giving small ones. I gave it whole plans. I found Maestro, an app that hands an AI a checklist and lets it work down the list on its own, and I learned to write lists long enough to fill an afternoon.</p>
+<h2>Five-hour shifts, all night</h2>
+<p>Then I got a Claude subscription, and the meter changed. Claude counts tokens, and it hands them out in windows: a budget for every five hours, and a bigger one for the week.</p>
+<p>I used AI all the time, so I had to be strict with myself. I moved what I could to local models, AIs running on my own laptop, and to free ones. I still ran out a couple of times.</p>
+<p>When Claude announced Workflows, a way for one AI to run a whole team of helper AIs, I tried to get the most out of every window. I built a small tool, <a href="https://scriptease.dev/posts/2026-09-26-claude-makes-things/"><code>usage-check</code></a>, so my AI could see how much was left, and I could give it more to do overnight.</p>
+<p>One evening in June I planned a big run and told the AI to wait for the next window before starting. It set a timer for the reset, looked up the time a few minutes too late, got the reset after that one, and waited five hours for nothing.</p>
+<h2>Burned once, burned twice</h2>
+<p>Some tokens I didn't spend. They got burned.</p>
+<p>Once I asked my research agent a small question about a build problem at work. It fanned the question out to 97 helper AIs. It came back with an answer. Since then, my AI has to ask me before it starts more than ten, and in the folder where I keep my notes, Workflows are switched off.</p>
+<p>The other one still makes me laugh. Our iPad app has hundreds of settings, and years ago I wrote a script that turned them into a table I could paste into Confluence, the wiki where we keep our documentation. Nobody looked at it. This time I asked the AI to write the page itself, through a plug-in that lets it edit Confluence directly.</p>
+<p>The page came out huge. To publish it through the plug-in, the AI had to type the whole page out again in a single answer, and that answer was longer than it is allowed to get. It ran out of room halfway. Its last message before my five hours were used up:</p>
+<blockquote>
+<p>The whole page body is in context now. Pushing it to Confluence in one update.</p>
+</blockquote>
+<p>Nothing got pushed.</p>
+<p>When the window came back, I typed "Continue". It said it was updating the page, tried the same giant answer, and ran out of room again. Only then did it split the page into five. Forty-two minutes into my fresh window, almost 90% of it was gone.</p>
+<p>So I asked a second AI to read the whole session and tell me what had happened. Its verdict on that last message: "'Pushing it' was false in the operational sense."</p>
+<p>After burning once, I got burned twice.</p>
+<h2>I don't need to care about tokens anymore</h2>
+<p>Then Opus 5.5 arrived, and it became the AI model I use every day.</p>
+<p>I used to keep a buffer, tokens saved up so I could still do the real work. Now I start three to five things in parallel without thinking about it. Each percent of my weekly allowance buys almost twice the tokens it did in the weeks before, I get about twice as much done, and I rarely hit the five-hour limit anymore.</p>
+<p><img alt="My token use over the last month. The orange band is Opus 5.5." src="assets/how-i-spend-my-tokens/token-timeline.jpg" /></p>
+<p>It also works while I'm asleep. One session kept an eye on a new test version of my iPad app until Apple let it through to the testers, and messaged me on the chat app Discord at almost midnight. Another kept testing a big import at work while I slept.</p>
+<p><img alt="The Discord message, just before midnight" src="assets/how-i-spend-my-tokens/midnight-ping.jpg" /></p>
+<p>The tokens go into tools that help my tools build tools, like the crash-report command from <a href="https://scriptease.dev/posts/2026-09-26-axi-all-the-things/">AXI All the Things</a>.</p>
+<h2>The task I give every model</h2>
+<p>Every new model gets the same test from me: build a cartoon aquarium in a single web page, with a shark that looks like mine. I call it fish slop. It last swam through <a href="https://scriptease.dev/posts/2026-08-25-lost-in-compression/">Lost in Compression</a>.</p>
+<p>Opus 5.5 built it in one go. It ran on medium effort, not even its highest setting.</p>
+<p><img alt="Opus 5.5's aquarium, first try" src="assets/how-i-spend-my-tokens/opus55-aquarium.jpg" /></p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>It's About the Little Things</title>
 <link>https://scriptease.dev/posts/2026-09-27-its-about-the-little-things/</link>
