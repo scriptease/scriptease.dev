@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Claudial of Service — scriptease.dev</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Claudial of Service</h1>
+<p class="post-tags"><a href="/tags/claude/">#claude</a> <a href="/tags/bluetooth/">#bluetooth</a> <a href="/tags/memory/">#memory</a> <a href="/tags/macos/">#macos</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Maker saga: <a href="https://scriptease.dev/posts/2026-09-26-claude-makes-things/">1. Claude Makes Things</a> · 2. Claudial of Service</em></p>
+<p>My Mac slowed to a snail's pace. Activity Monitor said a tiny helper for my desk gadget was using 50 gigabytes of memory. I had stopped that helper days ago. Or I thought I had.</p>
+<h2>"I just killed the daemon with 50gb used memory"</h2>
+<p>The gadget is a round dial on my desk that shows how much of my AI allowance I have left. I set it up <a href="https://scriptease.dev/posts/2026-09-26-claude-makes-things/">last week</a> with the help of Claude, in about half an hour. It has two halves: the dial, and a small helper program on the Mac that fetches the numbers and sends them over Bluetooth. Programs like that, which run quietly in the background, are called daemons.</p>
+<p>My Mac has 64 gigabytes of memory. The helper, whose whole job is sending one short message now and then, had taken almost 80% of it, and everything else was getting squeezed. There's a name for an attack that floods a machine until it can't do its real work: denial of service. Mine came from inside my house.</p>
+<p>I killed the helper in Activity Monitor, pointed an AI at the Claudial folder and asked:</p>
+<blockquote>
+<p>i just killed the daemon with 50gb used memory what could cause this</p>
+</blockquote>
+<p>It ignored the folder. It went looking through the other daemons my build tools leave running and ended with a question back to me. My Mac has a lot of daemons.</p>
+<p>I added one more word:</p>
+<blockquote>
+<p>i just killed the claudial daemon with 50gb used memory what could cause this</p>
+</blockquote>
+<p>Within minutes it had an answer.</p>
+<h2>Not one daemon, but two</h2>
+<p>The helper had been running for seven days straight, undetected, since the evening I set it up.</p>
+<p>But I had stopped it?! Several times. Whenever I wanted the dial I started the helper in a terminal window, and when I was done I stopped it. As far as I knew, nothing was running.</p>
+<p>Except on the first evening, the AI installing everything had started a copy of its own to test with. It started it in the background, detached from everything, so that it would keep going while the AI worked on other things. It kept going after the AI was done, too. I never saw it, because it wasn't in any window I had open.</p>
+<p>For seven days there were two helpers, both trying to talk to the same dial.</p>
+<h2>Half an hour of work, seven days of garbage</h2>
+<p>The ghost's own log shows how long it was useful: half an hour, on the first evening. About as long as it took me to set the whole thing up.</p>
+<p>Then I started my own copy, and the dial went with it. The dial can only hold one connection at a time, and while it's connected it stops announcing itself over Bluetooth. To the ghost, it simply vanished. The developer had thought of that: the helper checks whether another copy is already running. On a Mac, though, that check does nothing, so nothing stopped two of them from starting.</p>
+<p>So the ghost kept looking. Search, rest, search again. It looked while the dial sat on my desk talking to its sibling. It looked while I showed the dial to my colleagues. It looked while the dial was in my bag. By the time I killed it, it had searched more than thirty thousand times and never found it once. Seven days of collecting nothing but garbage.</p>
+<h2>Haven't I been here before?</h2>
+<p>This has happened before, in the summer. In <a href="https://scriptease.dev/posts/2026-07-15-tomato-maxing-iii/">Tomato Maxing III</a>, my phone warned me that a free allowance I didn't know I was spending was nearly gone. The culprit was my robot vacuum. A docked vacuum stops listening on Wi-Fi to save power, so every time my setup asked "are you cleaning?" and got no answer, it went and asked again over the internet. Each question cost a little of the allowance.</p>
+<p>Same shape here: a program asking for a device that can't answer, over and over. But what exactly was each question costing?</p>
+<h2>Death by a thousand cuts</h2>
+<p>I handed the leak to a fresh Claude session, with the whole story and my own guess at why nobody had noticed:</p>
+<blockquote>
+<p>it won't show up as a big leak just as a small leak that incrementally grows and grows and grows</p>
+</blockquote>
+<p>It measured instead of guessing. The leak wasn't in the searching itself. While the helper searches, the Mac reports every Bluetooth gadget in range that announces itself: phones, headphones, anything nearby, dozens of times a second. For each report, the Bluetooth library inside the helper takes hold of a small record and never lets go. Tiny, every time. Around the clock for seven days, it's 50 gigabytes.</p>
+<h2>"It would just make it rarer"</h2>
+<p>With the vacuum, the fix was to ask less often and never fall back to the internet. The allowance stopped draining.</p>
+<p>The measurements confirmed my suspicion that the same trick wouldn't work here. Waiting longer between searches only means fewer hours spent searching. The memory still leaks, just more slowly: the same 50 gigabytes, spread across a month instead of a week.</p>
+<p>It wouldn't solve the issue. It would just make it rarer.</p>
+<p>The real fix was to stop searching. Once the helper has met the dial, it remembers it and tells the Mac: connect me when this one shows up. The Mac holds that request and waits quietly. No searching, no reports, nothing to leak. The memory stayed flat. A second change makes sure only one copy of the helper can ever run: start another one and it says so and quits.</p>
+<p>Both changes are on their way back to the developer as a pull request, a proposed change the project's owner can accept.</p>
+<p>Last time, the thing burning my allowance was a vacuum asleep in the corner. This time it was a daemon lurking in the shadows, still running days later, still looking for a dial that was sitting right next to it.</p>
+<p>I have to stop here. I need to watch my five-hour window, my allowance that refills every five hours.</p>
+<p><img alt="The dial, reconnected by the fixed helper" src="assets/claudial-of-service/five-hour-window.jpg" /></p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-09-26-claude-makes-things/">← Claude Makes Things</a><a class="next" href="/posts/2026-09-26-dashboard-for-one/">Dashboard for One →</a></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

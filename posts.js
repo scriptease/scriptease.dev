@@ -14,6 +14,35 @@ window.POSTS = [
     ]
   },
   {
+    "slug": "2026-09-26-claudial-of-service",
+    "title": "Claudial of Service",
+    "hook": "My Mac slowed to a snail's pace. Activity Monitor said a tiny helper for my desk gadget was using 50 gigabytes of memory. I had stopped that helper days ago. Or I thought I had.",
+    "date": "2026-09-26",
+    "month": "2026-09",
+    "tags": [
+      "claude",
+      "bluetooth",
+      "memory",
+      "macos",
+      "automation",
+      "saga"
+    ]
+  },
+  {
+    "slug": "2026-09-26-claude-makes-things",
+    "title": "Claude Makes Things",
+    "hook": "Half an hour after I opened the box, a gadget I wasn't sure I could even get running was showing me how much of my AI allowance I had left this week.",
+    "date": "2026-09-26",
+    "month": "2026-09",
+    "tags": [
+      "claude",
+      "copilot",
+      "embedded",
+      "automation",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-09-26-axi-all-the-things",
     "title": "AXI All the Things",
     "hook": "I just got a notification on my phone: one of my testers' apps had crashed. It didn't say where.",

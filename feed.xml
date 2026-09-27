@@ -57,6 +57,117 @@
 </article>]]></content:encoded>
 </item>
 <item>
+<title>Claudial of Service</title>
+<link>https://scriptease.dev/posts/2026-09-26-claudial-of-service/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-claudial-of-service/</guid>
+<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+<category>claude</category><category>bluetooth</category><category>memory</category><category>macos</category><category>automation</category><category>saga</category><description>My Mac slowed to a snail's pace. Activity Monitor said a tiny helper for my desk gadget was using 50 gigabytes of memory. I had stopped that helper days ago. Or I thought I had.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Claudial of Service</h1>
+<p class="post-tags"><a href="/tags/claude/">#claude</a> <a href="/tags/bluetooth/">#bluetooth</a> <a href="/tags/memory/">#memory</a> <a href="/tags/macos/">#macos</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Maker saga: <a href="https://scriptease.dev/posts/2026-09-26-claude-makes-things/">1. Claude Makes Things</a> · 2. Claudial of Service</em></p>
+<p>My Mac slowed to a snail's pace. Activity Monitor said a tiny helper for my desk gadget was using 50 gigabytes of memory. I had stopped that helper days ago. Or I thought I had.</p>
+<h2>"I just killed the daemon with 50gb used memory"</h2>
+<p>The gadget is a round dial on my desk that shows how much of my AI allowance I have left. I set it up <a href="https://scriptease.dev/posts/2026-09-26-claude-makes-things/">last week</a> with the help of Claude, in about half an hour. It has two halves: the dial, and a small helper program on the Mac that fetches the numbers and sends them over Bluetooth. Programs like that, which run quietly in the background, are called daemons.</p>
+<p>My Mac has 64 gigabytes of memory. The helper, whose whole job is sending one short message now and then, had taken almost 80% of it, and everything else was getting squeezed. There's a name for an attack that floods a machine until it can't do its real work: denial of service. Mine came from inside my house.</p>
+<p>I killed the helper in Activity Monitor, pointed an AI at the Claudial folder and asked:</p>
+<blockquote>
+<p>i just killed the daemon with 50gb used memory what could cause this</p>
+</blockquote>
+<p>It ignored the folder. It went looking through the other daemons my build tools leave running and ended with a question back to me. My Mac has a lot of daemons.</p>
+<p>I added one more word:</p>
+<blockquote>
+<p>i just killed the claudial daemon with 50gb used memory what could cause this</p>
+</blockquote>
+<p>Within minutes it had an answer.</p>
+<h2>Not one daemon, but two</h2>
+<p>The helper had been running for seven days straight, undetected, since the evening I set it up.</p>
+<p>But I had stopped it?! Several times. Whenever I wanted the dial I started the helper in a terminal window, and when I was done I stopped it. As far as I knew, nothing was running.</p>
+<p>Except on the first evening, the AI installing everything had started a copy of its own to test with. It started it in the background, detached from everything, so that it would keep going while the AI worked on other things. It kept going after the AI was done, too. I never saw it, because it wasn't in any window I had open.</p>
+<p>For seven days there were two helpers, both trying to talk to the same dial.</p>
+<h2>Half an hour of work, seven days of garbage</h2>
+<p>The ghost's own log shows how long it was useful: half an hour, on the first evening. About as long as it took me to set the whole thing up.</p>
+<p>Then I started my own copy, and the dial went with it. The dial can only hold one connection at a time, and while it's connected it stops announcing itself over Bluetooth. To the ghost, it simply vanished. The developer had thought of that: the helper checks whether another copy is already running. On a Mac, though, that check does nothing, so nothing stopped two of them from starting.</p>
+<p>So the ghost kept looking. Search, rest, search again. It looked while the dial sat on my desk talking to its sibling. It looked while I showed the dial to my colleagues. It looked while the dial was in my bag. By the time I killed it, it had searched more than thirty thousand times and never found it once. Seven days of collecting nothing but garbage.</p>
+<h2>Haven't I been here before?</h2>
+<p>This has happened before, in the summer. In <a href="https://scriptease.dev/posts/2026-07-15-tomato-maxing-iii/">Tomato Maxing III</a>, my phone warned me that a free allowance I didn't know I was spending was nearly gone. The culprit was my robot vacuum. A docked vacuum stops listening on Wi-Fi to save power, so every time my setup asked "are you cleaning?" and got no answer, it went and asked again over the internet. Each question cost a little of the allowance.</p>
+<p>Same shape here: a program asking for a device that can't answer, over and over. But what exactly was each question costing?</p>
+<h2>Death by a thousand cuts</h2>
+<p>I handed the leak to a fresh Claude session, with the whole story and my own guess at why nobody had noticed:</p>
+<blockquote>
+<p>it won't show up as a big leak just as a small leak that incrementally grows and grows and grows</p>
+</blockquote>
+<p>It measured instead of guessing. The leak wasn't in the searching itself. While the helper searches, the Mac reports every Bluetooth gadget in range that announces itself: phones, headphones, anything nearby, dozens of times a second. For each report, the Bluetooth library inside the helper takes hold of a small record and never lets go. Tiny, every time. Around the clock for seven days, it's 50 gigabytes.</p>
+<h2>"It would just make it rarer"</h2>
+<p>With the vacuum, the fix was to ask less often and never fall back to the internet. The allowance stopped draining.</p>
+<p>The measurements confirmed my suspicion that the same trick wouldn't work here. Waiting longer between searches only means fewer hours spent searching. The memory still leaks, just more slowly: the same 50 gigabytes, spread across a month instead of a week.</p>
+<p>It wouldn't solve the issue. It would just make it rarer.</p>
+<p>The real fix was to stop searching. Once the helper has met the dial, it remembers it and tells the Mac: connect me when this one shows up. The Mac holds that request and waits quietly. No searching, no reports, nothing to leak. The memory stayed flat. A second change makes sure only one copy of the helper can ever run: start another one and it says so and quits.</p>
+<p>Both changes are on their way back to the developer as a pull request, a proposed change the project's owner can accept.</p>
+<p>Last time, the thing burning my allowance was a vacuum asleep in the corner. This time it was a daemon lurking in the shadows, still running days later, still looking for a dial that was sitting right next to it.</p>
+<p>I have to stop here. I need to watch my five-hour window, my allowance that refills every five hours.</p>
+<p><img alt="The dial, reconnected by the fixed helper" src="assets/claudial-of-service/five-hour-window.jpg" /></p>
+</article>]]></content:encoded>
+</item>
+<item>
+<title>Claude Makes Things</title>
+<link>https://scriptease.dev/posts/2026-09-26-claude-makes-things/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-claude-makes-things/</guid>
+<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+<category>claude</category><category>copilot</category><category>embedded</category><category>automation</category><category>saga</category><description>Half an hour after I opened the box, a gadget I wasn't sure I could even get running was showing me how much of my AI allowance I had left this week.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Claude Makes Things</h1>
+<p class="post-tags"><a href="/tags/claude/">#claude</a> <a href="/tags/copilot/">#copilot</a> <a href="/tags/embedded/">#embedded</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Maker saga: 1. Claude Makes Things · <a href="https://scriptease.dev/posts/2026-09-26-claudial-of-service/">2. Claudial of Service</a></em></p>
+<p>Half an hour after I opened the box, a gadget I wasn't sure I could even get running was showing me how much of my AI allowance I had left this week. And I added a second screen of my own too.</p>
+<h2>A screen and a knob</h2>
+<p>It started with my tomatoes. In the <a href="https://scriptease.dev/posts/2026-07-05-tomato-maxing/">Tomato Maxing</a> series I broke into the pump that waters my balcony, and underneath its brand sticker it turned out to run on Tuya, the company behind thousands of cheap smart gadgets. I was wondering if Tuya had something to offer with buttons and knobs.</p>
+<p>So I put the question to my research automation, an agent that finds answers using my notes. The answer: dead end. The alternatives ran up to a couple of hundred euros, and one stood out as the cheapest and the most capable: the M5Dial, a cookie-sized round touchscreen inside a turning knob. It would do anything I could put on it.</p>
+<p>That same evening I searched for "m5stack dial claude tokens" and found Claudial, Claude plus dial, an open-source project by a developer who goes by Moge800. They had shown it off <a href="https://www.reddit.com/r/ClaudeAI/comments/1u1x6u0/i_built_a_physical_claude_code_usage_monitor/">on Reddit</a> a few months earlier, under the label "Built with Claude". It turns the dial into a meter for Claude usage. The dial had a job before I had even bought it.</p>
+<p>Then I let it sit.</p>
+<p>Eventually I just bought one. It was a cat in a bag, as we say in German: I didn't know if I'd get it running, or whether I'd need extra hardware, plugs or cables to make it work, or how long it would take to arrive. It cost less than €50. If it didn't work, that wasn't so bad. If it did, it would be so cool.</p>
+<h2>"Try to install it on my dial"</h2>
+<p>The cat turned out to have everything out of the box: Wi-Fi, Bluetooth, a USB-C port. No extra anything. Claudial has two halves: firmware, the program that lives on the dial itself, and a small helper on the Mac that fetches the numbers and sends them to the dial over Bluetooth. I plugged the dial in and typed one line into Claude Code:</p>
+<blockquote>
+<p>Clone git@github.com:Moge800/Claudial.git and try to install it on my dial</p>
+</blockquote>
+<p>The first attempt to write the firmware died partway through. The dial dropped off the computer. For a minute I thought I'd bricked it and now owned a very round paperweight.</p>
+<p>Have you tried turning it off and on again? Then again, at half the speed. It went through.</p>
+<h2>"Before you patch anything. Stop."</h2>
+<p>I hadn't thought much about how Claudial actually worked. I only noticed when the agent started poking around my Mac, looking for Claude's login. The helper couldn't log in. Claudial reads Claude's login from a file on disk, but on a Mac, Claude Code keeps its live login in the Keychain, the Mac's built-in password safe. The file on my machine had expired months ago.</p>
+<p>The agent found it and started writing a patch to read the Keychain instead. I watched it work and stopped it:</p>
+<blockquote>
+<p>Before you patch anything.</p>
+<p>Stop.</p>
+</blockquote>
+<p>Watching it poke around had reminded me: I had solved this kind of problem before. My Claude subscription comes with a meter that runs down and refills, and I had written a small tool to read it: type <code>usage-check</code> into a terminal, get the numbers. It had been rewritten several times over these very problems. It already knew how to read the Keychain, remembered its answers, and had a way around it when the official route was blocked. I told the agent where it lived.</p>
+<p>It threw its work away and replaced Claudial's whole login-and-fetch mechanism with a single call to my tool. The code got shorter, and a hidden cost went with it. To read the meter, Claudial had been sending Claude a tiny paid request over and over and reading the numbers off the reply.</p>
+<p>So the fix even saves money.</p>
+<p>I took a photo.</p>
+<p><img alt="The dial's Claude page on the first evening" src="assets/claude-makes-things/claude-page-first.jpg" /></p>
+<h2>"But don't stop here"</h2>
+<p>Claude isn't the only AI I have. I also use GitHub Copilot, and my tool reads that meter too:</p>
+<blockquote>
+<p>But don't stop here since I have the github usage too. Can we make it that the button toggles between github and claude?</p>
+</blockquote>
+<p>The dial has a button on its side that Claudial never used. The first install had used a pre-made firmware file from the author's project page. A second screen meant building the firmware from its source code, and that meant downloading the whole toolkit to build it with first. The agent did that, added the screen, and wrote the result onto the dial. At the slow speed this time.</p>
+<p>Then the next photo:</p>
+<blockquote>
+<p>It's so awesome. It worked.</p>
+</blockquote>
+<p><img alt="The GitHub page, photographed in the dark" src="assets/claude-makes-things/github-page-first.jpg" /></p>
+<p>Press the button and the dial flips to GitHub. Press again and it's back to Claude's two rings, the current session on the inside, the week on the outside. Turn the knob and it moves the point where the dial starts beeping at me.</p>
+<p>Figuring out the buttons took me longer than building the whole thing. There's a button on top, one at the bottom, the touchscreen is a button too, and holding it for a second flips the whole screen upside down. I had wanted a gadget with buttons. I got one.</p>
+<h2>"It's better in real life"</h2>
+<p>The agent noticed that the ring came out almost white in my photo and offered to pick a stronger colour.</p>
+<blockquote>
+<p>No, it's just a photo. It's better in real life.</p>
+</blockquote>
+<p><img alt="The same page in daylight" src="assets/claude-makes-things/github-page.jpg" /></p>
+<p>The next day I took it to the office to show my colleagues. It worked fine there too. What I didn't know was that a second copy of the helper, started on the first evening, had lost the dial that same night. It was still looking.</p>
+</article>]]></content:encoded>
+</item>
+<item>
 <title>AXI All the Things</title>
 <link>https://scriptease.dev/posts/2026-09-26-axi-all-the-things/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-axi-all-the-things/</guid>
