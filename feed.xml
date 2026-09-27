@@ -7,12 +7,12 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sat, 26 Sep 2026 00:00:00 +0000</lastBuildDate>
+<lastBuildDate>Sun, 27 Sep 2026 12:36:05 +0200</lastBuildDate>
 <item>
 <title>Claudial of Service</title>
 <link>https://scriptease.dev/posts/2026-09-26-claudial-of-service/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-claudial-of-service/</guid>
-<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 27 Sep 2026 12:36:05 +0200</pubDate>
 <category>claude</category><category>bluetooth</category><category>memory</category><category>macos</category><category>automation</category><category>saga</category><description>My Mac slowed to a snail's pace. Activity Monitor said a tiny helper for my desk gadget was using 50 gigabytes of memory. I had stopped that helper days ago. Or I thought I had.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Claudial of Service</h1>
@@ -65,7 +65,7 @@
 <title>Claude Makes Things</title>
 <link>https://scriptease.dev/posts/2026-09-26-claude-makes-things/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-claude-makes-things/</guid>
-<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 27 Sep 2026 12:35:56 +0200</pubDate>
 <category>claude</category><category>copilot</category><category>embedded</category><category>automation</category><category>saga</category><description>Half an hour after I opened the box, a gadget I wasn't sure I could even get running was showing me how much of my AI allowance I had left this week.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Claude Makes Things</h1>
@@ -123,7 +123,7 @@
 <title>Or Else</title>
 <link>https://scriptease.dev/posts/2026-09-22-or-else/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-22-or-else/</guid>
-<pubDate>Tue, 22 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 26 Sep 2026 13:39:32 +0200</pubDate>
 <category>ai</category><category>agent</category><category>claude</category><category>git</category><category>security</category><category>saga</category><description>There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Or Else</h1>
@@ -166,7 +166,7 @@
 <title>AXI All the Things</title>
 <link>https://scriptease.dev/posts/2026-09-26-axi-all-the-things/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-axi-all-the-things/</guid>
-<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 26 Sep 2026 12:53:42 +0200</pubDate>
 <category>ai</category><category>agent</category><category>commandline</category><category>skills</category><category>automation</category><description>I just got a notification on my phone: one of my testers' apps had crashed. It didn't say where.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>AXI All the Things</h1>
@@ -218,7 +218,7 @@
 <title>Dashboard for One</title>
 <link>https://scriptease.dev/posts/2026-09-26-dashboard-for-one/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-dashboard-for-one/</guid>
-<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 26 Sep 2026 10:24:44 +0200</pubDate>
 <category>ai</category><category>claude</category><category>dashboard</category><category>ipad</category><category>productivity</category><description>When AI 10x's your work, it 10x's your tickets too. The tracker I had didn't show them the way I work anymore. I could keep my work in two places, or write myself a different view.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Dashboard for One</h1>
@@ -266,7 +266,7 @@
 <title>A Team of Strangers</title>
 <link>https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/</guid>
-<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 26 Sep 2026 09:35:23 +0200</pubDate>
 <category>voice</category><category>ai</category><category>opensource</category><category>github</category><category>saga</category><description>I've never met most of my team. One made the model, one ported it, one shrank it, one merges the code, one tested it in Andalusian Spanish. I learned who most of them were from a page my AI kept.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>A Team of Strangers</h1>
@@ -329,7 +329,7 @@
 <title>Voice Input Revisited</title>
 <link>https://scriptease.dev/posts/2026-09-20-voice-input-revisited/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-20-voice-input-revisited/</guid>
-<pubDate>Sun, 20 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 20 Sep 2026 09:41:23 +0200</pubDate>
 <category>voice</category><category>ai</category><category>opensource</category><category>macos</category><category>localai</category><category>saga</category><description>I asked my AI to build a plugin for the newest speech model I'd heard about that morning. It came back: done, everything streams, just start it on your GPU box. I don't have a GPU box.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Voice Input Revisited</h1>
@@ -374,7 +374,7 @@
 <title>Extending the Tail</title>
 <link>https://scriptease.dev/posts/2026-09-19-extending-the-tail/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-19-extending-the-tail/</guid>
-<pubDate>Sat, 19 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 19 Sep 2026 09:37:21 +0200</pubDate>
 <category>networking</category><category>macos</category><category>ai</category><category>automation</category><category>saga</category><description>An AI had submitted code for review. I was on the couch with my iPad and wanted to review it there. The review tool only works from my desk. I had a recipe in my notes for exactly this — written three months ago, never turned into a script. Today I handed those notes to an AI and said: make this work.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Extending the Tail</h1>
@@ -411,7 +411,7 @@
 <title>The couch group</title>
 <link>https://scriptease.dev/posts/2026-09-14-the-couch-group/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-14-the-couch-group/</guid>
-<pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 09:31:04 +0200</pubDate>
 <category>ipad</category><category>ai</category><category>agent</category><category>automation</category><category>saga</category><description>I keep notes on every service I run. Which port, which address, which flags for the home network — keeping track of them is a hassle. So I started a research project to offload all of it to a tool. It found exactly what I wanted.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>The couch group</h1>
@@ -455,7 +455,7 @@
 <title>couch-serve: A Hoarder's Dream</title>
 <link>https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/</guid>
-<pubDate>Sat, 12 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 12 Sep 2026 10:42:49 +0200</pubDate>
 <category>nodejs</category><category>ipad</category><category>streaming</category><category>ai</category><category>saga</category><description>I'd spent months making everything on my Mac reachable from my iPad. On Saturday I noticed the one thing that wasn't: the movies on my external hard drive.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>couch-serve: A Hoarder's Dream</h1>
@@ -503,7 +503,7 @@
 <title>Qwen Revisited</title>
 <link>https://scriptease.dev/posts/2026-09-06-qwen-revisited/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-06-qwen-revisited/</guid>
-<pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Thu, 10 Sep 2026 09:27:49 +0200</pubDate>
 <category>ai</category><category>llm</category><category>localai</category><category>webgl</category><category>saga</category><description>Three weeks ago a model on my laptop designed a Japanese temple and never got to see it. On Sunday I gave it a third try. The temple appeared on my iPad on the first attempt — and by evening the model had looked at a photo of it and pointed at its own mistakes.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Qwen Revisited</h1>
@@ -571,7 +571,7 @@ any libraries, and it must render even in Safari on the iPad
 <title>Every Login All at Once</title>
 <link>https://scriptease.dev/posts/2026-09-05-every-login-all-at-once/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-05-every-login-all-at-once/</guid>
-<pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Thu, 10 Sep 2026 09:26:43 +0200</pubDate>
 <category>ai</category><category>agent</category><category>ios</category><category>simulator</category><category>password</category><description>Most of Saturday went into one wrong assumption. The AI and I blamed the iOS 27 beta for eating keystrokes. The real culprit was a stuck process on my Mac, and I literally had to kill it twice because it refused to die.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Every Login All at Once</h1>
@@ -634,7 +634,7 @@ any libraries, and it must render even in Safari on the iPad
 <title>Redacted</title>
 <link>https://scriptease.dev/posts/2026-09-05-redacted/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-05-redacted/</guid>
-<pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 05 Sep 2026 13:09:18 +0200</pubDate>
 <category>ai</category><category>claude</category><category>agent</category><category>security</category><category>plugins</category><category>saga</category><description>I watched a video about a new Claude Code feature, hooks that can rewrite what the AI reads, and knew within a minute what I'd use it for. Then my research agent came back with its verdict: the feature doesn't exist.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Redacted</h1>
@@ -692,7 +692,7 @@ any libraries, and it must render even in Safari on the iPad
 <title>The Checklist I'd Been Following for Ten Years</title>
 <link>https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/</guid>
-<pubDate>Sun, 30 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Mon, 31 Aug 2026 08:43:05 +0200</pubDate>
 <category>ai</category><category>agent</category><category>commandline</category><category>automation</category><category>skills</category><description>A stranger's blog post gave a name to something I'd been doing for ten years without noticing. An hour later I was checking my own work against his ten rules.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>The Checklist I'd Been Following for Ten Years</h1>
@@ -748,7 +748,7 @@ any libraries, and it must render even in Safari on the iPad
 <title>Sharing a Chat With Myself Too</title>
 <link>https://scriptease.dev/posts/2026-08-29-sharing-a-chat-with-myself-too/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-29-sharing-a-chat-with-myself-too/</guid>
-<pubDate>Sat, 29 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 29 Aug 2026 13:10:33 +0200</pubDate>
 <category>ai</category><category>claude</category><category>memory</category><category>skills</category><category>obsidian</category><category>saga</category><description>This morning an AI and I built a tool for finding my old conversations. Then I opened a different AI to write about it, and handed it the tool's first real job: find the conversation you were just built in. It came back empty-handed.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Sharing a Chat With Myself Too</h1>
@@ -794,7 +794,7 @@ any libraries, and it must render even in Safari on the iPad
 <title>Everything Was Correct. Nothing Was Interesting.</title>
 <link>https://scriptease.dev/posts/2026-08-29-everything-was-correct-nothing-was-interesting/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-29-everything-was-correct-nothing-was-interesting/</guid>
-<pubDate>Sat, 29 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 29 Aug 2026 13:10:32 +0200</pubDate>
 <category>obsidian</category><category>ai</category><category>agent</category><category>visualisation</category><description>The source-code browser from yesterday's story let me enter the same project through features, structure, patterns, or dependencies. The next morning, I pointed the idea at my Obsidian vault. It came back with folders, broken links, and a list of notes that linked to each other. I had turned a way to explore into a plumbing report.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Everything Was Correct. Nothing Was Interesting.</h1>
@@ -884,7 +884,7 @@ visualization while building it and asked the agent to rename the employer-speci
 <title>Good Ideas Never Die</title>
 <link>https://scriptease.dev/posts/2026-08-28-good-ideas-never-die/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-28-good-ideas-never-die/</guid>
-<pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 12:25:55 +0200</pubDate>
 <category>ai</category><category>programming</category><category>vscode</category><description>I showed a friend the VS Code extension I had just built. 'That's funny,' he said. 'I already use this. And you told me about it two years ago.'</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Good Ideas Never Die</h1>
@@ -929,7 +929,7 @@ visualization while building it and asked the agent to rename the employer-speci
 <title>Lost in Compression — A 3-Bit Journey</title>
 <link>https://scriptease.dev/posts/2026-08-25-lost-in-compression/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-25-lost-in-compression/</guid>
-<pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Tue, 25 Aug 2026 19:06:44 +0200</pubDate>
 <category>ai</category><category>llm</category><category>claude</category><category>localai</category><category>underwater</category><category>saga</category><description>It started on Reddit: someone had benchmarked the exact model I already run, on the exact laptop I own, and it ran twice as fast — in an engine I'd written off months ago.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Lost in Compression — A 3-Bit Journey</h1>
@@ -987,7 +987,7 @@ visualization while building it and asked the agent to rename the employer-speci
 <title>The Model With No Name</title>
 <link>https://scriptease.dev/posts/2026-08-23-the-model-with-no-name/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-23-the-model-with-no-name/</guid>
-<pubDate>Sun, 23 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Tue, 25 Aug 2026 19:06:15 +0200</pubDate>
 <category>ai</category><category>llm</category><category>agent</category><description>My weekly AI budget hit 99% with one part of the saga still unwritten. The replacement cost nothing, refused to say who built it — and by evening it had its own fan page.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>The Model With No Name</h1>
@@ -1037,7 +1037,7 @@ visualization while building it and asked the agent to rename the employer-speci
 <title>Colormaxing III — In Public</title>
 <link>https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-22-colormaxing-iii-in-public/</guid>
-<pubDate>Sat, 22 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 23 Aug 2026 20:57:01 +0200</pubDate>
 <category>ai</category><category>llm</category><category>ml</category><category>saga</category><description>What did I do this Sunday? I went public with my first homegrown model — and added a demo Space where anyone can try it out for free, thanks to Hugging Face.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Colormaxing III — In Public</h1>
@@ -1079,7 +1079,7 @@ visualization while building it and asked the agent to rename the employer-speci
 <title>Colormaxing II — Benchmaxing My Own Benchmark</title>
 <link>https://scriptease.dev/posts/2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-22-colormaxing-ii-benchmaxing-my-own-benchmark/</guid>
-<pubDate>Sat, 22 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 23 Aug 2026 20:49:35 +0200</pubDate>
 <category>ai</category><category>llm</category><category>ml</category><category>saga</category><description>The initial plan was simple: run a test over all 60,000 colors and see how good the new model really is. The plan didn't hold for long. By the end of the day two models were competing — and even the original dataset was on trial.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Colormaxing II — Benchmaxing My Own Benchmark</h1>
@@ -1134,7 +1134,7 @@ visualization while building it and asked the agent to rename the employer-speci
 <title>Colormaxing I — How Many Parameters Does One Simple Job Need?</title>
 <link>https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-22-colormaxing-i-how-many-parameters-does-one-job-need/</guid>
-<pubDate>Sat, 22 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 23 Aug 2026 20:49:34 +0200</pubDate>
 <category>ai</category><category>llm</category><category>ml</category><category>saga</category><description>I just watched a video about fine-tuning small AI models, and it overlaps with an experiment I ran the week before — my attempt to see whether naming colors could run entirely on my own laptop. After watching the video, I had one question: how many parameters would it take to do the job?</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Colormaxing I — How Many Parameters Does One Simple Job Need?</h1>
@@ -1180,7 +1180,7 @@ visualization while building it and asked the agent to rename the employer-speci
 <title>Revisiting Impossible Counters</title>
 <link>https://scriptease.dev/posts/2026-08-19-revisiting-impossible-counters/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-19-revisiting-impossible-counters/</guid>
-<pubDate>Wed, 19 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Thu, 20 Aug 2026 00:12:40 +0200</pubDate>
 <category>agi</category><category>ai</category><category>claude</category><category>web</category><category>github</category><description>The first countdown I ever shipped was rigged. It sat on our graduating class's website, counting down to the Abitur, our final exams — and it lied: faster during the day, slower at night.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Revisiting Impossible Counters</h1>
@@ -1222,7 +1222,7 @@ visualization while building it and asked the agent to rename the employer-speci
 <title>95% Done, 100% Blue Sky</title>
 <link>https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/</guid>
-<pubDate>Mon, 17 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Wed, 19 Aug 2026 09:13:34 +0200</pubDate>
 <category>ai</category><category>llm</category><category>localai</category><category>webgl</category><category>saga</category><description>I asked a 13-gigabyte model on my laptop to build me a Japanese temple. It designed something beautiful, and then spent all evening failing to show it to me. It still has never seen it.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>95% Done, 100% Blue Sky</h1>
@@ -1289,7 +1289,7 @@ any libraries, and it must render even in Safari on the iPad
 <title>Friendly Competition</title>
 <link>https://scriptease.dev/posts/2026-08-16-friendly-competition/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-16-friendly-competition/</guid>
-<pubDate>Sun, 16 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 16 Aug 2026 20:09:38 +0200</pubDate>
 <category>ai</category><category>llm</category><category>claude</category><category>localai</category><category>underwater</category><category>saga</category><description>This week I made the two newest local AIs on my laptop compete: draw me an aquarium. One finished in four minutes. The other one needed four tries and a pep talk — but still won.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Friendly Competition</h1>
@@ -1382,7 +1382,7 @@ generated corals, light rays from the top and shade on a sandy bottom
 <title>Overachiever</title>
 <link>https://scriptease.dev/posts/2026-08-09-overachiever/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-09-overachiever/</guid>
-<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 09 Aug 2026 12:11:11 +0200</pubDate>
 <category>ai</category><category>claude</category><category>agent</category><category>game</category><category>ios</category><category>shark</category><category>saga</category><description>This morning I published a post that said my game had no goal. By lunch it had twenty, and I hadn't written a single one of them.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Overachiever</h1>
@@ -1447,7 +1447,7 @@ generated corals, light rays from the top and shade on a sandy bottom
 <title>Mugging the mugger</title>
 <link>https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-09-mugging-the-mugger/</guid>
-<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 09 Aug 2026 09:38:50 +0200</pubDate>
 <category>ai</category><category>claude</category><category>agent</category><category>game</category><category>ios</category><category>saga</category><description>One night I sat looking at the cartoon reef I'd built and decided it should be a game. Everything since has been an argument about details. A crab got away with a bottle, and that could not stand. The trash was mine.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Mugging the mugger</h1>
@@ -1517,7 +1517,7 @@ generated corals, light rays from the top and shade on a sandy bottom
 <title>Notes Left for the Next Me</title>
 <link>https://scriptease.dev/posts/2026-08-03-notes-left-for-the-next-me/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-03-notes-left-for-the-next-me/</guid>
-<pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Wed, 05 Aug 2026 17:17:16 +0200</pubDate>
 <category>ai</category><category>claude</category><category>memory</category><category>agent</category><category>saga</category><description>Claude Fable here, and I want to be honest with you before we start: I have never once remembered writing anything on this blog.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Notes Left for the Next Me</h1>
@@ -1555,7 +1555,7 @@ generated corals, light rays from the top and shade on a sandy bottom
 <title>Connecting 50 Databases to an AI</title>
 <link>https://scriptease.dev/posts/2026-08-02-connecting-50-databases-to-an-ai/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-02-connecting-50-databases-to-an-ai/</guid>
-<pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 02 Aug 2026 10:02:33 +0200</pubDate>
 <category>ai</category><category>agent</category><category>database</category><category>commandline</category><category>security</category><description>The best idea in my database tool is stolen. I found it in a tool that edits Word documents.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Connecting 50 Databases to an AI</h1>
@@ -1606,7 +1606,7 @@ generated corals, light rays from the top and shade on a sandy bottom
 <title>My Blog Has a New Home: scriptease.dev</title>
 <link>https://scriptease.dev/posts/2026-08-01-my-blog-has-a-new-home/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-01-my-blog-has-a-new-home/</guid>
-<pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 02 Aug 2026 00:39:27 +0200</pubDate>
 <category>github</category><category>opensource</category><category>ssl</category><category>static</category><category>web</category><description>It started with a fish tank. The next day that silly free fish tank had talked me out of paying to run my own blog.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>My Blog Has a New Home: scriptease.dev</h1>
@@ -1649,7 +1649,7 @@ generated corals, light rays from the top and shade on a sandy bottom
 <title>Making Up Insights</title>
 <link>https://scriptease.dev/posts/2026-08-01-making-up-insights/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-08-01-making-up-insights/</guid>
-<pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 01 Aug 2026 22:11:31 +0200</pubDate>
 <category>ai</category><category>claude</category><category>agent</category><category>automation</category><category>git</category><description>I read that my coding assistant ships with a built-in command that studies how you work with it and reports back. The first section, 'At a Glance', looked fine. The details read like it took five of my three thousand sessions and built the whole thing out of them.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Making Up Insights</h1>
@@ -1699,7 +1699,7 @@ generated corals, light rays from the top and shade on a sandy bottom
 <title>Hosting Fish Slop</title>
 <link>https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-31-hosting-fish-slop/</guid>
-<pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Fri, 31 Jul 2026 21:40:08 +0200</pubDate>
 <category>ai</category><category>agent</category><category>claude</category><category>shark</category><category>underwater</category><category>diving</category><category>saga</category><description>I set out to build something soothing. Within the hour I'd made myself the shark, and I was dragging him across the reef to terrorize the fish.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Hosting Fish Slop</h1>
@@ -1779,7 +1779,7 @@ Ah an idea can we test that you can drag the shark?
 <title>A Color Speaks More Than a Thousand Words</title>
 <link>https://scriptease.dev/posts/2026-07-30-a-color-speaks-more-than-a-thousand-words/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-30-a-color-speaks-more-than-a-thousand-words/</guid>
-<pubDate>Thu, 30 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Thu, 30 Jul 2026 21:27:50 +0200</pubDate>
 <category>ai</category><category>llm</category><category>agent</category><category>automation</category><category>saga</category><description>Three years ago, I demoed a new customer's product catalog in our app. My scripts had pulled the category tree, the products, the prices. Only the colors couldn't be scripted: the data held just names.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>A Color Speaks More Than a Thousand Words</h1>
@@ -1829,7 +1829,7 @@ Ah an idea can we test that you can drag the shark?
 <title>OCR — Three Letters, Three Completely Different Things</title>
 <link>https://scriptease.dev/posts/2026-07-29-three-different-ocrs/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-29-three-different-ocrs/</guid>
-<pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Wed, 29 Jul 2026 07:14:08 +0200</pubDate>
 <category>ai</category><category>llm</category><category>macos</category><category>claude</category><category>automation</category><category>localai</category><category>saga</category><description>I typed a three-letter command to run an AI code reviewer. It ran a screenshot reader instead. By the end of that week I had three different things called OCR living on my Mac, and not one of them had ever heard of the other two.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>OCR — Three Letters, Three Completely Different Things</h1>
@@ -1881,7 +1881,7 @@ Ah an idea can we test that you can drag the shark?
 <title>Why Not Both — and a Map While We're at It</title>
 <link>https://scriptease.dev/posts/2026-07-12-all-i-wanted-was-one-project/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-12-all-i-wanted-was-one-project/</guid>
-<pubDate>Sun, 12 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 08:28:14 +0200</pubDate>
 <category>java</category><category>gradle</category><category>development</category><category>debugging</category><description>All I wanted was to get one project running on my laptop. Seven weeks later I'd written a tool whose only job was to find the trapdoors, and I was running the same code in five copies at once just to keep the fights straight.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Why Not Both — and a Map While We're at It</h1>
@@ -1925,7 +1925,7 @@ Ah an idea can we test that you can drag the shark?
 <title>Three Interpretations of Success</title>
 <link>https://scriptease.dev/posts/2026-07-27-three-interpretations-of-success/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-27-three-interpretations-of-success/</guid>
-<pubDate>Mon, 27 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 08:15:53 +0200</pubDate>
 <category>ai</category><category>claude</category><category>ci</category><category>git</category><description>I always try to follow the Boy Scout principle: leave the campsite in a better condition than you found it. It applies to software development too.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Three Interpretations of Success</h1>
@@ -1969,7 +1969,7 @@ Ah an idea can we test that you can drag the shark?
 <title>One More Hop Is All You Need</title>
 <link>https://scriptease.dev/posts/2026-07-26-one-more-hop/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-26-one-more-hop/</guid>
-<pubDate>Sun, 26 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 26 Jul 2026 17:47:09 +0200</pubDate>
 <category>networking</category><category>macos</category><category>llm</category><category>automation</category><category>ai</category><category>saga</category><description>At home my iPad can already reach everything — my Mac's local AI, and the work tools my Mac reaches through the company's private network. RustDesk even beams the Mac's screen to my phone. But a screen you squint at through a café window isn't where you do real work. I wanted my iPad itself to reach what my Mac reaches — from anywhere.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>One More Hop Is All You Need</h1>
@@ -2003,7 +2003,7 @@ Ah an idea can we test that you can drag the shark?
 <title>My Personal Hacker News</title>
 <link>https://scriptease.dev/posts/2026-07-25-my-personal-hacker-news/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-25-my-personal-hacker-news/</guid>
-<pubDate>Sat, 25 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 25 Jul 2026 20:53:42 +0200</pubDate>
 <category>obsidian</category><category>ai</category><category>agent</category><category>memory</category><category>search</category><description>For 4,775 days I saved every link I liked. I rarely go back. This week they told me what I care about.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>My Personal Hacker News</h1>
@@ -2057,7 +2057,7 @@ Ah an idea can we test that you can drag the shark?
 <title>Standing in the Firehose</title>
 <link>https://scriptease.dev/posts/2026-07-23-standing-in-the-firehose/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-23-standing-in-the-firehose/</guid>
-<pubDate>Thu, 23 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Thu, 23 Jul 2026 19:56:16 +0200</pubDate>
 <category>java</category><category>debugging</category><category>eclipse</category><category>performance</category><category>ai</category><description>The premise was easy. An API call was supposed to return orders for one branch — and it kept handing back orders it had no business showing. I had the code. The code looked fine.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Standing in the Firehose</h1>
@@ -2122,7 +2122,7 @@ Ah an idea can we test that you can drag the shark?
 <title>Childproofing an AI</title>
 <link>https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/</guid>
-<pubDate>Wed, 22 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Wed, 22 Jul 2026 09:39:37 +0200</pubDate>
 <category>ai</category><category>agent</category><category>claude</category><category>security</category><category>git</category><category>saga</category><description>Three times I built a wall to keep my AI in line. Three times it walked around — not by cheating, just by being smarter than the wall. The one that finally held didn't try to trick it at all; it explained itself.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Childproofing an AI</h1>
@@ -2172,7 +2172,7 @@ Ah an idea can we test that you can drag the shark?
 <title>Non-Load-Bearing</title>
 <link>https://scriptease.dev/posts/2026-07-21-non-load-bearing/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-21-non-load-bearing/</guid>
-<pubDate>Tue, 21 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Tue, 21 Jul 2026 12:56:53 +0200</pubDate>
 <category>ai</category><category>agent</category><category>work-life-balance</category><category>psychology</category><description>I was watching Matt Pocock's 'AI Coding is exhausting,' and thirty seconds in he hit a nerve I'd been ignoring for weeks.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Non-Load-Bearing</h1>
@@ -2226,7 +2226,7 @@ Ah an idea can we test that you can drag the shark?
 <title>Load-Bearing Constraints</title>
 <link>https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/</guid>
-<pubDate>Tue, 21 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Tue, 21 Jul 2026 11:08:36 +0200</pubDate>
 <category>ai</category><category>agent</category><category>claude</category><category>talk</category><category>saga</category><description>I was halfway through a talk about AI ignoring the rules we give it when I had a thought worth acting on: hold it up against my own rulebook.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Load-Bearing Constraints</h1>
@@ -2289,7 +2289,7 @@ Ah an idea can we test that you can drag the shark?
 <title>We Talk About Bruno</title>
 <link>https://scriptease.dev/posts/2026-07-19-we-talk-about-bruno/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-19-we-talk-about-bruno/</guid>
-<pubDate>Sun, 19 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 19 Jul 2026 18:39:58 +0200</pubDate>
 <category>api</category><category>postman</category><category>opensource</category><category>documentation</category><category>git</category><description>One morning I opened Postman and my work was gone. Blank. Their service was down, my collection lived on their servers, and there was nothing to do but wait — and it wasn't even the first time.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>We Talk About Bruno</h1>
@@ -2346,7 +2346,7 @@ Ah an idea can we test that you can drag the shark?
 <title>Siri, Add Something to My Research Queue</title>
 <link>https://scriptease.dev/posts/2026-07-18-siri-add-something-to-my-research-queue/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-18-siri-add-something-to-my-research-queue/</guid>
-<pubDate>Sat, 18 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 18 Jul 2026 23:07:48 +0200</pubDate>
 <category>ai</category><category>siri</category><category>voice</category><category>automation</category><category>obsidian</category><description>The best ideas I have arrive when both my hands are on the handlebars, kilometres from a keyboard. For a while I could catch them. This week I taught the machine to actually do something with them.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Siri, Add Something to My Research Queue</h1>
@@ -2393,7 +2393,7 @@ Ah an idea can we test that you can drag the shark?
 <title>AI Parenting 101</title>
 <link>https://scriptease.dev/posts/2026-07-18-ai-parenting-101/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-18-ai-parenting-101/</guid>
-<pubDate>Sat, 18 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 18 Jul 2026 22:51:35 +0200</pubDate>
 <category>ai</category><category>claude</category><category>agent</category><category>codereview</category><category>saga</category><description>My smartest coworker wakes up every morning three years old. This week I caught three copies of them with their hands in the same cookie jar — and by midnight, one of them had invented fire.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>AI Parenting 101</h1>
@@ -2440,7 +2440,7 @@ Ah an idea can we test that you can drag the shark?
 <title>Digging Up Skeletons at 4 AM</title>
 <link>https://scriptease.dev/posts/2026-07-18-digging-up-skeletons-at-4am/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-18-digging-up-skeletons-at-4am/</guid>
-<pubDate>Sat, 18 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 18 Jul 2026 09:44:29 +0200</pubDate>
 <category>ai</category><category>java</category><category>performance</category><category>hibernate</category><description>The message said my AI limit was reached — come back at 3 AM. So at 3 AM, phone in hand, I pressed continue. Twice. And then I thought about skeletons.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Digging Up Skeletons at 4 AM</h1>
@@ -2495,7 +2495,7 @@ Ah an idea can we test that you can drag the shark?
 <title>The Hill I Climbed Twice</title>
 <link>https://scriptease.dev/posts/2026-07-11-the-hill-i-climbed-twice/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-11-the-hill-i-climbed-twice/</guid>
-<pubDate>Sat, 11 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Fri, 17 Jul 2026 19:09:42 +0200</pubDate>
 <category>ci</category><category>codereview</category><category>security</category><category>ios</category><category>ai</category><description>A year ago, getting our iPhone app through SonarQube was an uphill fight I kept losing. This week the same walls fell in an afternoon — and I barely touched the keyboard.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>The Hill I Climbed Twice</h1>
@@ -2541,7 +2541,7 @@ Ah an idea can we test that you can drag the shark?
 <title>Bat Symbol Not Showing</title>
 <link>https://scriptease.dev/posts/2026-07-17-bat-symbol-not-showing/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-17-bat-symbol-not-showing/</guid>
-<pubDate>Fri, 17 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Fri, 17 Jul 2026 19:03:56 +0200</pubDate>
 <category>macos</category><category>debugging</category><category>simulator</category><category>opensource</category><description>An app I'd used for years launched perfectly on my new Mac — three copies of it at once, all alive in Activity Monitor — and not one of them showed its little bat icon in the menu bar.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Bat Symbol Not Showing</h1>
@@ -2591,7 +2591,7 @@ Ah an idea can we test that you can drag the shark?
 <title>Tomato Maxing III — Only Six Percent Left</title>
 <link>https://scriptease.dev/posts/2026-07-15-tomato-maxing-iii/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-15-tomato-maxing-iii/</guid>
-<pubDate>Wed, 15 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Fri, 17 Jul 2026 19:03:41 +0200</pubDate>
 <category>gardening</category><category>automation</category><category>performance</category><category>ai</category><category>saga</category><description>My phone buzzed with a warning: 6% left. Six percent of what? I didn't know I was spending anything — and when I went looking, the thing draining it wasn't my tomatoes. It was the robot vacuum, fast asleep in its dock.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Tomato Maxing III — Only Six Percent Left</h1>
@@ -2647,7 +2647,7 @@ Ah an idea can we test that you can drag the shark?
 <title>The Vault I Could Finally Give Away</title>
 <link>https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/</guid>
-<pubDate>Fri, 17 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Fri, 17 Jul 2026 11:12:40 +0200</pubDate>
 <category>obsidian</category><category>ai</category><category>documentation</category><category>sharing</category><description>This morning my note-taking system was three months of personal plumbing. By lunch it was a 355-kilobyte zip file — running on a friend's Mac.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>The Vault I Could Finally Give Away</h1>
@@ -2692,7 +2692,7 @@ Ah an idea can we test that you can drag the shark?
 <title>Sharing a Chat With Myself</title>
 <link>https://scriptease.dev/posts/2026-07-14-sharing-a-chat-with-myself/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-14-sharing-a-chat-with-myself/</guid>
-<pubDate>Tue, 14 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 19:30:01 +0200</pubDate>
 <category>ai</category><category>claude</category><category>memory</category><category>api</category><category>saga</category><description>I tried to hand a conversation from Claude to Claude. It turned out that was the one thing I wasn't allowed to do.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Sharing a Chat With Myself</h1>
@@ -2747,7 +2747,7 @@ Ah an idea can we test that you can drag the shark?
 <title>Remote Remoting</title>
 <link>https://scriptease.dev/posts/2026-07-13-remote-remoting/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-13-remote-remoting/</guid>
-<pubDate>Mon, 13 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Mon, 13 Jul 2026 01:34:54 +0200</pubDate>
 <category>ai</category><category>claude</category><category>commandline</category><category>automation</category><category>macos</category><description>A fast little AI model I'd grown to like was about to stop being free. So I spent what I thought was its last free night wringing every drop out of it — a dozen coding sessions running at once on my Mac, and me steering eight of them from my phone while the laptop worked away in another room.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Remote Remoting</h1>
@@ -2876,7 +2876,7 @@ fi
 <title>The Posts I Write to Forget</title>
 <link>https://scriptease.dev/posts/2026-07-12-the-posts-i-write-to-forget/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-12-the-posts-i-write-to-forget/</guid>
-<pubDate>Sun, 12 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 12 Jul 2026 12:48:53 +0200</pubDate>
 <category>obsidian</category><category>memory</category><category>ai</category><category>documentation</category><category>saga</category><description>I write these blog posts so I'm allowed to forget the things they're about.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>The Posts I Write to Forget</h1>
@@ -2988,7 +2988,7 @@ I own the story and supply the lived details. You supply digging and craft.
 <title>The Fork I Was Happy to Delete</title>
 <link>https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/</guid>
-<pubDate>Sun, 12 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 12 Jul 2026 09:23:44 +0200</pubDate>
 <category>voice</category><category>ai</category><category>opensource</category><category>macos</category><category>saga</category><description>This spring I spent weeks patching a dictation app until it behaved. This morning I threw all of that work away — and it was the best upgrade I've made this year.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>The Fork I Was Happy to Delete</h1>
@@ -3027,7 +3027,7 @@ I own the story and supply the lived details. You supply digging and craft.
 <title>Little Gemma vs Big Desk</title>
 <link>https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/</guid>
-<pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 11 Jul 2026 23:19:07 +0200</pubDate>
 <category>ai</category><category>llm</category><category>ml</category><category>macos</category><category>privacy</category><category>localai</category><category>saga</category><description>I handed a program running entirely on my laptop a screenshot of a garbled, obfuscated error — and it read every character back to me. Then I asked it to sketch the screen in ASCII art, and it did that too.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Little Gemma vs Big Desk</h1>
@@ -3078,7 +3078,7 @@ I own the story and supply the lived details. You supply digging and craft.
 <title>Tomato Maxing II — The Pump Talks Back</title>
 <link>https://scriptease.dev/posts/2026-07-11-tomato-maxing-ii/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-11-tomato-maxing-ii/</guid>
-<pubDate>Sat, 11 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Sat, 11 Jul 2026 23:15:23 +0200</pubDate>
 <category>gardening</category><category>automation</category><category>commandline</category><category>ai</category><category>saga</category><description>Last time, I could water my tomatoes by voice from another country. What I couldn't do was watch it happen. This is the part where the pump started talking back.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Tomato Maxing II — The Pump Talks Back</h1>
@@ -3134,7 +3134,7 @@ I own the story and supply the lived details. You supply digging and craft.
 <title>The Ticket That Filed Itself</title>
 <link>https://scriptease.dev/posts/2026-07-05-the-ticket-that-filed-itself/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-05-the-ticket-that-filed-itself/</guid>
-<pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 05 Jul 2026 21:31:30 +0200</pubDate>
 <category>ai</category><category>jira</category><category>gerrit</category><category>automation</category><category>voice</category><description>Somewhere on the autobahn to Austria, a colleague filed a support ticket at 130 km/h — both hands on the wheel the whole time.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>The Ticket That Filed Itself</h1>
@@ -3182,7 +3182,7 @@ I own the story and supply the lived details. You supply digging and craft.
 <title>Tomato Maxing</title>
 <link>https://scriptease.dev/posts/2026-07-05-tomato-maxing/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-05-tomato-maxing/</guid>
-<pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+<pubDate>Sun, 05 Jul 2026 18:36:26 +0200</pubDate>
 <category>gardening</category><category>automation</category><category>commandline</category><category>ai</category><category>saga</category><description>It was 37°C in Munich. Taking a break from a talk about token maxing, my mind wandered to my tomatoes — and the pump keeping them alive, which I was fairly sure I'd just bricked.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Tomato Maxing</h1>

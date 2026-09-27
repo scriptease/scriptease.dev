@@ -427,14 +427,16 @@ def write_search_index(posts):
         "window.SEARCH_INDEX = %s;\n" % json.dumps(data, ensure_ascii=False))
 
 
-def rfc822(created):
-    """`2026-07-31` -> RFC-822 date at 00:00 UTC, for RSS pubDate."""
+def rfc822(stamp):
+    """`2026-09-27T12:35:40+02:00` (or a bare `2026-07-31`, taken as 00:00 UTC)
+    -> RFC-822 date for RSS pubDate."""
     import email.utils
-    m = re.match(r'^(\d{4})-(\d{2})-(\d{2})', created or "")
-    if not m:
+    try:
+        dt = datetime.datetime.fromisoformat(stamp or "")
+    except ValueError:
         return email.utils.formatdate(0, usegmt=True)
-    dt = datetime.datetime(int(m.group(1)), int(m.group(2)), int(m.group(3)),
-                           tzinfo=datetime.timezone.utc)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=datetime.timezone.utc)
     return email.utils.format_datetime(dt)
 
 
@@ -456,10 +458,10 @@ def write_feed(posts):
             "<description>%s</description>\n"
             "<content:encoded><![CDATA[%s]]></content:encoded>\n"
             "</item>" % (
-                escape(p["title"]), url, url, rfc822(p["created"]),
+                escape(p["title"]), url, url, rfc822(p["published"]),
                 cats, escape(p["hook"]),
                 p["article"].replace("]]>", "]]]]><![CDATA[>")))
-    built = rfc822(posts[0]["created"]) if posts else rfc822("")
+    built = rfc822(posts[0]["published"]) if posts else rfc822("")
     feed = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<?xml-stylesheet type="text/xsl" href="/feed.xsl"?>\n'
