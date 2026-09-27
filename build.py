@@ -147,7 +147,7 @@ PAGE = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/theme-init.js"></script>
 <title>{title}</title>
-<link rel="icon" type="image/png" href="/favicon.png">
+{meta}<link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="{site}" href="/feed.xml">
 <link rel="stylesheet" href="/style.css">
@@ -199,12 +199,38 @@ REDIRECT = """<!DOCTYPE html>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/style.css">
 <title>{site}</title>
-</head>
+{meta}</head>
 <body>
 <p>Redirecting to the <a href="/posts/{slug}/">latest post</a>…</p>
 </body>
 </html>
 """
+
+
+def og_meta(og_type, title, description, url):
+    """Open Graph tags so link previews (Discord, Slack, ...) show a card."""
+    tags = [
+        ("og:type", og_type),
+        ("og:site_name", SITE_TITLE),
+        ("og:title", title),
+        ("og:description", description),
+        ("og:url", url),
+    ]
+    return "".join('<meta property="%s" content="%s">\n'
+                   % (k, escape(v).replace('"', "&quot;")) for k, v in tags) \
+        + '<meta name="twitter:card" content="summary">\n'
+
+
+def post_og_meta(p):
+    url = "%s/posts/%s/" % (SITE_URL, p["slug"])
+    meta = og_meta("article", p["title"], p["hook"], url)
+    # First image of the post as preview image (large card):
+    # m = re.search(r'<img[^>]+src="([^"]+)"', p["article"])
+    # if m:
+    #     img = m.group(1) if m.group(1).startswith("http") else url + m.group(1)
+    #     meta = meta.replace('"summary"', '"summary_large_image"')
+    #     meta += '<meta property="og:image" content="%s">\n' % img
+    return meta
 
 
 def copy_assets(post_dir, slug):
@@ -293,7 +319,7 @@ def write_post_pages(chrono):
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(PAGE.format(
             title=escape(p["title"]) + " — " + SITE_TITLE, site=SITE_TITLE,
-            tagline=SITE_TAGLINE, content=content))
+            tagline=SITE_TAGLINE, content=content, meta=post_og_meta(p)))
 
 
 def build_month_pages(posts):
@@ -309,7 +335,7 @@ def build_month_pages(posts):
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(PAGE.format(
             title="%s — %s" % (escape(month_label(ym)), SITE_TITLE),
-            site=SITE_TITLE, tagline=SITE_TAGLINE, content=content))
+            site=SITE_TITLE, tagline=SITE_TAGLINE, content=content, meta=""))
 
 
 def build_tag_pages(posts):
@@ -331,7 +357,7 @@ def build_tag_pages(posts):
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(PAGE.format(
             title="#%s — %s" % (escape(tag), SITE_TITLE),
-            site=SITE_TITLE, tagline=SITE_TAGLINE, content=content))
+            site=SITE_TITLE, tagline=SITE_TAGLINE, content=content, meta=""))
     build_tag_cloud(tags)
 
 
@@ -361,7 +387,7 @@ def build_tag_cloud(tags):
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(PAGE.format(
         title="Tags — %s" % SITE_TITLE, site=SITE_TITLE,
-        tagline=SITE_TAGLINE, content=content))
+        tagline=SITE_TAGLINE, content=content, meta=""))
 
 
 def write_posts_js(posts):
@@ -466,7 +492,9 @@ def main():
     write_feed(posts)
     if posts:
         (REPO / "index.html").write_text(
-            REDIRECT.format(slug=posts[0]["slug"], site=SITE_TITLE))
+            REDIRECT.format(slug=posts[0]["slug"], site=SITE_TITLE,
+                            meta=og_meta("website", SITE_TITLE, SITE_TAGLINE,
+                                         SITE_URL + "/")))
     print("Done. %d post(s). Root redirects to: %s" % (
         len(posts), posts[0]["slug"] if posts else "(none)"))
 
