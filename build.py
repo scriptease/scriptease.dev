@@ -215,6 +215,7 @@ def og_meta(og_type, title, description, url):
         ("og:title", title),
         ("og:description", description),
         ("og:url", url),
+        ("og:image", SITE_URL + "/apple-touch-icon.png"),
     ]
     return "".join('<meta property="%s" content="%s">\n'
                    % (k, escape(v).replace('"', "&quot;")) for k, v in tags) \
@@ -229,7 +230,7 @@ def post_og_meta(p):
     # if m:
     #     img = m.group(1) if m.group(1).startswith("http") else url + m.group(1)
     #     meta = meta.replace('"summary"', '"summary_large_image"')
-    #     meta += '<meta property="og:image" content="%s">\n' % img
+    #     meta = meta.replace(SITE_URL + "/apple-touch-icon.png", img)
     return meta
 
 
