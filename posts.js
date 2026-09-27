@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-09-27-its-about-the-little-things",
+    "title": "It's About the Little Things",
+    "hook": "This evening I asked Claude why my blog links show up in the chat app Discord as a bare link. I ended up with a perfect little card with my signature shark.",
+    "date": "2026-09-27",
+    "month": "2026-09",
+    "tags": [
+      "blog",
+      "webdesign",
+      "rss",
+      "easteregg",
+      "claude"
+    ]
+  },
+  {
     "slug": "2026-09-26-claudial-of-service",
     "title": "Claudial of Service",
     "hook": "My Mac slowed to a snail's pace. Activity Monitor said a tiny helper for my desk gadget was using 50 gigabytes of memory. I had stopped that helper days ago. Or I thought I had.",
