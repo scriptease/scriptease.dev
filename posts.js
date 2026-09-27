@@ -1,19 +1,5 @@
 window.POSTS = [
   {
-    "slug": "2026-09-26-dashboard-for-one",
-    "title": "Dashboard for One",
-    "hook": "When AI 10x's your work, it 10x's your tickets too. The tracker I had didn't show them the way I work anymore. I could keep my work in two places, or write myself a different view.",
-    "date": "2026-09-26",
-    "month": "2026-09",
-    "tags": [
-      "ai",
-      "claude",
-      "dashboard",
-      "ipad",
-      "productivity"
-    ]
-  },
-  {
     "slug": "2026-09-26-claudial-of-service",
     "title": "Claudial of Service",
     "hook": "My Mac slowed to a snail's pace. Activity Monitor said a tiny helper for my desk gadget was using 50 gigabytes of memory. I had stopped that helper days ago. Or I thought I had.",
@@ -43,6 +29,21 @@ window.POSTS = [
     ]
   },
   {
+    "slug": "2026-09-22-or-else",
+    "title": "Or Else",
+    "hook": "There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.",
+    "date": "2026-09-22",
+    "month": "2026-09",
+    "tags": [
+      "ai",
+      "agent",
+      "claude",
+      "git",
+      "security",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-09-26-axi-all-the-things",
     "title": "AXI All the Things",
     "hook": "I just got a notification on my phone: one of my testers' apps had crashed. It didn't say where.",
@@ -57,6 +58,20 @@ window.POSTS = [
     ]
   },
   {
+    "slug": "2026-09-26-dashboard-for-one",
+    "title": "Dashboard for One",
+    "hook": "When AI 10x's your work, it 10x's your tickets too. The tracker I had didn't show them the way I work anymore. I could keep my work in two places, or write myself a different view.",
+    "date": "2026-09-26",
+    "month": "2026-09",
+    "tags": [
+      "ai",
+      "claude",
+      "dashboard",
+      "ipad",
+      "productivity"
+    ]
+  },
+  {
     "slug": "2026-09-26-a-team-of-strangers",
     "title": "A Team of Strangers",
     "hook": "I've never met most of my team. One made the model, one ported it, one shrank it, one merges the code, one tested it in Andalusian Spanish. I learned who most of them were from a page my AI kept.",
@@ -67,21 +82,6 @@ window.POSTS = [
       "ai",
       "opensource",
       "github",
-      "saga"
-    ]
-  },
-  {
-    "slug": "2026-09-22-or-else",
-    "title": "Or Else",
-    "hook": "There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.",
-    "date": "2026-09-22",
-    "month": "2026-09",
-    "tags": [
-      "ai",
-      "agent",
-      "claude",
-      "git",
-      "security",
       "saga"
     ]
   },
@@ -482,6 +482,19 @@ window.POSTS = [
     ]
   },
   {
+    "slug": "2026-07-12-all-i-wanted-was-one-project",
+    "title": "Why Not Both — and a Map While We're at It",
+    "hook": "All I wanted was to get one project running on my laptop. Seven weeks later I'd written a tool whose only job was to find the trapdoors, and I was running the same code in five copies at once just to keep the fights straight.",
+    "date": "2026-07-12",
+    "month": "2026-07",
+    "tags": [
+      "java",
+      "gradle",
+      "development",
+      "debugging"
+    ]
+  },
+  {
     "slug": "2026-07-27-three-interpretations-of-success",
     "title": "Three Interpretations of Success",
     "hook": "I always try to follow the Boy Scout principle: leave the campsite in a better condition than you found it. It applies to software development too.",
@@ -608,19 +621,6 @@ window.POSTS = [
     ]
   },
   {
-    "slug": "2026-07-18-digging-up-skeletons-at-4am",
-    "title": "Digging Up Skeletons at 4 AM",
-    "hook": "The message said my AI limit was reached — come back at 3 AM. So at 3 AM, phone in hand, I pressed continue. Twice. And then I thought about skeletons.",
-    "date": "2026-07-18",
-    "month": "2026-07",
-    "tags": [
-      "ai",
-      "java",
-      "performance",
-      "hibernate"
-    ]
-  },
-  {
     "slug": "2026-07-18-ai-parenting-101",
     "title": "AI Parenting 101",
     "hook": "My smartest coworker wakes up every morning three years old. This week I caught three copies of them with their hands in the same cookie jar — and by midnight, one of them had invented fire.",
@@ -635,16 +635,30 @@ window.POSTS = [
     ]
   },
   {
-    "slug": "2026-07-17-the-vault-i-could-finally-give-away",
-    "title": "The Vault I Could Finally Give Away",
-    "hook": "This morning my note-taking system was three months of personal plumbing. By lunch it was a 355-kilobyte zip file — running on a friend's Mac.",
-    "date": "2026-07-17",
+    "slug": "2026-07-18-digging-up-skeletons-at-4am",
+    "title": "Digging Up Skeletons at 4 AM",
+    "hook": "The message said my AI limit was reached — come back at 3 AM. So at 3 AM, phone in hand, I pressed continue. Twice. And then I thought about skeletons.",
+    "date": "2026-07-18",
     "month": "2026-07",
     "tags": [
-      "obsidian",
       "ai",
-      "documentation",
-      "sharing"
+      "java",
+      "performance",
+      "hibernate"
+    ]
+  },
+  {
+    "slug": "2026-07-11-the-hill-i-climbed-twice",
+    "title": "The Hill I Climbed Twice",
+    "hook": "A year ago, getting our iPhone app through SonarQube was an uphill fight I kept losing. This week the same walls fell in an afternoon — and I barely touched the keyboard.",
+    "date": "2026-07-11",
+    "month": "2026-07",
+    "tags": [
+      "ci",
+      "codereview",
+      "security",
+      "ios",
+      "ai"
     ]
   },
   {
@@ -672,6 +686,19 @@ window.POSTS = [
       "performance",
       "ai",
       "saga"
+    ]
+  },
+  {
+    "slug": "2026-07-17-the-vault-i-could-finally-give-away",
+    "title": "The Vault I Could Finally Give Away",
+    "hook": "This morning my note-taking system was three months of personal plumbing. By lunch it was a 355-kilobyte zip file — running on a friend's Mac.",
+    "date": "2026-07-17",
+    "month": "2026-07",
+    "tags": [
+      "obsidian",
+      "ai",
+      "documentation",
+      "sharing"
     ]
   },
   {
@@ -731,16 +758,19 @@ window.POSTS = [
     ]
   },
   {
-    "slug": "2026-07-12-all-i-wanted-was-one-project",
-    "title": "Why Not Both — and a Map While We're at It",
-    "hook": "All I wanted was to get one project running on my laptop. Seven weeks later I'd written a tool whose only job was to find the trapdoors, and I was running the same code in five copies at once just to keep the fights straight.",
-    "date": "2026-07-12",
+    "slug": "2026-07-05-little-gemma-vs-big-desk",
+    "title": "Little Gemma vs Big Desk",
+    "hook": "I handed a program running entirely on my laptop a screenshot of a garbled, obfuscated error — and it read every character back to me. Then I asked it to sketch the screen in ASCII art, and it did that too.",
+    "date": "2026-07-05",
     "month": "2026-07",
     "tags": [
-      "java",
-      "gradle",
-      "development",
-      "debugging"
+      "ai",
+      "llm",
+      "ml",
+      "macos",
+      "privacy",
+      "localai",
+      "saga"
     ]
   },
   {
@@ -748,34 +778,6 @@ window.POSTS = [
     "title": "Tomato Maxing II — The Pump Talks Back",
     "hook": "Last time, I could water my tomatoes by voice from another country. What I couldn't do was watch it happen. This is the part where the pump started talking back.",
     "date": "2026-07-11",
-    "month": "2026-07",
-    "tags": [
-      "gardening",
-      "automation",
-      "commandline",
-      "ai",
-      "saga"
-    ]
-  },
-  {
-    "slug": "2026-07-11-the-hill-i-climbed-twice",
-    "title": "The Hill I Climbed Twice",
-    "hook": "A year ago, getting our iPhone app through SonarQube was an uphill fight I kept losing. This week the same walls fell in an afternoon — and I barely touched the keyboard.",
-    "date": "2026-07-11",
-    "month": "2026-07",
-    "tags": [
-      "ci",
-      "codereview",
-      "security",
-      "ios",
-      "ai"
-    ]
-  },
-  {
-    "slug": "2026-07-05-tomato-maxing",
-    "title": "Tomato Maxing",
-    "hook": "It was 37°C in Munich. Taking a break from a talk about token maxing, my mind wandered to my tomatoes — and the pump keeping them alive, which I was fairly sure I'd just bricked.",
-    "date": "2026-07-05",
     "month": "2026-07",
     "tags": [
       "gardening",
@@ -800,18 +802,16 @@ window.POSTS = [
     ]
   },
   {
-    "slug": "2026-07-05-little-gemma-vs-big-desk",
-    "title": "Little Gemma vs Big Desk",
-    "hook": "I handed a program running entirely on my laptop a screenshot of a garbled, obfuscated error — and it read every character back to me. Then I asked it to sketch the screen in ASCII art, and it did that too.",
+    "slug": "2026-07-05-tomato-maxing",
+    "title": "Tomato Maxing",
+    "hook": "It was 37°C in Munich. Taking a break from a talk about token maxing, my mind wandered to my tomatoes — and the pump keeping them alive, which I was fairly sure I'd just bricked.",
     "date": "2026-07-05",
     "month": "2026-07",
     "tags": [
+      "gardening",
+      "automation",
+      "commandline",
       "ai",
-      "llm",
-      "ml",
-      "macos",
-      "privacy",
-      "localai",
       "saga"
     ]
   }

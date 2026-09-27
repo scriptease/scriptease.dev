@@ -292,6 +292,8 @@ def build_post(md_path):
         "title": title,
         "hook": fm.get("hook", ""),
         "created": created,
+        # Order key: release time, so renaming a post never reorders it.
+        "published": fm.get("published") or created,
         "month": month_of(created),
         "tags": tags,
         "article": article,
@@ -329,7 +331,7 @@ def build_month_pages(posts):
         months.setdefault(p["month"], []).append(p)
     order = sorted(months)
     for i, ym in enumerate(order):
-        items = sorted(months[ym], key=lambda p: p["created"], reverse=True)
+        items = sorted(months[ym], key=lambda p: p["published"], reverse=True)
         older = order[i - 1] if i > 0 else None
         newer = order[i + 1] if i < len(order) - 1 else None
         left = ('<a class="prev" href="/archive/%s/">← %s</a>'
@@ -357,7 +359,7 @@ def build_tag_pages(posts):
         for t in p["tags"]:
             tags.setdefault(t, []).append(p)
     for tag, items in tags.items():
-        items = sorted(items, key=lambda p: p["created"], reverse=True)
+        items = sorted(items, key=lambda p: p["published"], reverse=True)
         content = (
             '<section class="intro"><h1>#{tag}</h1>'
             '<p>{n} post{s} tagged #{tag}.</p></section>\n{list}'.format(
@@ -492,9 +494,9 @@ def main():
         if res:
             posts.append(res)
             print("  built: %s" % res["slug"])
-    posts.sort(key=lambda p: (p["created"], p["slug"]), reverse=True)
+    posts.sort(key=lambda p: (p["published"], p["slug"]), reverse=True)
 
-    write_post_pages(sorted(posts, key=lambda p: (p["created"], p["slug"])))
+    write_post_pages(sorted(posts, key=lambda p: (p["published"], p["slug"])))
     build_month_pages(posts)
     build_tag_pages(posts)
     write_posts_js(posts)

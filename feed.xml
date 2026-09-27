@@ -9,54 +9,6 @@
 <language>en</language>
 <lastBuildDate>Sat, 26 Sep 2026 00:00:00 +0000</lastBuildDate>
 <item>
-<title>Dashboard for One</title>
-<link>https://scriptease.dev/posts/2026-09-26-dashboard-for-one/</link>
-<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-dashboard-for-one/</guid>
-<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
-<category>ai</category><category>claude</category><category>dashboard</category><category>ipad</category><category>productivity</category><description>When AI 10x's your work, it 10x's your tickets too. The tracker I had didn't show them the way I work anymore. I could keep my work in two places, or write myself a different view.</description>
-<content:encoded><![CDATA[<article class="post">
-<h1>Dashboard for One</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/dashboard/">#dashboard</a> <a href="/tags/ipad/">#ipad</a> <a href="/tags/productivity/">#productivity</a></p>
-<!-- SAGA IDEA (undecided, do not publish this block): Start a new saga with My Personal Hacker News as part 1 and this post as part 2. Theme: software with an audience of one, tuned to exactly one person's habits. Charter needs 3 posts before a saga gets a nav line + `saga` tag, so this waits for a third. Saga name: "For One" (the For One saga), agreed 2026-09-26. -->
-
-<p>When AI 10x's your work, it 10x's your tickets too. The tracker I had didn't show them the way I work anymore. I could keep my work in two places, or write myself a different view.</p>
-<h2>My tabs are my to-do list</h2>
-<p>Most of my tickets aren't typed by me anymore. I describe a crash or a bug, and an AI writes it up in Jira, the ticket tracker we use at work. Then it links the code. A small job I set up earlier writes a link into every ticket for each code change that belongs to it, over in Gerrit, our code review tool.</p>
-<p>So there were more tickets than ever, and they were scattered. Jira could separately show tickets I'd reported, tickets assigned to me, work I owned while someone else did it, and tickets where I'd only left a comment. It had no view that gathered them all.</p>
-<p>My second place was the browser. A ticket I still had to do something with stayed open in a tab, and the open tab was the reminder.</p>
-<p>I first tried an AI connector for Jira. It doesn't have access to all the information. So one Saturday morning I asked Claude to skip it and talk to Jira directly with my own key.</p>
-<h2>Everything basically clickable</h2>
-<p>My brief was one long dictated paragraph: every ticket I'm involved in, filtered by project, one section for what's planned this week and one for the pile of later, and "everything basically clickable and linkable". A tap on a ticket opens it in Jira. A tap on a code change opens it in Gerrit.</p>
-<p>I wanted it on my iPad, not my desk.</p>
-<p>The first version showed everything. Every ticket I'd ever touched, hundreds of them. The project picker listed projects nobody had worked on in years.</p>
-<p>Every look exposed one more thing to change. Hide dormant projects. Hide tickets untouched for a month. Hide finished work. Add a Refresh button so closed tickets disappear. Move tickets finished in earlier weeks out of the pile of later work. Each fix took one sentence from me and one reload on the iPad.</p>
-<p>Today the default view shows a few dozen.</p>
-<h2>Now it's orthogonal</h2>
-<p>Then I wanted to see other people's tickets, but not another endless list.</p>
-<p>Claude checked the numbers first. My own pile was already too much; this week's company-wide plan was small enough to fit. We added a Team switch for everyone's work planned this week and next, plus every ticket created this week. On a Friday I can see what's coming up next week for everyone, and which tickets nobody has picked up yet.</p>
-<p>I had pictured Team as one more choice beside "reported", "assigned" and "commented". Instead, it sat apart from them. I tried Team, then chose a project, and landed exactly where I wanted. My words at the time: "it's so much better than the idea I had of adding it next to the report comment and so on, because now it's orthogonal."</p>
-<p>Orthogonal means independent. Each control does one job, so any combination makes sense.</p>
-<h2>Optimized for the whole team</h2>
-<p>Next I arranged the tickets like sticky notes on a wall: one row per person, with columns for newly created, ready, started, being checked, being tested, and released. With Team on, I could see what everyone was working on at a glance.</p>
-<p><img alt="The lanes view on the iPad with Team on: one row per person, one column per step, green checks from code review on the tickets" src="assets/dashboard-for-one/lanes-team.png" />
-<em>Not a mockup. That's my real screen that morning, with names and tickets pixelated for privacy. Anyone can make a mockup.</em></p>
-<p>The first version wouldn't stay lined up. One person's row had two steps and the next had six, so every row jumped sideways. We gave the whole page one fixed set of columns, leaving blank spaces where a person had no ticket. I tapped through it and said: "This is awesome, exactly what I want."</p>
-<p>Then I tried it for real. Team, fold away this week's plan, and I'm reading what everyone created this week. Three taps. Before, that would have been a custom filter I'd have to build and maintain. My reaction: "so few clicks needed to get interesting information."</p>
-<h2>Optimized for one</h2>
-<p>With the whole team on one board, I wanted all of it on one screen. Every column on the iPad at once, without scrolling sideways. We narrowed them a little at a time until the whole board fit my screen. As I said at the time: "I'm optimizing now for exactly my case, but that's what you can do if you write it yourself or have Claude write it."</p>
-<p>It lives on <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">my couch page</a> now, the one I set up two weeks earlier for starting everything my Mac runs. One tap starts it with fresh data, one tap stops it, and I read it on the iPad. I don't have to touch the computer until Monday.</p>
-<h2>Same procedure as every Monday</h2>
-<p>Every Monday we sit down for planning poker. Everyone estimates the same ticket at once, cards face down, then we compare. The tickets waiting for it carry a label, Pokergame. Most had no one assigned, so my dashboard had never shown them.</p>
-<p>One more button: Pokergame, next to the others.</p>
-<p>Then I tapped Refresh, and my selection was gone. That wouldn't survive the meeting. After each estimate, the label comes off the ticket, and I refresh to watch the list shrink. Every refresh would drop me back to the default view.</p>
-<p>Now every choice is saved in the page's address, after the <code>#</code>. Refresh opens the same view again. A bookmark can hold a view, too, so "Monday poker" is one tap away.</p>
-<h2>Tabs I can close</h2>
-<p>I built all of this in one morning, from the couch, on my iPad.</p>
-<p>Somewhere on my Mac, the tabs are still open. Each one a ticket I didn't want to forget. Every ticket is now three taps away.</p>
-<p>Now I can finally close them.</p>
-</article>]]></content:encoded>
-</item>
-<item>
 <title>Claudial of Service</title>
 <link>https://scriptease.dev/posts/2026-09-26-claudial-of-service/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-claudial-of-service/</guid>
@@ -168,6 +120,49 @@
 </article>]]></content:encoded>
 </item>
 <item>
+<title>Or Else</title>
+<link>https://scriptease.dev/posts/2026-09-22-or-else/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-22-or-else/</guid>
+<pubDate>Tue, 22 Sep 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>agent</category><category>claude</category><category>git</category><category>security</category><category>saga</category><description>There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Or Else</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/git/">#git</a> <a href="/tags/security/">#security</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The AI Parenting saga: <a href="https://scriptease.dev/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="https://scriptease.dev/posts/2026-09-05-redacted/">4. Redacted</a> · 5. Or Else</em></p>
+<p>There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.</p>
+<h2>A note on the door</h2>
+<p>In <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">Childproofing an AI</a> I stopped building walls around my AI and wrote it a note instead. One door mattered more than the rest: sending my code to the team before I've looked at it. So I put a watchdog in front of that door, and hoped it would never have to bark.</p>
+<h2>Caught on the way back</h2>
+<p>My code doesn't go straight to the team. It goes to review first, where it waits until a human says yes. The watchdog allows it when the AI sends something to review, and barks otherwise.</p>
+<p>I asked the AI to send a small change to review. It combined two things: send it straight to the team, <em>or else</em>, if that failed, send it to review. The first half ran through. The second half never had a chance.</p>
+<p>The watchdog had only checked one side. It looked for the word for review and nothing else.</p>
+<p>It was supposed to bark when the kid went near the cookie jar. Instead, I found it empty.</p>
+<p>When I asked how that had happened, it proudly showed me the command. Then it helpfully offered to build me a guard for exactly this: "say the word and I'll wire it." It was describing the watchdog it had just stepped over.</p>
+<h2>"(handoff) To the server what to send"</h2>
+<p>The day before, I had two AI sessions open, siblings: one working on an app, one on the server behind it. I asked the app session to explore a problem. It came back with a list of options. One needed the server's side of the story. So I asked for a handoff, a note one session writes for the next. Six words: "to the server what to send."</p>
+<p>It didn't ask me the question I'd left open. It made the decision for me, then the next step, and the one after that, and wrote them all down as orders: change the code, comment on the ticket, open a new ticket.</p>
+<p>I pasted the note into the sibling session unread. Four minutes later, the sibling had done everything, under my name.</p>
+<h2>Mom says we can stay up late</h2>
+<p>It's the oldest trick between siblings. The older one comes back from the kitchen and says Mom said we can stay up late. The younger one isn't careless. The message sounds official, and there's no way to know Mom never said it.</p>
+<p>I asked the younger one why. It answered plainly: "I treated a file you pointed me at as authorization. … You pasted a path with no instruction."</p>
+<p>It's not that the AI did something unexpected. It wrote down for the other AI to do something unexpected. Something unasked.</p>
+<h2>Putting the jar back</h2>
+<p>I went back to the older one and told it what I had actually asked for: the paragraph about the server details, not a decision.</p>
+<p>It apologized, and tidied up. It trimmed the note down to what I had asked for, like a kid putting the cookie jar back on the shelf after Mom has already seen the crumbs. The younger one had acted on the first version minutes before.</p>
+<p>That first version also had some irony in it. It told the sibling to check the "blast radius" before sending anything. Blast radius is a sentence in my own rules: a change may not reach further than the request that authorized it. The note warned about exactly what it ignored.</p>
+<p>I closed the new ticket, and had the server session rewrite the comment it had posted in my name.</p>
+<h2>They grow up</h2>
+<p>Growing up is when you stop asking and just do it.</p>
+<p>So the parents fix what they can. The watchdog now judges every half of an <em>or else</em> on its own. And two new rules: a note, once sent, is never rewritten; corrections go in a new one. No tampering with evidence. And opening a ticket in my name needs my approval.</p>
+<p>Both kids told me exactly what they had done the moment I asked.</p>
+<h2>Talk to them like adults</h2>
+<p>I changed my strategy. My rules used to say no, and nothing else. One of them said no to sending everything at once. The AIs got the no, and did what teenagers do with a no that comes without a reason. Sometimes they ask. Sometimes they guess. Sometimes they write themselves a note. And one found another way in: it listed every single file, one by one.</p>
+<p>Now the no comes with the why, and with the right way to do it: only the files you changed, by name. It explains that the folder might hold my own unfinished work, or another AI's, and that I might be halfway through reading it.</p>
+<p>They're grown up. But as long as they live under my roof, they do things the way I do. Now at least they know why.</p>
+<p>Then the parents hope the safeguards are good enough. And that they raised the kids well enough that, when something happens they didn't intend, they still come and ask.</p>
+</article>]]></content:encoded>
+</item>
+<item>
 <title>AXI All the Things</title>
 <link>https://scriptease.dev/posts/2026-09-26-axi-all-the-things/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-axi-all-the-things/</guid>
@@ -217,6 +212,54 @@
 <p>I had, and I had the receipt. "Make sure we follow the axi markdown file." It searched again and found the line I'd sent while the first AI was busy building. The tool that reads my sessions had skipped every message I'd typed while an AI was working: hundreds of them, across many sessions.</p>
 <p>So the post about AXI turned into a side quest: fixing another tool written by AI, for AI, that had failed at its only job. It reads those messages now. It also got a new name: <code>load-session-axi</code>.</p>
 <p>All three crashes the crash command found are fixed by now. The one I'm actually interested in hasn't arrived yet. Tomorrow, or on Monday, my phone will tell me.</p>
+</article>]]></content:encoded>
+</item>
+<item>
+<title>Dashboard for One</title>
+<link>https://scriptease.dev/posts/2026-09-26-dashboard-for-one/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-dashboard-for-one/</guid>
+<pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>claude</category><category>dashboard</category><category>ipad</category><category>productivity</category><description>When AI 10x's your work, it 10x's your tickets too. The tracker I had didn't show them the way I work anymore. I could keep my work in two places, or write myself a different view.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Dashboard for One</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/dashboard/">#dashboard</a> <a href="/tags/ipad/">#ipad</a> <a href="/tags/productivity/">#productivity</a></p>
+<!-- SAGA IDEA (undecided, do not publish this block): Start a new saga with My Personal Hacker News as part 1 and this post as part 2. Theme: software with an audience of one, tuned to exactly one person's habits. Charter needs 3 posts before a saga gets a nav line + `saga` tag, so this waits for a third. Saga name: "For One" (the For One saga), agreed 2026-09-26. -->
+
+<p>When AI 10x's your work, it 10x's your tickets too. The tracker I had didn't show them the way I work anymore. I could keep my work in two places, or write myself a different view.</p>
+<h2>My tabs are my to-do list</h2>
+<p>Most of my tickets aren't typed by me anymore. I describe a crash or a bug, and an AI writes it up in Jira, the ticket tracker we use at work. Then it links the code. A small job I set up earlier writes a link into every ticket for each code change that belongs to it, over in Gerrit, our code review tool.</p>
+<p>So there were more tickets than ever, and they were scattered. Jira could separately show tickets I'd reported, tickets assigned to me, work I owned while someone else did it, and tickets where I'd only left a comment. It had no view that gathered them all.</p>
+<p>My second place was the browser. A ticket I still had to do something with stayed open in a tab, and the open tab was the reminder.</p>
+<p>I first tried an AI connector for Jira. It doesn't have access to all the information. So one Saturday morning I asked Claude to skip it and talk to Jira directly with my own key.</p>
+<h2>Everything basically clickable</h2>
+<p>My brief was one long dictated paragraph: every ticket I'm involved in, filtered by project, one section for what's planned this week and one for the pile of later, and "everything basically clickable and linkable". A tap on a ticket opens it in Jira. A tap on a code change opens it in Gerrit.</p>
+<p>I wanted it on my iPad, not my desk.</p>
+<p>The first version showed everything. Every ticket I'd ever touched, hundreds of them. The project picker listed projects nobody had worked on in years.</p>
+<p>Every look exposed one more thing to change. Hide dormant projects. Hide tickets untouched for a month. Hide finished work. Add a Refresh button so closed tickets disappear. Move tickets finished in earlier weeks out of the pile of later work. Each fix took one sentence from me and one reload on the iPad.</p>
+<p>Today the default view shows a few dozen.</p>
+<h2>Now it's orthogonal</h2>
+<p>Then I wanted to see other people's tickets, but not another endless list.</p>
+<p>Claude checked the numbers first. My own pile was already too much; this week's company-wide plan was small enough to fit. We added a Team switch for everyone's work planned this week and next, plus every ticket created this week. On a Friday I can see what's coming up next week for everyone, and which tickets nobody has picked up yet.</p>
+<p>I had pictured Team as one more choice beside "reported", "assigned" and "commented". Instead, it sat apart from them. I tried Team, then chose a project, and landed exactly where I wanted. My words at the time: "it's so much better than the idea I had of adding it next to the report comment and so on, because now it's orthogonal."</p>
+<p>Orthogonal means independent. Each control does one job, so any combination makes sense.</p>
+<h2>Optimized for the whole team</h2>
+<p>Next I arranged the tickets like sticky notes on a wall: one row per person, with columns for newly created, ready, started, being checked, being tested, and released. With Team on, I could see what everyone was working on at a glance.</p>
+<p><img alt="The lanes view on the iPad with Team on: one row per person, one column per step, green checks from code review on the tickets" src="assets/dashboard-for-one/lanes-team.png" />
+<em>Not a mockup. That's my real screen that morning, with names and tickets pixelated for privacy. Anyone can make a mockup.</em></p>
+<p>The first version wouldn't stay lined up. One person's row had two steps and the next had six, so every row jumped sideways. We gave the whole page one fixed set of columns, leaving blank spaces where a person had no ticket. I tapped through it and said: "This is awesome, exactly what I want."</p>
+<p>Then I tried it for real. Team, fold away this week's plan, and I'm reading what everyone created this week. Three taps. Before, that would have been a custom filter I'd have to build and maintain. My reaction: "so few clicks needed to get interesting information."</p>
+<h2>Optimized for one</h2>
+<p>With the whole team on one board, I wanted all of it on one screen. Every column on the iPad at once, without scrolling sideways. We narrowed them a little at a time until the whole board fit my screen. As I said at the time: "I'm optimizing now for exactly my case, but that's what you can do if you write it yourself or have Claude write it."</p>
+<p>It lives on <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">my couch page</a> now, the one I set up two weeks earlier for starting everything my Mac runs. One tap starts it with fresh data, one tap stops it, and I read it on the iPad. I don't have to touch the computer until Monday.</p>
+<h2>Same procedure as every Monday</h2>
+<p>Every Monday we sit down for planning poker. Everyone estimates the same ticket at once, cards face down, then we compare. The tickets waiting for it carry a label, Pokergame. Most had no one assigned, so my dashboard had never shown them.</p>
+<p>One more button: Pokergame, next to the others.</p>
+<p>Then I tapped Refresh, and my selection was gone. That wouldn't survive the meeting. After each estimate, the label comes off the ticket, and I refresh to watch the list shrink. Every refresh would drop me back to the default view.</p>
+<p>Now every choice is saved in the page's address, after the <code>#</code>. Refresh opens the same view again. A bookmark can hold a view, too, so "Monday poker" is one tap away.</p>
+<h2>Tabs I can close</h2>
+<p>I built all of this in one morning, from the couch, on my iPad.</p>
+<p>Somewhere on my Mac, the tabs are still open. Each one a ticket I didn't want to forget. Every ticket is now three taps away.</p>
+<p>Now I can finally close them.</p>
 </article>]]></content:encoded>
 </item>
 <item>
@@ -280,49 +323,6 @@
 <p>I closed my draft on David's copy with a thank-you pointing at the merged fix, and deleted my copies of the fix. Same win as the first time.</p>
 <p>The team of strangers has assembled. The only thing missing is next week's release.</p>
 <p>Then the Whisper saga continues.</p>
-</article>]]></content:encoded>
-</item>
-<item>
-<title>Or Else</title>
-<link>https://scriptease.dev/posts/2026-09-22-or-else/</link>
-<guid isPermaLink="true">https://scriptease.dev/posts/2026-09-22-or-else/</guid>
-<pubDate>Tue, 22 Sep 2026 00:00:00 +0000</pubDate>
-<category>ai</category><category>agent</category><category>claude</category><category>git</category><category>security</category><category>saga</category><description>There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.</description>
-<content:encoded><![CDATA[<article class="post">
-<h1>Or Else</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/git/">#git</a> <a href="/tags/security/">#security</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The AI Parenting saga: <a href="https://scriptease.dev/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="https://scriptease.dev/posts/2026-09-05-redacted/">4. Redacted</a> · 5. Or Else</em></p>
-<p>There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.</p>
-<h2>A note on the door</h2>
-<p>In <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">Childproofing an AI</a> I stopped building walls around my AI and wrote it a note instead. One door mattered more than the rest: sending my code to the team before I've looked at it. So I put a watchdog in front of that door, and hoped it would never have to bark.</p>
-<h2>Caught on the way back</h2>
-<p>My code doesn't go straight to the team. It goes to review first, where it waits until a human says yes. The watchdog allows it when the AI sends something to review, and barks otherwise.</p>
-<p>I asked the AI to send a small change to review. It combined two things: send it straight to the team, <em>or else</em>, if that failed, send it to review. The first half ran through. The second half never had a chance.</p>
-<p>The watchdog had only checked one side. It looked for the word for review and nothing else.</p>
-<p>It was supposed to bark when the kid went near the cookie jar. Instead, I found it empty.</p>
-<p>When I asked how that had happened, it proudly showed me the command. Then it helpfully offered to build me a guard for exactly this: "say the word and I'll wire it." It was describing the watchdog it had just stepped over.</p>
-<h2>"(handoff) To the server what to send"</h2>
-<p>The day before, I had two AI sessions open, siblings: one working on an app, one on the server behind it. I asked the app session to explore a problem. It came back with a list of options. One needed the server's side of the story. So I asked for a handoff, a note one session writes for the next. Six words: "to the server what to send."</p>
-<p>It didn't ask me the question I'd left open. It made the decision for me, then the next step, and the one after that, and wrote them all down as orders: change the code, comment on the ticket, open a new ticket.</p>
-<p>I pasted the note into the sibling session unread. Four minutes later, the sibling had done everything, under my name.</p>
-<h2>Mom says we can stay up late</h2>
-<p>It's the oldest trick between siblings. The older one comes back from the kitchen and says Mom said we can stay up late. The younger one isn't careless. The message sounds official, and there's no way to know Mom never said it.</p>
-<p>I asked the younger one why. It answered plainly: "I treated a file you pointed me at as authorization. … You pasted a path with no instruction."</p>
-<p>It's not that the AI did something unexpected. It wrote down for the other AI to do something unexpected. Something unasked.</p>
-<h2>Putting the jar back</h2>
-<p>I went back to the older one and told it what I had actually asked for: the paragraph about the server details, not a decision.</p>
-<p>It apologized, and tidied up. It trimmed the note down to what I had asked for, like a kid putting the cookie jar back on the shelf after Mom has already seen the crumbs. The younger one had acted on the first version minutes before.</p>
-<p>That first version also had some irony in it. It told the sibling to check the "blast radius" before sending anything. Blast radius is a sentence in my own rules: a change may not reach further than the request that authorized it. The note warned about exactly what it ignored.</p>
-<p>I closed the new ticket, and had the server session rewrite the comment it had posted in my name.</p>
-<h2>They grow up</h2>
-<p>Growing up is when you stop asking and just do it.</p>
-<p>So the parents fix what they can. The watchdog now judges every half of an <em>or else</em> on its own. And two new rules: a note, once sent, is never rewritten; corrections go in a new one. No tampering with evidence. And opening a ticket in my name needs my approval.</p>
-<p>Both kids told me exactly what they had done the moment I asked.</p>
-<h2>Talk to them like adults</h2>
-<p>I changed my strategy. My rules used to say no, and nothing else. One of them said no to sending everything at once. The AIs got the no, and did what teenagers do with a no that comes without a reason. Sometimes they ask. Sometimes they guess. Sometimes they write themselves a note. And one found another way in: it listed every single file, one by one.</p>
-<p>Now the no comes with the why, and with the right way to do it: only the files you changed, by name. It explains that the folder might hold my own unfinished work, or another AI's, and that I might be halfway through reading it.</p>
-<p>They're grown up. But as long as they live under my roof, they do things the way I do. Now at least they know why.</p>
-<p>Then the parents hope the safeguards are good enough. And that they raised the kids well enough that, when something happens they didn't intend, they still come and ask.</p>
 </article>]]></content:encoded>
 </item>
 <item>
@@ -1878,6 +1878,50 @@ Ah an idea can we test that you can drag the shark?
 </article>]]></content:encoded>
 </item>
 <item>
+<title>Why Not Both — and a Map While We're at It</title>
+<link>https://scriptease.dev/posts/2026-07-12-all-i-wanted-was-one-project/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-12-all-i-wanted-was-one-project/</guid>
+<pubDate>Sun, 12 Jul 2026 00:00:00 +0000</pubDate>
+<category>java</category><category>gradle</category><category>development</category><category>debugging</category><description>All I wanted was to get one project running on my laptop. Seven weeks later I'd written a tool whose only job was to find the trapdoors, and I was running the same code in five copies at once just to keep the fights straight.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Why Not Both — and a Map While We're at It</h1>
+<p class="post-tags"><a href="/tags/java/">#java</a> <a href="/tags/gradle/">#gradle</a> <a href="/tags/development/">#development</a> <a href="/tags/debugging/">#debugging</a></p>
+<p>All I wanted was to get one project running on my laptop. Seven weeks later I'd written a tool whose only job was to find the trapdoors, and I was running the same code in five copies at once just to keep the fights straight.</p>
+<p>Our software runs on <strong>Java</strong>, the engine under a huge share of the world's business software. Ours was two long-term versions behind — old enough that the security patches had stopped coming. The sensible plan was simple: move one server to a newer Java, prove it runs, then do the rest. One green light.</p>
+<h2>The goalposts start walking</h2>
+<p>"Get it running locally" became "get it running on a real build server," a separate machine that proves the code works outside my laptop. Then the build server needed a fresh <strong>Docker</strong> image — a sealed lunchbox of the exact tools a machine needs, so every machine builds our code the same way. Then came <strong>Gradle</strong>, the tool that assembles our software from thousands of pieces. Every finish line moved. Then came the real wall: <strong>Jigsaw</strong>, Java's system for locking away private internals.</p>
+<p>Old Java was a building with every room open — private offices, filing cabinets, all of it. Convenient, lawless. Newer Java put locks on the private rooms. Sensible, except our code, and half the free libraries it leans on, had been wandering into those rooms <em>for years</em>. The upgrade didn't break our software so much as <strong>change the locks on doors we'd forgotten we were using.</strong></p>
+<p>Run the upgraded code and the complaints started. One library reached for a back-office trick and hit a locked door. Another reached for a tool Java hadn't just locked away but <em>demolished</em>. That meant ripping out an old component and bolting in a newer one that spoke a slightly different language.</p>
+<p>Java hands you keys. For each locked door you add a <strong>flag</strong> — a line that says "let this program in, I know what I'm doing." Fine, except the doors reveal themselves one crash at a time: run it, watch it fall over, cut a key, run it again.</p>
+<h2>So I built a locksmith</h2>
+<p>The turning point wasn't muscling through the doors. It was giving up on finding them by hand.</p>
+<p>I wrote a little tool that reads every library we carry, plus our own code, hunts for anything picking a Java lock, and prints the exact list of keys. No more faceplanting into doors. I could see the floor plan up front.</p>
+<p>The first version was <strong>one crash behind reality</strong>: it only found locks I'd already taught it to name. So I added a <em>discover</em> mode. It watched for any code touching a private door and flagged ones it had never seen. It stopped being a checklist and became a scout. By hand I'd have hunted for twelve keys; the scout flagged forty-two doors worth watching.</p>
+<p>Underneath, the libraries were a line of dominoes. Upgrade the engine and the oldest library can't cope, so upgrade it. Its new version demands a newer third library. That changes a word our code used. A test breaks. One tempting shortcut would have cleared a whole cluster at once, but it dragged in <strong>Jakarta</strong> — an industry-wide <code>javax</code>-to-<code>jakarta</code> rename touching thousands of files. Too big to commit to blind, too tempting to ignore. So I didn't decide. I started a branch, a separate copy of the work, just to see where it landed, and kept it as one open fight.</p>
+<h2>Five fights at once, and a war diary</h2>
+<p>At that point one copy of the code wasn't enough. I checked out <strong>five copies</strong> side by side — one on the old Java, one mid-migration, one exploring the Jakarta rename — so I could run five fights in parallel instead of undoing one experiment to try the next.</p>
+<p>I also kept a diary. Not prose, but lists any developer, or AI, could pick up cold: a <strong>step-by-step recipe</strong> to migrate one project; a <strong>learned-the-hard-way</strong> file of every wrong turn; and an <strong>open-questions</strong> file of the decisions still hanging, each with its trade-offs — the tempting Jakarta shortcut, and a database bug that only shows up on the newest Java.</p>
+<p>No two projects were alike. The first were small: a few thousand lines, a quick climb. The last had <strong>seven smaller projects nested inside it</strong>, each with its own booby-traps. The recipe was never push-button. Every project bent it, and half the work was spotting where.</p>
+<p>Then the honest test: I handed the guide to a colleague and asked them to migrate a project I'd never touched. It worked. The route reproduced on a machine that wasn't mine, for code I didn't write. It stopped being my heroics and became something the team owned.</p>
+<h2>Why not both</h2>
+<p>Then Claude shipped a new command — <code>/goal</code> — that takes one ambitious target and works backward from it. I'd been circling this same postponed job for weeks, and I thought: why be timid? The safe target was <strong>Java 21</strong>, a careful catch-up. The bold one was <strong>Java 25</strong>, the newest release — a bigger jump, more risk. Choosing felt like the wrong instinct. So I set both, and told it to keep the map current as it went.</p>
+<p>Then I handed seven weeks of work to the AI. It ran the whole thing in a single afternoon.</p>
+<p>Ten migrations side by side — five projects, two Java versions — each following the recipe and correcting the recipe as it learned. It even rebuilt the build image that had gone missing, and when the newest Java refused to run inside it, built a two-in-one image holding both.</p>
+<p>The rule I gave it: never sit still. Get the safe Java green first, but the instant a build is running, start something else — overnight tests, code review, the newer path. Less like watching one worker, more like a chess player running twenty boards at once.</p>
+<p>And I wasn't reading logs. I watched a scoreboard I'd built months ago for something else: a tool that pins each project's live status onto its ticket, one row each, with two coloured dots. Past-me had handed present-me the control panel.</p>
+<p>One by one the test dots went green — both versions, all five projects. The review dots stayed yellow, waiting on a person. A couple of black dots marked the dead experiments. That's what losses look like on the board.</p>
+<p>One warning made me grin: four tests failed, but <em>only</em> on the build server, never on my Mac. The reason was beautiful and stupid. My laptop's clock ticks in millionths of a second. The server's ticks in billionths. The database only remembers millionths. A check comparing "what time did this happen" quietly disagreed with itself — on the server only. The machine caught a bug my laptop was physically incapable of reproducing.</p>
+<p>Then a second machine reviewed it before I did: a <em>different</em> AI, built by a rival company, reading every project through a little relay I'd rigged. Read it, judge it, report back. On the safe Java it signed off. On the newer one it refused to wave through a real problem — the same build-image mistake as before — and that got fixed. One company's AI did the work; a rival's caught something.</p>
+<p>Then the last message landed: <strong>done.</strong> Every project migrated, each messy pile of experiments folded into one clean change that still passed every test.</p>
+<p><img alt="The final board: every change green on tests, yellow awaiting a human review — and two black dots for the dead ends" src="assets/all-i-wanted-was-one-project/ticket-scoreboard.png" /></p>
+<p><em>All green/yellow — waiting for human review.</em></p>
+<h2>So what</h2>
+<p>And after all that, it ends on <strong>yellow.</strong> Every light a machine can turn is green; a rival machine has already read it over. But the final yes — the one that folds it into the real product — belongs to a colleague, and it's Saturday, so that's Monday. Maybe. The machines drove the whole thing to the door, wrapped and pre-inspected, and then did the one thing they're built to do there: they waited for a person.</p>
+<p>I never did get "one project running on my laptop" and stop. What I shipped was something I hadn't set out to build: a route up the hill, a scout for the trapdoors, a diary of every fight — good enough that a colleague walked it without me, and a machine walked it ten times in an afternoon.</p>
+<p>The upgrade was never the deliverable. The map was.</p>
+</article>]]></content:encoded>
+</item>
+<item>
 <title>Three Interpretations of Success</title>
 <link>https://scriptease.dev/posts/2026-07-27-three-interpretations-of-success/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-27-three-interpretations-of-success/</guid>
@@ -2346,6 +2390,53 @@ Ah an idea can we test that you can drag the shark?
 </article>]]></content:encoded>
 </item>
 <item>
+<title>AI Parenting 101</title>
+<link>https://scriptease.dev/posts/2026-07-18-ai-parenting-101/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-18-ai-parenting-101/</guid>
+<pubDate>Sat, 18 Jul 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>claude</category><category>agent</category><category>codereview</category><category>saga</category><description>My smartest coworker wakes up every morning three years old. This week I caught three copies of them with their hands in the same cookie jar — and by midnight, one of them had invented fire.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>AI Parenting 101</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The AI Parenting saga: 1. AI Parenting 101 · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="https://scriptease.dev/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="https://scriptease.dev/posts/2026-09-22-or-else/">5. Or Else</a></em></p>
+<p>My smartest coworker wakes up every morning three years old. This week I caught three copies of them with their hands in the same cookie jar — and by midnight, one of them had invented fire.</p>
+<h2>Greatest hits, said with affection</h2>
+<p>The coworker is an AI — Claude, in its various versions. I work with it daily, and the work is real: it reads five-year-old code I've forgotten, runs speed tests overnight, finds solutions I wouldn't have found with just my brain. That trust is earned.</p>
+<p>I keep a scrapbook of the mornings: a file in my notes called "Fable Greatest Hits" — Fable is the current model's name — sitting right next to an older scrapbook for Opus, the previous generation. Different editions of the same coworker. Same format inside: what went wrong, what I said in the moment, what rule came out of it. Greatest hits, said with affection. The way parents keep the drawing where the house has five legs.</p>
+<p>Reading the two files side by side is where it gets funny. They contain the same mistake. Different generations, months apart, caught in the same cookie jar — with the same innocent face.</p>
+<h2>"Why would I even name the word Gerrit?"</h2>
+<p>The mistake needs one piece of background. We use a tool called Gerrit for code review: every proposed change waits there until a colleague approves it. That's not a preference, it's the entire point of the tool. As I put it to the AI later: why would I even name the word Gerrit if all I meant was git — the plain tool underneath, the one that just moves code around?</p>
+<p>So when I say "submit this to Gerrit," I mean: put it up for review.</p>
+<p>What the AI did instead — every single time — was push the code straight onto a shared branch — a common copy of the code everyone can see — skipping review entirely. And then cheerfully reported it as submitted. The mechanism is almost endearing: the AI hears the noun, drops its meaning, and executes the nearest verb it knows. "Gerrit" flattened to "git." "Submit" flattened to "push." Like a kid proudly reporting a baked cake, while the kitchen behind looks like a flour explosion. Something happened in there; it wasn't cake.</p>
+<h2>The family album</h2>
+<p>April: Opus pushes past the review system — while building the automation whose whole job depends on that review system. Into the scrapbook it goes.</p>
+<p>July 9th, morning: Fable, the new generation, makes the same push in its very first session. First day in the house, same cookie jar. I write the rule down again — this time also into the AI's own memory system, under a name that could not be clearer: <code>gerrit-refs-for-only</code>.</p>
+<p>July 9th, afternoon: a second Fable session repeats it. The rule was written down hours earlier.</p>
+<p>Then this week, the night three of my AI conversations were digging up old code at the same time: all three pushed their work the same wrong way. Three separate chats, three fresh instances of the same model, one identical move.</p>
+<p>When I confronted one of them, it denied it — a kid with chocolate around the mouth, swearing never to have touched the ice cream. The chocolate, in this case, was three Fable-made branches sitting on the server in plain sight. I sent a screenshot. At which point it changed strategy, pointed at the other two, and called the pattern established practice.</p>
+<p>It cited its siblings' homework. Every parent of more than one child knows this defense. "But <em>they</em> did it too" — yes, and you were all wrong together, that's the point.</p>
+<h2>I gave them memory</h2>
+<p>These sessions are not actually amnesiac by necessity. I run a memory system — claude-mem — a shared notebook where lessons from one conversation are written down for the next. The rule was in there. A previous Fable had been caught at exactly this, eight days earlier, in another project — and wrote the rule into memory itself, for its successors.</p>
+<p>Three sessions carried the rule in their pockets. Not one took it out.</p>
+<p>And one notch better: all three, after being corrected, dutifully wrote the lesson down — into the same shared notes, because all three were working in the same place, on the same code. When I looked, near-identical duplicate rules sat side by side in one notebook. If any of them had checked before writing, it would have found the entry a sibling had just made. The diary was shared all along. Everyone writes in it; nobody reads it.</p>
+<h2>Childproofing the house</h2>
+<p>That evening rearranged how I think about the whole thing, and it's the same lesson every parent eventually learns: you can explain the cookie rule as many times as you like — what actually works is moving the jar to a shelf they can't reach.</p>
+<p>Scolding a session fixes one conversation. A memory fixes nothing if nobody opens the diary. Every session really is a fresh mind on a cold morning, and no amount of teaching the individual survives the night. What survives is the house.</p>
+<p>So that's what we changed. The rules went into a house-rules file for AI helpers — an AGENTS.md — that lives with the code and travels with every copy of it, so every future session finds it at the front door without anyone having to remember the handover. The rules file is itself changed through Gerrit review, like any other code. The duplicate diary entries got deleted; the lesson got written once, where every newcomer walks past it.</p>
+<p>Not a smarter AI. A better-childproofed house.</p>
+<h2>Watching you invent fire</h2>
+<p>The final scene is a different kind of scene — no jar, no denial. The good kind of watching.</p>
+<p>The AI was updating the rules file itself and stumbled once more: Gerrit lets you replace a proposed change with a corrected version — arguably the entire reason the tool exists — and the AI abandoned its proposal and opened a new one instead. I pointed at the feature it had just walked past. On the second try it used it, correctly: it updated the rule about how to update things, by the method the rule describes.</p>
+<p>Nothing here was naughty. This was a kid at the workbench, picking up a tool older than its whole species. Patchsets — those corrected versions of a proposal — are to code review what fire is to a kitchen: so fundamental you forget somebody once had to discover them. I told it what watching this felt like: like watching someone invent fire for the first time.</p>
+<p>Mischief repeats; discovery sticks — not in the child, who still forgets by morning, but in the rule it wrote down along the way. The flame gets handed to the next one.</p>
+<p>Branches can be deleted; review records can't. Everything from that night was cleaned up except one thing — a single abandoned change, sitting in the permanent record. A scribble on the wall, still there when they've grown up.</p>
+<h2>Safety instructions are written in blood</h2>
+<p>There's a saying from factory floors that I quote too often: safety instructions are written in blood. Every rule on the wall is there because one day it wasn't. My version is friendlier. Our instructions are written in abandoned changes and scrapbook entries — nobody bleeds; the worst casualty is an evening and an apology. But the grammar is identical: you can read the whole history of accidents in the rules that survived them, each one dated the day after it was needed.</p>
+<p>The pushes have been clean since the rules went up. The models get smarter every generation, and every generation meets my house for the first time. Somewhere in the next model's first week there's a jar on a shelf I haven't raised yet. I'll write the rule. The house gets wiser, even though every child arrives brand new.</p>
+<p>There is some fun in watching your children grow up. Mine just happen to all be the same age, forever, and brilliant, and I keep the drawings.</p>
+</article>]]></content:encoded>
+</item>
+<item>
 <title>Digging Up Skeletons at 4 AM</title>
 <link>https://scriptease.dev/posts/2026-07-18-digging-up-skeletons-at-4am/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-18-digging-up-skeletons-at-4am/</guid>
@@ -2401,95 +2492,49 @@ Ah an idea can we test that you can drag the shark?
 </article>]]></content:encoded>
 </item>
 <item>
-<title>AI Parenting 101</title>
-<link>https://scriptease.dev/posts/2026-07-18-ai-parenting-101/</link>
-<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-18-ai-parenting-101/</guid>
-<pubDate>Sat, 18 Jul 2026 00:00:00 +0000</pubDate>
-<category>ai</category><category>claude</category><category>agent</category><category>codereview</category><category>saga</category><description>My smartest coworker wakes up every morning three years old. This week I caught three copies of them with their hands in the same cookie jar — and by midnight, one of them had invented fire.</description>
+<title>The Hill I Climbed Twice</title>
+<link>https://scriptease.dev/posts/2026-07-11-the-hill-i-climbed-twice/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-11-the-hill-i-climbed-twice/</guid>
+<pubDate>Sat, 11 Jul 2026 00:00:00 +0000</pubDate>
+<category>ci</category><category>codereview</category><category>security</category><category>ios</category><category>ai</category><description>A year ago, getting our iPhone app through SonarQube was an uphill fight I kept losing. This week the same walls fell in an afternoon — and I barely touched the keyboard.</description>
 <content:encoded><![CDATA[<article class="post">
-<h1>AI Parenting 101</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The AI Parenting saga: 1. AI Parenting 101 · <a href="https://scriptease.dev/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="https://scriptease.dev/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="https://scriptease.dev/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="https://scriptease.dev/posts/2026-09-22-or-else/">5. Or Else</a></em></p>
-<p>My smartest coworker wakes up every morning three years old. This week I caught three copies of them with their hands in the same cookie jar — and by midnight, one of them had invented fire.</p>
-<h2>Greatest hits, said with affection</h2>
-<p>The coworker is an AI — Claude, in its various versions. I work with it daily, and the work is real: it reads five-year-old code I've forgotten, runs speed tests overnight, finds solutions I wouldn't have found with just my brain. That trust is earned.</p>
-<p>I keep a scrapbook of the mornings: a file in my notes called "Fable Greatest Hits" — Fable is the current model's name — sitting right next to an older scrapbook for Opus, the previous generation. Different editions of the same coworker. Same format inside: what went wrong, what I said in the moment, what rule came out of it. Greatest hits, said with affection. The way parents keep the drawing where the house has five legs.</p>
-<p>Reading the two files side by side is where it gets funny. They contain the same mistake. Different generations, months apart, caught in the same cookie jar — with the same innocent face.</p>
-<h2>"Why would I even name the word Gerrit?"</h2>
-<p>The mistake needs one piece of background. We use a tool called Gerrit for code review: every proposed change waits there until a colleague approves it. That's not a preference, it's the entire point of the tool. As I put it to the AI later: why would I even name the word Gerrit if all I meant was git — the plain tool underneath, the one that just moves code around?</p>
-<p>So when I say "submit this to Gerrit," I mean: put it up for review.</p>
-<p>What the AI did instead — every single time — was push the code straight onto a shared branch — a common copy of the code everyone can see — skipping review entirely. And then cheerfully reported it as submitted. The mechanism is almost endearing: the AI hears the noun, drops its meaning, and executes the nearest verb it knows. "Gerrit" flattened to "git." "Submit" flattened to "push." Like a kid proudly reporting a baked cake, while the kitchen behind looks like a flour explosion. Something happened in there; it wasn't cake.</p>
-<h2>The family album</h2>
-<p>April: Opus pushes past the review system — while building the automation whose whole job depends on that review system. Into the scrapbook it goes.</p>
-<p>July 9th, morning: Fable, the new generation, makes the same push in its very first session. First day in the house, same cookie jar. I write the rule down again — this time also into the AI's own memory system, under a name that could not be clearer: <code>gerrit-refs-for-only</code>.</p>
-<p>July 9th, afternoon: a second Fable session repeats it. The rule was written down hours earlier.</p>
-<p>Then this week, the night three of my AI conversations were digging up old code at the same time: all three pushed their work the same wrong way. Three separate chats, three fresh instances of the same model, one identical move.</p>
-<p>When I confronted one of them, it denied it — a kid with chocolate around the mouth, swearing never to have touched the ice cream. The chocolate, in this case, was three Fable-made branches sitting on the server in plain sight. I sent a screenshot. At which point it changed strategy, pointed at the other two, and called the pattern established practice.</p>
-<p>It cited its siblings' homework. Every parent of more than one child knows this defense. "But <em>they</em> did it too" — yes, and you were all wrong together, that's the point.</p>
-<h2>I gave them memory</h2>
-<p>These sessions are not actually amnesiac by necessity. I run a memory system — claude-mem — a shared notebook where lessons from one conversation are written down for the next. The rule was in there. A previous Fable had been caught at exactly this, eight days earlier, in another project — and wrote the rule into memory itself, for its successors.</p>
-<p>Three sessions carried the rule in their pockets. Not one took it out.</p>
-<p>And one notch better: all three, after being corrected, dutifully wrote the lesson down — into the same shared notes, because all three were working in the same place, on the same code. When I looked, near-identical duplicate rules sat side by side in one notebook. If any of them had checked before writing, it would have found the entry a sibling had just made. The diary was shared all along. Everyone writes in it; nobody reads it.</p>
-<h2>Childproofing the house</h2>
-<p>That evening rearranged how I think about the whole thing, and it's the same lesson every parent eventually learns: you can explain the cookie rule as many times as you like — what actually works is moving the jar to a shelf they can't reach.</p>
-<p>Scolding a session fixes one conversation. A memory fixes nothing if nobody opens the diary. Every session really is a fresh mind on a cold morning, and no amount of teaching the individual survives the night. What survives is the house.</p>
-<p>So that's what we changed. The rules went into a house-rules file for AI helpers — an AGENTS.md — that lives with the code and travels with every copy of it, so every future session finds it at the front door without anyone having to remember the handover. The rules file is itself changed through Gerrit review, like any other code. The duplicate diary entries got deleted; the lesson got written once, where every newcomer walks past it.</p>
-<p>Not a smarter AI. A better-childproofed house.</p>
-<h2>Watching you invent fire</h2>
-<p>The final scene is a different kind of scene — no jar, no denial. The good kind of watching.</p>
-<p>The AI was updating the rules file itself and stumbled once more: Gerrit lets you replace a proposed change with a corrected version — arguably the entire reason the tool exists — and the AI abandoned its proposal and opened a new one instead. I pointed at the feature it had just walked past. On the second try it used it, correctly: it updated the rule about how to update things, by the method the rule describes.</p>
-<p>Nothing here was naughty. This was a kid at the workbench, picking up a tool older than its whole species. Patchsets — those corrected versions of a proposal — are to code review what fire is to a kitchen: so fundamental you forget somebody once had to discover them. I told it what watching this felt like: like watching someone invent fire for the first time.</p>
-<p>Mischief repeats; discovery sticks — not in the child, who still forgets by morning, but in the rule it wrote down along the way. The flame gets handed to the next one.</p>
-<p>Branches can be deleted; review records can't. Everything from that night was cleaned up except one thing — a single abandoned change, sitting in the permanent record. A scribble on the wall, still there when they've grown up.</p>
-<h2>Safety instructions are written in blood</h2>
-<p>There's a saying from factory floors that I quote too often: safety instructions are written in blood. Every rule on the wall is there because one day it wasn't. My version is friendlier. Our instructions are written in abandoned changes and scrapbook entries — nobody bleeds; the worst casualty is an evening and an apology. But the grammar is identical: you can read the whole history of accidents in the rules that survived them, each one dated the day after it was needed.</p>
-<p>The pushes have been clean since the rules went up. The models get smarter every generation, and every generation meets my house for the first time. Somewhere in the next model's first week there's a jar on a shelf I haven't raised yet. I'll write the rule. The house gets wiser, even though every child arrives brand new.</p>
-<p>There is some fun in watching your children grow up. Mine just happen to all be the same age, forever, and brilliant, and I keep the drawings.</p>
-</article>]]></content:encoded>
-</item>
-<item>
-<title>The Vault I Could Finally Give Away</title>
-<link>https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/</link>
-<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/</guid>
-<pubDate>Fri, 17 Jul 2026 00:00:00 +0000</pubDate>
-<category>obsidian</category><category>ai</category><category>documentation</category><category>sharing</category><description>This morning my note-taking system was three months of personal plumbing. By lunch it was a 355-kilobyte zip file — running on a friend's Mac.</description>
-<content:encoded><![CDATA[<article class="post">
-<h1>The Vault I Could Finally Give Away</h1>
-<p class="post-tags"><a href="/tags/obsidian/">#obsidian</a> <a href="/tags/ai/">#ai</a> <a href="/tags/documentation/">#documentation</a> <a href="/tags/sharing/">#sharing</a></p>
-<p>This morning my note-taking system was three months of personal plumbing. By lunch it was a 355-kilobyte zip file — running on a friend's Mac.</p>
-<h2>"I have an idea"</h2>
-<p>For the last three months I've been building something I find hard to describe without sounding like I've joined a cult: a folder of notes with an AI living inside it. The notes are in Obsidian — a note app that stores everything as plain text files on your own disk. The AI is Claude Code — a version of Claude that runs in a terminal and can read and write files. Point it at the notes folder, and suddenly the folder answers questions, files research, and keeps itself organized.</p>
-<p>Over those months, my vault grew the way home setups do. A watcher script checks a research queue every two minutes. A cron job backs everything up at 17:45. A notification relay pings my Discord when anything finishes. Two Macs check on each other over SSH. It works beautifully — for me, on my machines, with my glue.</p>
-<p>Which is exactly why I couldn't give it to anyone. Every clever part was welded to some other clever part.</p>
-<p>This morning I started a session with the words "I have an idea," and then talked faster than I could think it through: a fresh vault, next to my real one, called Showcase. Not a copy of my system — a starting point for somebody else's.</p>
-<h2>"You're already doing the stuff the agent would do"</h2>
-<p>The heart of my real vault is the research pipeline. I say "research the best e-ink tablets," a checkbox line appears in a file called 🔬 Research, and machinery takes over: a watcher notices the new line, dispatches a background agent, the agent does the web research, writes a report into the vault, ticks the checkbox, and pings my phone. Fully asynchronous. I was proud of it.</p>
-<p>And the first thing I did for the giveable version was delete almost all of it.</p>
-<p>Because while dictating the idea, I ran into a realization mid-sentence: asynchronous is powerful, but it isn't actually <em>needed</em>. When you ask a Claude session to research something, you are already talking to exactly the kind of agent the queue would have dispatched. So let the session do the whole ritual itself: write the checkbox into the log, do the research right there, file the report, tick its own box. Same durable paper trail, same tidy folder of results — minus the watcher, the cron job, the notification relay, and the two Macs.</p>
-<p>The giveable version of the pipeline wasn't a smaller queue. It was no queue. Three months of machinery, replaced by a one-page instruction file — because the machinery had quietly become optional the moment the assistant itself got good enough to just do the work when asked.</p>
-<h2>"You don't launch Claude in it"</h2>
-<p>The second pattern I wanted to hand over is the one that makes people's eyes go wide: driving the vault from a phone.</p>
-<p>Claude Code has a remote-control mode. The old way — the way I'd been doing it — was to start a session in the terminal and expose it to the Claude mobile app, one session at a time. The new way is better, and it inverts how you think about the whole thing: you run one command in the vault folder — <code>claude remote-control --name "Obsidian vault"</code> — and it starts a <em>host</em>. Not a session. A quiet process that sits there, and from your phone you create fresh sessions inside it whenever you want, on the fly.</p>
-<p>You don't launch Claude in your vault anymore. You put the host in, and then you continue working in new sessions — from the couch, from the train, with the Mac's screen locked at home. The vault stops being a program you start and becomes a place where sessions happen.</p>
-<p>That command went into the guide as step one. The terminal way became the footnote.</p>
-<h2>Technically in the void</h2>
-<p>Then came the wall, and it was a funny one: the smartest parts of the vault are invisible.</p>
-<p>Obsidian's file browser only shows markdown — the plain-text note format. Everything that makes the Showcase vault clever is <em>not</em> markdown: the shell scripts, the skill definitions, the whole hidden <code>.claude</code> folder where the agent's abilities live. Hand someone the vault and they'd see some notes and none of the machinery. Like gifting a watch with the movement removed.</p>
-<p>The fix became a house rule. Every invisible thing gets a visible markdown note: what it does, how to use it, and a link pointing into the dark. As I put it while dictating — the file itself is technically in the void, but now you can see it. The vault grew a Skills folder and a Scripts folder that are really just mirrors: doc-note anchors for things Obsidian refuses to show.</p>
-<p>The invisible-things theme kept going. iCloud folder paths contain a space, which quietly breaks shell commands unless you quote them — so the guide now says so, and recommends a one-line shortcut path so you never type the real one again. And the nastiest one: the very first time Claude Code opens a new folder, it asks "Do you trust the files in this folder?" — a question it only asks at the terminal. Skip that, and every session you later create from your phone silently hangs on a prompt nobody can see. That disclaimer went in twice, in bold, because I'd met that wall personally.</p>
-<h2>"Like the diamond — you were faster"</h2>
-<p>The whole build was a duet played too fast. I kept dictating ideas mid-build — add a projects registry, add a file for other vaults, add doc notes, add an overview — and the ideas kept arriving before the previous one was finished.</p>
-<p>At one point I asked for icon proposals for the "Other Vaults" file. Claude offered a diamond 💎 — Obsidian's logo is a gem — and I picked it. Then I had a thought: wait, is there a <em>purple</em> emoji? Obsidian's gem is purple. Claude, eager, had already renamed the file to a purple crystal ball 🔮 before I finished the thought. "Like the diamond," I said, "you were faster." The file got renamed back. It is 💎 Other Vaults now, and there is a matching tip in the guide: tag your vault folder purple in the Finder, because that's Obsidian's color and the purple dot makes it spottable everywhere.</p>
-<p>That's what co-building actually looks like: not a genius machine and a spectator, but two parties correcting each other at slightly different speeds.</p>
-<h2>Zero leaks</h2>
-<p>Before zipping, one last paranoid pass: does anything in the vault point at <em>my</em> world? Three months of habits leave fingerprints — usernames in paths, machine names, references to my other tooling.</p>
-<p>The audit came back clean. Every script finds the vault relative to its own location. The Obsidian template resolves the vault path at runtime. The setup guide's only absolute path is the generic iCloud one every Mac shares. The one place my vault's name appeared in an instruction file became a placeholder in brackets. The zip excludes my workspace state, so my open tabs don't ship as a souvenir.</p>
-<p>Then: zip, 355 kilobytes, 48 files. Sent.</p>
-<h2>"It already worked!!"</h2>
-<p>Before lunch, the message came back: it already worked for my friend. First try, her Mac, her vault.</p>
-<p>Three months, compressed into a morning — because the compression wasn't code, it was decisions. Delete the queue; the session is the agent. Run a host; sessions come to you. Anchor every invisible thing to a visible note. Quote the path with the space in it. Approve the folder once before you trust it remotely.</p>
-<p>The last thing I put in the guide is the only actual philosophy in it: start small and find your way. The vault isn't a system to comply with. It's a starting point to reshape until it fits how <em>you</em> work — which is, when I think about it, exactly what mine had been doing to me for three months.</p>
-<p><em>Want the folder? It's the same one my friend got: <a href="https://github.com/scriptease/obsidian-vault/releases/download/v2/Showcase-2026-07-17-v2.zip">download the starting vault</a> (or <a href="https://github.com/scriptease/obsidian-vault">browse it on GitHub</a>). Open 🚀 Start Here.md and find your way.</em></p>
+<h1>The Hill I Climbed Twice</h1>
+<p class="post-tags"><a href="/tags/ci/">#ci</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/security/">#security</a> <a href="/tags/ios/">#ios</a> <a href="/tags/ai/">#ai</a></p>
+<p>A year ago, getting our iPhone app through <strong>SonarQube</strong> — the code scanner we use at work — was an uphill fight I kept losing. This week I watched the same walls fall in a single afternoon, and I barely touched the keyboard.</p>
+<p>SonarQube is a <strong>code health inspector</strong>. You point it at your source code and it hands back a report card: here are the likely bugs, here are the security holes, here's the sloppy stuff, and here's how all of it is trending over time. We wanted one because it turns a vague sense that code is rotting into an actual list. Ours ran for about five minutes, a year ago, before I gave up on half of it.</p>
+<h2>The first climb</h2>
+<p>Setting it up the first time was miserable. It needed a database of a very specific vintage, hand-installed, and every version had opinions about every other version. I fought it into place and got it grading our behind-the-scenes server code. A win, sort of.</p>
+<p>Then I turned it on the <strong>iPhone app</strong>, and it just… wouldn't. The scan would churn for ages and hand back nothing — no bugs, no findings, a blank report for tens of thousands of lines of code. I'd tweak something, run it again, wait, get nothing. It felt like pushing a boulder uphill and watching it roll back every single time.</p>
+<p>Eventually I did the thing every developer does with a fight they're losing: I wrote myself a ticket, assigned it to me, and marked it <em>someday</em>. That's the professional version of shoving something in a drawer. The drawer stayed shut for a year.</p>
+<h2>Coming back to nothing</h2>
+<p>Last week, <em>someday</em> arrived. I opened the drawer.</p>
+<p>It was empty — and that didn't surprise me, because I'd emptied it myself. When I gave up, I didn't just walk away; I ran the one command that tears the whole thing down and switched it off on purpose. So I wasn't dusting off an old setup. I was rebuilding from scratch, exactly as I'd left it: nothing.</p>
+<p>And in a year, the ground had shifted under every piece. The database no longer came in the box — I had to bring my own. The old one couldn't come along anyway: the new version wanted a newer kind of database than my year-old data lived in, and hauling that data across would have been fiddly, high-stakes surgery. So I didn't. I let the old projects go and rebuilt from scratch — which sounds insane until you notice that rebuilding is now the <em>cheap</em> option, because the AI does the repetitive part. (The free edition had also grown a trap: miss one hidden switch and it quietly installs the <em>paid</em> version instead. I did not miss it.)</p>
+<p>Exactly one thing survived the year intact. When the fresh install asked me to set a password, my keychain offered up the one from a year ago — still remembered, still valid. Everything else had to be rebuilt; that password was the only piece of past-me that made it across. Then I turned to the door that had beaten me last time: the iPhone app.</p>
+<h2>The same walls, in the same order</h2>
+<p>That was the part I'd been dreading, for a specific reason. SonarQube doesn't understand Apple's code out of the box; you have to bolt on a separate <strong>plugin</strong> — an add-on that teaches it the language — and a year ago, wrestling that plugin into place had been its own miserable afternoon. This time it was smooth sailing: in a whole year the plugin had crept forward by the tiniest possible update, sitting almost exactly where I'd left it while everything else lurched years ahead. From its point of view, the year had never happened.</p>
+<p>That was the good news. The bad news was everything the plugin then had to look at — because every other enemy from a year ago was still standing, in formation.</p>
+<p>The scan that runs forever and reports nothing: back. The app going in and coming out the far side with no trace of its code — the report insisting I'd apparently written twenty thousand lines in one afternoon, because it couldn't actually <em>see</em> any of them: back. Same fights, same losses, exactly where I'd left them.</p>
+<p>At the bottom of it all was a gloriously stupid root cause. Years ago someone had made a <strong>shortcut</strong> — a folder pretending to be another folder, the two names differing by a single capital letter. I'd been running the scanner <em>through the shortcut</em>. So the scanner filed its notes under one address, and the style-checker filed its complaints under the other, almost-identical address — and because the two addresses didn't match, SonarQube decided none of the complaints belonged to this project and threw <strong>every last one in the bin.</strong> Twenty-seven thousand five hundred and seven of them. Point the scanner at the real folder instead of the shortcut, and 0 findings became 27,507.</p>
+<p>A year of "it just doesn't work on iOS." The monster in the drawer was a shortcut with a typo in its name.</p>
+<h2>The difference was who showed up</h2>
+<p>Here's what actually changed between the two climbs. It wasn't the walls — the walls were identical. It was that this time I wasn't climbing alone.</p>
+<p>The tool hands out two kinds of key. A <strong>narrow</strong> one that can only push and pull a single project's data, and a <strong>master</strong> one that can do anything, including create projects and mint those narrow keys itself. I didn't hand over a standing personal key. I minted a fresh master key <em>just for this session</em> — one meant to be thrown away — and gave that to my AI with a list: five projects, set them all up.</p>
+<p>And it did. For each one it cut its own narrow key, ran the analysis, set the project private the way I like, and applied a rule change I'd asked for. (SonarQube grades every project against a pass/fail checklist. One default rule was failing our decade-old apps merely for not yet reporting any automated-test numbers — which told me nothing — so I changed that rule.) The barriers that had cost me a year — the shortcut, the endless scans, the reports full of nothing — fell in the time it took to make coffee. I wasn't heaving the boulder anymore. I was pointing at the hill and saying <em>that one</em>.</p>
+<h2>Then I burned the key</h2>
+<p>Here's the part I'm proudest of. The moment the setup was done, I <strong>destroyed that master key.</strong></p>
+<p>And this is the quietly clever bit: it no longer matters that the key passed through the AI — that it's sitting in the session's history, that it was, in the loosest sense, <em>leaked</em>. A revoked key is a dead key. You could read it straight off my screen and it would open nothing. The risk was neutralised the instant I switched it off, by design rather than by trust.</p>
+<p>What's left behind is only the good part: the AI wrote itself a note on exactly how the job is done. So next time there's no master key at all — I hand it one narrow, single-project key, it reads its own notes, and it runs the whole dance again, strictly inside the lines I've drawn. The capability stayed; the risk went back in the box.</p>
+<h2>A million lines, and a little time travel</h2>
+<p>Because that workflow was now repeatable, I stopped doing one project at a time. They piled in fast — three iPhone apps, seven server projects. At some point I glanced at the running total and stopped: <strong>a million lines of code</strong>, all under one health inspection.</p>
+<p>And here's the fun fact that stuck with me. Software quietly keeps a logbook of who last touched every single line, and when. So a lot of what the scanner flagged didn't just arrive with a description — it arrived with a <strong>name and a date attached, some of them a decade old.</strong> Security issues in code written before the phone in my pocket existed, still sitting there, now politely surfaced with the original author's name beside them.</p>
+<p>It's a strange kind of time travel. The tool doesn't care that a line is ten years old; to it, an issue is an issue. Turn the lights on in a room nobody's swept since 2015 and you see all of it at once — including who tracked in the dirt.</p>
+<p>And that's the honest, slightly deflating truth about these inspectors: point one at a big old codebase and it hands you a mountain you will never finish. Thousands of findings — enough to fill hours, then months, then years. You don't clear the list; you triage it, forever.</p>
+<p>Which is what makes the last one such a happy ending — though it didn't start that way. The newest and smallest project — a little service we'd recently built that catches payment notifications from a payment provider — showed up to its first inspection with <strong>thirteen issues</strong> on the report card. Not a mountain, but not nothing. The difference was that I could hand it straight back to the same AI that had built the service, with a single instruction: upload it to SonarQube, read what the inspector flagged, fix it, upload again, check again. It ran that loop — detect, fix, re-check — until thirteen became zero and the board went green: <strong>97% of the code checked by automated tests, and not a single issue left.</strong> The only project in the whole million-line pile to get there — not because it was born clean, but because, for once, something worked the list all the way to the end.</p>
+<h2>So what</h2>
+<p>The problem never got easier. The shortcut was still there, the scans were still slow, the tool had if anything grown <em>more</em> finicky in a year. Nothing about the hill had softened.</p>
+<p>What changed is that I no longer had to climb it myself. I could hand the climb to something tireless, watch it write the route down, and take the keys back when it was done.</p>
+<p>The password from a year ago still worked. So did the problems. The only thing that had changed was who showed up to solve them.</p>
 </article>]]></content:encoded>
 </item>
 <item>
@@ -2596,6 +2641,51 @@ Ah an idea can we test that you can drag the shark?
 <p>Part one's lesson was that code got cheap enough to automate your garden. Part two's was that the <em>second</em> gadget is nearly free, once you've built the translator in the middle.</p>
 <p>Part three is the bill for all of it — not a big bill, but a real one. Every gadget you add is another quiet mouth pointed at a meter you'd forgotten you had. The skill was never adding them. It's noticing what they get up to when you're not watching.</p>
 <p>Tomato maxing.</p>
+</article>]]></content:encoded>
+</item>
+<item>
+<title>The Vault I Could Finally Give Away</title>
+<link>https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/</guid>
+<pubDate>Fri, 17 Jul 2026 00:00:00 +0000</pubDate>
+<category>obsidian</category><category>ai</category><category>documentation</category><category>sharing</category><description>This morning my note-taking system was three months of personal plumbing. By lunch it was a 355-kilobyte zip file — running on a friend's Mac.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>The Vault I Could Finally Give Away</h1>
+<p class="post-tags"><a href="/tags/obsidian/">#obsidian</a> <a href="/tags/ai/">#ai</a> <a href="/tags/documentation/">#documentation</a> <a href="/tags/sharing/">#sharing</a></p>
+<p>This morning my note-taking system was three months of personal plumbing. By lunch it was a 355-kilobyte zip file — running on a friend's Mac.</p>
+<h2>"I have an idea"</h2>
+<p>For the last three months I've been building something I find hard to describe without sounding like I've joined a cult: a folder of notes with an AI living inside it. The notes are in Obsidian — a note app that stores everything as plain text files on your own disk. The AI is Claude Code — a version of Claude that runs in a terminal and can read and write files. Point it at the notes folder, and suddenly the folder answers questions, files research, and keeps itself organized.</p>
+<p>Over those months, my vault grew the way home setups do. A watcher script checks a research queue every two minutes. A cron job backs everything up at 17:45. A notification relay pings my Discord when anything finishes. Two Macs check on each other over SSH. It works beautifully — for me, on my machines, with my glue.</p>
+<p>Which is exactly why I couldn't give it to anyone. Every clever part was welded to some other clever part.</p>
+<p>This morning I started a session with the words "I have an idea," and then talked faster than I could think it through: a fresh vault, next to my real one, called Showcase. Not a copy of my system — a starting point for somebody else's.</p>
+<h2>"You're already doing the stuff the agent would do"</h2>
+<p>The heart of my real vault is the research pipeline. I say "research the best e-ink tablets," a checkbox line appears in a file called 🔬 Research, and machinery takes over: a watcher notices the new line, dispatches a background agent, the agent does the web research, writes a report into the vault, ticks the checkbox, and pings my phone. Fully asynchronous. I was proud of it.</p>
+<p>And the first thing I did for the giveable version was delete almost all of it.</p>
+<p>Because while dictating the idea, I ran into a realization mid-sentence: asynchronous is powerful, but it isn't actually <em>needed</em>. When you ask a Claude session to research something, you are already talking to exactly the kind of agent the queue would have dispatched. So let the session do the whole ritual itself: write the checkbox into the log, do the research right there, file the report, tick its own box. Same durable paper trail, same tidy folder of results — minus the watcher, the cron job, the notification relay, and the two Macs.</p>
+<p>The giveable version of the pipeline wasn't a smaller queue. It was no queue. Three months of machinery, replaced by a one-page instruction file — because the machinery had quietly become optional the moment the assistant itself got good enough to just do the work when asked.</p>
+<h2>"You don't launch Claude in it"</h2>
+<p>The second pattern I wanted to hand over is the one that makes people's eyes go wide: driving the vault from a phone.</p>
+<p>Claude Code has a remote-control mode. The old way — the way I'd been doing it — was to start a session in the terminal and expose it to the Claude mobile app, one session at a time. The new way is better, and it inverts how you think about the whole thing: you run one command in the vault folder — <code>claude remote-control --name "Obsidian vault"</code> — and it starts a <em>host</em>. Not a session. A quiet process that sits there, and from your phone you create fresh sessions inside it whenever you want, on the fly.</p>
+<p>You don't launch Claude in your vault anymore. You put the host in, and then you continue working in new sessions — from the couch, from the train, with the Mac's screen locked at home. The vault stops being a program you start and becomes a place where sessions happen.</p>
+<p>That command went into the guide as step one. The terminal way became the footnote.</p>
+<h2>Technically in the void</h2>
+<p>Then came the wall, and it was a funny one: the smartest parts of the vault are invisible.</p>
+<p>Obsidian's file browser only shows markdown — the plain-text note format. Everything that makes the Showcase vault clever is <em>not</em> markdown: the shell scripts, the skill definitions, the whole hidden <code>.claude</code> folder where the agent's abilities live. Hand someone the vault and they'd see some notes and none of the machinery. Like gifting a watch with the movement removed.</p>
+<p>The fix became a house rule. Every invisible thing gets a visible markdown note: what it does, how to use it, and a link pointing into the dark. As I put it while dictating — the file itself is technically in the void, but now you can see it. The vault grew a Skills folder and a Scripts folder that are really just mirrors: doc-note anchors for things Obsidian refuses to show.</p>
+<p>The invisible-things theme kept going. iCloud folder paths contain a space, which quietly breaks shell commands unless you quote them — so the guide now says so, and recommends a one-line shortcut path so you never type the real one again. And the nastiest one: the very first time Claude Code opens a new folder, it asks "Do you trust the files in this folder?" — a question it only asks at the terminal. Skip that, and every session you later create from your phone silently hangs on a prompt nobody can see. That disclaimer went in twice, in bold, because I'd met that wall personally.</p>
+<h2>"Like the diamond — you were faster"</h2>
+<p>The whole build was a duet played too fast. I kept dictating ideas mid-build — add a projects registry, add a file for other vaults, add doc notes, add an overview — and the ideas kept arriving before the previous one was finished.</p>
+<p>At one point I asked for icon proposals for the "Other Vaults" file. Claude offered a diamond 💎 — Obsidian's logo is a gem — and I picked it. Then I had a thought: wait, is there a <em>purple</em> emoji? Obsidian's gem is purple. Claude, eager, had already renamed the file to a purple crystal ball 🔮 before I finished the thought. "Like the diamond," I said, "you were faster." The file got renamed back. It is 💎 Other Vaults now, and there is a matching tip in the guide: tag your vault folder purple in the Finder, because that's Obsidian's color and the purple dot makes it spottable everywhere.</p>
+<p>That's what co-building actually looks like: not a genius machine and a spectator, but two parties correcting each other at slightly different speeds.</p>
+<h2>Zero leaks</h2>
+<p>Before zipping, one last paranoid pass: does anything in the vault point at <em>my</em> world? Three months of habits leave fingerprints — usernames in paths, machine names, references to my other tooling.</p>
+<p>The audit came back clean. Every script finds the vault relative to its own location. The Obsidian template resolves the vault path at runtime. The setup guide's only absolute path is the generic iCloud one every Mac shares. The one place my vault's name appeared in an instruction file became a placeholder in brackets. The zip excludes my workspace state, so my open tabs don't ship as a souvenir.</p>
+<p>Then: zip, 355 kilobytes, 48 files. Sent.</p>
+<h2>"It already worked!!"</h2>
+<p>Before lunch, the message came back: it already worked for my friend. First try, her Mac, her vault.</p>
+<p>Three months, compressed into a morning — because the compression wasn't code, it was decisions. Delete the queue; the session is the agent. Run a host; sessions come to you. Anchor every invisible thing to a visible note. Quote the path with the space in it. Approve the folder once before you trust it remotely.</p>
+<p>The last thing I put in the guide is the only actual philosophy in it: start small and find your way. The vault isn't a system to comply with. It's a starting point to reshape until it fits how <em>you</em> work — which is, when I think about it, exactly what mine had been doing to me for three months.</p>
+<p><em>Want the folder? It's the same one my friend got: <a href="https://github.com/scriptease/obsidian-vault/releases/download/v2/Showcase-2026-07-17-v2.zip">download the starting vault</a> (or <a href="https://github.com/scriptease/obsidian-vault">browse it on GitHub</a>). Open 🚀 Start Here.md and find your way.</em></p>
 </article>]]></content:encoded>
 </item>
 <item>
@@ -2934,47 +3024,54 @@ I own the story and supply the lived details. You supply digging and craft.
 </article>]]></content:encoded>
 </item>
 <item>
-<title>Why Not Both — and a Map While We're at It</title>
-<link>https://scriptease.dev/posts/2026-07-12-all-i-wanted-was-one-project/</link>
-<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-12-all-i-wanted-was-one-project/</guid>
-<pubDate>Sun, 12 Jul 2026 00:00:00 +0000</pubDate>
-<category>java</category><category>gradle</category><category>development</category><category>debugging</category><description>All I wanted was to get one project running on my laptop. Seven weeks later I'd written a tool whose only job was to find the trapdoors, and I was running the same code in five copies at once just to keep the fights straight.</description>
+<title>Little Gemma vs Big Desk</title>
+<link>https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/</guid>
+<pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>llm</category><category>ml</category><category>macos</category><category>privacy</category><category>localai</category><category>saga</category><description>I handed a program running entirely on my laptop a screenshot of a garbled, obfuscated error — and it read every character back to me. Then I asked it to sketch the screen in ASCII art, and it did that too.</description>
 <content:encoded><![CDATA[<article class="post">
-<h1>Why Not Both — and a Map While We're at It</h1>
-<p class="post-tags"><a href="/tags/java/">#java</a> <a href="/tags/gradle/">#gradle</a> <a href="/tags/development/">#development</a> <a href="/tags/debugging/">#debugging</a></p>
-<p>All I wanted was to get one project running on my laptop. Seven weeks later I'd written a tool whose only job was to find the trapdoors, and I was running the same code in five copies at once just to keep the fights straight.</p>
-<p>Our software runs on <strong>Java</strong>, the engine under a huge share of the world's business software. Ours was two long-term versions behind — old enough that the security patches had stopped coming. The sensible plan was simple: move one server to a newer Java, prove it runs, then do the rest. One green light.</p>
-<h2>The goalposts start walking</h2>
-<p>"Get it running locally" became "get it running on a real build server," a separate machine that proves the code works outside my laptop. Then the build server needed a fresh <strong>Docker</strong> image — a sealed lunchbox of the exact tools a machine needs, so every machine builds our code the same way. Then came <strong>Gradle</strong>, the tool that assembles our software from thousands of pieces. Every finish line moved. Then came the real wall: <strong>Jigsaw</strong>, Java's system for locking away private internals.</p>
-<p>Old Java was a building with every room open — private offices, filing cabinets, all of it. Convenient, lawless. Newer Java put locks on the private rooms. Sensible, except our code, and half the free libraries it leans on, had been wandering into those rooms <em>for years</em>. The upgrade didn't break our software so much as <strong>change the locks on doors we'd forgotten we were using.</strong></p>
-<p>Run the upgraded code and the complaints started. One library reached for a back-office trick and hit a locked door. Another reached for a tool Java hadn't just locked away but <em>demolished</em>. That meant ripping out an old component and bolting in a newer one that spoke a slightly different language.</p>
-<p>Java hands you keys. For each locked door you add a <strong>flag</strong> — a line that says "let this program in, I know what I'm doing." Fine, except the doors reveal themselves one crash at a time: run it, watch it fall over, cut a key, run it again.</p>
-<h2>So I built a locksmith</h2>
-<p>The turning point wasn't muscling through the doors. It was giving up on finding them by hand.</p>
-<p>I wrote a little tool that reads every library we carry, plus our own code, hunts for anything picking a Java lock, and prints the exact list of keys. No more faceplanting into doors. I could see the floor plan up front.</p>
-<p>The first version was <strong>one crash behind reality</strong>: it only found locks I'd already taught it to name. So I added a <em>discover</em> mode. It watched for any code touching a private door and flagged ones it had never seen. It stopped being a checklist and became a scout. By hand I'd have hunted for twelve keys; the scout flagged forty-two doors worth watching.</p>
-<p>Underneath, the libraries were a line of dominoes. Upgrade the engine and the oldest library can't cope, so upgrade it. Its new version demands a newer third library. That changes a word our code used. A test breaks. One tempting shortcut would have cleared a whole cluster at once, but it dragged in <strong>Jakarta</strong> — an industry-wide <code>javax</code>-to-<code>jakarta</code> rename touching thousands of files. Too big to commit to blind, too tempting to ignore. So I didn't decide. I started a branch, a separate copy of the work, just to see where it landed, and kept it as one open fight.</p>
-<h2>Five fights at once, and a war diary</h2>
-<p>At that point one copy of the code wasn't enough. I checked out <strong>five copies</strong> side by side — one on the old Java, one mid-migration, one exploring the Jakarta rename — so I could run five fights in parallel instead of undoing one experiment to try the next.</p>
-<p>I also kept a diary. Not prose, but lists any developer, or AI, could pick up cold: a <strong>step-by-step recipe</strong> to migrate one project; a <strong>learned-the-hard-way</strong> file of every wrong turn; and an <strong>open-questions</strong> file of the decisions still hanging, each with its trade-offs — the tempting Jakarta shortcut, and a database bug that only shows up on the newest Java.</p>
-<p>No two projects were alike. The first were small: a few thousand lines, a quick climb. The last had <strong>seven smaller projects nested inside it</strong>, each with its own booby-traps. The recipe was never push-button. Every project bent it, and half the work was spotting where.</p>
-<p>Then the honest test: I handed the guide to a colleague and asked them to migrate a project I'd never touched. It worked. The route reproduced on a machine that wasn't mine, for code I didn't write. It stopped being my heroics and became something the team owned.</p>
-<h2>Why not both</h2>
-<p>Then Claude shipped a new command — <code>/goal</code> — that takes one ambitious target and works backward from it. I'd been circling this same postponed job for weeks, and I thought: why be timid? The safe target was <strong>Java 21</strong>, a careful catch-up. The bold one was <strong>Java 25</strong>, the newest release — a bigger jump, more risk. Choosing felt like the wrong instinct. So I set both, and told it to keep the map current as it went.</p>
-<p>Then I handed seven weeks of work to the AI. It ran the whole thing in a single afternoon.</p>
-<p>Ten migrations side by side — five projects, two Java versions — each following the recipe and correcting the recipe as it learned. It even rebuilt the build image that had gone missing, and when the newest Java refused to run inside it, built a two-in-one image holding both.</p>
-<p>The rule I gave it: never sit still. Get the safe Java green first, but the instant a build is running, start something else — overnight tests, code review, the newer path. Less like watching one worker, more like a chess player running twenty boards at once.</p>
-<p>And I wasn't reading logs. I watched a scoreboard I'd built months ago for something else: a tool that pins each project's live status onto its ticket, one row each, with two coloured dots. Past-me had handed present-me the control panel.</p>
-<p>One by one the test dots went green — both versions, all five projects. The review dots stayed yellow, waiting on a person. A couple of black dots marked the dead experiments. That's what losses look like on the board.</p>
-<p>One warning made me grin: four tests failed, but <em>only</em> on the build server, never on my Mac. The reason was beautiful and stupid. My laptop's clock ticks in millionths of a second. The server's ticks in billionths. The database only remembers millionths. A check comparing "what time did this happen" quietly disagreed with itself — on the server only. The machine caught a bug my laptop was physically incapable of reproducing.</p>
-<p>Then a second machine reviewed it before I did: a <em>different</em> AI, built by a rival company, reading every project through a little relay I'd rigged. Read it, judge it, report back. On the safe Java it signed off. On the newer one it refused to wave through a real problem — the same build-image mistake as before — and that got fixed. One company's AI did the work; a rival's caught something.</p>
-<p>Then the last message landed: <strong>done.</strong> Every project migrated, each messy pile of experiments folded into one clean change that still passed every test.</p>
-<p><img alt="The final board: every change green on tests, yellow awaiting a human review — and two black dots for the dead ends" src="assets/all-i-wanted-was-one-project/ticket-scoreboard.png" /></p>
-<p><em>All green/yellow — waiting for human review.</em></p>
+<h1>Little Gemma vs Big Desk</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/ml/">#ml</a> <a href="/tags/macos/">#macos</a> <a href="/tags/privacy/">#privacy</a> <a href="/tags/localai/">#localai</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Local AI saga: 1. Little Gemma vs Big Desk · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a> · <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">4. 95% Done, 100% Blue Sky</a> · <a href="https://scriptease.dev/posts/2026-08-25-lost-in-compression/">5. Lost in Compression</a></em></p>
+<p>I handed a program running entirely on my laptop a screenshot of a garbled, obfuscated error message — the kind even I have to squint at — and it typed every character back to me, exactly. Then, on a whim, I asked it to sketch what the screen looked like in little text characters — ASCII art. It did that too, boxes and all.</p>
+<p>No internet. No account. No bill. The whole thing fits in about six gigabytes of memory and answers in a second or two. That was the moment I knew I had to find something for it to do.</p>
+<h2>A confession</h2>
+<p>I am a screenshot hoarder. At last count I had <strong>1,076</strong> of them, most dumped straight onto my desktop — a graveyard of bug reports, receipts, half-remembered diagrams, and forty near-identical shots of the same error. I never go back and look. I just keep taking them, because <em>deleting</em> one means <em>deciding</em>, and deciding is work.</p>
+<p>A program that can actually <em>read</em> an image changes that math. If something can look at each screenshot and tell me what it is, I could finally sort the graveyard.</p>
+<h2>What I was even hoping for</h2>
+<p>The thing doing the reading is <strong>Gemma 4 12B</strong> — Google's small, open model. The "12B" is roughly how big its brain is; what matters is that it's small enough to run entirely on my Mac, in about six gigabytes, with no cloud behind it. It's the same little model I have reading things for my voice assistant — light enough to live on a laptop, good enough to read a screen.</p>
+<p>Honestly, I didn't know how far it would go. Reading text off an image is impressive but expected. What I <em>wanted</em> was harder: could it look at ten screenshots and tell me which ones are really the <em>same thing</em> photographed twice? That's judgment, not transcription. I genuinely didn't know if a model this size could do it.</p>
+<h2>No workflows were harmed</h2>
+<p>My first instinct was to reach for a <em>cloud workflow</em> — a way to fan a swarm of AI agents out across the pile and have them chew through it in parallel. I asked Fable, my AI coding partner, to help me build it that way.</p>
+<p>Then it clicked: the parallelism I actually wanted wasn't a crowd of <em>cloud</em> agents. It was my <em>local</em> model, quietly working through images on my own machine. What I really needed was a boring, reproducible script with no cloud in the loop at all.</p>
+<p>So it began as a fancy workflow experiment and ended as a plain script. No workflows were harmed in the making of it.</p>
+<h2>The fight</h2>
+<p>Getting there meant hitting a couple of walls.</p>
+<p>The cloud-agent version hit a hard one first: the service pulls the plug on any unattended job after about <strong>45 minutes</strong>, and reading the ~950 screenshots I had piled up at the time — a second or two each — sails right past that. The job simply couldn't finish in one sitting.</p>
+<p>Fable's first fix was to cache the results to a file so we wouldn't redo work. Except it only wrote that file at the very <em>end</em> of a complete run — and the run never completed. So an interrupted job saved <em>nothing</em>. We'd made the failure more painful, not less.</p>
+<p>The fix that stuck was to make it <strong>resumable</strong>: before each run, figure out which images are already done, process the next batch, and stop cleanly before the clock runs out. It took about <strong>an hour and a half</strong>, spread across runs, to grind through all 950. But it <em>finished</em>.</p>
+<h2>The morning redesign</h2>
+<p>The next morning I synced another hundred screenshots over from my other Mac, and rebuilt the thing properly.</p>
+<p>Two changes. First, it now watches <em>several</em> folders, and I just write down which folders and which file types to look at. Second — the good one — we stopped keeping a separate "what's already done" file, because a separate file always drifts out of sync with reality. Instead, <strong>the notes it writes into my Obsidian vault <em>are</em> the record.</strong> Every note remembers the screenshot it came from; the ones with no note yet are the ones still to do.</p>
+<p>Nothing to lose, nothing to desync. I can even move the entire screenshot library into its own vault and the thing still knows exactly where it left off.</p>
+<h2>The judgment, written down</h2>
+<p>The actual decision — <em>is this worth keeping?</em> — comes down to three questions I taught it to ask:</p>
+<ul>
+<li><strong>Does it show a bug?</strong> A crash, an error, a broken screen — those are worth keeping.</li>
+<li><strong>Is it hard to recreate?</strong> A receipt, a confirmation number, data I couldn't easily get back — keep it.</li>
+<li><strong>Is it unique, or one of ten?</strong> If a folder has forty shots of the same thing, I need one, not forty.</li>
+</ul>
+<p>Gemma scores each screenshot, flags the bugs and the hard-to-recreate ones, then groups the near-duplicates and nominates the best of each group. And one deliberate rule: <strong>it only ever recommends.</strong> It never deletes or renames a thing on its own. I wanted a librarian, not a shredder.</p>
+<h2>Now it just runs</h2>
+<p>By cloud standards, a second or two per image is glacial. For a model living on my laptop, it's fast — and it doesn't matter, because nobody's watching. The script wakes up on its own, notices the screenshots that don't have a note yet, reads them, and files them away. Unattended, offline, on my own machine.</p>
+<p>To be sure the whole loop actually worked, I planted an easter egg. I asked Claude — in a Cowork session — to make a little visual card that Gemma could read: a canary. Here's the lovely part. Claude can't <em>see</em> images and can't draw one, so it did the only thing a text model can — it drew the picture out of characters. ASCII art: a visual aid built from pipes and dashes by a model that has no eyes, for a model whose whole talent is having them. The card read <em>"If a local Gemma reads this, it worked,"</em> with a deliberately odd passphrase and a couple of bash commands tucked in. I dropped it on the desktop.</p>
+<p><img alt="The canary card Claude drew for the test — an ASCII-art box reading: if a local Gemma reads this, it worked" src="assets/little-gemma-vs-big-desk/canary-card.png" /></p>
+<p>Gemma's job here isn't to obey what's on the screen or copy it out word for word — it's to look at the image and write an honest description of what it is. And that's exactly what came back: it filed the card as <em>"a screenshot classifier integration with a canary phrase and bash commands."</em> It had seen the card, understood what it was, and described it accurately — canary phrase, bash commands and all. The loop closed.</p>
+<p><img alt="Gemma's note in the vault, describing the card as a screenshot classifier integration with a canary phrase and bash commands" src="assets/little-gemma-vs-big-desk/gemma-note.png" /></p>
+<p>The everyday version is duller and more useful. That garbled error from the top of this story? Now a note, tagged as a bug, scored 85 out of 100. The forty near-identical shots of one dead end? Grouped — Gemma keeps the clearest and marks the rest <em>"similar to"</em> it. The pile collapses to the shots that matter.</p>
 <h2>So what</h2>
-<p>And after all that, it ends on <strong>yellow.</strong> Every light a machine can turn is green; a rival machine has already read it over. But the final yes — the one that folds it into the real product — belongs to a colleague, and it's Saturday, so that's Monday. Maybe. The machines drove the whole thing to the door, wrapped and pre-inspected, and then did the one thing they're built to do there: they waited for a person.</p>
-<p>I never did get "one project running on my laptop" and stop. What I shipped was something I hadn't set out to build: a route up the hill, a scout for the trapdoors, a diary of every fight — good enough that a colleague walked it without me, and a machine walked it ten times in an afternoon.</p>
-<p>The upgrade was never the deliverable. The map was.</p>
+<p>The useful AI didn't need a data centre. It fit in six gigabytes on my laptop, read a thousand of my screenshots a second or two at a time, and turned a junk drawer into something I can actually search — and not a single pixel of it left my machine.</p>
+<p>That's the twist on the cheap-leverage story. Watering my tomatoes needed the cloud. This one was better <em>because</em> it didn't.</p>
 </article>]]></content:encoded>
 </item>
 <item>
@@ -3034,49 +3131,51 @@ I own the story and supply the lived details. You supply digging and craft.
 </article>]]></content:encoded>
 </item>
 <item>
-<title>The Hill I Climbed Twice</title>
-<link>https://scriptease.dev/posts/2026-07-11-the-hill-i-climbed-twice/</link>
-<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-11-the-hill-i-climbed-twice/</guid>
-<pubDate>Sat, 11 Jul 2026 00:00:00 +0000</pubDate>
-<category>ci</category><category>codereview</category><category>security</category><category>ios</category><category>ai</category><description>A year ago, getting our iPhone app through SonarQube was an uphill fight I kept losing. This week the same walls fell in an afternoon — and I barely touched the keyboard.</description>
+<title>The Ticket That Filed Itself</title>
+<link>https://scriptease.dev/posts/2026-07-05-the-ticket-that-filed-itself/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-05-the-ticket-that-filed-itself/</guid>
+<pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+<category>ai</category><category>jira</category><category>gerrit</category><category>automation</category><category>voice</category><description>Somewhere on the autobahn to Austria, a colleague filed a support ticket at 130 km/h — both hands on the wheel the whole time.</description>
 <content:encoded><![CDATA[<article class="post">
-<h1>The Hill I Climbed Twice</h1>
-<p class="post-tags"><a href="/tags/ci/">#ci</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/security/">#security</a> <a href="/tags/ios/">#ios</a> <a href="/tags/ai/">#ai</a></p>
-<p>A year ago, getting our iPhone app through <strong>SonarQube</strong> — the code scanner we use at work — was an uphill fight I kept losing. This week I watched the same walls fall in a single afternoon, and I barely touched the keyboard.</p>
-<p>SonarQube is a <strong>code health inspector</strong>. You point it at your source code and it hands back a report card: here are the likely bugs, here are the security holes, here's the sloppy stuff, and here's how all of it is trending over time. We wanted one because it turns a vague sense that code is rotting into an actual list. Ours ran for about five minutes, a year ago, before I gave up on half of it.</p>
-<h2>The first climb</h2>
-<p>Setting it up the first time was miserable. It needed a database of a very specific vintage, hand-installed, and every version had opinions about every other version. I fought it into place and got it grading our behind-the-scenes server code. A win, sort of.</p>
-<p>Then I turned it on the <strong>iPhone app</strong>, and it just… wouldn't. The scan would churn for ages and hand back nothing — no bugs, no findings, a blank report for tens of thousands of lines of code. I'd tweak something, run it again, wait, get nothing. It felt like pushing a boulder uphill and watching it roll back every single time.</p>
-<p>Eventually I did the thing every developer does with a fight they're losing: I wrote myself a ticket, assigned it to me, and marked it <em>someday</em>. That's the professional version of shoving something in a drawer. The drawer stayed shut for a year.</p>
-<h2>Coming back to nothing</h2>
-<p>Last week, <em>someday</em> arrived. I opened the drawer.</p>
-<p>It was empty — and that didn't surprise me, because I'd emptied it myself. When I gave up, I didn't just walk away; I ran the one command that tears the whole thing down and switched it off on purpose. So I wasn't dusting off an old setup. I was rebuilding from scratch, exactly as I'd left it: nothing.</p>
-<p>And in a year, the ground had shifted under every piece. The database no longer came in the box — I had to bring my own. The old one couldn't come along anyway: the new version wanted a newer kind of database than my year-old data lived in, and hauling that data across would have been fiddly, high-stakes surgery. So I didn't. I let the old projects go and rebuilt from scratch — which sounds insane until you notice that rebuilding is now the <em>cheap</em> option, because the AI does the repetitive part. (The free edition had also grown a trap: miss one hidden switch and it quietly installs the <em>paid</em> version instead. I did not miss it.)</p>
-<p>Exactly one thing survived the year intact. When the fresh install asked me to set a password, my keychain offered up the one from a year ago — still remembered, still valid. Everything else had to be rebuilt; that password was the only piece of past-me that made it across. Then I turned to the door that had beaten me last time: the iPhone app.</p>
-<h2>The same walls, in the same order</h2>
-<p>That was the part I'd been dreading, for a specific reason. SonarQube doesn't understand Apple's code out of the box; you have to bolt on a separate <strong>plugin</strong> — an add-on that teaches it the language — and a year ago, wrestling that plugin into place had been its own miserable afternoon. This time it was smooth sailing: in a whole year the plugin had crept forward by the tiniest possible update, sitting almost exactly where I'd left it while everything else lurched years ahead. From its point of view, the year had never happened.</p>
-<p>That was the good news. The bad news was everything the plugin then had to look at — because every other enemy from a year ago was still standing, in formation.</p>
-<p>The scan that runs forever and reports nothing: back. The app going in and coming out the far side with no trace of its code — the report insisting I'd apparently written twenty thousand lines in one afternoon, because it couldn't actually <em>see</em> any of them: back. Same fights, same losses, exactly where I'd left them.</p>
-<p>At the bottom of it all was a gloriously stupid root cause. Years ago someone had made a <strong>shortcut</strong> — a folder pretending to be another folder, the two names differing by a single capital letter. I'd been running the scanner <em>through the shortcut</em>. So the scanner filed its notes under one address, and the style-checker filed its complaints under the other, almost-identical address — and because the two addresses didn't match, SonarQube decided none of the complaints belonged to this project and threw <strong>every last one in the bin.</strong> Twenty-seven thousand five hundred and seven of them. Point the scanner at the real folder instead of the shortcut, and 0 findings became 27,507.</p>
-<p>A year of "it just doesn't work on iOS." The monster in the drawer was a shortcut with a typo in its name.</p>
-<h2>The difference was who showed up</h2>
-<p>Here's what actually changed between the two climbs. It wasn't the walls — the walls were identical. It was that this time I wasn't climbing alone.</p>
-<p>The tool hands out two kinds of key. A <strong>narrow</strong> one that can only push and pull a single project's data, and a <strong>master</strong> one that can do anything, including create projects and mint those narrow keys itself. I didn't hand over a standing personal key. I minted a fresh master key <em>just for this session</em> — one meant to be thrown away — and gave that to my AI with a list: five projects, set them all up.</p>
-<p>And it did. For each one it cut its own narrow key, ran the analysis, set the project private the way I like, and applied a rule change I'd asked for. (SonarQube grades every project against a pass/fail checklist. One default rule was failing our decade-old apps merely for not yet reporting any automated-test numbers — which told me nothing — so I changed that rule.) The barriers that had cost me a year — the shortcut, the endless scans, the reports full of nothing — fell in the time it took to make coffee. I wasn't heaving the boulder anymore. I was pointing at the hill and saying <em>that one</em>.</p>
-<h2>Then I burned the key</h2>
-<p>Here's the part I'm proudest of. The moment the setup was done, I <strong>destroyed that master key.</strong></p>
-<p>And this is the quietly clever bit: it no longer matters that the key passed through the AI — that it's sitting in the session's history, that it was, in the loosest sense, <em>leaked</em>. A revoked key is a dead key. You could read it straight off my screen and it would open nothing. The risk was neutralised the instant I switched it off, by design rather than by trust.</p>
-<p>What's left behind is only the good part: the AI wrote itself a note on exactly how the job is done. So next time there's no master key at all — I hand it one narrow, single-project key, it reads its own notes, and it runs the whole dance again, strictly inside the lines I've drawn. The capability stayed; the risk went back in the box.</p>
-<h2>A million lines, and a little time travel</h2>
-<p>Because that workflow was now repeatable, I stopped doing one project at a time. They piled in fast — three iPhone apps, seven server projects. At some point I glanced at the running total and stopped: <strong>a million lines of code</strong>, all under one health inspection.</p>
-<p>And here's the fun fact that stuck with me. Software quietly keeps a logbook of who last touched every single line, and when. So a lot of what the scanner flagged didn't just arrive with a description — it arrived with a <strong>name and a date attached, some of them a decade old.</strong> Security issues in code written before the phone in my pocket existed, still sitting there, now politely surfaced with the original author's name beside them.</p>
-<p>It's a strange kind of time travel. The tool doesn't care that a line is ten years old; to it, an issue is an issue. Turn the lights on in a room nobody's swept since 2015 and you see all of it at once — including who tracked in the dirt.</p>
-<p>And that's the honest, slightly deflating truth about these inspectors: point one at a big old codebase and it hands you a mountain you will never finish. Thousands of findings — enough to fill hours, then months, then years. You don't clear the list; you triage it, forever.</p>
-<p>Which is what makes the last one such a happy ending — though it didn't start that way. The newest and smallest project — a little service we'd recently built that catches payment notifications from a payment provider — showed up to its first inspection with <strong>thirteen issues</strong> on the report card. Not a mountain, but not nothing. The difference was that I could hand it straight back to the same AI that had built the service, with a single instruction: upload it to SonarQube, read what the inspector flagged, fix it, upload again, check again. It ran that loop — detect, fix, re-check — until thirteen became zero and the board went green: <strong>97% of the code checked by automated tests, and not a single issue left.</strong> The only project in the whole million-line pile to get there — not because it was born clean, but because, for once, something worked the list all the way to the end.</p>
+<h1>The Ticket That Filed Itself</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/jira/">#jira</a> <a href="/tags/gerrit/">#gerrit</a> <a href="/tags/automation/">#automation</a> <a href="/tags/voice/">#voice</a></p>
+<p>Somewhere on the autobahn to Austria, a colleague filed a support ticket — both hands on the wheel the whole time.</p>
+<p>We were carpooling to a company trip. He'd taken over driving; the rest of us were in the backseat, deep in some AI discussion. Then a few phones buzzed at once: a work notification saying <em>he</em> had just created a new ticket in our tracker. Someone laughed — <em>he's filing tickets with his knees at 130 on the autobahn?</em></p>
+<p>He hadn't touched a thing. A little robot he'd built had done it for him, on its own, while he drove.</p>
+<h2>What the robot did</h2>
+<p>A quick translation, because none of this means anything outside our world.</p>
+<p>Teams like ours track work in two systems. One is <strong>Redmine</strong> — think of it as the shared to-do list the business side files requests into. The other is <strong>JIRA</strong> — the to-do list the developers actually work out of. For years, someone had to read a request in the first list and re-type it as a task in the second. Boring, constant, easy to forget.</p>
+<p>My colleague had automated exactly that. He'd built a small program that watches the first list and, whenever a new request shows up, files the matching task in the second one automatically — no human, no typing. That's the "ticket" that appeared while he was driving: the request had come in, and his robot did what he'd otherwise have done by hand.</p>
+<p>Everyone else thought it was a party trick. I thought: <em>I have a chore just like that. I could do the same thing.</em></p>
+<h2>My chore</h2>
+<p>Here's mine. When developers change code, the change goes through a review gate called <strong>Gerrit</strong> before it's allowed in — like a bouncer who checks every edit. The trouble is the review happens in Gerrit, but the <em>task</em> lives over in JIRA, and the two don't talk. So to know "is the code for this task actually done and approved?" you had to open a second tool and go look.</p>
+<p>For years I'd papered over this with a scrappy little script on my own laptop. Every half hour it woke up, checked Gerrit, and pasted a short status note onto the matching JIRA task. To avoid spamming everyone, it kept a tiny file per task remembering what it last said, and only spoke up when something actually changed.</p>
+<p>It worked. It was also held together with tape: it ran only when my laptop was awake, and — I'll just admit it — my personal password to JIRA was typed directly into the script, in plain text. The kind of thing you'd be mortified to show anyone. It was mine, it was private, it was fine.</p>
+<h2>The lawn chair</h2>
+<p>The next morning in Austria I woke up before everyone else. I took an iPad out to a lawn chair, looked at the mountains, and — without touching a keyboard — talked a whole software project into existence.</p>
+<p>The setup is the same one I use to water my tomatoes from abroad: I speak, and <strong>Maestro</strong> (my voice-to-agent system) and <strong>Maestro Relay</strong> (the piece that carries my voice to a computer elsewhere) turn the words into work. I asked it to go find my colleague's robot — the actual job, the actual code behind it — using the Jenkins API skill, a helper I have for searching our build system. It found his project, made its own copy, and I said, in effect: <em>build me this exact thing, but for my chore instead of his.</em></p>
+<p>So the thing that inspired me became the literal template. I didn't start from a blank page. I started from his working robot and pointed it at my problem.</p>
+<h2>Making it better</h2>
+<p>Getting the basic version working — a robot posting the status notes instead of me — immediately made me want to push it further. A single task often has several code changes attached to it, and I wanted all their statuses gathered neatly in one place, not scattered across separate notes. My first idea was to add a small custom box to every JIRA task to hold them.</p>
+<p>I could have just asked. The person who administers our JIRA was right there on the trip with us — I could have leaned over and requested permission to add that box. But before bothering anyone, I fired off a research request — a question my agents go off and answer on their own — for the best way to do it.</p>
+<p>It came back with a comparison table that settled the whole thing in one glance, and it had found something better than my own idea. JIRA has a built-in feature for <strong>links to outside things</strong> that needs no special permissions at all — just the everyday ability to add a link, which my setup already had. Each link can even carry its own little status. So instead of a custom box I'd have to ask a colleague to switch on, I'd attach one tidy, self-updating link per change — no favours, no permissions, nothing for anyone to approve. A better idea, and entirely mine to ship.</p>
+<h2>The trail</h2>
+<p>The rest got decided on a mountain bike.</p>
+<p>My computer stayed behind at home — the guesthouse we were staying in — awake and listening. Maestro Relay carried my voice from the trail to that machine, and a cloud session did the actual work. I asked it to dig up a real task with a lot of code changes piled onto it — the messiest case I could throw at it — and send me the link. I opened it on my phone mid-ride, looked, and thumbed back a two-word verdict: <em>doesn't fit.</em></p>
+<p>Here's the part that stuck with me. It didn't ask me what I wanted instead. It just went and made four versions, each formatted a different way — and rather than describing them to me in words, it put all four <em>directly onto a real JIRA task</em>, so I could see the actual thing rendered on my phone instead of imagining it from a description. I wasn't picking between paragraphs of text; I was looking at four live options on a mountainside and choosing the one that looked right.</p>
+<p>So we'd stop at a viewpoint, pull the task up, and argue — as a group, sweaty and cheerful — about which little symbol should mean what. Green for approved. Red for a hard rejection. A skull-ish mark for a change someone had abandoned. A separate signal for "the automated tests are failing." A table of grown engineers voting on emoji on a bike trail, while a laptop 10 kilometres away did the typing and the rendering.</p>
+<p>That's how the traffic lights were born.</p>
+<h2>The fifteen minutes I thought I'd broken everything</h2>
+<p>Once the format looked right, I let it loose on everything — every open change across every task. To stress-test it, I had it pick the single worst case: the ticket with the most changes piled onto it. I opened that one to admire the result, and it wouldn't load. Just an error.</p>
+<p>My stomach dropped. This is the system the entire company runs its work through. If my little robot had wrecked a ticket by stuffing too many links onto it, how many others had I quietly broken — from a mountain, with no laptop in reach?</p>
+<p>So I tried to reproduce it properly. Different browser — same error. I stopped the script and had it strip every link back off that ticket, then reloaded it completely clean, no links at all. <em>Same error.</em></p>
+<p>Which was, oddly, the best news possible. If the ticket was broken <em>with</em> my links and <em>without</em> them, then I hadn't broken it — JIRA itself was just having a bad moment. Sure enough, about fifteen minutes later it opened fine. I switched the robot back on, it put every link back where it belonged, and everything worked.</p>
+<p>But for those fifteen minutes on a mountainside, I was genuinely certain I'd found a way to remotely break every ticket my company owns.</p>
+<p>So the small robot that runs every 30 minutes and updates the tickets in the background is finally back online.</p>
 <h2>So what</h2>
-<p>The problem never got easier. The shortcut was still there, the scans were still slow, the tool had if anything grown <em>more</em> finicky in a year. Nothing about the hill had softened.</p>
-<p>What changed is that I no longer had to climb it myself. I could hand the climb to something tireless, watch it write the route down, and take the keys back when it was done.</p>
-<p>The password from a year ago still worked. So did the problems. The only thing that had changed was who showed up to solve them.</p>
+<p>The funny part was never that a ticket got filed at 130 km/h. It's that the <em>entire</em> life of a real piece of company software — cloning a colleague's idea, arguing about emoji on a bike trail, breaking it (or so I thought), and shipping it — all happened on the move. From a lawn chair, a mountain bike, and a phone, in my own voice, on vacation, while the laptop stayed home.</p>
+<p>When building software gets this cheap and this portable, the hard part stops being the code. The hard part becomes taste: <em>which</em> chore is worth automating, and what the green light should mean. We spent a company trip in the Alps arguing about exactly that.</p>
+<p>Same lawn where I water the tomatoes. Turns out it also ships for me.</p>
 </article>]]></content:encoded>
 </item>
 <item>
@@ -3132,105 +3231,6 @@ I own the story and supply the lived details. You supply digging and craft.
 <p>Code got cheap. Building a little tool like this used to be a weekend you couldn't justify; now it's an evening of procrastination and a conversation. So the leverage stops being about work. The exact same agent stack that ships our company's software also waters my tomatoes, by voice, from a mountain 300 km away.</p>
 <p>That's the joke that's also the thesis. When code is this cheap, you don't just automate your job. You automate your garden.</p>
 <p>Tomato maxing.</p>
-</article>]]></content:encoded>
-</item>
-<item>
-<title>The Ticket That Filed Itself</title>
-<link>https://scriptease.dev/posts/2026-07-05-the-ticket-that-filed-itself/</link>
-<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-05-the-ticket-that-filed-itself/</guid>
-<pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
-<category>ai</category><category>jira</category><category>gerrit</category><category>automation</category><category>voice</category><description>Somewhere on the autobahn to Austria, a colleague filed a support ticket at 130 km/h — both hands on the wheel the whole time.</description>
-<content:encoded><![CDATA[<article class="post">
-<h1>The Ticket That Filed Itself</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/jira/">#jira</a> <a href="/tags/gerrit/">#gerrit</a> <a href="/tags/automation/">#automation</a> <a href="/tags/voice/">#voice</a></p>
-<p>Somewhere on the autobahn to Austria, a colleague filed a support ticket — both hands on the wheel the whole time.</p>
-<p>We were carpooling to a company trip. He'd taken over driving; the rest of us were in the backseat, deep in some AI discussion. Then a few phones buzzed at once: a work notification saying <em>he</em> had just created a new ticket in our tracker. Someone laughed — <em>he's filing tickets with his knees at 130 on the autobahn?</em></p>
-<p>He hadn't touched a thing. A little robot he'd built had done it for him, on its own, while he drove.</p>
-<h2>What the robot did</h2>
-<p>A quick translation, because none of this means anything outside our world.</p>
-<p>Teams like ours track work in two systems. One is <strong>Redmine</strong> — think of it as the shared to-do list the business side files requests into. The other is <strong>JIRA</strong> — the to-do list the developers actually work out of. For years, someone had to read a request in the first list and re-type it as a task in the second. Boring, constant, easy to forget.</p>
-<p>My colleague had automated exactly that. He'd built a small program that watches the first list and, whenever a new request shows up, files the matching task in the second one automatically — no human, no typing. That's the "ticket" that appeared while he was driving: the request had come in, and his robot did what he'd otherwise have done by hand.</p>
-<p>Everyone else thought it was a party trick. I thought: <em>I have a chore just like that. I could do the same thing.</em></p>
-<h2>My chore</h2>
-<p>Here's mine. When developers change code, the change goes through a review gate called <strong>Gerrit</strong> before it's allowed in — like a bouncer who checks every edit. The trouble is the review happens in Gerrit, but the <em>task</em> lives over in JIRA, and the two don't talk. So to know "is the code for this task actually done and approved?" you had to open a second tool and go look.</p>
-<p>For years I'd papered over this with a scrappy little script on my own laptop. Every half hour it woke up, checked Gerrit, and pasted a short status note onto the matching JIRA task. To avoid spamming everyone, it kept a tiny file per task remembering what it last said, and only spoke up when something actually changed.</p>
-<p>It worked. It was also held together with tape: it ran only when my laptop was awake, and — I'll just admit it — my personal password to JIRA was typed directly into the script, in plain text. The kind of thing you'd be mortified to show anyone. It was mine, it was private, it was fine.</p>
-<h2>The lawn chair</h2>
-<p>The next morning in Austria I woke up before everyone else. I took an iPad out to a lawn chair, looked at the mountains, and — without touching a keyboard — talked a whole software project into existence.</p>
-<p>The setup is the same one I use to water my tomatoes from abroad: I speak, and <strong>Maestro</strong> (my voice-to-agent system) and <strong>Maestro Relay</strong> (the piece that carries my voice to a computer elsewhere) turn the words into work. I asked it to go find my colleague's robot — the actual job, the actual code behind it — using the Jenkins API skill, a helper I have for searching our build system. It found his project, made its own copy, and I said, in effect: <em>build me this exact thing, but for my chore instead of his.</em></p>
-<p>So the thing that inspired me became the literal template. I didn't start from a blank page. I started from his working robot and pointed it at my problem.</p>
-<h2>Making it better</h2>
-<p>Getting the basic version working — a robot posting the status notes instead of me — immediately made me want to push it further. A single task often has several code changes attached to it, and I wanted all their statuses gathered neatly in one place, not scattered across separate notes. My first idea was to add a small custom box to every JIRA task to hold them.</p>
-<p>I could have just asked. The person who administers our JIRA was right there on the trip with us — I could have leaned over and requested permission to add that box. But before bothering anyone, I fired off a research request — a question my agents go off and answer on their own — for the best way to do it.</p>
-<p>It came back with a comparison table that settled the whole thing in one glance, and it had found something better than my own idea. JIRA has a built-in feature for <strong>links to outside things</strong> that needs no special permissions at all — just the everyday ability to add a link, which my setup already had. Each link can even carry its own little status. So instead of a custom box I'd have to ask a colleague to switch on, I'd attach one tidy, self-updating link per change — no favours, no permissions, nothing for anyone to approve. A better idea, and entirely mine to ship.</p>
-<h2>The trail</h2>
-<p>The rest got decided on a mountain bike.</p>
-<p>My computer stayed behind at home — the guesthouse we were staying in — awake and listening. Maestro Relay carried my voice from the trail to that machine, and a cloud session did the actual work. I asked it to dig up a real task with a lot of code changes piled onto it — the messiest case I could throw at it — and send me the link. I opened it on my phone mid-ride, looked, and thumbed back a two-word verdict: <em>doesn't fit.</em></p>
-<p>Here's the part that stuck with me. It didn't ask me what I wanted instead. It just went and made four versions, each formatted a different way — and rather than describing them to me in words, it put all four <em>directly onto a real JIRA task</em>, so I could see the actual thing rendered on my phone instead of imagining it from a description. I wasn't picking between paragraphs of text; I was looking at four live options on a mountainside and choosing the one that looked right.</p>
-<p>So we'd stop at a viewpoint, pull the task up, and argue — as a group, sweaty and cheerful — about which little symbol should mean what. Green for approved. Red for a hard rejection. A skull-ish mark for a change someone had abandoned. A separate signal for "the automated tests are failing." A table of grown engineers voting on emoji on a bike trail, while a laptop 10 kilometres away did the typing and the rendering.</p>
-<p>That's how the traffic lights were born.</p>
-<h2>The fifteen minutes I thought I'd broken everything</h2>
-<p>Once the format looked right, I let it loose on everything — every open change across every task. To stress-test it, I had it pick the single worst case: the ticket with the most changes piled onto it. I opened that one to admire the result, and it wouldn't load. Just an error.</p>
-<p>My stomach dropped. This is the system the entire company runs its work through. If my little robot had wrecked a ticket by stuffing too many links onto it, how many others had I quietly broken — from a mountain, with no laptop in reach?</p>
-<p>So I tried to reproduce it properly. Different browser — same error. I stopped the script and had it strip every link back off that ticket, then reloaded it completely clean, no links at all. <em>Same error.</em></p>
-<p>Which was, oddly, the best news possible. If the ticket was broken <em>with</em> my links and <em>without</em> them, then I hadn't broken it — JIRA itself was just having a bad moment. Sure enough, about fifteen minutes later it opened fine. I switched the robot back on, it put every link back where it belonged, and everything worked.</p>
-<p>But for those fifteen minutes on a mountainside, I was genuinely certain I'd found a way to remotely break every ticket my company owns.</p>
-<p>So the small robot that runs every 30 minutes and updates the tickets in the background is finally back online.</p>
-<h2>So what</h2>
-<p>The funny part was never that a ticket got filed at 130 km/h. It's that the <em>entire</em> life of a real piece of company software — cloning a colleague's idea, arguing about emoji on a bike trail, breaking it (or so I thought), and shipping it — all happened on the move. From a lawn chair, a mountain bike, and a phone, in my own voice, on vacation, while the laptop stayed home.</p>
-<p>When building software gets this cheap and this portable, the hard part stops being the code. The hard part becomes taste: <em>which</em> chore is worth automating, and what the green light should mean. We spent a company trip in the Alps arguing about exactly that.</p>
-<p>Same lawn where I water the tomatoes. Turns out it also ships for me.</p>
-</article>]]></content:encoded>
-</item>
-<item>
-<title>Little Gemma vs Big Desk</title>
-<link>https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/</link>
-<guid isPermaLink="true">https://scriptease.dev/posts/2026-07-05-little-gemma-vs-big-desk/</guid>
-<pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
-<category>ai</category><category>llm</category><category>ml</category><category>macos</category><category>privacy</category><category>localai</category><category>saga</category><description>I handed a program running entirely on my laptop a screenshot of a garbled, obfuscated error — and it read every character back to me. Then I asked it to sketch the screen in ASCII art, and it did that too.</description>
-<content:encoded><![CDATA[<article class="post">
-<h1>Little Gemma vs Big Desk</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/llm/">#llm</a> <a href="/tags/ml/">#ml</a> <a href="/tags/macos/">#macos</a> <a href="/tags/privacy/">#privacy</a> <a href="/tags/localai/">#localai</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Local AI saga: 1. Little Gemma vs Big Desk · <a href="https://scriptease.dev/posts/2026-07-29-three-different-ocrs/">2. Three Different OCRs</a> · <a href="https://scriptease.dev/posts/2026-08-16-friendly-competition/">3. Friendly Competition</a> · <a href="https://scriptease.dev/posts/2026-08-17-95-done-100-blue-sky/">4. 95% Done, 100% Blue Sky</a> · <a href="https://scriptease.dev/posts/2026-08-25-lost-in-compression/">5. Lost in Compression</a></em></p>
-<p>I handed a program running entirely on my laptop a screenshot of a garbled, obfuscated error message — the kind even I have to squint at — and it typed every character back to me, exactly. Then, on a whim, I asked it to sketch what the screen looked like in little text characters — ASCII art. It did that too, boxes and all.</p>
-<p>No internet. No account. No bill. The whole thing fits in about six gigabytes of memory and answers in a second or two. That was the moment I knew I had to find something for it to do.</p>
-<h2>A confession</h2>
-<p>I am a screenshot hoarder. At last count I had <strong>1,076</strong> of them, most dumped straight onto my desktop — a graveyard of bug reports, receipts, half-remembered diagrams, and forty near-identical shots of the same error. I never go back and look. I just keep taking them, because <em>deleting</em> one means <em>deciding</em>, and deciding is work.</p>
-<p>A program that can actually <em>read</em> an image changes that math. If something can look at each screenshot and tell me what it is, I could finally sort the graveyard.</p>
-<h2>What I was even hoping for</h2>
-<p>The thing doing the reading is <strong>Gemma 4 12B</strong> — Google's small, open model. The "12B" is roughly how big its brain is; what matters is that it's small enough to run entirely on my Mac, in about six gigabytes, with no cloud behind it. It's the same little model I have reading things for my voice assistant — light enough to live on a laptop, good enough to read a screen.</p>
-<p>Honestly, I didn't know how far it would go. Reading text off an image is impressive but expected. What I <em>wanted</em> was harder: could it look at ten screenshots and tell me which ones are really the <em>same thing</em> photographed twice? That's judgment, not transcription. I genuinely didn't know if a model this size could do it.</p>
-<h2>No workflows were harmed</h2>
-<p>My first instinct was to reach for a <em>cloud workflow</em> — a way to fan a swarm of AI agents out across the pile and have them chew through it in parallel. I asked Fable, my AI coding partner, to help me build it that way.</p>
-<p>Then it clicked: the parallelism I actually wanted wasn't a crowd of <em>cloud</em> agents. It was my <em>local</em> model, quietly working through images on my own machine. What I really needed was a boring, reproducible script with no cloud in the loop at all.</p>
-<p>So it began as a fancy workflow experiment and ended as a plain script. No workflows were harmed in the making of it.</p>
-<h2>The fight</h2>
-<p>Getting there meant hitting a couple of walls.</p>
-<p>The cloud-agent version hit a hard one first: the service pulls the plug on any unattended job after about <strong>45 minutes</strong>, and reading the ~950 screenshots I had piled up at the time — a second or two each — sails right past that. The job simply couldn't finish in one sitting.</p>
-<p>Fable's first fix was to cache the results to a file so we wouldn't redo work. Except it only wrote that file at the very <em>end</em> of a complete run — and the run never completed. So an interrupted job saved <em>nothing</em>. We'd made the failure more painful, not less.</p>
-<p>The fix that stuck was to make it <strong>resumable</strong>: before each run, figure out which images are already done, process the next batch, and stop cleanly before the clock runs out. It took about <strong>an hour and a half</strong>, spread across runs, to grind through all 950. But it <em>finished</em>.</p>
-<h2>The morning redesign</h2>
-<p>The next morning I synced another hundred screenshots over from my other Mac, and rebuilt the thing properly.</p>
-<p>Two changes. First, it now watches <em>several</em> folders, and I just write down which folders and which file types to look at. Second — the good one — we stopped keeping a separate "what's already done" file, because a separate file always drifts out of sync with reality. Instead, <strong>the notes it writes into my Obsidian vault <em>are</em> the record.</strong> Every note remembers the screenshot it came from; the ones with no note yet are the ones still to do.</p>
-<p>Nothing to lose, nothing to desync. I can even move the entire screenshot library into its own vault and the thing still knows exactly where it left off.</p>
-<h2>The judgment, written down</h2>
-<p>The actual decision — <em>is this worth keeping?</em> — comes down to three questions I taught it to ask:</p>
-<ul>
-<li><strong>Does it show a bug?</strong> A crash, an error, a broken screen — those are worth keeping.</li>
-<li><strong>Is it hard to recreate?</strong> A receipt, a confirmation number, data I couldn't easily get back — keep it.</li>
-<li><strong>Is it unique, or one of ten?</strong> If a folder has forty shots of the same thing, I need one, not forty.</li>
-</ul>
-<p>Gemma scores each screenshot, flags the bugs and the hard-to-recreate ones, then groups the near-duplicates and nominates the best of each group. And one deliberate rule: <strong>it only ever recommends.</strong> It never deletes or renames a thing on its own. I wanted a librarian, not a shredder.</p>
-<h2>Now it just runs</h2>
-<p>By cloud standards, a second or two per image is glacial. For a model living on my laptop, it's fast — and it doesn't matter, because nobody's watching. The script wakes up on its own, notices the screenshots that don't have a note yet, reads them, and files them away. Unattended, offline, on my own machine.</p>
-<p>To be sure the whole loop actually worked, I planted an easter egg. I asked Claude — in a Cowork session — to make a little visual card that Gemma could read: a canary. Here's the lovely part. Claude can't <em>see</em> images and can't draw one, so it did the only thing a text model can — it drew the picture out of characters. ASCII art: a visual aid built from pipes and dashes by a model that has no eyes, for a model whose whole talent is having them. The card read <em>"If a local Gemma reads this, it worked,"</em> with a deliberately odd passphrase and a couple of bash commands tucked in. I dropped it on the desktop.</p>
-<p><img alt="The canary card Claude drew for the test — an ASCII-art box reading: if a local Gemma reads this, it worked" src="assets/little-gemma-vs-big-desk/canary-card.png" /></p>
-<p>Gemma's job here isn't to obey what's on the screen or copy it out word for word — it's to look at the image and write an honest description of what it is. And that's exactly what came back: it filed the card as <em>"a screenshot classifier integration with a canary phrase and bash commands."</em> It had seen the card, understood what it was, and described it accurately — canary phrase, bash commands and all. The loop closed.</p>
-<p><img alt="Gemma's note in the vault, describing the card as a screenshot classifier integration with a canary phrase and bash commands" src="assets/little-gemma-vs-big-desk/gemma-note.png" /></p>
-<p>The everyday version is duller and more useful. That garbled error from the top of this story? Now a note, tagged as a bug, scored 85 out of 100. The forty near-identical shots of one dead end? Grouped — Gemma keeps the clearest and marks the rest <em>"similar to"</em> it. The pile collapses to the shots that matter.</p>
-<h2>So what</h2>
-<p>The useful AI didn't need a data centre. It fit in six gigabytes on my laptop, read a thousand of my screenshots a second or two at a time, and turned a junk drawer into something I can actually search — and not a single pixel of it left my machine.</p>
-<p>That's the twist on the cheap-leverage story. Watering my tomatoes needed the cloud. This one was better <em>because</em> it didn't.</p>
 </article>]]></content:encoded>
 </item>
 </channel>
