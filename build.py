@@ -327,11 +327,20 @@ def build_month_pages(posts):
     months = {}
     for p in posts:
         months.setdefault(p["month"], []).append(p)
-    for ym, items in months.items():
-        items = sorted(items, key=lambda p: p["created"], reverse=True)
+    order = sorted(months)
+    for i, ym in enumerate(order):
+        items = sorted(months[ym], key=lambda p: p["created"], reverse=True)
+        older = order[i - 1] if i > 0 else None
+        newer = order[i + 1] if i < len(order) - 1 else None
+        left = ('<a class="prev" href="/archive/%s/">← %s</a>'
+                % (older, escape(month_label(older)))) if older else "<span></span>"
+        right = ('<a class="next" href="/archive/%s/">%s →</a>'
+                 % (newer, escape(month_label(newer)))) if newer else "<span></span>"
         content = (
-            '<section class="intro"><h1>{label}</h1></section>\n{list}'.format(
-                label=escape(month_label(ym)), list=entry_list(items)))
+            '<section class="intro"><h1>{label}</h1></section>\n{list}\n'
+            '<nav class="post-nav">{left}{right}</nav>'.format(
+                label=escape(month_label(ym)), list=entry_list(items),
+                left=left, right=right))
         out = REPO / "archive" / ym / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(PAGE.format(
