@@ -1,5 +1,20 @@
 window.POSTS = [
   {
+    "slug": "2026-10-01-who-signs-for-claude",
+    "title": "Who Signs for Claude?",
+    "hook": "I asked an open-source app to take my plugin into its own code. Minutes later a robot blocked it: one of my contributors hadn't signed the contract. The contributor was Claude.",
+    "date": "2026-10-01",
+    "month": "2026-10",
+    "tags": [
+      "voice",
+      "ai",
+      "opensource",
+      "github",
+      "claude",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-09-27-how-i-spend-my-tokens",
     "title": "How I Spend My Tokens",
     "hook": "The last thing the AI told me before my allowance ran out was that it was pushing my page to Confluence. It wasn't. When the allowance came back, I typed \\\"Continue\\\", and it did the exact same thing again.",

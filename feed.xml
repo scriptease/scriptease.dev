@@ -7,7 +7,63 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sun, 27 Sep 2026 21:26:44 +0200</lastBuildDate>
+<lastBuildDate>Thu, 01 Oct 2026 05:26:35 +0200</lastBuildDate>
+<item>
+<title>Who Signs for Claude?</title>
+<link>https://scriptease.dev/posts/2026-10-01-who-signs-for-claude/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-10-01-who-signs-for-claude/</guid>
+<pubDate>Thu, 01 Oct 2026 05:26:35 +0200</pubDate>
+<category>voice</category><category>ai</category><category>opensource</category><category>github</category><category>claude</category><category>saga</category><description>I asked an open-source app to take my plugin into its own code. Minutes later a robot blocked it: one of my contributors hadn't signed the contract. The contributor was Claude.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Who Signs for Claude?</h1>
+<p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/github/">#github</a> <a href="/tags/claude/">#claude</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Whisper saga: <a href="https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/">1. The Fork I Was Happy to Delete</a> · <a href="https://scriptease.dev/posts/2026-09-20-voice-input-revisited/">2. Voice Input Revisited</a> · <a href="https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/">3. A Team of Strangers</a> · 4. Who Signs for Claude?</em></p>
+<p>I asked an open-source app to take my plugin into its own code. Minutes later a robot blocked it: one of my contributors hadn't signed the contract. The contributor was Claude.</p>
+<h2>"What did we do, Claude?"</h2>
+<p>Last time ended with my fix merged into audio.cpp, the program that runs my speech model, and one thing missing: the next official release. With that, my plugin for TypeWhisper, the dictation app I talk into all day, could download audio.cpp and start it on its own.</p>
+<p>The next day my dictation fell apart. Letters went missing. Words came out with random capitals. When I said Devboard, the dashboard my servers run from, it wrote "Deathboard".</p>
+<p>I was sure it was our fix. Its last change was a safety check, and I dictated my theory through the broken dictation: "i think the byte identical thing restarts the transcription now at random intervals." Then: "And I thought, what the f&amp;%# did we do, Claude? And we got it even merged...sigh"</p>
+<p>Claude Code, the AI I build with, rebuilt the server twice before it checked the one thing that mattered: which speech engine had written the text. It wasn't mine. TypeWhisper had quietly switched to Apple's built-in speech recognition, set to German. German ears on English speech. German capitalizes every noun.</p>
+<p>"The problem is in front of the computer."</p>
+<p>But why had it switched? My server had crashed, and TypeWhisper fell back to Apple and never switched back. The next morning I asked my AI about a change I'd spotted in audio.cpp, from someone called hdcola. It fixed exactly the crash that had knocked me out, merged the afternoon before. One more stranger on the team, and nobody had asked them.</p>
+<p>That fixed this crash, not the next one. When the server is down, dictation silently goes somewhere else. A plugin that runs its own server, and restarts it when it dies, would close that hole. That was waiting on the release.</p>
+<h2>"I am waiting for a release just once"</h2>
+<p>The maintainer had said next week. I asked my AI to check audio.cpp every two hours and ping me on Discord. It started building a scheduled job, a log file and a state file in my notes. I stopped it: "i am waiting for a release just once." It ran a small watcher instead.</p>
+<p>Wednesday evening, my iPad lit up:</p>
+<p><img alt="A Discord notification on my iPad: &quot;New audio.cpp release: v0.9.0&quot;" src="assets/who-signs-for-claude/release-ping.png" /></p>
+<p>Three minutes later I told the AI in the other session: "Finally audio CP has released 0.9.0."</p>
+<p>Everything was in it. My fix, the stranger's smaller model, hdcola's crash fix. My own plugin repository got one last release, built on the official audio.cpp, with a note at the top: this repo retires when the plugin goes official.</p>
+<h2>"Then let's build the real official plugin"</h2>
+<p>"Then lets build the real official plugin because i wanted to install that and we need to add the ui right"</p>
+<p>Twelve minutes later the new version was installed on my Mac. A switch picks between its built-in server and one I start myself. Built-in downloads the exact audio.cpp release and the model, and checks each file against a fingerprint to be sure it got the right one. The server starts with my first dictation. If it crashes, the plugin restarts it.</p>
+<p><img alt="The plugin's settings in TypeWhisper, in German: Built-in server, three model sizes, the recommended one downloading" src="assets/who-signs-for-claude/built-in-settings.png" /></p>
+<p>My first test went to Apple's German engine again. The new plugin started fresh, so TypeWhisper had picked the fallback. Same trap, second time. I picked R2T2 by hand.</p>
+<p>Then I tested in German: "Cool, dann probiere ich es jetzt mal aus mit dem selber gemachten Plugin." Built-in, on the recommended model, wrote it back in German. My old hand-started server, on the half-size model, answered: "Cool, then I'll try it again out with the plugin."</p>
+<p>I hadn't asked for a translation. All my tests of the small model had been in English.</p>
+<h2>"Not signed by me but by you"</h2>
+<p>TypeWhisper's maintainer had told me last week: community plugins live in their code, under my name. Shortly before midnight I opened the pull request, the proposal to add my plugin. A check went red almost immediately. It wanted a contributor license agreement, a contract each contributor signs so the project may use their code. The contributor without one: @claude.</p>
+<p>Every commit, each saved step of the code, ends with a line crediting my AI as co-author. GitHub linked that line to Claude's account, and the check counted it as another contributor who had to sign.</p>
+<p>"f&amp;%# it needs a agreement not singd by me but by you -.-"</p>
+<p>The project's rules only ask humans to sign. The bot didn't know that. I signed mine, and the credit line came off all six commits, with the code unchanged, and the pull request description says plainly that it was built with Claude Code. The check went green.</p>
+<h2>"Monitor &amp; fix &amp; amend &amp; push in a loop"</h2>
+<p>The next reviewer was another robot. CodeRabbit is an AI that reads every proposed change and comments line by line. It raised eight problems. My AI checked each one against the code and agreed with all eight. One of them: start two dictations at the same moment and the plugin starts two servers, and the second kills the first.</p>
+<p>After the fixes it found three more. Then two more.</p>
+<p>"two more can you monitor &amp; fix &amp; amend &amp; push in a loop"</p>
+<p>So one AI fixed and pushed, and the other reviewed. Then CodeRabbit paused itself: "branch is under active development." We were changing the code faster than it could review. I switched it back on, and it used up its reviews for the hour. Two of its comments never got marked as fixed, even though the fix was exactly what it had suggested. My AI answered each one with the fix and the test showing it's fixed.</p>
+<h2>Ten commandments</h2>
+<p>After midnight, the human answered. Marco, TypeWhisper's maintainer, left ten comments: seven to fix before merging, three that could wait for a follow-up.</p>
+<p>"Make a new commit this time with these changes." Not a rewrite of the old ones, so he could see exactly what had changed. All ten got fixed, including the three that could wait.</p>
+<p>"Push and wait until coderabbit reviewed and only then post replies." CodeRabbit found nothing new. The replies went out, and I closed the discussion where I had first asked how to submit a plugin.</p>
+<p>One of Marco's ten had slipped past both AIs: a Chinese character that arrived in two pieces came out as a garbage symbol.</p>
+<h2>"No timer? You missed it!"</h2>
+<p>My AI stopped watching after that.</p>
+<p>I woke early and wondered why Discord had stayed quiet. "No timer? You missed it!"</p>
+<p>It had. Within an hour of our last reply, Marco approved it, "All ten points are addressed," then merged and released it. My AI couldn't find the add-on page, so I pasted it in: <a href="https://www.typewhisper.com/de/addons/confucius4-r2t2/">Confucius4-R2T2</a>, a community plugin by scriptease, right there on TypeWhisper's website.</p>
+<p>I swapped my homemade build for the official one, signed by TypeWhisper, and stopped the server I'd been starting by hand for two weeks.</p>
+<p>The release came from the maintainer, the crash fix from a stranger, the merge from another stranger at three in the morning. Claude wrote most of the code. I signed for it.</p>
+<p>The first time in this saga, I won by deleting my fork. The second time, by deleting my copy of the fix. After this post goes out, my plugin repository goes too.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>How I Spend My Tokens</title>
 <link>https://scriptease.dev/posts/2026-09-27-how-i-spend-my-tokens/</link>
@@ -358,7 +414,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>A Team of Strangers</h1>
 <p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/github/">#github</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Whisper saga: <a href="https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/">1. The Fork I Was Happy to Delete</a> · <a href="https://scriptease.dev/posts/2026-09-20-voice-input-revisited/">2. Voice Input Revisited</a> · 3. A Team of Strangers</em></p>
+<p><em>The Whisper saga: <a href="https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/">1. The Fork I Was Happy to Delete</a> · <a href="https://scriptease.dev/posts/2026-09-20-voice-input-revisited/">2. Voice Input Revisited</a> · 3. A Team of Strangers · <a href="https://scriptease.dev/posts/2026-10-01-who-signs-for-claude/">4. Who Signs for Claude?</a></em></p>
 <p>I've never met most of my team. One made the model, one ported it, one shrank it, one merges the code, one tested it in Andalusian Spanish. I learned who most of them were from a page my AI kept.</p>
 <h2>"Sometimes it takes ten seconds or more"</h2>
 <p>Last time I ended on the dead pause being gone. I'd switched to R2T2, a speech model that writes while you talk instead of after you stop, and the words chased my voice a fraction of a second behind.</p>
@@ -421,7 +477,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Voice Input Revisited</h1>
 <p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/macos/">#macos</a> <a href="/tags/localai/">#localai</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Whisper saga: <a href="https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/">1. The Fork I Was Happy to Delete</a> · 2. Voice Input Revisited · <a href="https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/">3. A Team of Strangers</a></em></p>
+<p><em>The Whisper saga: <a href="https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/">1. The Fork I Was Happy to Delete</a> · 2. Voice Input Revisited · <a href="https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/">3. A Team of Strangers</a> · <a href="https://scriptease.dev/posts/2026-10-01-who-signs-for-claude/">4. Who Signs for Claude?</a></em></p>
 <p>I asked my AI to build a plugin for the newest speech model I'd heard about that morning. It came back: done, everything streams, just start it on your GPU box. I don't have a GPU box.</p>
 <h2>Some words it would always mess up</h2>
 <p>Ten weeks ago I wrote about deleting my private copy of a dictation app and going back to OpenWispr, the open-source app that turns my voice into text. The glossary feature had landed, my private vocabulary was finally getting through, and the story had a neat ending. The ending was mostly true.</p>
@@ -3080,7 +3136,7 @@ I own the story and supply the lived details. You supply digging and craft.
 <content:encoded><![CDATA[<article class="post">
 <h1>The Fork I Was Happy to Delete</h1>
 <p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/macos/">#macos</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Whisper saga: 1. The Fork I Was Happy to Delete · <a href="https://scriptease.dev/posts/2026-09-20-voice-input-revisited/">2. Voice Input Revisited</a> · <a href="https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/">3. A Team of Strangers</a></em></p>
+<p><em>The Whisper saga: 1. The Fork I Was Happy to Delete · <a href="https://scriptease.dev/posts/2026-09-20-voice-input-revisited/">2. Voice Input Revisited</a> · <a href="https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/">3. A Team of Strangers</a> · <a href="https://scriptease.dev/posts/2026-10-01-who-signs-for-claude/">4. Who Signs for Claude?</a></em></p>
 <p>This spring I spent weeks patching a dictation app until it behaved. This morning I threw all of that work away — and it was the best upgrade I've made this year.</p>
 <p>I barely type to my computer anymore. Most of my working day is a conversation with AI agents — programs that can dig through files, run tools, and build things while I steer. Speaking is simply faster than typing: hold a key, talk, release, and the words appear in the terminal, the plain text window where I work. When the loop works, it feels like thinking out loud and having the thoughts executed.</p>
 <p>It took four stages of trust to get here. In the beginning I typed my prompts carefully, like little letters. Then I realized the AI doesn't care about typos, and stopped fixing them. Then I started dictating, but proofread every transcript before sending. Today I dictate and press send without looking at the text at all — my agents carry a standing instruction that everything I say arrives through speech recognition, and that decoding what I meant is their job, not mine.</p>
