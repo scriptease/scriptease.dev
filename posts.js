@@ -11,7 +11,8 @@ window.POSTS = [
       "opensource",
       "github",
       "claude",
-      "saga"
+      "saga",
+      "whisper"
     ]
   },
   {
@@ -126,7 +127,8 @@ window.POSTS = [
       "ai",
       "opensource",
       "github",
-      "saga"
+      "saga",
+      "whisper"
     ]
   },
   {
@@ -141,7 +143,8 @@ window.POSTS = [
       "opensource",
       "macos",
       "localai",
-      "saga"
+      "saga",
+      "whisper"
     ]
   },
   {
@@ -798,7 +801,8 @@ window.POSTS = [
       "ai",
       "opensource",
       "macos",
-      "saga"
+      "saga",
+      "whisper"
     ]
   },
   {

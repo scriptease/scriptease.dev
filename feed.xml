@@ -13,10 +13,10 @@
 <link>https://scriptease.dev/posts/2026-10-01-who-signs-for-claude/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-10-01-who-signs-for-claude/</guid>
 <pubDate>Thu, 01 Oct 2026 05:26:35 +0200</pubDate>
-<category>voice</category><category>ai</category><category>opensource</category><category>github</category><category>claude</category><category>saga</category><description>I asked an open-source app to take my plugin into its own code. Minutes later a robot blocked it: one of my contributors hadn't signed the contract. The contributor was Claude.</description>
+<category>voice</category><category>ai</category><category>opensource</category><category>github</category><category>claude</category><category>saga</category><category>whisper</category><description>I asked an open-source app to take my plugin into its own code. Minutes later a robot blocked it: one of my contributors hadn't signed the contract. The contributor was Claude.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Who Signs for Claude?</h1>
-<p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/github/">#github</a> <a href="/tags/claude/">#claude</a> <a href="/tags/saga/">#saga</a></p>
+<p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/github/">#github</a> <a href="/tags/claude/">#claude</a> <a href="/tags/saga/">#saga</a> <a href="/tags/whisper/">#whisper</a></p>
 <p><em>The Whisper saga: <a href="https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/">1. The Fork I Was Happy to Delete</a> · <a href="https://scriptease.dev/posts/2026-09-20-voice-input-revisited/">2. Voice Input Revisited</a> · <a href="https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/">3. A Team of Strangers</a> · 4. Who Signs for Claude?</em></p>
 <p>I asked an open-source app to take my plugin into its own code. Minutes later a robot blocked it: one of my contributors hadn't signed the contract. The contributor was Claude.</p>
 <h2>"What did we do, Claude?"</h2>
@@ -410,10 +410,10 @@
 <link>https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/</guid>
 <pubDate>Sat, 26 Sep 2026 09:35:23 +0200</pubDate>
-<category>voice</category><category>ai</category><category>opensource</category><category>github</category><category>saga</category><description>I've never met most of my team. One made the model, one ported it, one shrank it, one merges the code, one tested it in Andalusian Spanish. I learned who most of them were from a page my AI kept.</description>
+<category>voice</category><category>ai</category><category>opensource</category><category>github</category><category>saga</category><category>whisper</category><description>I've never met most of my team. One made the model, one ported it, one shrank it, one merges the code, one tested it in Andalusian Spanish. I learned who most of them were from a page my AI kept.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>A Team of Strangers</h1>
-<p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/github/">#github</a> <a href="/tags/saga/">#saga</a></p>
+<p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/github/">#github</a> <a href="/tags/saga/">#saga</a> <a href="/tags/whisper/">#whisper</a></p>
 <p><em>The Whisper saga: <a href="https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/">1. The Fork I Was Happy to Delete</a> · <a href="https://scriptease.dev/posts/2026-09-20-voice-input-revisited/">2. Voice Input Revisited</a> · 3. A Team of Strangers · <a href="https://scriptease.dev/posts/2026-10-01-who-signs-for-claude/">4. Who Signs for Claude?</a></em></p>
 <p>I've never met most of my team. One made the model, one ported it, one shrank it, one merges the code, one tested it in Andalusian Spanish. I learned who most of them were from a page my AI kept.</p>
 <h2>"Sometimes it takes ten seconds or more"</h2>
@@ -473,10 +473,10 @@
 <link>https://scriptease.dev/posts/2026-09-20-voice-input-revisited/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-20-voice-input-revisited/</guid>
 <pubDate>Sun, 20 Sep 2026 09:41:23 +0200</pubDate>
-<category>voice</category><category>ai</category><category>opensource</category><category>macos</category><category>localai</category><category>saga</category><description>I asked my AI to build a plugin for the newest speech model I'd heard about that morning. It came back: done, everything streams, just start it on your GPU box. I don't have a GPU box.</description>
+<category>voice</category><category>ai</category><category>opensource</category><category>macos</category><category>localai</category><category>saga</category><category>whisper</category><description>I asked my AI to build a plugin for the newest speech model I'd heard about that morning. It came back: done, everything streams, just start it on your GPU box. I don't have a GPU box.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Voice Input Revisited</h1>
-<p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/macos/">#macos</a> <a href="/tags/localai/">#localai</a> <a href="/tags/saga/">#saga</a></p>
+<p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/macos/">#macos</a> <a href="/tags/localai/">#localai</a> <a href="/tags/saga/">#saga</a> <a href="/tags/whisper/">#whisper</a></p>
 <p><em>The Whisper saga: <a href="https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/">1. The Fork I Was Happy to Delete</a> · 2. Voice Input Revisited · <a href="https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/">3. A Team of Strangers</a> · <a href="https://scriptease.dev/posts/2026-10-01-who-signs-for-claude/">4. Who Signs for Claude?</a></em></p>
 <p>I asked my AI to build a plugin for the newest speech model I'd heard about that morning. It came back: done, everything streams, just start it on your GPU box. I don't have a GPU box.</p>
 <h2>Some words it would always mess up</h2>
@@ -3132,10 +3132,10 @@ I own the story and supply the lived details. You supply digging and craft.
 <link>https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-12-the-fork-i-was-happy-to-delete/</guid>
 <pubDate>Sun, 12 Jul 2026 09:23:44 +0200</pubDate>
-<category>voice</category><category>ai</category><category>opensource</category><category>macos</category><category>saga</category><description>This spring I spent weeks patching a dictation app until it behaved. This morning I threw all of that work away — and it was the best upgrade I've made this year.</description>
+<category>voice</category><category>ai</category><category>opensource</category><category>macos</category><category>saga</category><category>whisper</category><description>This spring I spent weeks patching a dictation app until it behaved. This morning I threw all of that work away — and it was the best upgrade I've made this year.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>The Fork I Was Happy to Delete</h1>
-<p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/macos/">#macos</a> <a href="/tags/saga/">#saga</a></p>
+<p class="post-tags"><a href="/tags/voice/">#voice</a> <a href="/tags/ai/">#ai</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/macos/">#macos</a> <a href="/tags/saga/">#saga</a> <a href="/tags/whisper/">#whisper</a></p>
 <p><em>The Whisper saga: 1. The Fork I Was Happy to Delete · <a href="https://scriptease.dev/posts/2026-09-20-voice-input-revisited/">2. Voice Input Revisited</a> · <a href="https://scriptease.dev/posts/2026-09-26-a-team-of-strangers/">3. A Team of Strangers</a> · <a href="https://scriptease.dev/posts/2026-10-01-who-signs-for-claude/">4. Who Signs for Claude?</a></em></p>
 <p>This spring I spent weeks patching a dictation app until it behaved. This morning I threw all of that work away — and it was the best upgrade I've made this year.</p>
 <p>I barely type to my computer anymore. Most of my working day is a conversation with AI agents — programs that can dig through files, run tools, and build things while I steer. Speaking is simply faster than typing: hold a key, talk, release, and the words appear in the terminal, the plain text window where I work. When the loop works, it feels like thinking out loud and having the thoughts executed.</p>
