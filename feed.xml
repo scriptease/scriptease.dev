@@ -7,7 +7,60 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sat, 03 Oct 2026 09:49:50 +0200</lastBuildDate>
+<lastBuildDate>Sat, 03 Oct 2026 20:28:18 +0200</lastBuildDate>
+<item>
+<title>My New Slick CLI</title>
+<link>https://scriptease.dev/posts/2026-10-03-my-new-slick-cli/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-10-03-my-new-slick-cli/</guid>
+<pubDate>Sat, 03 Oct 2026 20:28:18 +0200</pubDate>
+<category>ai</category><category>claude</category><category>slack</category><category>commandline</category><category>sharing</category><category>saga</category><description>Six months ago, I had an AI send two colleagues a poem and a joke in Slack. Today the same two got a zip file from me, sent by a tool that didn't exist that morning.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>My New Slick CLI</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/slack/">#slack</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/sharing/">#sharing</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Pet Projects saga: <a href="https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/">1. The Vault I Could Finally Give Away</a> · <a href="https://scriptease.dev/posts/2026-10-03-blume/">2. Blume</a> · <a href="https://scriptease.dev/posts/2026-10-03-improving-the-tool-that-builds-the-tools/">3. Improving the Tool That Builds the Tools</a> · 4. My New Slick CLI</em></p>
+<p>Six months ago, I had an AI send two colleagues a poem and a joke in Slack. Today the same two got a zip file from me, sent by a tool that didn't exist that morning.</p>
+<h2>A poem and a joke</h2>
+<p>When I first started using Claude, I connected it to Slack, the chat app we use at work. A connector is a plug-in: it gives the AI new hands, in this case the ability to find people and post messages.</p>
+<p>I asked it to send a colleague a poem about AI, and another colleague a joke. It found them, wrote the lines, posted them, and handed me the links.</p>
+<p>It worked. And it was fun.</p>
+<h2>Slack in every session?</h2>
+<p>I kept the connector for a week.</p>
+<p>Under the hood, a connector is an MCP server, the standard way to hook an AI up to a tool. The catch: every conversation I opened, for any task, started with the AI reading how to send Slack messages.</p>
+<p>I barely used it. So I asked myself why I had an MCP server to send Slack messages in every session, and I removed it.</p>
+<h2>I want it everywhere</h2>
+<p>It stayed in the back of my mind. I wanted to send Slack messages and read channels. But I didn't want a plug-in loaded into every conversation. And I didn't want it only in Claude. I wanted it everywhere on my computer.</p>
+<p>What works everywhere is a command-line tool, a CLI: a program you run by typing its name. Any AI that can type a command can use it. So can I.</p>
+<p>Today I had a reason. I'd spent the day improving the ticket dashboard from <a href="https://scriptease.dev/posts/2026-09-26-dashboard-for-one/">an earlier post</a>. Its list now follows the same order as the one we use in our Monday estimation meeting, so I can see which ticket comes next. I packed the new version into a zip file to share.</p>
+<p>Why not build a CLI and use it to send out the newest version?</p>
+<h2>Just a different API endpoint</h2>
+<p>I'd done something like this once before. For <a href="https://scriptease.dev/posts/2026-09-26-axi-all-the-things/">crash reports</a> there was no command-line tool, only a plug-in. So I had the AI wrap it: a small command that starts the plug-in, asks one question and shuts it down. It works, but every call waits while the plug-in starts.</p>
+<p>I asked whether Slack had an official AI plug-in I could wrap the same way. It does. But it doesn't run on my Mac. Slack hosts it, and it needs the same thing every other route needs: a Slack plug-in of my own, registered with Slack. Slack has no personal keys. Every key comes from such a plug-in.</p>
+<p>That changed the question. My words to the AI:</p>
+<blockquote>
+<p>Okay, but having the request go through MCP doesn't make me use the MCP, it's just a different API endpoint I can use that has a different API, right?</p>
+</blockquote>
+<p>Right. An API is the menu of requests a service accepts. Slack's regular one is documented down to every option, and it can download attachments. Same plug-in, same key, and nothing to start up. We skipped the AI plug-in.</p>
+<h2>Fingers crossed</h2>
+<p>I was sure our company Slack would need an admin to approve the plug-in. So I didn't try it there.</p>
+<p>I still had my private Slack, set up to test an earlier project. The AI wrote the tool there, and I created the plug-in and pasted my key. We sent a message, uploaded a file and downloaded it again. All of it worked.</p>
+<p><img alt="A test message, a reply and an uploaded file, all from me to me in my private Slack" src="assets/my-new-slick-cli/private-slack-self-test.jpg" />
+<em>Me talking to myself on my alter ego.</em></p>
+<p>It's called <code>slack-axi</code>. The ending comes from <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">AXI</a>, ten rules for commands whose reader is an AI instead of a person: short answers, compact tables, a clear "nothing found".</p>
+<p>For the company I wrote a ticket: please approve one Slack plug-in, here's what it can do, here's the working demo. Each person who uses it gets their own key, and a key can only do what that person can already do in Slack. I tagged the ticket for our Monday estimation meeting, the one with the boss in it. Fingers crossed.</p>
+<h2>The cogwheel didn't show up</h2>
+<p>Then I went to look at the settings myself.</p>
+<p>The company Slack's cogwheel menu didn't show up for me. That's the admin menu, so I took it as confirmation. But the page for creating plug-ins is somewhere else, and it's open to every member. I created the plug-in, installed it, and got my key. No admin, no approval.</p>
+<p>The AI's first test was a message from me to me. It arrived.</p>
+<p>Monday's ticket had already gone out of date. It no longer asked for approval. It asked for a review of the code.</p>
+<h2>My new slick CLI</h2>
+<p>Then the moment I'd built it for: send the zip file to the same two colleagues who'd once received a poem and a joke.</p>
+<p>The CLI couldn't find them.</p>
+<p>It was still using the member list from my private Slack: me and two bots. It keeps that list for a day, so it doesn't have to ask Slack every time. One refresh later it knew the whole company.</p>
+<p>I dictated the message the way I dictate everything. What came out was:</p>
+<p>"I'm sending you this from my new slick CLI."</p>
+<p>Two uploads, one for each of them. The file landed in the same chat as the poem, six months later. This time no AI composed anything. It ran one command, twice.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Improving the Tool That Builds the Tools</title>
 <link>https://scriptease.dev/posts/2026-10-03-improving-the-tool-that-builds-the-tools/</link>
@@ -17,7 +70,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Improving the Tool That Builds the Tools</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/ios/">#ios</a> <a href="/tags/git/">#git</a> <a href="/tags/sharing/">#sharing</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Pet Projects saga: <a href="https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/">1. The Vault I Could Finally Give Away</a> · <a href="https://scriptease.dev/posts/2026-10-03-blume/">2. Blume</a> · 3. Improving the Tool That Builds the Tools</em></p>
+<p><em>The Pet Projects saga: <a href="https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/">1. The Vault I Could Finally Give Away</a> · <a href="https://scriptease.dev/posts/2026-10-03-blume/">2. Blume</a> · 3. Improving the Tool That Builds the Tools · <a href="https://scriptease.dev/posts/2026-10-03-my-new-slick-cli/">4. My New Slick CLI</a></em></p>
 <p>Last week I asked for one improvement to the tool I use every day. Nobody answered. This morning I asked my AI what it would take to build it myself.</p>
 <h2>From YouTube to my iPad in one hour</h2>
 <p>The tool is T3 Code, an app for working with AI assistants that write and change code. It runs on my Mac, and a phone app lets me follow along from the couch.</p>
@@ -125,7 +178,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Blume</h1>
 <p class="post-tags"><a href="/tags/emoji/">#emoji</a> <a href="/tags/ios/">#ios</a> <a href="/tags/appstore/">#appstore</a> <a href="/tags/claude/">#claude</a> <a href="/tags/webdesign/">#webdesign</a> <a href="/tags/sharing/">#sharing</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Pet Projects saga: <a href="https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/">1. The Vault I Could Finally Give Away</a> · 2. Blume · <a href="https://scriptease.dev/posts/2026-10-03-improving-the-tool-that-builds-the-tools/">3. Improving the Tool That Builds the Tools</a></em></p>
+<p><em>The Pet Projects saga: <a href="https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/">1. The Vault I Could Finally Give Away</a> · 2. Blume · <a href="https://scriptease.dev/posts/2026-10-03-improving-the-tool-that-builds-the-tools/">3. Improving the Tool That Builds the Tools</a> · <a href="https://scriptease.dev/posts/2026-10-03-my-new-slick-cli/">4. My New Slick CLI</a></em></p>
 <p>Blume is German for flower. That was the initial joke when I put a 🌼 on our company's links page.</p>
 <h2>It started as a joke</h2>
 <p>Our team has a links page. One web page with the websites and tools we use. Little tags at the top narrow the list by customer, country, or whether something is live or still being worked on. I built the first version in 2020. It has grown ever since.</p>
@@ -2949,7 +3002,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>The Vault I Could Finally Give Away</h1>
 <p class="post-tags"><a href="/tags/obsidian/">#obsidian</a> <a href="/tags/ai/">#ai</a> <a href="/tags/documentation/">#documentation</a> <a href="/tags/sharing/">#sharing</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Pet Projects saga: 1. The Vault I Could Finally Give Away · <a href="https://scriptease.dev/posts/2026-10-03-blume/">2. Blume</a> · <a href="https://scriptease.dev/posts/2026-10-03-improving-the-tool-that-builds-the-tools/">3. Improving the Tool That Builds the Tools</a></em></p>
+<p><em>The Pet Projects saga: 1. The Vault I Could Finally Give Away · <a href="https://scriptease.dev/posts/2026-10-03-blume/">2. Blume</a> · <a href="https://scriptease.dev/posts/2026-10-03-improving-the-tool-that-builds-the-tools/">3. Improving the Tool That Builds the Tools</a> · <a href="https://scriptease.dev/posts/2026-10-03-my-new-slick-cli/">4. My New Slick CLI</a></em></p>
 <p>This morning my note-taking system was three months of personal plumbing. By lunch it was a 355-kilobyte zip file — running on a friend's Mac.</p>
 <h2>"I have an idea"</h2>
 <p>For the last three months I've been building something I find hard to describe without sounding like I've joined a cult: a folder of notes with an AI living inside it. The notes are in Obsidian — a note app that stores everything as plain text files on your own disk. The AI is Claude Code — a version of Claude that runs in a terminal and can read and write files. Point it at the notes folder, and suddenly the folder answers questions, files research, and keeps itself organized.</p>
