@@ -1,5 +1,18 @@
 window.POSTS = [
   {
+    "slug": "2026-10-03-a-fableous-story-from-the-past",
+    "title": "A Fableous Story From the Past",
+    "hook": "There's a watchdog in one of our systems that hasn't barked in three months. For years before that, it barked every few weeks, and nothing was ever wrong.",
+    "date": "2026-10-03",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "debugging",
+      "agent",
+      "claude"
+    ]
+  },
+  {
     "slug": "2026-10-03-blume",
     "title": "Blume",
     "hook": "Blume is German for flower. That was the initial joke when I put a 🌼 on our company's links page.",

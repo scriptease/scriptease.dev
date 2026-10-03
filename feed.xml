@@ -7,7 +7,59 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sat, 03 Oct 2026 07:39:14 +0200</lastBuildDate>
+<lastBuildDate>Sat, 03 Oct 2026 08:28:27 +0200</lastBuildDate>
+<item>
+<title>A Fableous Story From the Past</title>
+<link>https://scriptease.dev/posts/2026-10-03-a-fableous-story-from-the-past/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-10-03-a-fableous-story-from-the-past/</guid>
+<pubDate>Sat, 03 Oct 2026 08:28:27 +0200</pubDate>
+<category>ai</category><category>debugging</category><category>agent</category><category>claude</category><description>There's a watchdog in one of our systems that hasn't barked in three months. For years before that, it barked every few weeks, and nothing was ever wrong.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>A Fableous Story From the Past</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/debugging/">#debugging</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a></p>
+<p>There's a watchdog in one of our systems that hasn't barked in three months. For years before that, it barked every few weeks, and nothing was ever wrong.</p>
+<h2>The dog that cried wolf</h2>
+<p>Our customers have stores, and all day long those stores ask us what's in stock. A watchdog keeps a list of every store we couldn't serve. As long as one store is on that list, a traffic light on our dashboard turns red.</p>
+<p>And every few weeks, for years, it barked. A store landed on the list, the light went red, and the message said our stock data was broken and should be rebuilt.</p>
+<p>So we'd check the data. It was perfect. Every single time.</p>
+<p>Nobody in a store ever noticed. A store that couldn't get its update just asked us directly instead, and the checkout kept working. The only thing that ever suffered was the red light, and our patience. It was an itch we couldn't scratch. Resetting the list was easier than another day of staring at perfect data.</p>
+<h2>The longest leash</h2>
+<p>In July I had one last day with Fable, the newest AI model at the time, before it left my subscription. I wanted to spend it on the oldest, most stubborn problem we owned.</p>
+<p>So I gave it the longest leash I had ever given an AI. No step-by-step instructions, no small task with a clear finish line. Just the alarm, everything I knew, a whole night, and my laptop, where it could start as many copies of our server as it wanted, on my own database. Find out why the dog barks.</p>
+<p>It was my first real long-horizon task: an open question, and an AI working on it for hours while I slept.</p>
+<h2>Even Fable wasn't enough</h2>
+<p>First it found a bug. A real one, in code we had built for a demo and never shipped. Confident, textbook, and beside the point.</p>
+<p>It wanted to look at the live server, but its safety rules wouldn't let it touch a real customer's system alone. So I became its hands. I downloaded the real stock data for it, nothing but product numbers and quantities, the exact data the watchdog kept tripping over. Then I fetched the logs it asked for.</p>
+<p>With real data in front of it, it found the first real clue. <em>"Stop,"</em> it wrote, <em>"the arithmetic just cracked it."</em> Every time the dog barked, the system had read almost the entire catalog, when it should have read nothing.</p>
+<p>Then it built a beautiful theory on top of that, about two jobs tripping over each other inside the database. It proved the theory could happen. It just wasn't what was happening.</p>
+<p>At half past four in the morning, it gave up. Honestly. The data is fine, it said, the bug is real, and I can't reason my way to the cause from here. I need to see it happen.</p>
+<h2>Heap dumps at three in the morning</h2>
+<p>That was the part it couldn't do alone, and the part I could.</p>
+<p>In the middle of the night I got up and pulled heap dumps off the live server, pictures of what the program had in its head at that moment. I also went through the record of every failed request. It was always the same store. I couldn't believe it: a bug that picks on one store and leaves all the others alone?</p>
+<p>In the morning we kept going: put extra checks on the live server, watch, rule out a suspect, try the next one. It led, I fetched, it led again.</p>
+<p>Not glamorous. Then, late that morning, I started our store app in a simulator on my laptop, told it to be that one store, and watched the bug happen in the logs. On command. No, then yes.</p>
+<p>Fable found out why.</p>
+<h2>You want more? I give you everything</h2>
+<p>A store that is fully up to date asks: anything new since my last update? There isn't. For most stores, the search stops where the next store's data begins. But one store's data sits at the very end of everything. Its search runs past the end, finds nothing, and answers no. But on its way out, it quietly jumps back to the very first item. The code around it is allowed to ask one more time. This time the answer is yes, and it reads the entire catalog from the top.</p>
+<p>That was it. A small piece of code that said "nothing left", then "here's everything". A switch that flipped from false to true.</p>
+<p>That's why it was always one store. It also explained why customers with a handful of stores saw the alarm far more often than customers with hundreds: the fewer stores you have, the more often the last one is the one asking.</p>
+<p>Everything it read got thrown out again as old. No store ever got a wrong answer. The only one who ever saw it was the watchdog. For years, it had been right.</p>
+<p>Years earlier, desperate, I had made the alarm print a few raw numbers, hoping they would help me. They never did. Then they turned out to be the key.</p>
+<p>The fix was to make that piece of code remember it had already said no. It was running on the live server the next afternoon.</p>
+<h2>The reminder that wouldn't go away</h2>
+<p>I wrote it all up that same week. Three versions, the longest close to three thousand words, full of the actual names of the actual parts. Every word true, and nobody outside my job would have made it past the second paragraph.</p>
+<p>The title was the best I had ever come up with: <em>The Fableous 26-Hour, $345, 222-Million-Token Hunt for a Flipped Boolean.</em> Fabulous, with Fable in it. For three months it sat at the top of my drafts folder, and every time I started a new post, there it was. Taunting me.</p>
+<p>This morning I finally moved it to a folder called <em>shelved</em>. This is the version I should have written in the first place.</p>
+<p>Fable's last message to me that day ended like this:</p>
+<blockquote>
+<p>It's been a genuinely remarkable 26 hours, Florian. Danke für das Vertrauen — und für die Heap Dumps um 3 Uhr morgens.</p>
+</blockquote>
+<p><em>Thanks for the trust, and for the heap dumps at three in the morning.</em></p>
+<h2>Three months of silence</h2>
+<p>The watchdog is still on duty. Every answer to every store still goes past it, and it hasn't barked once.</p>
+<p>I was always fond of this story. It ended like every good cold case: with old evidence that finally made sense.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Blume</title>
 <link>https://scriptease.dev/posts/2026-10-03-blume/</link>
