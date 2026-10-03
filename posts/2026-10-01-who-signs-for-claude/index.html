@@ -88,6 +88,12 @@
 <p>I swapped my homemade build for the official one, signed by TypeWhisper, and stopped the server I'd been starting by hand for two weeks.</p>
 <p>The release came from the maintainer, the crash fix from a stranger, the merge from another stranger at three in the morning. Claude wrote most of the code. I signed for it.</p>
 <p>The first time in this saga, I won by deleting my fork. The second time, by deleting my copy of the fix. After this post goes out, my plugin repository goes too.</p>
+<h2>"Thank you very"</h2>
+<p><em>Update, October 3.</em></p>
+<p>One thing kept bugging me. Sometimes the last word just didn't show up. "Thank you very much" came out as "Thank you very". It happened when I let go of the key right as I finished the word.</p>
+<p>It wasn't the streaming. audio.cpp drops the last word even on a finished recording, as long as the recording stops right after it. Add a third of a second of silence and the word comes back. TypeWhisper already pads other engines with exactly that, but a live stream ends before the padding is added. So my plugin never got any.</p>
+<p>Now the plugin sends that silence itself before it closes the stream. Twelve short dictations, twelve last words.</p>
+<p>I opened the pull request in the afternoon. Marco merged it about an hour later and released it as <a href="https://github.com/TypeWhisper/typewhisper-mac/releases/tag/plugin-r2t2-v0.2.1">version 0.2.1</a>.</p>
 </article>
 <nav class="post-nav"><a class="prev" href="/posts/2026-09-27-how-i-spend-my-tokens/">← How I Spend My Tokens</a><a class="next" href="/posts/2026-10-03-blume/">Blume →</a></nav>
   </main>
