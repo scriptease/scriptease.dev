@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-10-03-blume",
+    "title": "Blume",
+    "hook": "Blume is German for flower. That was the initial joke when I put a 🌼 on our company's links page.",
+    "date": "2026-10-03",
+    "month": "2026-10",
+    "tags": [
+      "emoji",
+      "ios",
+      "appstore",
+      "claude",
+      "webdesign"
+    ]
+  },
+  {
     "slug": "2026-10-01-who-signs-for-claude",
     "title": "Who Signs for Claude?",
     "hook": "I asked an open-source app to take my plugin into its own code. Minutes later a robot blocked it: one of my contributors hadn't signed the contract. The contributor was Claude.",
