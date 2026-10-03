@@ -85,6 +85,14 @@
 <p>I dictated the message the way I dictate everything. What came out was:</p>
 <p>"I'm sending you this from my new slick CLI."</p>
 <p>Two uploads, one for each of them. The file landed in the same chat as the poem, six months later. This time no AI composed anything. It ran one command, twice.</p>
+<h2>Steal this</h2>
+<p><code>slack-axi</code> is now <a href="https://github.com/scriptease/slack-axi">public on GitHub</a>. It's one file of plain Python, nothing to install. Copy it, put it on your path, done.</p>
+<ol>
+<li>Create your own Slack plug-in from the recipe in the repo, <code>app_manifest.json</code>. If your company Slack lets every member do that, you won't need an admin either.</li>
+<li>Copy your key from the plug-in's settings and run <code>slack-axi login</code>.</li>
+<li>Send something: <code>slack-axi upload @colleague file.zip --comment "…"</code></li>
+</ol>
+<p>When I published it, the name turned out to be taken. There's already another <code>slack-axi</code>, and a few more Slack tools built for AI. They need Node.js to run. Mine is a single file.</p>
 </article>
 <nav class="post-nav"><a class="prev" href="/posts/2026-10-03-improving-the-tool-that-builds-the-tools/">← Improving the Tool That Builds the Tools</a><span></span></nav>
   </main>
