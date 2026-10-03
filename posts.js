@@ -1,5 +1,21 @@
 window.POSTS = [
   {
+    "slug": "2026-10-03-improving-the-tool-that-builds-the-tools",
+    "title": "Improving the Tool That Builds the Tools",
+    "hook": "Last week I asked for one improvement to the tool I use every day. Nobody answered. This morning I asked my AI what it would take to build it myself.",
+    "date": "2026-10-03",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "claude",
+      "agent",
+      "ios",
+      "git",
+      "sharing",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-10-03-a-fableous-story-from-the-past",
     "title": "A Fableous Story From the Past",
     "hook": "There's a watchdog in one of our systems that hasn't barked in three months. For years before that, it barked every few weeks, and nothing was ever wrong.",
@@ -24,7 +40,9 @@ window.POSTS = [
       "ios",
       "appstore",
       "claude",
-      "webdesign"
+      "webdesign",
+      "sharing",
+      "saga"
     ]
   },
   {
@@ -773,7 +791,8 @@ window.POSTS = [
       "obsidian",
       "ai",
       "documentation",
-      "sharing"
+      "sharing",
+      "saga"
     ]
   },
   {

@@ -7,7 +7,62 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sat, 03 Oct 2026 08:28:27 +0200</lastBuildDate>
+<lastBuildDate>Sat, 03 Oct 2026 09:49:50 +0200</lastBuildDate>
+<item>
+<title>Improving the Tool That Builds the Tools</title>
+<link>https://scriptease.dev/posts/2026-10-03-improving-the-tool-that-builds-the-tools/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-10-03-improving-the-tool-that-builds-the-tools/</guid>
+<pubDate>Sat, 03 Oct 2026 09:49:50 +0200</pubDate>
+<category>ai</category><category>claude</category><category>agent</category><category>ios</category><category>git</category><category>sharing</category><category>saga</category><description>Last week I asked for one improvement to the tool I use every day. Nobody answered. This morning I asked my AI what it would take to build it myself.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Improving the Tool That Builds the Tools</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/ios/">#ios</a> <a href="/tags/git/">#git</a> <a href="/tags/sharing/">#sharing</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Pet Projects saga: <a href="https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/">1. The Vault I Could Finally Give Away</a> · <a href="https://scriptease.dev/posts/2026-10-03-blume/">2. Blume</a> · 3. Improving the Tool That Builds the Tools</em></p>
+<p>Last week I asked for one improvement to the tool I use every day. Nobody answered. This morning I asked my AI what it would take to build it myself.</p>
+<h2>From YouTube to my iPad in one hour</h2>
+<p>The tool is T3 Code, an app for working with AI assistants that write and change code. It runs on my Mac, and a phone app lets me follow along from the couch.</p>
+<p>In one of his videos, Theo, who makes T3 Code, mentioned a second phone app he was working on, written in Swift, Apple's own language for iPhone apps. He had an AI agent keep it in step: every time the main app changed, the agent copied the change over.</p>
+<p>I thought: why don't I just do that? The code was public, just not finished. So while Theo was still talking, I pointed my AI at it. Within an hour of the video it was running on my iPad and my iPhone, and my conversations showed up on all three of my devices.</p>
+<p>I liked it better than the version in the App Store. It scrolled without glitches. It showed me older AI models the App Store app hid. It let me call up my skills, the little instruction packs I give my AI, before I had sent a first message.</p>
+<h2>A year, not three months</h2>
+<p>I started recommending it to colleagues. That meant they needed a copy.</p>
+<p>Apple has two ways to hand out an app that isn't in the store. TestFlight, Apple's service for trying unfinished apps, gives each test version three months before it stops working. The other way lasts a year, as long as you list every device up front. We're a small company. The list fits.</p>
+<p>So the Swift app got a link on our company's links page, under the 🌼 from <a href="https://scriptease.dev/posts/2026-10-03-blume/">this morning's post</a>.</p>
+<h2>Three upvotes, not noticed by the maintainers</h2>
+<p>I keep all my projects in one folder. Each project inside it has its own history, the record of every change that lets you compare, undo, and share. Programmers call that a git repository.</p>
+<p>The outer folder has no history of its own. When I open it in T3 Code, the app looks for one, finds nothing, and offers exactly one option: start a new history for the outer folder. What I wanted was a list of the projects inside, so I could pick one and work with its history.</p>
+<p>Without it, a big part of T3 Code stayed out of reach for me: saving my changes into a project's history and reviewing them on the go, from my phone. The way around it was to open every project on its own, narrowing things down before I start. I work the other way round: one folder holding all my projects, so the AI can reach across them.</p>
+<p>Last week I wrote that up as an idea on T3 Code's discussion board. That's the required first step. T3 Code's rules say code for a new feature is only accepted once a maintainer has approved the idea. Without a reply, there is no second step.</p>
+<h2>Six agents and a numbering problem</h2>
+<p>This morning I asked my AI what it would mean to build it myself, across every part of T3 Code: the server on my Mac and every app that talks to it.</p>
+<p>It sent out six agents in parallel, each reading one part of the code. They came back with about 3,000 lines of changes, split into five separate proposals.</p>
+<p>My question was the practical one:</p>
+<blockquote>
+<p>But that would mean, basically, that I would need to run my own server and my own clients.</p>
+</blockquote>
+<p>Only if I wanted to use it before it was officially accepted, the answer went. Then I'd need my own copy of the server, and of every app talking to it. And then there was the numbering.</p>
+<p>T3 Code numbered every change to how it stores its data. If my version and the official one gave different changes the same number, the official app would skip a change it still needed.</p>
+<p>Versioning things across projects is hard. Versioning across a company, or the internet, is even harder.</p>
+<h2>Closed for missing screenshots</h2>
+<p>The AI's advice was not to send the change in at all. My idea still had no approval.</p>
+<p>Someone had already tried. Another developer had built a smaller version of the same idea, the multi-project view, and submitted it. Two days earlier, a maintainer's bot had closed it. The reason:</p>
+<blockquote>
+<p>… no before and after screenshots or recording of the interaction.</p>
+</blockquote>
+<p>I posted my ideas to the discussion again. Then I asked something smaller.</p>
+<h2>Could I change only the Swift version?</h2>
+<p>Yes, the AI said. The server already let the phone app choose which folder's history to work with. Only the Swift app needed changing, so it could pick a project inside my outer folder. The official server on my Mac could stay as it was.</p>
+<p>Ten minutes later it was on my phone. I couldn't find it. I sent screenshots of where I was looking, and the AI showed me where it had put the button.</p>
+<p>From there it went fast. I asked to pick the project when starting a new conversation, not just afterwards. A long project name pushed the rest of the line off the screen, so we capped it. I asked for a search field.</p>
+<p><img alt="Searching the project list for &quot;Clau&quot;" src="assets/improving-the-tool-that-builds-the-tools/repo-picker-search.jpg" /></p>
+<p><img alt="Source control now shows the history of the project inside the folder" src="assets/improving-the-tool-that-builds-the-tools/source-control-t3code.jpg" /></p>
+<p>An hour after the question, I had five finished changes on my phone, and the screenshots to show them off.</p>
+<h2>Sharing the tool that builds the tools</h2>
+<p>The new version isn't behind the 🌼 on our links page yet. It will be once I upload it. That link doesn't point at one version of the app. It points at the app, and always lands on the newest one.</p>
+<p>One link, right forever. Even for the tool that builds the tools.</p>
+<p><em>The original idea is still open on <a href="https://github.com/pingdotgg/t3code/discussions/13644">T3 Code's discussion board</a>.</em></p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>A Fableous Story From the Past</title>
 <link>https://scriptease.dev/posts/2026-10-03-a-fableous-story-from-the-past/</link>
@@ -66,10 +121,11 @@
 <link>https://scriptease.dev/posts/2026-10-03-blume/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-10-03-blume/</guid>
 <pubDate>Sat, 03 Oct 2026 07:39:14 +0200</pubDate>
-<category>emoji</category><category>ios</category><category>appstore</category><category>claude</category><category>webdesign</category><description>Blume is German for flower. That was the initial joke when I put a 🌼 on our company's links page.</description>
+<category>emoji</category><category>ios</category><category>appstore</category><category>claude</category><category>webdesign</category><category>sharing</category><category>saga</category><description>Blume is German for flower. That was the initial joke when I put a 🌼 on our company's links page.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Blume</h1>
-<p class="post-tags"><a href="/tags/emoji/">#emoji</a> <a href="/tags/ios/">#ios</a> <a href="/tags/appstore/">#appstore</a> <a href="/tags/claude/">#claude</a> <a href="/tags/webdesign/">#webdesign</a></p>
+<p class="post-tags"><a href="/tags/emoji/">#emoji</a> <a href="/tags/ios/">#ios</a> <a href="/tags/appstore/">#appstore</a> <a href="/tags/claude/">#claude</a> <a href="/tags/webdesign/">#webdesign</a> <a href="/tags/sharing/">#sharing</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Pet Projects saga: <a href="https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/">1. The Vault I Could Finally Give Away</a> · 2. Blume · <a href="https://scriptease.dev/posts/2026-10-03-improving-the-tool-that-builds-the-tools/">3. Improving the Tool That Builds the Tools</a></em></p>
 <p>Blume is German for flower. That was the initial joke when I put a 🌼 on our company's links page.</p>
 <h2>It started as a joke</h2>
 <p>Our team has a links page. One web page with the websites and tools we use. Little tags at the top narrow the list by customer, country, or whether something is live or still being worked on. I built the first version in 2020. It has grown ever since.</p>
@@ -2883,10 +2939,11 @@ Ah an idea can we test that you can drag the shark?
 <link>https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/</guid>
 <pubDate>Fri, 17 Jul 2026 11:12:40 +0200</pubDate>
-<category>obsidian</category><category>ai</category><category>documentation</category><category>sharing</category><description>This morning my note-taking system was three months of personal plumbing. By lunch it was a 355-kilobyte zip file — running on a friend's Mac.</description>
+<category>obsidian</category><category>ai</category><category>documentation</category><category>sharing</category><category>saga</category><description>This morning my note-taking system was three months of personal plumbing. By lunch it was a 355-kilobyte zip file — running on a friend's Mac.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>The Vault I Could Finally Give Away</h1>
-<p class="post-tags"><a href="/tags/obsidian/">#obsidian</a> <a href="/tags/ai/">#ai</a> <a href="/tags/documentation/">#documentation</a> <a href="/tags/sharing/">#sharing</a></p>
+<p class="post-tags"><a href="/tags/obsidian/">#obsidian</a> <a href="/tags/ai/">#ai</a> <a href="/tags/documentation/">#documentation</a> <a href="/tags/sharing/">#sharing</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Pet Projects saga: 1. The Vault I Could Finally Give Away · <a href="https://scriptease.dev/posts/2026-10-03-blume/">2. Blume</a> · <a href="https://scriptease.dev/posts/2026-10-03-improving-the-tool-that-builds-the-tools/">3. Improving the Tool That Builds the Tools</a></em></p>
 <p>This morning my note-taking system was three months of personal plumbing. By lunch it was a 355-kilobyte zip file — running on a friend's Mac.</p>
 <h2>"I have an idea"</h2>
 <p>For the last three months I've been building something I find hard to describe without sounding like I've joined a cult: a folder of notes with an AI living inside it. The notes are in Obsidian — a note app that stores everything as plain text files on your own disk. The AI is Claude Code — a version of Claude that runs in a terminal and can read and write files. Point it at the notes folder, and suddenly the folder answers questions, files research, and keeps itself organized.</p>
