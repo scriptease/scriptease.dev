@@ -53,10 +53,14 @@
 <p>The AI Search news roundup came back with a summary and a verdict: good to know, nothing to do. The next task was a talk from AI Engineer, the channel whose transcript the researcher had refused to keep in August. This time the transcript was saved before the AI even looked at it. The verdict: a sales pitch for something my setup already does.</p>
 <p>The watcher was about three hundred lines of code, and my AI built it in one conversation. Everything it hands work to already existed: the list, the small program that picks tasks up, the hearing aid, the rule about archives, the note on my phone. It only had to notice and delegate.</p>
 <p>That's the job of a manager.</p>
+<h2>Poteto</h2>
+<p>Later that morning I asked for one specific video that had shown up in my feed: a live stream on Matt Pocock's channel with Poteto, the creator of pstack. It had missed my watcher by a day. My AI came back with a different video. It turns out live streams sit in a separate tab on a channel's page, and my watcher only looked at the videos tab. I would have missed streams like that altogether.</p>
+<p>That's the problem with automation. Do too much of it and it sometimes misses stuff, and you only notice after a while.</p>
+<p>So I let it add a table with checkboxes, old school: a row per channel, a ✅ for videos, Shorts and live. Matt gets all three.</p>
+<p><img alt="My YouTube watchlist as a table: a checkmark per channel for videos, Shorts and live, with all three ticked for Matt Pocock" src="assets/on-the-shoulders-of-giants/watchlist-table.jpg" /></p>
 <h2>The next stepping stone</h2>
 <p>The watcher only works because I trust every channel on its list. A channel I don't trust would need something else: an AI that looks at each new video first and decides whether it's worth researching at all.</p>
-<p>Or I ask it what I want to do with Shorts, YouTube's short vertical clips, which the watcher skips today.</p>
-<p>Both will stand on this one.</p>
+<p>It will stand on this one.</p>
 </article>]]></content:encoded>
 </item>
 <item>
