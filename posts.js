@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-10-04-on-the-shoulders-of-giants",
+    "title": "On the Shoulders of Giants",
+    "hook": "This morning I built a YouTube watcher. It will never watch a single video.",
+    "date": "2026-10-04",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "youtube",
+      "automation",
+      "agent",
+      "obsidian"
+    ]
+  },
+  {
     "slug": "2026-10-03-my-new-slick-cli",
     "title": "My New Slick CLI",
     "hook": "Six months ago, I had an AI send two colleagues a poem and a joke in Slack. Today the same two got a zip file from me, sent by a tool that didn't exist that morning.",

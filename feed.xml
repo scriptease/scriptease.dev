@@ -7,7 +7,58 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sat, 03 Oct 2026 20:28:18 +0200</lastBuildDate>
+<lastBuildDate>Sun, 04 Oct 2026 08:53:46 +0200</lastBuildDate>
+<item>
+<title>On the Shoulders of Giants</title>
+<link>https://scriptease.dev/posts/2026-10-04-on-the-shoulders-of-giants/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-10-04-on-the-shoulders-of-giants/</guid>
+<pubDate>Sun, 04 Oct 2026 08:53:46 +0200</pubDate>
+<category>ai</category><category>youtube</category><category>automation</category><category>agent</category><category>obsidian</category><description>This morning I built a YouTube watcher. It will never watch a single video.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>On the Shoulders of Giants</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/youtube/">#youtube</a> <a href="/tags/automation/">#automation</a> <a href="/tags/agent/">#agent</a> <a href="/tags/obsidian/">#obsidian</a></p>
+<p>This morning I built a YouTube watcher. It will never watch a single video.</p>
+<p>It watches channels. When one of them posts something new, it hands the video to my researcher and goes back to staring at the channel page. It's not a viewer. It's a manager.</p>
+<h2>The researcher who needed hearing aids</h2>
+<p>My notes have had a researcher living in them since April. I drop a question into a list, a small program notices, an AI goes off and reads real sources, writes up what it found, and pings me on my phone when it's done. I built the part that lets me feed it by voice from my bike, and <a href="https://scriptease.dev/posts/2026-07-18-siri-add-something-to-my-research-queue/">wrote about it</a>. In July that whole setup became a starter kit I could <a href="https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/">give to a friend</a>.</p>
+<p>A lot of what I want researched is a video. A talk, a news roundup, a developer explaining a new tool. And the researcher couldn't hear. Hand an AI a YouTube link and it gets the page around the video: the title, the comments, the recommended clips. Not a word of what anyone said.</p>
+<p>That didn't stop it. It took the title, typed it into a web search and set off on its own journey from there. The write-up came back confident and cited, and it was about whatever the search had turned up, not about the video.</p>
+<p>So in June I got it a hearing aid. For videos with captions, a small free tool, <code>youtube-transcript-api</code>, downloads them as plain text. Now a video in the list turns into a transcript file, and the researcher reads the talk the way it reads an article. The first one I tried it on properly was a Matt Pocock video, which <a href="https://scriptease.dev/posts/2026-07-21-non-load-bearing/">turned into a post of its own</a>.</p>
+<h2>Opinionated researchers</h2>
+<p>For a while I let the newer Claude models, Sonnet 5 and Opus 5, do the research, and they turned out to have opinions.</p>
+<p>In July I queued a link to an article, and that was my whole request: a link with two words at the end, "model-inversion". The task the AI wrote from it assumed a security attack, because that's what the term usually means. The article was about letting one AI review another AI's code. The write-up opened with "<strong>Topic mismatch found.</strong>" and spent its first paragraph explaining what my task had gotten wrong.</p>
+<p>My request wasn't wrong. It was just a link. The researcher read the article fine, and then lectured me about a task I never wrote.</p>
+<p>In August the researcher refused to keep its notes.</p>
+<p>I'd queued a short conference talk from a channel called AI Engineer. The research came back fine, with a summary, the key points and a verdict. But the transcript file was missing. In its place was a note. The researcher, Sonnet 5 at the time, had decided that storing the talk word for word "would mean storing a large chunk of someone else's copyrighted talk", so it had paraphrased instead.</p>
+<p>Moments like these are why I switched the researcher back to Sonnet 4.6, the model it had run on before. Now the newest ones, Opus 5.5 and Sonnet 5.5, are getting another shot.</p>
+<h2>"It's an archive"</h2>
+<p>Sonnet had finished the research but hadn't saved the transcript. I opened a session with a bigger model, Opus 5, and complained: "So I did research, but refused to store the transcript. Can you download the transcript and put it there? I have no idea what that is."</p>
+<p>Opus fetched it in a minute. I added the part that mattered to me: "technically, it's correct. but it's an archive. of it at a time of research. I'm not reusing it or distributing it."</p>
+<p>That's what the transcript is for. The write-up points at moments in the talk. If the video is edited or taken down later, the archive is how I check what was actually said.</p>
+<p>Then I asked for one more thing. Some AI providers now mark the text their models write, slightly changing the word choice so it can be recognised later. A transcript the AI reads and then types back out may not match the original anymore, and I couldn't tell by looking. So the transcript isn't retyped anymore. A script downloads it straight into the file, and the AI only reads it afterwards. That rule went into the researcher's instructions the same evening.</p>
+<h2>I want them all</h2>
+<p>This morning I dictated one sentence to my AI: I want to give it a video, have it set up a watcher for that channel, and have the existing machinery "check for new videos and schedule a research if one appears." Then I pasted four channels: AI Search, AI Engineer, Matt Pocock and Theo.</p>
+<p>Only four, on purpose. I don't want to download the internet and research everything uncontrolled. My <a href="https://scriptease.dev/posts/2026-07-25-my-personal-hacker-news/">personal Hacker News</a> is guarded by my interests: a profile of what I care about filters what reaches me. The watcher is guarded by my curation. I picked these four because I want every single video they make.</p>
+<h2>"Queue the research, not do it"</h2>
+<p>The first version came back working, and it did more than I'd asked. It had decided for itself how many videos I'd get researched per round.</p>
+<p>I told it to queue, not to choose. Three new videos, three research tasks. And when I add a channel, research only its newest video.</p>
+<p>It fixed that, but it still looked too far back into each channel. I said: only the last five. This is about new videos, not downloading a whole channel.</p>
+<p>It heard "five" and turned it into a limit. Once more: five is how far back it looks, not how much it may send. A video from half a year ago that someone edits today keeps its old place, far down the list.</p>
+<p>Done. Now it glances at the five newest videos of each channel, skips the ones it has already handed over, and queues everything else.</p>
+<h2>@theAIsearch</h2>
+<p>Then I asked it to put the latest AI Search video back on the research list, to watch the whole chain run once more. The watcher crashed.</p>
+<p>Capital letters tripped it up. The @ name is a channel's short address, a bit like an email address. YouTube writes this one in camel case, with capitals in the middle. My list had it all lowercase. The AI fixed that, and the video went back on the list.</p>
+<p>It went in a little too well. The researcher had already picked it up once, and now there were two tasks for it. I ticked off the duplicate by hand.</p>
+<h2>A watcher that doesn't watch</h2>
+<p>The AI Search news roundup came back with a summary and a verdict: good to know, nothing to do. The next task was a talk from AI Engineer, the channel whose transcript the researcher had refused to keep in August. This time the transcript was saved before the AI even looked at it. The verdict: a sales pitch for something my setup already does.</p>
+<p>The watcher was about three hundred lines of code, and my AI built it in one conversation. Everything it hands work to already existed: the list, the small program that picks tasks up, the hearing aid, the rule about archives, the note on my phone. It only had to notice and delegate.</p>
+<p>That's the job of a manager.</p>
+<h2>The next stepping stone</h2>
+<p>The watcher only works because I trust every channel on its list. A channel I don't trust would need something else: an AI that looks at each new video first and decides whether it's worth researching at all.</p>
+<p>Or I ask it what I want to do with Shorts, YouTube's short vertical clips, which the watcher skips today.</p>
+<p>Both will stand on this one.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>My New Slick CLI</title>
 <link>https://scriptease.dev/posts/2026-10-03-my-new-slick-cli/</link>
