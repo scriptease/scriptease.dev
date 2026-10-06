@@ -7,7 +7,63 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sun, 04 Oct 2026 08:53:46 +0200</lastBuildDate>
+<lastBuildDate>Tue, 06 Oct 2026 20:32:18 +0200</lastBuildDate>
+<item>
+<title>Built Over His Lunch Break</title>
+<link>https://scriptease.dev/posts/2026-10-06-built-over-his-lunch-break/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-10-06-built-over-his-lunch-break/</guid>
+<pubDate>Tue, 06 Oct 2026 20:32:18 +0200</pubDate>
+<category>ai</category><category>agent</category><category>browser</category><category>password</category><category>commandline</category><category>saga</category><description>I asked a colleague how we could build something new. Then he went to lunch. By the time he was back online, it was built, and the demo I gave him took longer than the build.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Built Over His Lunch Break</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/browser/">#browser</a> <a href="/tags/password/">#password</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Login Everywhere saga: <a href="https://scriptease.dev/posts/2026-09-05-every-login-all-at-once/">1. Every Login All at Once</a> · 2. Built Over His Lunch Break</em></p>
+<p>I asked a colleague how we could build something new. Then he went to lunch. By the time he was back online, it was built, and the demo I gave him took longer than the build.</p>
+<h2>A tool for the back of my head</h2>
+<p>The talk was called "MCP Doesn't Suck. Your Agent Does." MCP is a standard plug that lets an AI use an outside tool: a browser, a database, a ticket system. The speaker built a small program that turns any of those plugs into a plain command an AI can type, the way it already types a thousand other commands every day.</p>
+<p>I watched about 60 percent of it before work. I had already done this twice by hand: taken an MCP plug and turned it into a command. Now someone had built a tool that does it for any plug. I filed it away: the next time this lands on my desk, I'll try it.</p>
+<p>Then I forgot about it.</p>
+<h2>"This is not a state I can be in"</h2>
+<p>The morning went into a different login tool, the one my AI uses to sign into our iPad app in the simulator, a fake iPad on my Mac. Until then it wanted my fingerprint every twelve hours. I rebuilt it so I give permission once per app and simulator, and from then on the AI logs in on its own. By late morning I had four agents working in parallel, none of them waiting for me.</p>
+<p>Then I had to check a ticket for our web app. It had been sitting there for a week, and the bug was still there. Proving it was easy: two screenshots, taken by hand. Getting to them took twenty minutes of setup: open the right server, find the right test user, log in, click to the right screen.</p>
+<p>I had just spent a morning running four things at once, and now I was spending twenty minutes on two screenshots.</p>
+<p>This is not a state I can be in. So let's automate this one too.</p>
+<h2>"But I don't want an MCP. I want a CLI."</h2>
+<p>I had no idea about browser automation. So I asked someone who had done it: one of my web colleagues. We talked about how we could build it.</p>
+<p>Then he went to lunch.</p>
+<p>So I asked around, and the piece I needed already existed. It's called playwright-secure-mcp. Playwright is a remote control for a web browser that a program can hold. The wrapper adds one trick: it types passwords straight from 1Password into the page, and the AI never sees them. Every reply that would contain a secret gets blacked out.</p>
+<p>But it was an MCP plug, and I wanted a command. Better still, an AXI: a command that follows the <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">ten rules</a> for tools whose reader is an AI instead of a person. The AI only reads up on it when it needs it, which is also what the talk argues. And then I remembered the morning.</p>
+<p>I didn't remember what the project was called. I googled something like "some kind of API, some kind of MCP, some kind of CLI", and it was in the top results: mcpc, by Apify, the program from the morning's talk. The "API" I had remembered was the company's name.</p>
+<p>I pasted the two links into a new session and wrote one sentence: "can you setup a cli that uses mcpc to wrap the playwright-secure-mcp".</p>
+<h2>Just let me in</h2>
+<p>A Chrome window opened. A visible one: I had asked for that. It went to our web app, the app sent it to a sign-in page, and the AI asked for the username.</p>
+<p>Refused.</p>
+<p>The wrapper has a rule: it only types a password on web pages that are listed in that password's 1Password entry. Our login was on a different address than the app. So I added an address to the entry. "try again"</p>
+<p>Still refused. I had added the wrong one: the form sat on yet another address. I added that one too.</p>
+<p>The username went in. Then the sign-in page handed over to a third address for the password. Refused again. I added that one too. "added"</p>
+<p>Logged in.</p>
+<p>That rule is the reason the tool exists: the password only gets typed on addresses saved with it in 1Password. It just meant my first login was a negotiation, one door at a time.</p>
+<p>About twenty-five minutes after the first message, the first version of playwright-axi was published.</p>
+<h2>"logout and back in"</h2>
+<p>Then came the small stuff that turns a demo into a tool. With the same trick as the morning's, a catalog of which login lives where, adding a user became a list entry instead of a code change. "why does it ask for the password twice, once on start and once when chrome is there?" Now it asks once. Chrome stopped offering to save the password, and a German warning bar went away on the second try.</p>
+<p>And logout, which in our app hides behind the menu button. I wanted to know it really worked, so I kept typing the same four words.</p>
+<p>"logout and back in"</p>
+<p>"logout and back in"</p>
+<p>"logout and back in"</p>
+<p>Once it reported an error for a logout that had worked: the redirect afterwards was slower than the tool's patience. One fix later, it held.</p>
+<h2>Dogfooding in progress</h2>
+<p>While I was still polishing, word came back on the ticket: fixed. Time to eat my own dog food, as programmers call using your own tool for real work. One agent deployed the new version. Another one logged in with the new tool and tested it. Halfway through it needed a different user, so the tool got a second login, in the middle of its own first test.</p>
+<p>The agent took the screenshots and wrote the ticket comment. All I did was drag the pictures in. Then the same version went to the test server our customers try new builds on.</p>
+<p>The ticket that started it all went from still broken to in our customers' hands while the tool was being built.</p>
+<p>Before the evening, the tool was up for review, had a documentation page, a setup guide, and a third login for a different country. Half an hour to build. An hour until it was ready to ship.</p>
+<h2>The verdict</h2>
+<p>My colleague still wasn't back from lunch. While I waited, I showed it to our other web developer. When the first one came back online, I invited him too and demoed it to both of them, for over an hour.</p>
+<p>Both of them use it now.</p>
+<p>In the evening I finally watched the remaining 40 percent. Then I asked my vault whether I had researched the talk. It wasn't even in the queue. I queued it, and while the research agent went through the whole talk, I started writing this post.</p>
+<p>The first draft and the verdict arrived at the same time. The verdict on my new tool: it "already runs this exact pattern, so the talk confirms current practice."</p>
+<p>Informational. No action needed.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>On the Shoulders of Giants</title>
 <link>https://scriptease.dev/posts/2026-10-04-on-the-shoulders-of-giants/</link>
@@ -986,10 +1042,11 @@ any libraries, and it must render even in Safari on the iPad
 <link>https://scriptease.dev/posts/2026-09-05-every-login-all-at-once/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-09-05-every-login-all-at-once/</guid>
 <pubDate>Thu, 10 Sep 2026 09:26:43 +0200</pubDate>
-<category>ai</category><category>agent</category><category>ios</category><category>simulator</category><category>password</category><description>Most of Saturday went into one wrong assumption. The AI and I blamed the iOS 27 beta for eating keystrokes. The real culprit was a stuck process on my Mac, and I literally had to kill it twice because it refused to die.</description>
+<category>ai</category><category>agent</category><category>ios</category><category>simulator</category><category>password</category><category>saga</category><description>Most of Saturday went into one wrong assumption. The AI and I blamed the iOS 27 beta for eating keystrokes. The real culprit was a stuck process on my Mac, and I literally had to kill it twice because it refused to die.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Every Login All at Once</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/ios/">#ios</a> <a href="/tags/simulator/">#simulator</a> <a href="/tags/password/">#password</a></p>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/ios/">#ios</a> <a href="/tags/simulator/">#simulator</a> <a href="/tags/password/">#password</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The Login Everywhere saga: 1. Every Login All at Once · <a href="https://scriptease.dev/posts/2026-10-06-built-over-his-lunch-break/">2. Built Over His Lunch Break</a></em></p>
 <p>Most of Saturday went into one wrong assumption. The AI and I blamed the iOS 27 beta for eating keystrokes. The real culprit was a stuck process on my Mac, and I literally had to kill it twice because it refused to die.</p>
 <h2>Continue three times, select login, continue twice, enter code, continue again</h2>
 <p>Logging into the app I work on is not one step. The app ships in several variants, and they log in three different ways. The simplest is a list of users and a PIN pad. The second goes through Keycloak, a service that first asks you to pick how you want to sign in, then hands you on. The third is Microsoft's corporate login: an email form that bounces you through two more pages and ends at a six-digit code from an authenticator app. All of that before you are in our app.</p>

@@ -1,5 +1,20 @@
 window.POSTS = [
   {
+    "slug": "2026-10-06-built-over-his-lunch-break",
+    "title": "Built Over His Lunch Break",
+    "hook": "I asked a colleague how we could build something new. Then he went to lunch. By the time he was back online, it was built, and the demo I gave him took longer than the build.",
+    "date": "2026-10-06",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "agent",
+      "browser",
+      "password",
+      "commandline",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-10-04-on-the-shoulders-of-giants",
     "title": "On the Shoulders of Giants",
     "hook": "This morning I built a YouTube watcher. It will never watch a single video.",
@@ -289,7 +304,8 @@ window.POSTS = [
       "agent",
       "ios",
       "simulator",
-      "password"
+      "password",
+      "saga"
     ]
   },
   {
