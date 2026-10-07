@@ -1,5 +1,20 @@
 window.POSTS = [
   {
+    "slug": "2026-10-07-not-my-first-rodeo",
+    "title": "Not My First Rodeo",
+    "hook": "One time too many, my AI told me it can't read the attachments on a ticket, or attach a screenshot. So I did its dirty work and dragged the screenshots in myself.",
+    "date": "2026-10-07",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "agent",
+      "commandline",
+      "skills",
+      "jira",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-10-07-fixing-a-phone-app-on-the-phone-from-the-same-app",
     "title": "Fixing a Phone App on the Phone From the Same App",
     "hook": "I was in bed, on my phone, watching my AI drive a fake phone, to fix the app I was talking to it through.",
@@ -203,7 +218,8 @@ window.POSTS = [
       "agent",
       "commandline",
       "skills",
-      "automation"
+      "automation",
+      "saga"
     ]
   },
   {
@@ -348,7 +364,8 @@ window.POSTS = [
       "agent",
       "commandline",
       "automation",
-      "skills"
+      "skills",
+      "saga"
     ]
   },
   {

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Not My First Rodeo — scriptease.dev</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="scriptease.dev">
+<meta property="og:title" content="Not My First Rodeo">
+<meta property="og:description" content="One time too many, my AI told me it can't read the attachments on a ticket, or attach a screenshot. So I did its dirty work and dragged the screenshots in myself.">
+<meta property="og:url" content="https://scriptease.dev/posts/2026-10-07-not-my-first-rodeo/">
+<meta property="og:image" content="https://scriptease.dev/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Not My First Rodeo</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/skills/">#skills</a> <a href="/tags/jira/">#jira</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The AXI saga: <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · <a href="https://scriptease.dev/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · 3. Not My First Rodeo</em></p>
+<p>One time too many, my AI told me it can't read the attachments on a ticket, or attach a screenshot. So I did its dirty work and dragged the screenshots in myself.</p>
+<h2>Screenshots are receipts</h2>
+<p>At work, our tickets live in Jira, the to-do list a software team shares. My AI writes most of mine now. It reads them, comments on them and moves them along through Rovo, the official Jira plug-in from Atlassian, the company behind Jira. Think of a plug-in as an adapter between a tool and the AI, and MCP as the standard socket it fits into.</p>
+<p>Through Rovo, my AI couldn't read or attach files.</p>
+<p>I test a lot of what we build, and every test ends in a screenshot. A screenshot is the receipt: this screen, this version, it works. The AI could finish the test and write the comment. Attaching the receipt was still my job.</p>
+<p>Two weeks ago I had Claude <a href="https://scriptease.dev/posts/2026-09-26-dashboard-for-one/">build me my own Jira dashboard</a>. Rovo couldn't get at all the information I wanted, so the dashboard skipped it and went to Jira directly, with my own key. It has since grown a ticket viewer, "so that I can actually see content and attachment and comment".</p>
+<p>So I had a door that opened files, and my AI had one that didn't.</p>
+<h2>Why follow the rules when I can make them?</h2>
+<p>For the attachments, there were already instructions.</p>
+<p>A while ago I'd had the steps written down: how to upload, download and delete attachments by talking to Jira directly, because the Jira command-line tool I used, a program you drive by typing, couldn't. The note's title: "Jira Attachments via REST (the CLI can't do this)". REST is the direct line, CLI the typing tool. Now and then I told an AI to follow it. I had Rovo, and I didn't want to build a whole Jira skill, a written recipe for the AI, next to it.</p>
+<p>Today I changed my mind. Why do I follow the rules when I can make the rules?</p>
+<h2>Not my first rodeo</h2>
+<p>Rovo sat in the back of my AI's mind in every conversation, whether it needed Jira or not. For a while now I've been replacing plug-ins like that with plain commands the AI only reaches for when it needs them. I call them AXIs, commands written by AI, for AI, <a href="https://scriptease.dev/posts/2026-09-26-axi-all-the-things/">following ten rules</a> so the AI gets its answer without digging.</p>
+<p>Crash reports got one in September. Slack got one last week. Yesterday a colleague went to lunch, and before he was back, <a href="https://scriptease.dev/posts/2026-10-06-built-over-his-lunch-break/">Playwright got one</a>: a remote control for the browser.</p>
+<p>So today I dictated the brief for Jira: "Yesterday I built an exci to wrap the playwright mcp. I want to now create a skill for the same thing for Jira." Replace Rovo. Add the attachments. And one rule about my key: the command checks for it, and the AI never reads it, "so the ai doesn't need to go looking".</p>
+<h2>Four out of sixty-three</h2>
+<p>The obvious plan was to wrap Rovo itself in a command. The AI connected to it with my key, and Rovo answered with four tools. None of them could open a ticket. The rest needs a different kind of login, the kind where you click "Allow" in a browser.</p>
+<p>So the AI went looking for a different plug-in and found mcp-atlassian, an open-source one by a developer called sooperset. Same key: sixty-three Jira tools.</p>
+<p>Even that one wasn't right for files. Its download would have pasted the whole file into the conversation as a wall of text, and its upload only worked as a side option of editing a ticket. So attachments skip the plug-in and go to Jira directly, the way the note said.</p>
+<p>Under the hood it's mcpc, a small tool by Apify that turns any plug-in into a command, the same one I'd used for the browser the day before. The new command is called <code>jira-axi</code>.</p>
+<h2>"No MCP needed anymore"</h2>
+<p>By the evening I wanted to know if I could live without Rovo. I asked a fresh AI session about my current sprint, the team's planned batch of work: "Can you find out what tickets I have in my current sprint?"</p>
+<p>It reached for the new command and listed thirteen tickets, sorted by status, in thirteen seconds.</p>
+<p>So I switched Rovo off for my AI, one line in its settings, and posted both into our company Slack: the answer, and the line. "No mcp needed anymore but you can still use it in claude.ai !!!! :D" MCP isn't gone: the new command still starts mcp-atlassian behind the scenes, but only when it's asked something. Rovo isn't gone either. It still works in claude.ai, the chat app in the browser. It's just not in my AI's head anymore.</p>
+<h2>One line in the settings</h2>
+<p>This is what I posted in Slack, from <code>~/.claude/settings.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;cleanupPeriodDays&quot;: 365,
+  &quot;deniedMcpServers&quot;: [
+    {
+      &quot;serverName&quot;: &quot;claude.ai Atlassian Rovo&quot;
+    }
+  ]
+}
+</code></pre>
+<p>You can block an MCP server for Claude Code on the command line while keeping it switched on in Claude, so it still works in Cowork and claude.ai.</p>
+<p>And by default, Claude Code deletes sessions after 30 days. <code>cleanupPeriodDays</code> makes it a year.</p>
+<h2>"Rovo is blocked"</h2>
+<p>Minutes later, in a different session, my AI was testing an app for a ticket. When it was done I told it to note the results as a comment.</p>
+<p>It tried Rovo first. Blocked. Without asking me what to do, it switched to the new Jira skill and posted the comment with <code>jira-axi</code>.</p>
+<p>Then I asked the question that always used to end with me dragging a file: "Can you post a screenshot of the app?"</p>
+<p>Two minutes after my question, the screenshot was on the ticket. Just a screenshot, but the app had closed by then, so it took a fresh start and a login: the login command from <a href="https://scriptease.dev/posts/2026-10-06-built-over-his-lunch-break/">yesterday morning</a>, another AXI. No password from me, just a fingerprint.</p>
+<p><img alt="My AI tries the old Jira plug-in, finds it blocked, switches to the new command on its own, then attaches a screenshot of the app to the ticket" src="assets/jira-axi/rovo-blocked.jpg" /></p>
+<p>No dragging and dropping. The AI had filed its own receipt.</p>
+<p>AXIs all the way to the screenshot.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-10-07-fixing-a-phone-app-on-the-phone-from-the-same-app/">← Fixing a Phone App on the Phone From the Same App</a><span></span></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
