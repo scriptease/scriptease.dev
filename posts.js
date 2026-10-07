@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-10-07-fixing-a-phone-app-on-the-phone-from-the-same-app",
+    "title": "Fixing a Phone App on the Phone From the Same App",
+    "hook": "I was in bed, on my phone, watching my AI drive a fake phone, to fix the app I was talking to it through.",
+    "date": "2026-10-07",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "agent",
+      "iphone",
+      "debugging",
+      "swift"
+    ]
+  },
+  {
     "slug": "2026-10-06-built-over-his-lunch-break",
     "title": "Built Over His Lunch Break",
     "hook": "I asked a colleague how we could build something new. Then he went to lunch. By the time he was back online, it was built, and the demo I gave him took longer than the build.",

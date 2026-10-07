@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Fixing a Phone App on the Phone From the Same App — scriptease.dev</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="scriptease.dev">
+<meta property="og:title" content="Fixing a Phone App on the Phone From the Same App">
+<meta property="og:description" content="I was in bed, on my phone, watching my AI drive a fake phone, to fix the app I was talking to it through.">
+<meta property="og:url" content="https://scriptease.dev/posts/2026-10-07-fixing-a-phone-app-on-the-phone-from-the-same-app/">
+<meta property="og:image" content="https://scriptease.dev/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Fixing a Phone App on the Phone From the Same App</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/iphone/">#iphone</a> <a href="/tags/debugging/">#debugging</a> <a href="/tags/swift/">#swift</a></p>
+<p>I was in bed, on my phone, watching my AI drive a fake phone, to fix the app I was talking to it through.</p>
+<h2>Build a version, then tell the others</h2>
+<p>T3 Code is the app I use to run AI coding agents on my Mac, with a phone app to steer them. Its newest Mac version had just locked out the phone app from the App Store.</p>
+<p>The plan fit in one sentence: build the newer phone app, put it on our internal install page, and warn my colleagues.</p>
+<p>I dictate everything, so my messages come out the way I talk. From my phone: "Build a version and upload it to the iOS release project."</p>
+<p>The agent asked where the recipe was. "It's documented in tilde / obsidian/V1/ ... T3code". It found it and started building.</p>
+<h2>"Wait a second"</h2>
+<p>Then I noticed it. I had opened a conversation, tapped into the text field, gone back to the list, and the bottom third of the screen was white. Just white. No list, no buttons.</p>
+<p><img alt="The thread list, with the bottom of the screen gone white" src="assets/fixing-a-phone-app-on-the-phone-from-the-same-app/0809-white-area-live.jpg" /></p>
+<p>"Wait a second." The agent stopped the build. I sent it the screenshot: "Can we figure out where this white area comes from".</p>
+<p>It measured. The list had lost a strip at the bottom almost exactly as tall as the phone's keyboard. Its theory: the app still thought the keyboard was open, and kept room for it. Then it asked what I had done right before.</p>
+<p>"I don't know I just had it. That's why I stopped you and asked why it could happen so if you're not immediately know what it is then we should continue building."</p>
+<p>So it continued. A few minutes later I had the trigger and told it to stop again. In a second conversation, I had another agent file it as a bug report for the project.</p>
+<h2>A theoretical fix</h2>
+<p>The first agent wrote a fix for its theory: close the keyboard before going back. It built the new version, uploaded it, and the build went out to our team channel on its own.</p>
+<p>"Install it on my phone and then I can test if it works now."</p>
+<p>It did.</p>
+<p>"it didn't the screen stays white"</p>
+<p>The agent wrote back that its theory was wrong. A minute later, it took that back too. The theory was back on, with a different fix. This one went onto my phone as a test build, the kind developers use to see more of what's going on inside.</p>
+<p>I opened a conversation, and the app crashed.</p>
+<h2>Calling home on a broken line</h2>
+<p>The app that crashed was the app I was using to talk to the agent. The fix was on my phone, and so was the crash, and my only line to the agent was the thing that was broken.</p>
+<p>My first lifeline would have been the App Store app. But that was the app the new Mac version had locked out, the whole reason for the morning. The third would have been my iPad, but that would have been less cool.</p>
+<p>So I used the second: the version from that morning. I installed it over the crashing one. The one I had stopped, with the first fix that didn't fix anything. It still had the white area, but it opened conversations. That was enough to type: "Now it crashed when i open a thread"</p>
+<p>The agent pulled the crash report straight off my phone. The crash wasn't its fix. It was the test build itself: in that mode, the conversation screen crashes on opening, with or without any change of ours. It put a normal build of the same fix on my phone.</p>
+<p>"it no longer crashes, but the white area is also not gone"</p>
+<h2>"I'm not going to guess a third time"</h2>
+<p>"Two fixes haven't worked, and I'm not going to guess a third time without seeing the view hierarchy."</p>
+<p>The view hierarchy is the app's floor plan: which box sits inside which, how big each one is, what color shows through. You can only read it from a running app. So the agent asked to start its own copy of my setup on the Mac, with a copy of my data, and run the app in the simulator, a fake iPhone that lives in a window on the Mac. My real setup wouldn't be touched.</p>
+<p>"Yes, do so."</p>
+<h2>Phoneception</h2>
+<p>The fake phone fought back first. The tool the agent uses to tap the screen didn't work with the newest Xcode, Apple's developer app, so it switched to a different tapping tool. Connecting the fake phone to the copy of my setup failed twice: an app without the developer's signature isn't allowed to save its login. It signed the app and tried again.</p>
+<p>I watched all of it from my phone. A remote-screen app on my phone showed my Mac's screen, and my Mac showed a fake iPhone, and the fake iPhone was running the app I was using to steer the agent.</p>
+<p><img alt="The agent's fake iPhone, seen through my real one" src="assets/fixing-a-phone-app-on-the-phone-from-the-same-app/0808-simulator.jpg" /></p>
+<p>The agent opened a conversation, tapped the text field, waited for the keyboard, and went back.</p>
+<p>White.</p>
+<p><img alt="Reproduced: the same white area, on the fake phone" src="assets/fixing-a-phone-app-on-the-phone-from-the-same-app/0812-simulator-reproduced.jpg" /></p>
+<p>Now the agent could look inside, and it took about a minute. The app's outermost box has a white background. Inside it sat a second box, added recently so the app understands keyboard shortcuts. Both boxes made room for the keyboard, and after going back, the inner one stayed shrunk. The white was the outer box showing through underneath.</p>
+<p>One of its test runs went out without its change applied, by accident. The white area showed up there too, which settled it: the bug was in the project's own code, not in anything I had added.</p>
+<p>The fix was one line. Only the inner box makes room for the keyboard now.</p>
+<h2>Reporting live</h2>
+<p>"It reproduced it," I had told another AI the moment the white showed up on the fake phone.</p>
+<p>That was a third conversation in this story. While the agent worked, I had kicked off a blog session from my iPad, so another AI would record everything as it happened: "you are currently the blog post being written on the iPad while this is all happening on my iPhone". Then I looked at all the screenshots on my phone and didn't want to wait for them to sync. So I moved the story to the phone too, into the same app, one conversation over from the bug. I was already sure: "this is going to be a story for the ages".</p>
+<h2>Interrupted by the ending</h2>
+<p>I was still dictating the story when the new version installed itself on my phone. "I just got interrupted by a new installation of the new app on the phone while I was writing the blog post with the bug fix and it works"</p>
+<p>The agent's report had one more fact in it. The bug came in with the same update I had set out to ship that morning. The white area I stopped the release for had arrived with the release.</p>
+<p>The story had to wait: the other agents needed their next steps. So I switched conversations and queued them: upload the tested build, so the bot in our team channel posts the link. Hand everything we had learned to the agent that had filed the bug report. Write the warning to my colleagues.</p>
+<p><img alt="The release bot announcing the new build, with the next task already queued" src="assets/fixing-a-phone-app-on-the-phone-from-the-same-app/0819-ci-published-58.jpg" /></p>
+<p>The warning went out: update the Mac app, and install this phone app. Forty-five minutes after "Build a version and upload it", the morning's one-sentence plan was done.</p>
+<p>"I never intended to have a story like that in the morning."</p>
+<p>I also never got out of bed.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-10-06-built-over-his-lunch-break/">← Built Over His Lunch Break</a><span></span></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
