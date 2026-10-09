@@ -1,5 +1,20 @@
 window.POSTS = [
   {
+    "slug": "2026-10-09-back-in-axion",
+    "title": "Back in AXIon",
+    "hook": "At lunch I was the one holding the iPad, turning it while my AI waited for my verdict. By the evening the AI was logging in and out of that iPad by itself.",
+    "date": "2026-10-09",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "agent",
+      "commandline",
+      "skills",
+      "ios",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-10-07-not-my-first-rodeo",
     "title": "Not My First Rodeo",
     "hook": "One time too many, my AI told me it can't read the attachments on a ticket, or attach a screenshot. So I did its dirty work and dragged the screenshots in myself.",
