@@ -7,7 +7,50 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Fri, 09 Oct 2026 21:08:20 +0200</lastBuildDate>
+<lastBuildDate>Fri, 09 Oct 2026 22:17:56 +0200</lastBuildDate>
+<item>
+<title>Anticipation</title>
+<link>https://scriptease.dev/posts/2026-10-09-anticipation/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-10-09-anticipation/</guid>
+<pubDate>Fri, 09 Oct 2026 22:17:56 +0200</pubDate>
+<category>ai</category><category>agent</category><category>commandline</category><category>skills</category><category>saga</category><description>Every command I write for my AI has one job before the real one: anticipate what the AI will do next, and tell it before it asks. The first colleague to try one got no head start at all. The command failed, the AI pondered, and then he pondered.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Anticipation</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/skills/">#skills</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The AXI saga: <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · <a href="https://scriptease.dev/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · <a href="https://scriptease.dev/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · <a href="https://scriptease.dev/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a> · 5. Anticipation</em></p>
+<p>Every command I write for my AI has one job before the real one: anticipate what the AI will do next, and tell it before it asks. The first colleague to try one got no head start at all. The command failed, the AI pondered, and then he pondered.</p>
+<h2>"can you find the comment"</h2>
+<p>I no longer open Jira, the to-do list our team shares, myself. When a colleague commented on one of my tickets, I asked my AI to find it.</p>
+<p>"can you find the comment … had on one of my axi tickets"</p>
+<p>The ticket was the web login <a href="https://scriptease.dev/posts/2026-10-06-built-over-his-lunch-break/">from the lunch break</a>: a command that opens Chrome, the web browser, goes to one of our apps that run in the browser and types the password straight from 1Password, the password manager, so the AI never sees it. Two colleagues had watched me use it the day before, for over an hour. Now one of them had finally tried it on his own Mac.</p>
+<p>The AI found the comment. The login had worked, on a customer's test site in Mexico. The password never showed up as readable text, and two screenshots were attached.</p>
+<p>His first try had failed. The 1Password tool on his Mac, the command's way into the password manager, wasn't connected to his account yet, a switch you flip once in the app's settings. The command hadn't said so.</p>
+<p>A failed first try is exactly what an AXI, a command written for an AI reader, is <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">supposed to prevent</a>. Every answer carries what the AI will need next. Here the error carried nothing, and what reached me was: update your skill, the AI's written recipe for the tool.</p>
+<h2>The documentation was not the problem</h2>
+<p>A skill comes with a setup guide, so my first move was the obvious one: "can we add that to the prerequiste sections"</p>
+<p>"No change needed." The guide already said it, both points, added the day before his comment. He most likely never opened the file, the AI said. "The doc isn't the weak spot; the error message is." The obvious fix: when the 1Password tool fails, the command itself says what to do next. A course of action a stranger would confirm the next evening.</p>
+<p>I agreed. Now it answers with the switch to flip and the file to read. Then the AI sent my colleague a thank-you and the link to the fix through my Slack command, the one that lets the AI write in Slack, our work chat.</p>
+<p>The manual had been right for a day. Nobody reads the manual at the moment they need it. The error message, they read.</p>
+<h2>"does the slack axi allow to add a :done?"</h2>
+<p>The next day my Slack command hit a roadblock of its own.</p>
+<p>A fix had gone out for a customer, and the AI had posted the status beneath the original Slack message, in its chain of replies. Then I wanted the last touch: our done-mark on that original message, the word "done" inside a red rectangle, like a rubber stamp. Anyone scrolling past can see at a glance that this one is finished.</p>
+<p>"does the slack axi allow to add a :done to the root message?"</p>
+<p>It didn't. So I added what was missing, and asked Slack for the wrong permission along the way. Slack's permissions only ever grow, never shrink, so I threw the command's key away, its pass into Slack, and started with a fresh one. By the afternoon, the command could stamp.</p>
+<p>The AXI had grown by one afternoon of being used.</p>
+<h2>"I haven't watched it yet, but I will watch it now"</h2>
+<p>While we were writing this post, the AI asked me whether I had watched the talk it was about to quote: "Did you watch the Airbyte talk yourself, or only read the research note?" A YouTube video released two hours earlier, which I hadn't even seen.</p>
+<p>"I haven't watched it yet, but I will watch it now"</p>
+<p>My <a href="https://scriptease.dev/posts/2026-10-04-on-the-shoulders-of-giants/">YouTube watcher</a>, the tool that finds talks for my notes, had queued it that evening: eighteen minutes from the AI Engineer conference, by an engineer at Airbyte, a data company. "Designing CLIs for Agents, Not Humans": CLIs are the typed kind of tool, the kind every AXI is, and the agents are AIs using them on someone's behalf. Before I knew the talk existed, the research AI had been through the whole of it.</p>
+<p>Its verdict: "High topical fit, low novelty."</p>
+<p>The talk's rules for a command an AI will use: every command follows the same pattern, so the AI guesses right without reading the manual. Ship the recipe with the tool, or the AI doesn't know the tool exists. Never stop to ask a question, because "it can't sit there and wait for you to type a prompt into the CLI … they'll just kind of get stuck there." And one I hadn't heard put that way, about changing the tool's rules to match how the AI keeps trying to use it: "if you see agents making the same mistake over and over, calling the wrong command a bunch of times, consider making that your contract. Make it dead simple for agents to stumble across the right way to use things."</p>
+<p>That was my colleague's first try, in one sentence. The research AI found one idea worth stealing: errors that say whether trying again would help.</p>
+<p>Then I watched the talk myself, while writing this. Mostly the AXI ideas, and my own experience of writing skills that pre-empt the trouble before it happens. His point that the plug-in standard suits non-technical users better is fair. My one addition: the AI picks the right recipe reliably when its description says what it's <em>for</em>, not what it does. Every one of mine starts with "Use when the user asks…".</p>
+<p>That's a cool thing about having a pipeline that constantly feeds you with information.</p>
+<h2>Low novelty, high topical fit</h2>
+<p>Two months ago, <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">a stranger's blog post</a> gave a name to something I had been doing for years. This week a stranger's talk gave it a verdict.</p>
+<p>Low novelty. The best thing a checklist can be told.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Back in AXIon</title>
 <link>https://scriptease.dev/posts/2026-10-09-back-in-axion/</link>
@@ -17,7 +60,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Back in AXIon</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/skills/">#skills</a> <a href="/tags/ios/">#ios</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The AXI saga: <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · <a href="https://scriptease.dev/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · <a href="https://scriptease.dev/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · 4. Back in AXIon</em></p>
+<p><em>The AXI saga: <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · <a href="https://scriptease.dev/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · <a href="https://scriptease.dev/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · 4. Back in AXIon · <a href="https://scriptease.dev/posts/2026-10-09-anticipation/">5. Anticipation</a></em></p>
 <p>At lunch I was the one holding the iPad, turning it while my AI waited for my verdict. By the evening the AI was logging in and out of that iPad by itself.</p>
 <h2>This is not enough</h2>
 <p>Our iPad app has a barcode scanner, and on iOS 27, the newest version of the iPad's operating system, the camera picture had started coming up sideways. The fix had been in for a week. What was missing was the proof, and this one can't be faked on a fake iPad: the bug only shows on a real one, turned in your hands.</p>
@@ -72,7 +115,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Not My First Rodeo</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/skills/">#skills</a> <a href="/tags/jira/">#jira</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The AXI saga: <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · <a href="https://scriptease.dev/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · 3. Not My First Rodeo · <a href="https://scriptease.dev/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a></em></p>
+<p><em>The AXI saga: <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · <a href="https://scriptease.dev/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · 3. Not My First Rodeo · <a href="https://scriptease.dev/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a> · <a href="https://scriptease.dev/posts/2026-10-09-anticipation/">5. Anticipation</a></em></p>
 <p>One time too many, my AI told me it can't read the attachments on a ticket, or attach a screenshot. So I did its dirty work and dragged the screenshots in myself.</p>
 <h2>Screenshots are receipts</h2>
 <p>At work, our tickets live in Jira, the to-do list a software team shares. My AI writes most of mine now. It reads them, comments on them and moves them along through Rovo, the official Jira plug-in from Atlassian, the company behind Jira. Think of a plug-in as an adapter between a tool and the AI, and MCP as the standard socket it fits into.</p>
@@ -815,7 +858,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>AXI All the Things</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/skills/">#skills</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The AXI saga: <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · 2. AXI All the Things · <a href="https://scriptease.dev/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · <a href="https://scriptease.dev/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a></em></p>
+<p><em>The AXI saga: <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · 2. AXI All the Things · <a href="https://scriptease.dev/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · <a href="https://scriptease.dev/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a> · <a href="https://scriptease.dev/posts/2026-10-09-anticipation/">5. Anticipation</a></em></p>
 <p>I just got a notification on my phone: one of my testers' apps had crashed. It didn't say where.</p>
 <h2>Why do I look for the crashes myself?</h2>
 <p>Before an iPad app ships, testers get it early through TestFlight, Apple's app for beta versions. When it crashes on them, I get a report. What reached me was a note about a crash, without the report.</p>
@@ -1343,7 +1386,7 @@ any libraries, and it must render even in Safari on the iPad
 <content:encoded><![CDATA[<article class="post">
 <h1>The Checklist I'd Been Following for Ten Years</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/automation/">#automation</a> <a href="/tags/skills/">#skills</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The AXI saga: 1. The Checklist I'd Been Following · <a href="https://scriptease.dev/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · <a href="https://scriptease.dev/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · <a href="https://scriptease.dev/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a></em></p>
+<p><em>The AXI saga: 1. The Checklist I'd Been Following · <a href="https://scriptease.dev/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · <a href="https://scriptease.dev/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · <a href="https://scriptease.dev/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a> · <a href="https://scriptease.dev/posts/2026-10-09-anticipation/">5. Anticipation</a></em></p>
 <p>A stranger's blog post gave a name to something I'd been doing for ten years without noticing. An hour later I was checking my own work against his ten rules.</p>
 <h2>The question I stopped asking</h2>
 <p>At work, when I finish a piece of code, I send it off to be judged. A colleague reads it, and so does a machine: somewhere in a server room a computer rebuilds the whole product and runs a few thousand checks. Twenty minutes, if nothing is queued ahead of me. A no means I just broke something.</p>

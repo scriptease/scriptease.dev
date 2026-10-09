@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-10-09-anticipation",
+    "title": "Anticipation",
+    "hook": "Every command I write for my AI has one job before the real one: anticipate what the AI will do next, and tell it before it asks. The first colleague to try one got no head start at all. The command failed, the AI pondered, and then he pondered.",
+    "date": "2026-10-09",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "agent",
+      "commandline",
+      "skills",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-10-09-back-in-axion",
     "title": "Back in AXIon",
     "hook": "At lunch I was the one holding the iPad, turning it while my AI waited for my verdict. By the evening the AI was logging in and out of that iPad by itself.",
