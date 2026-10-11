@@ -1,5 +1,20 @@
 window.POSTS = [
   {
+    "slug": "2026-10-11-factory-reset",
+    "title": "Factory Reset",
+    "hook": "In April I built a factory so AI could build software without me. By August, nothing went through it anymore.",
+    "date": "2026-10-11",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "agent",
+      "maestro",
+      "automation",
+      "security",
+      "saga"
+    ]
+  },
+  {
     "slug": "2026-10-09-anticipation",
     "title": "Anticipation",
     "hook": "Every command I write for my AI has one job before the real one: anticipate what the AI will do next, and tell it before it asks. The first colleague to try one got no head start at all. The command failed, the AI pondered, and then he pondered.",
@@ -83,7 +98,8 @@ window.POSTS = [
       "youtube",
       "automation",
       "agent",
-      "obsidian"
+      "obsidian",
+      "saga"
     ]
   },
   {
@@ -731,7 +747,8 @@ window.POSTS = [
       "ai",
       "agent",
       "memory",
-      "search"
+      "search",
+      "saga"
     ]
   },
   {
@@ -815,7 +832,8 @@ window.POSTS = [
       "siri",
       "voice",
       "automation",
-      "obsidian"
+      "obsidian",
+      "saga"
     ]
   },
   {
@@ -998,7 +1016,8 @@ window.POSTS = [
       "jira",
       "gerrit",
       "automation",
-      "voice"
+      "voice",
+      "saga"
     ]
   },
   {
