@@ -43,7 +43,7 @@
 <article class="post">
 <h1>My New Slick CLI</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/slack/">#slack</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/sharing/">#sharing</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Pet Projects saga: <a href="https://scriptease.dev/posts/2026-07-17-the-vault-i-could-finally-give-away/">1. The Vault I Could Finally Give Away</a> · <a href="https://scriptease.dev/posts/2026-10-03-blume/">2. Blume</a> · <a href="https://scriptease.dev/posts/2026-10-03-improving-the-tool-that-builds-the-tools/">3. Improving the Tool That Builds the Tools</a> · 4. My New Slick CLI</em></p>
+<p><em>The <a href="/sagas/#pet-projects">Pet Projects saga</a>: <a href="/posts/2026-07-17-the-vault-i-could-finally-give-away/">1. The Vault I Could Finally Give Away</a> · <a href="/posts/2026-10-03-blume/">2. Blume</a> · <a href="/posts/2026-10-03-improving-the-tool-that-builds-the-tools/">3. Improving the Tool That Builds the Tools</a> · 4. My New Slick CLI</em></p>
 <p>Six months ago, I had an AI send two colleagues a poem and a joke in Slack. Today the same two got a zip file from me, sent by a tool that didn't exist that morning.</p>
 <h2>A poem and a joke</h2>
 <p>When I first started using Claude, I connected it to Slack, the chat app we use at work. A connector is a plug-in: it gives the AI new hands, in this case the ability to find people and post messages.</p>
@@ -56,10 +56,10 @@
 <h2>I want it everywhere</h2>
 <p>It stayed in the back of my mind. I wanted to send Slack messages and read channels. But I didn't want a plug-in loaded into every conversation. And I didn't want it only in Claude. I wanted it everywhere on my computer.</p>
 <p>What works everywhere is a command-line tool, a CLI: a program you run by typing its name. Any AI that can type a command can use it. So can I.</p>
-<p>Today I had a reason. I'd spent the day improving the ticket dashboard from <a href="https://scriptease.dev/posts/2026-09-26-dashboard-for-one/">an earlier post</a>. Its list now follows the same order as the one we use in our Monday estimation meeting, so I can see which ticket comes next. I packed the new version into a zip file to share.</p>
+<p>Today I had a reason. I'd spent the day improving the ticket dashboard from <a href="/posts/2026-09-26-dashboard-for-one/">an earlier post</a>. Its list now follows the same order as the one we use in our Monday estimation meeting, so I can see which ticket comes next. I packed the new version into a zip file to share.</p>
 <p>Why not build a CLI and use it to send out the newest version?</p>
 <h2>Just a different API endpoint</h2>
-<p>I'd done something like this once before. For <a href="https://scriptease.dev/posts/2026-09-26-axi-all-the-things/">crash reports</a> there was no command-line tool, only a plug-in. So I had the AI wrap it: a small command that starts the plug-in, asks one question and shuts it down. It works, but every call waits while the plug-in starts.</p>
+<p>I'd done something like this once before. For <a href="/posts/2026-09-26-axi-all-the-things/">crash reports</a> there was no command-line tool, only a plug-in. So I had the AI wrap it: a small command that starts the plug-in, asks one question and shuts it down. It works, but every call waits while the plug-in starts.</p>
 <p>I asked whether Slack had an official AI plug-in I could wrap the same way. It does. But it doesn't run on my Mac. Slack hosts it, and it needs the same thing every other route needs: a Slack plug-in of my own, registered with Slack. Slack has no personal keys. Every key comes from such a plug-in.</p>
 <p>That changed the question. My words to the AI:</p>
 <blockquote>
@@ -71,7 +71,7 @@
 <p>I still had my private Slack, set up to test an earlier project. The AI wrote the tool there, and I created the plug-in and pasted my key. We sent a message, uploaded a file and downloaded it again. All of it worked.</p>
 <p><img alt="A test message, a reply and an uploaded file, all from me to me in my private Slack" src="assets/my-new-slick-cli/private-slack-self-test.jpg" />
 <em>Me talking to myself on my alter ego.</em></p>
-<p>It's called <code>slack-axi</code>. The ending comes from <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">AXI</a>, ten rules for commands whose reader is an AI instead of a person: short answers, compact tables, a clear "nothing found".</p>
+<p>It's called <code>slack-axi</code>. The ending comes from <a href="/posts/2026-08-30-the-checklist-id-been-following/">AXI</a>, ten rules for commands whose reader is an AI instead of a person: short answers, compact tables, a clear "nothing found".</p>
 <p>For the company I wrote a ticket: please approve one Slack plug-in, here's what it can do, here's the working demo. Each person who uses it gets their own key, and a key can only do what that person can already do in Slack. I tagged the ticket for our Monday estimation meeting, the one with the boss in it. Fingers crossed.</p>
 <h2>The cogwheel didn't show up</h2>
 <p>Then I went to look at the settings myself.</p>
@@ -92,7 +92,7 @@
 <li>Copy your key from the plug-in's settings and run <code>slack-axi login</code>.</li>
 <li>Send something: <code>slack-axi upload @colleague file.zip --comment "…"</code></li>
 </ol>
-<p>When I published it, the name turned out to be taken. An earlier post of mine ends on <a href="https://scriptease.dev/posts/2026-08-30-the-checklist-id-been-following/">a name alone opens all the doors</a>. I didn't follow my own advice. I had asked for research on a "Slack CLI". Searching for <code>slack-axi</code> would have found three Slack tools built for AI, two of them with my tool's exact name.</p>
+<p>When I published it, the name turned out to be taken. An earlier post of mine ends on <a href="/posts/2026-08-30-the-checklist-id-been-following/">a name alone opens all the doors</a>. I didn't follow my own advice. I had asked for research on a "Slack CLI". Searching for <code>slack-axi</code> would have found three Slack tools built for AI, two of them with my tool's exact name.</p>
 <p>They need Node.js to run. Mine is a single file.</p>
 </article>
 <nav class="post-nav"><a class="prev" href="/posts/2026-10-03-improving-the-tool-that-builds-the-tools/">← Improving the Tool That Builds the Tools</a><a class="next" href="/posts/2026-10-04-on-the-shoulders-of-giants/">On the Shoulders of Giants →</a></nav>

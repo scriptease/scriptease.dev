@@ -43,10 +43,10 @@
 <article class="post">
 <h1>Claudial of Service</h1>
 <p class="post-tags"><a href="/tags/claude/">#claude</a> <a href="/tags/bluetooth/">#bluetooth</a> <a href="/tags/memory/">#memory</a> <a href="/tags/macos/">#macos</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Maker saga: <a href="https://scriptease.dev/posts/2026-09-26-claude-makes-things/">1. Claude Makes Things</a> · 2. Claudial of Service</em></p>
+<p><em>The <a href="/sagas/#maker">Maker saga</a>: <a href="/posts/2026-09-26-claude-makes-things/">1. Claude Makes Things</a> · 2. Claudial of Service</em></p>
 <p>My Mac slowed to a snail's pace. Activity Monitor said a tiny helper for my desk gadget was using 50 gigabytes of memory. I had stopped that helper days ago. Or I thought I had.</p>
 <h2>"I just killed the daemon with 50gb used memory"</h2>
-<p>The gadget is a round dial on my desk that shows how much of my AI allowance I have left. I set it up <a href="https://scriptease.dev/posts/2026-09-26-claude-makes-things/">last week</a> with the help of Claude, in about half an hour. It has two halves: the dial, and a small helper program on the Mac that fetches the numbers and sends them over Bluetooth. Programs like that, which run quietly in the background, are called daemons.</p>
+<p>The gadget is a round dial on my desk that shows how much of my AI allowance I have left. I set it up <a href="/posts/2026-09-26-claude-makes-things/">last week</a> with the help of Claude, in about half an hour. It has two halves: the dial, and a small helper program on the Mac that fetches the numbers and sends them over Bluetooth. Programs like that, which run quietly in the background, are called daemons.</p>
 <p>My Mac has 64 gigabytes of memory. The helper, whose whole job is sending one short message now and then, had taken almost 80% of it, and everything else was getting squeezed. There's a name for an attack that floods a machine until it can't do its real work: denial of service. Mine came from inside my house.</p>
 <p>I killed the helper in Activity Monitor, pointed an AI at the Claudial folder and asked:</p>
 <blockquote>
@@ -68,7 +68,7 @@
 <p>Then I started my own copy, and the dial went with it. The dial can only hold one connection at a time, and while it's connected it stops announcing itself over Bluetooth. To the ghost, it simply vanished. The developer had thought of that: the helper checks whether another copy is already running. On a Mac, though, that check does nothing, so nothing stopped two of them from starting.</p>
 <p>So the ghost kept looking. Search, rest, search again. It looked while the dial sat on my desk talking to its sibling. It looked while I showed the dial to my colleagues. It looked while the dial was in my bag. By the time I killed it, it had searched more than thirty thousand times and never found it once. Seven days of collecting nothing but garbage.</p>
 <h2>Haven't I been here before?</h2>
-<p>This has happened before, in the summer. In <a href="https://scriptease.dev/posts/2026-07-15-tomato-maxing-iii/">Tomato Maxing III</a>, my phone warned me that a free allowance I didn't know I was spending was nearly gone. The culprit was my robot vacuum. A docked vacuum stops listening on Wi-Fi to save power, so every time my setup asked "are you cleaning?" and got no answer, it went and asked again over the internet. Each question cost a little of the allowance.</p>
+<p>This has happened before, in the summer. In <a href="/posts/2026-07-15-tomato-maxing-iii/">Tomato Maxing III</a>, my phone warned me that a free allowance I didn't know I was spending was nearly gone. The culprit was my robot vacuum. A docked vacuum stops listening on Wi-Fi to save power, so every time my setup asked "are you cleaning?" and got no answer, it went and asked again over the internet. Each question cost a little of the allowance.</p>
 <p>Same shape here: a program asking for a device that can't answer, over and over. But what exactly was each question costing?</p>
 <h2>Death by a thousand cuts</h2>
 <p>I handed the leak to a fresh Claude session, with the whole story and my own guess at why nobody had noticed:</p>

@@ -12,6 +12,9 @@ window.POSTS = [
       "automation",
       "security",
       "saga"
+    ],
+    "sagas": [
+      "Hands-Free"
     ]
   },
   {
@@ -26,6 +29,9 @@ window.POSTS = [
       "commandline",
       "skills",
       "saga"
+    ],
+    "sagas": [
+      "AXI"
     ]
   },
   {
@@ -41,6 +47,9 @@ window.POSTS = [
       "skills",
       "ios",
       "saga"
+    ],
+    "sagas": [
+      "AXI"
     ]
   },
   {
@@ -56,6 +65,9 @@ window.POSTS = [
       "skills",
       "jira",
       "saga"
+    ],
+    "sagas": [
+      "AXI"
     ]
   },
   {
@@ -70,7 +82,8 @@ window.POSTS = [
       "iphone",
       "debugging",
       "swift"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-10-06-built-over-his-lunch-break",
@@ -85,6 +98,9 @@ window.POSTS = [
       "password",
       "commandline",
       "saga"
+    ],
+    "sagas": [
+      "Login Everywhere"
     ]
   },
   {
@@ -100,6 +116,9 @@ window.POSTS = [
       "agent",
       "obsidian",
       "saga"
+    ],
+    "sagas": [
+      "Hands-Free"
     ]
   },
   {
@@ -115,6 +134,9 @@ window.POSTS = [
       "commandline",
       "sharing",
       "saga"
+    ],
+    "sagas": [
+      "Pet Projects"
     ]
   },
   {
@@ -131,6 +153,9 @@ window.POSTS = [
       "git",
       "sharing",
       "saga"
+    ],
+    "sagas": [
+      "Pet Projects"
     ]
   },
   {
@@ -145,6 +170,9 @@ window.POSTS = [
       "agent",
       "claude",
       "saga"
+    ],
+    "sagas": [
+      "Remembering"
     ]
   },
   {
@@ -161,6 +189,9 @@ window.POSTS = [
       "webdesign",
       "sharing",
       "saga"
+    ],
+    "sagas": [
+      "Pet Projects"
     ]
   },
   {
@@ -177,6 +208,9 @@ window.POSTS = [
       "claude",
       "saga",
       "whisper"
+    ],
+    "sagas": [
+      "Whisper"
     ]
   },
   {
@@ -191,7 +225,8 @@ window.POSTS = [
       "agent",
       "automation",
       "ai"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-09-27-its-about-the-little-things",
@@ -206,7 +241,8 @@ window.POSTS = [
       "easteregg",
       "claude",
       "shark"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-09-26-claudial-of-service",
@@ -221,6 +257,9 @@ window.POSTS = [
       "macos",
       "automation",
       "saga"
+    ],
+    "sagas": [
+      "Maker"
     ]
   },
   {
@@ -235,6 +274,9 @@ window.POSTS = [
       "embedded",
       "automation",
       "saga"
+    ],
+    "sagas": [
+      "Maker"
     ]
   },
   {
@@ -250,6 +292,9 @@ window.POSTS = [
       "git",
       "security",
       "saga"
+    ],
+    "sagas": [
+      "AI Parenting"
     ]
   },
   {
@@ -265,6 +310,9 @@ window.POSTS = [
       "skills",
       "automation",
       "saga"
+    ],
+    "sagas": [
+      "AXI"
     ]
   },
   {
@@ -279,7 +327,8 @@ window.POSTS = [
       "dashboard",
       "ipad",
       "productivity"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-09-26-a-team-of-strangers",
@@ -294,6 +343,9 @@ window.POSTS = [
       "github",
       "saga",
       "whisper"
+    ],
+    "sagas": [
+      "Whisper"
     ]
   },
   {
@@ -310,6 +362,9 @@ window.POSTS = [
       "localai",
       "saga",
       "whisper"
+    ],
+    "sagas": [
+      "Whisper"
     ]
   },
   {
@@ -324,6 +379,9 @@ window.POSTS = [
       "ai",
       "automation",
       "saga"
+    ],
+    "sagas": [
+      "Couch computing"
     ]
   },
   {
@@ -338,6 +396,9 @@ window.POSTS = [
       "agent",
       "automation",
       "saga"
+    ],
+    "sagas": [
+      "Couch computing"
     ]
   },
   {
@@ -352,6 +413,9 @@ window.POSTS = [
       "streaming",
       "ai",
       "saga"
+    ],
+    "sagas": [
+      "Couch computing"
     ]
   },
   {
@@ -366,6 +430,9 @@ window.POSTS = [
       "localai",
       "webgl",
       "saga"
+    ],
+    "sagas": [
+      "Local AI"
     ]
   },
   {
@@ -381,6 +448,9 @@ window.POSTS = [
       "simulator",
       "password",
       "saga"
+    ],
+    "sagas": [
+      "Login Everywhere"
     ]
   },
   {
@@ -396,6 +466,9 @@ window.POSTS = [
       "security",
       "plugins",
       "saga"
+    ],
+    "sagas": [
+      "AI Parenting"
     ]
   },
   {
@@ -411,6 +484,9 @@ window.POSTS = [
       "automation",
       "skills",
       "saga"
+    ],
+    "sagas": [
+      "AXI"
     ]
   },
   {
@@ -426,6 +502,9 @@ window.POSTS = [
       "skills",
       "obsidian",
       "saga"
+    ],
+    "sagas": [
+      "Remembering"
     ]
   },
   {
@@ -439,7 +518,8 @@ window.POSTS = [
       "ai",
       "agent",
       "visualisation"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-08-28-good-ideas-never-die",
@@ -451,7 +531,8 @@ window.POSTS = [
       "ai",
       "programming",
       "vscode"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-08-25-lost-in-compression",
@@ -466,6 +547,10 @@ window.POSTS = [
       "localai",
       "underwater",
       "saga"
+    ],
+    "sagas": [
+      "Fish Slop",
+      "Local AI"
     ]
   },
   {
@@ -478,7 +563,8 @@ window.POSTS = [
       "ai",
       "llm",
       "agent"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-08-22-colormaxing-iii-in-public",
@@ -491,6 +577,9 @@ window.POSTS = [
       "llm",
       "ml",
       "saga"
+    ],
+    "sagas": [
+      "Colormaxing"
     ]
   },
   {
@@ -504,6 +593,9 @@ window.POSTS = [
       "llm",
       "ml",
       "saga"
+    ],
+    "sagas": [
+      "Colormaxing"
     ]
   },
   {
@@ -517,6 +609,9 @@ window.POSTS = [
       "llm",
       "ml",
       "saga"
+    ],
+    "sagas": [
+      "Colormaxing"
     ]
   },
   {
@@ -531,7 +626,8 @@ window.POSTS = [
       "claude",
       "web",
       "github"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-08-17-95-done-100-blue-sky",
@@ -545,6 +641,9 @@ window.POSTS = [
       "localai",
       "webgl",
       "saga"
+    ],
+    "sagas": [
+      "Local AI"
     ]
   },
   {
@@ -560,6 +659,10 @@ window.POSTS = [
       "localai",
       "underwater",
       "saga"
+    ],
+    "sagas": [
+      "Fish Slop",
+      "Local AI"
     ]
   },
   {
@@ -576,6 +679,9 @@ window.POSTS = [
       "ios",
       "shark",
       "saga"
+    ],
+    "sagas": [
+      "Fish Slop"
     ]
   },
   {
@@ -591,6 +697,9 @@ window.POSTS = [
       "game",
       "ios",
       "saga"
+    ],
+    "sagas": [
+      "Fish Slop"
     ]
   },
   {
@@ -605,6 +714,9 @@ window.POSTS = [
       "memory",
       "agent",
       "saga"
+    ],
+    "sagas": [
+      "Remembering"
     ]
   },
   {
@@ -619,7 +731,8 @@ window.POSTS = [
       "database",
       "commandline",
       "security"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-08-01-my-blog-has-a-new-home",
@@ -633,7 +746,8 @@ window.POSTS = [
       "ssl",
       "static",
       "web"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-08-01-making-up-insights",
@@ -647,7 +761,8 @@ window.POSTS = [
       "agent",
       "automation",
       "git"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-07-31-hosting-fish-slop",
@@ -663,6 +778,9 @@ window.POSTS = [
       "underwater",
       "diving",
       "saga"
+    ],
+    "sagas": [
+      "Fish Slop"
     ]
   },
   {
@@ -677,6 +795,9 @@ window.POSTS = [
       "agent",
       "automation",
       "saga"
+    ],
+    "sagas": [
+      "Colormaxing"
     ]
   },
   {
@@ -693,6 +814,9 @@ window.POSTS = [
       "automation",
       "localai",
       "saga"
+    ],
+    "sagas": [
+      "Local AI"
     ]
   },
   {
@@ -706,7 +830,8 @@ window.POSTS = [
       "gradle",
       "development",
       "debugging"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-07-27-three-interpretations-of-success",
@@ -719,7 +844,8 @@ window.POSTS = [
       "claude",
       "ci",
       "git"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-07-26-one-more-hop",
@@ -734,6 +860,9 @@ window.POSTS = [
       "automation",
       "ai",
       "saga"
+    ],
+    "sagas": [
+      "Couch computing"
     ]
   },
   {
@@ -749,6 +878,9 @@ window.POSTS = [
       "memory",
       "search",
       "saga"
+    ],
+    "sagas": [
+      "Hands-Free"
     ]
   },
   {
@@ -763,7 +895,8 @@ window.POSTS = [
       "eclipse",
       "performance",
       "ai"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-07-22-childproofing-an-ai",
@@ -778,6 +911,9 @@ window.POSTS = [
       "security",
       "git",
       "saga"
+    ],
+    "sagas": [
+      "AI Parenting"
     ]
   },
   {
@@ -791,7 +927,8 @@ window.POSTS = [
       "agent",
       "work-life-balance",
       "psychology"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-07-21-load-bearing-constraints",
@@ -805,6 +942,9 @@ window.POSTS = [
       "claude",
       "talk",
       "saga"
+    ],
+    "sagas": [
+      "AI Parenting"
     ]
   },
   {
@@ -819,7 +959,8 @@ window.POSTS = [
       "opensource",
       "documentation",
       "git"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-07-18-siri-add-something-to-my-research-queue",
@@ -834,6 +975,9 @@ window.POSTS = [
       "automation",
       "obsidian",
       "saga"
+    ],
+    "sagas": [
+      "Hands-Free"
     ]
   },
   {
@@ -848,6 +992,9 @@ window.POSTS = [
       "agent",
       "codereview",
       "saga"
+    ],
+    "sagas": [
+      "AI Parenting"
     ]
   },
   {
@@ -861,7 +1008,8 @@ window.POSTS = [
       "java",
       "performance",
       "hibernate"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-07-11-the-hill-i-climbed-twice",
@@ -875,7 +1023,8 @@ window.POSTS = [
       "security",
       "ios",
       "ai"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-07-17-bat-symbol-not-showing",
@@ -888,7 +1037,8 @@ window.POSTS = [
       "debugging",
       "simulator",
       "opensource"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-07-15-tomato-maxing-iii",
@@ -902,6 +1052,9 @@ window.POSTS = [
       "performance",
       "ai",
       "saga"
+    ],
+    "sagas": [
+      "Tomato Maxing"
     ]
   },
   {
@@ -916,6 +1069,9 @@ window.POSTS = [
       "documentation",
       "sharing",
       "saga"
+    ],
+    "sagas": [
+      "Pet Projects"
     ]
   },
   {
@@ -930,6 +1086,9 @@ window.POSTS = [
       "memory",
       "api",
       "saga"
+    ],
+    "sagas": [
+      "Remembering"
     ]
   },
   {
@@ -944,7 +1103,8 @@ window.POSTS = [
       "commandline",
       "automation",
       "macos"
-    ]
+    ],
+    "sagas": []
   },
   {
     "slug": "2026-07-12-the-posts-i-write-to-forget",
@@ -958,6 +1118,9 @@ window.POSTS = [
       "ai",
       "documentation",
       "saga"
+    ],
+    "sagas": [
+      "Remembering"
     ]
   },
   {
@@ -973,6 +1136,9 @@ window.POSTS = [
       "macos",
       "saga",
       "whisper"
+    ],
+    "sagas": [
+      "Whisper"
     ]
   },
   {
@@ -989,6 +1155,9 @@ window.POSTS = [
       "privacy",
       "localai",
       "saga"
+    ],
+    "sagas": [
+      "Local AI"
     ]
   },
   {
@@ -1003,6 +1172,9 @@ window.POSTS = [
       "commandline",
       "ai",
       "saga"
+    ],
+    "sagas": [
+      "Tomato Maxing"
     ]
   },
   {
@@ -1018,6 +1190,9 @@ window.POSTS = [
       "automation",
       "voice",
       "saga"
+    ],
+    "sagas": [
+      "Hands-Free"
     ]
   },
   {
@@ -1032,6 +1207,9 @@ window.POSTS = [
       "commandline",
       "ai",
       "saga"
+    ],
+    "sagas": [
+      "Tomato Maxing"
     ]
   }
 ];

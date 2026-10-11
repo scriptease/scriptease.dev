@@ -43,17 +43,19 @@
   }
   tagNames.sort(function (a, b) { return tagCounts[b] - tagCounts[a] || (a < b ? -1 : 1); });
   // Highlight the tags of the posts this page shows (blue) and dim the rest (gray):
-  // a post page shows one post, a tag or month page shows all posts listed on it,
+  // a post page shows one post, a tag, month or sagas page shows all posts listed on it,
   // and the 404 page (any path) lists the latest five.
   var pm = location.pathname.match(/\/posts\/([^\/]+)\/?$/);
   var tm = location.pathname.match(/\/tags\/([^\/]+)\/?$/);
   var am = location.pathname.match(/\/archive\/([^\/]+)\/?$/);
+  var sm = /^\/sagas\/?$/.test(location.pathname);
   var nf = document.querySelector(".not-found");
   var shown = posts.filter(function (p, i) {
     if (nf) return i < 5;
     if (pm) return p.slug === pm[1];
     if (tm) return (p.tags || []).some(function (t) { return tslug(t) === tm[1]; });
     if (am) return p.month === am[1];
+    if (sm) return (p.sagas || []).length > 0;
     return false;
   });
   var onTags = {};
@@ -68,7 +70,8 @@
 
   el.innerHTML =
     '<h2>Latest</h2><ul class="side-latest">' + latest + "</ul>" +
-    '<h2>Archive</h2><ul class="side-archive">' + archive + "</ul>" +
+    '<h2>Archive</h2><ul class="side-archive">' +
+    '<li><a href="/sagas/">Sagas</a></li>' + archive + "</ul>" +
     '<h2><a href="/tags/">Tags</a></h2><div class="side-cloud">' + cloud + "</div>" +
     '<h2>Elsewhere</h2><ul class="side-links">' +
     '<li><a href="https://scripteasesite.wordpress.com">WordPress mirror</a></li>' +

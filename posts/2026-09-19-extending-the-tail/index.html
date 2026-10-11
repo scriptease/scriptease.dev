@@ -43,7 +43,7 @@
 <article class="post">
 <h1>Extending the Tail</h1>
 <p class="post-tags"><a href="/tags/networking/">#networking</a> <a href="/tags/macos/">#macos</a> <a href="/tags/ai/">#ai</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Couch computing saga: <a href="https://scriptease.dev/posts/2026-07-26-one-more-hop/">1. One More Hop</a> · <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">2. A Hoarder's Dream</a> · <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">3. The couch group</a> · 4. Extending the Tail</em></p>
+<p><em>The <a href="/sagas/#couch-computing">Couch computing saga</a>: <a href="/posts/2026-07-26-one-more-hop/">1. One More Hop</a> · <a href="/posts/2026-09-12-a-hoarders-dream/">2. A Hoarder's Dream</a> · <a href="/posts/2026-09-14-the-couch-group/">3. The couch group</a> · 4. Extending the Tail</em></p>
 <p>An AI had submitted code for review. I was on the couch with my iPad and wanted to review it there. The review tool only works from my desk — it sits behind the company's private network, and only my Mac knows the way in. I could walk to the desk. Or I could pick up a recipe I'd left in my notes three months ago.</p>
 <h2>I left myself breadcrumbs</h2>
 <p>Back in July I'd proved one thing: my iPad can reach a service that only my Mac can open, if there's a relay in between. Tailscale — the private tunnel that connects my devices — runs beside the operating system rather than inside it. It can't use the work VPN — the private connection that lets my Mac into the company network. But a relay sitting on the Mac can. It takes the request from Tailscale, carries it through the VPN, and hands back the answer.</p>
@@ -53,7 +53,7 @@
 <p>The relay connected. But instead of showing an error or leaving me waiting, it sent me to the wrong address. The relay from my notes was too simple. It passed data along without reading it, and the work services needed more than the test service I'd tried in July. The relay was the right idea. This one wasn't up to the job.</p>
 <h2>Get it to work, then get it right</h2>
 <p>Claude replaced the raw pipe with a proper proxy. Same idea: sit between Tailscale and the VPN. But instead of passing bytes blindly, it speaks HTTP. It rewrites the name on the request to the site's real name, makes the VPN hop, and rewrites the response back to the tailnet address. One Python script, nothing beyond the standard library.</p>
-<p>In <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">the previous post</a> I'd set up a dashboard called devboard to manage all my local services — start, stop, see what's running. I wanted the new proxy in there immediately, so I could watch the green dot appear while Claude was still working on it. Claude registered the service, the dot turned green, and devboard printed a link. I tapped it on the iPad. Gerrit loaded. The code review was right there.</p>
+<p>In <a href="/posts/2026-09-14-the-couch-group/">the previous post</a> I'd set up a dashboard called devboard to manage all my local services — start, stop, see what's running. I wanted the new proxy in there immediately, so I could watch the green dot appear while Claude was still working on it. Claude registered the service, the dot turned green, and devboard printed a link. I tapped it on the iPad. Gerrit loaded. The code review was right there.</p>
 <h2>One down, and then three more</h2>
 <p>"Can you add Nexus and Jenkins?" Nexus stores our builds; Jenkins runs our deployments. Same setup — all three sites live at the same internal address. One copy of the script per name, one command each. Then I asked for the internal links page, a different server but the same pattern.</p>
 <p>I got all four services running in the time it took to fix the first one. Three of them just worked. Jenkins sent me from page to page five times and landed on a white screen.</p>
@@ -66,7 +66,7 @@
 <h2>All four dots green</h2>
 <p><img alt="The devboard Tailnet project: gerrit, nexus, jenkins, and links — all four running" src="assets/extending-the-tail/devboard-tailnet.jpg" />
 <em>Four services, managed from the dashboard</em></p>
-<p>Four green dots in <a href="https://scriptease.dev/posts/2026-09-14-the-couch-group/">the dashboard</a> from five days ago. I extended the project and added a devboard command to start all four at once. Gerrit for reviewing code, Nexus for builds, Jenkins for deployments, and the internal links page for finding things. All reachable from the iPad, through my Mac that stays awake at home.</p>
+<p>Four green dots in <a href="/posts/2026-09-14-the-couch-group/">the dashboard</a> from five days ago. I extended the project and added a devboard command to start all four at once. Gerrit for reviewing code, Nexus for builds, Jenkins for deployments, and the internal links page for finding things. All reachable from the iPad, through my Mac that stays awake at home.</p>
 <p>I'd had a recipe for opening one door. It sat in my notes for three months. Today I handed those notes to an AI and said: make it real.</p>
 <p>Now I can access it from anywhere.</p>
 </article>

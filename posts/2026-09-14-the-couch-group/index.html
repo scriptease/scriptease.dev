@@ -43,7 +43,7 @@
 <article class="post">
 <h1>The couch group</h1>
 <p class="post-tags"><a href="/tags/ipad/">#ipad</a> <a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The Couch computing saga: <a href="https://scriptease.dev/posts/2026-07-26-one-more-hop/">1. One More Hop</a> · <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">2. A Hoarder's Dream</a> · 3. The couch group · <a href="https://scriptease.dev/posts/2026-09-19-extending-the-tail/">4. Extending the Tail</a></em></p>
+<p><em>The <a href="/sagas/#couch-computing">Couch computing saga</a>: <a href="/posts/2026-07-26-one-more-hop/">1. One More Hop</a> · <a href="/posts/2026-09-12-a-hoarders-dream/">2. A Hoarder's Dream</a> · 3. The couch group · <a href="/posts/2026-09-19-extending-the-tail/">4. Extending the Tail</a></em></p>
 <p>I keep notes on every service I run. Which port, which address, which flags for the home network — keeping track of them is a hassle. So I started a research project to offload all of it to a tool. It found exactly what I wanted.</p>
 <h2>The notes</h2>
 <p>The day before, I had built a movie server for the iPad. Point it at a folder, open the browser on port 8080, watch. That part was done. Running it meant remembering the command: which folder, which port, which flags.</p>
@@ -64,7 +64,7 @@
 <p><img alt="The devboard couch group: couch-serve, Unsloth Studio, and MTPLX — couch-serve has the orange network asterisk" src="assets/the-couch-group/devboard-couch.png" />
 <em>The first three services I added, couch-serve with the orange asterisk</em></p>
 <h2>Too many doors</h2>
-<p>I noticed the couch services from <a href="https://scriptease.dev/posts/2026-09-12-a-hoarders-dream/">the previous post</a> were also reachable from outside, through the work VPN. The default was to bind to every interface, every network. That's what made it work from the iPad without configuration, but it also meant anyone on the VPN could reach them.</p>
+<p>I noticed the couch services from <a href="/posts/2026-09-12-a-hoarders-dream/">the previous post</a> were also reachable from outside, through the work VPN. The default was to bind to every interface, every network. That's what made it work from the iPad without configuration, but it also meant anyone on the VPN could reach them.</p>
 <p>So I adjusted the binding. Instead of every interface, the server now listens on the ones it needs: the Mac, the local network, the tunnel. The zero-configuration flavor stays — you still just run it and it works from the iPad. It just stops answering where it shouldn't.</p>
 <h2>The list kept growing</h2>
 <p>I went through my notes looking for every time I had to look up a start command or tell an AI to launch something. Every one of those became a devboard entry. The website folder, so I can start a dev server and check the current state from my iPad. The work setup: app server and database, both behind switches now.</p>

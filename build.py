@@ -13,6 +13,7 @@ writes:
     posts/<slug>/index.html    one page per post
     posts/<slug>/assets/...    the post's copied images
     archive/<YYYY-MM>/index.html   month overview (that month's posts)
+    sagas/index.html           every saga with its parts (frontmatter `saga:`)
     posts.js                   window.POSTS metadata (newest first), for the sidebar
 
 The site is served at an apex domain (scriptease.dev), so pages use absolute
@@ -133,6 +134,17 @@ def month_label(ym):
         return datetime.date(int(y), int(mo), 1).strftime("%B %Y")
     except Exception:
         return ym
+
+
+def parse_sagas(value):
+    """`[Fish Slop 4, Local AI 3]` -> [("Fish Slop", 4), ("Local AI", 3)].
+    Nav lines and name validation live in the vault's Scripts/blog-sagas.py."""
+    out = []
+    for item in value.strip("[] ").split(","):
+        m = re.match(r'^(.+?)\s+(\d+)$', item.strip())
+        if m:
+            out.append((m.group(1), int(m.group(2))))
+    return out
 
 
 def tag_slug(tag):
@@ -275,7 +287,9 @@ def build_post(md_path):
     # img src is left exactly as the markdown writes it (assets/<slug>/x.png,
     # relative to the post page) and the assets tree is copied 1:1, so paths
     # match with no rewriting.
-    html = md_to_html(body)
+    # Absolute links to this site become root-relative, so they also work in
+    # a local preview.
+    html = md_to_html(body).replace('href="%s/' % SITE_URL, 'href="/')
     tags = [t.strip().lstrip("#") for t in fm.get("tags", "").strip("[] ").split(",") if t.strip()]
     tags_html = ""
     if tags:
@@ -296,6 +310,8 @@ def build_post(md_path):
         "published": fm.get("published") or created,
         "month": month_of(created),
         "tags": tags,
+        "sagas": parse_sagas(fm.get("saga", "")),
+        "saga_label": fm.get("saga_label") or title,
         "article": article,
     }
 
@@ -373,6 +389,35 @@ def build_tag_pages(posts):
     build_tag_cloud(tags)
 
 
+def build_saga_page(posts):
+    """/sagas/ — one section per saga (anchor = tag_slug of its name), parts in
+    order. The saga with the most recently published part comes first."""
+    sagas = {}
+    for p in posts:
+        for name, part in p["sagas"]:
+            sagas.setdefault(name, []).append((part, p))
+    order = sorted(sagas, key=lambda n: max(p["published"] for _, p in sagas[n]),
+                   reverse=True)
+    sections = []
+    for name in order:
+        parts = sorted(sagas[name], key=lambda m: m[0])
+        rows = "\n".join(
+            '<li><span class="part">%d.</span> <a href="/posts/%s/">%s</a></li>'
+            % (part, p["slug"], escape(p["saga_label"])) for part, p in parts)
+        sections.append(
+            '<section class="saga" id="{id}"><h2><a href="/posts/{first}/">{name}</a></h2>\n'
+            '<ol class="saga-parts">\n{rows}\n</ol></section>'.format(
+                id=tag_slug(name), first=parts[0][1]["slug"], name=escape(name), rows=rows))
+    content = ('<section class="intro"><h1>Sagas</h1>'
+               '<p>Stories told over several posts, each part building on the last.</p>'
+               '</section>\n%s' % "\n".join(sections))
+    out = REPO / "sagas" / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(PAGE.format(
+        title="Sagas — %s" % SITE_TITLE, site=SITE_TITLE,
+        tagline=SITE_TAGLINE, content=content, meta=""))
+
+
 def build_tag_cloud(tags):
     """/tags/ — every tag as a link, font-size scaled by how often it's used."""
     if not tags:
@@ -407,7 +452,8 @@ def write_posts_js(posts):
     page. Titles stored raw (JSON-escaped); sidebar.js HTML-escapes on render."""
     data = [
         {"slug": p["slug"], "title": p["title"], "hook": p["hook"],
-         "date": p["created"], "month": p["month"], "tags": p["tags"]}
+         "date": p["created"], "month": p["month"], "tags": p["tags"],
+         "sagas": [name for name, _ in p["sagas"]]}
         for p in posts
     ]
     (REPO / "posts.js").write_text(
@@ -485,7 +531,7 @@ def main():
     only = set(sys.argv[1:])
     md_files = [
         p for p in VAULT_BLOG.rglob("*.md")
-        if not p.name.startswith(("📌", "📜", "🧩"))
+        if not p.name.startswith(("📌", "📜", "🧩", "📚"))
         and "rejects" not in p.parts and "drafts" not in p.parts
     ]
     if only:
@@ -501,6 +547,7 @@ def main():
     write_post_pages(sorted(posts, key=lambda p: (p["published"], p["slug"])))
     build_month_pages(posts)
     build_tag_pages(posts)
+    build_saga_page(posts)
     write_posts_js(posts)
     write_search_index(posts)
     write_feed(posts)
