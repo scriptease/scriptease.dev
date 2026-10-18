@@ -1,5 +1,24 @@
 window.POSTS = [
   {
+    "slug": "2026-10-18-making-our-app-leak-its-secrets",
+    "title": "Making Our App Leak Its Secrets",
+    "hook": "Every bug has two suspects: the app and the server. Normally I only interrogate the server, because the app won't talk. Today I made it talk, and halfway through my AI got stopped for cyber misconduct.",
+    "date": "2026-10-18",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "agent",
+      "commandline",
+      "skills",
+      "ios",
+      "debugging",
+      "saga"
+    ],
+    "sagas": [
+      "AXI"
+    ]
+  },
+  {
     "slug": "2026-10-11-factory-reset",
     "title": "Factory Reset",
     "hook": "In April I built a factory so AI could build software without me. By August, nothing went through it anymore.",

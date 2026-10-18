@@ -7,7 +7,58 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sun, 11 Oct 2026 07:49:20 +0200</lastBuildDate>
+<lastBuildDate>Sun, 18 Oct 2026 21:30:05 +0200</lastBuildDate>
+<item>
+<title>Making Our App Leak Its Secrets</title>
+<link>https://scriptease.dev/posts/2026-10-18-making-our-app-leak-its-secrets/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-10-18-making-our-app-leak-its-secrets/</guid>
+<pubDate>Sun, 18 Oct 2026 21:30:05 +0200</pubDate>
+<category>ai</category><category>agent</category><category>commandline</category><category>skills</category><category>ios</category><category>debugging</category><category>saga</category><description>Every bug has two suspects: the app and the server. Normally I only interrogate the server, because the app won't talk. Today I made it talk, and halfway through my AI got stopped for cyber misconduct.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Making Our App Leak Its Secrets</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/skills/">#skills</a> <a href="/tags/ios/">#ios</a> <a href="/tags/debugging/">#debugging</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#axi">AXI saga</a>: <a href="/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · <a href="/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · <a href="/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · <a href="/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a> · <a href="/posts/2026-10-09-anticipation/">5. Anticipation</a> · 6. Making Our App Leak Its Secrets</em></p>
+<p>Every bug has two suspects: the app and the server. Normally I only interrogate the server, because the app won't talk. Today I made it talk, and halfway through my AI got stopped for cyber misconduct.</p>
+<h2>The usual suspects</h2>
+<p>Our iPad apps talk to a server, the computer behind the app. When something goes wrong, the first question is always the same: which of the two is the culprit? If I know that, the problem is already halfway solved.</p>
+<p>My colleagues answer it with Proxyman, a program on the Mac that sits between the app and the server and shows every message passing by. A wiretap. It has one catch: it has to be running before the bug happens.</p>
+<p>I answer it from the other end. The server keeps records of everything the app ever sent it, and I ask its database. That works afterwards, which is exactly what a reported bug needs: a customer sends a screenshot, I find the receipt. My AI has <a href="/posts/2026-08-02-connecting-50-databases-to-an-ai/">a command for this</a> and asks the database itself.</p>
+<p>Before, and after. Nobody could ask during. While the app sits on a screen in a strange state, an order half built, a payment running, the one thing holding the answer is the app, and it has no way to say anything. My AI drives the fake iPad on my Mac <a href="/posts/2026-10-09-back-in-axion/">through Argent</a>, its remote control, and reads the screen the way a screen reader for the blind does: the labels on things, not the data behind them.</p>
+<p>I had everything connected: the database, the bug tickets, the work chat, the fake iPad. The app itself was silent.</p>
+<h2>"wouldn't it be easier if the app reveals its secrets?"</h2>
+<p>On a Sunday morning my <a href="/posts/2026-10-04-on-the-shoulders-of-giants/">YouTube watcher</a> had filed a talk from the AI Engineer conference in New York: "Teach Your Agent to Prove It's Done", by two engineers at WorkOS, a company that sells logins. Their demo bug: a sign-up form says success, you reload the page, and nothing was saved. An AI that only looks at the screen reports the job done. Their rule, trust the records over the AI's say-so: "status comes from records, not model prose." Their advice: let the AI see everything you would see.</p>
+<p>I was watching it, and then I saw it. I could only debug this way because I had the server's receipts. Wouldn't it be easier if the app reveals its secrets? Without going through the server.</p>
+<h2>Well hidden secrets</h2>
+<p>My first sentence to the AI was the complaint: it "can only read the accessibility labels and not the actual data behind it". I wanted the order the cart screen was showing, the customers a search had loaded, the state of a payment while it runs.</p>
+<p>The AI went reading and found that the app already shares secrets with humans who know the knock. Four taps here, two taps there. Gestures hidden in plain sight.</p>
+<p>Only on the fake iPad, never on a real one: "I don't want to expose this data to the outside."</p>
+<p>Two views: one for the whole app, one for the current screen, whatever it is holding right now. Some objects, the order, the customer, the store and the user, come out in the exact format the app uses to send them to the server, "because I want to be able to compare these objects with the server state".</p>
+<p>Everything else is plain text. "I'm fine with debug output that I can read." And a two-line summary per thing, with details on request, "so that we have progressive discovery": the AI skims first and digs only where it needs to.</p>
+<p>The app already had a side door, built for its forms. The secrets went behind it, under a new address: /expose. "I also came up with a nice name for this kind of feature."</p>
+<p>It's now in the foundation under all our iPad apps, so every app on top of it has it.</p>
+<h2>Secrets and safety</h2>
+<p>The AI was trying to install the app on the fake iPad. Mid-sentence, it stopped.</p>
+<p>"Your response above was stopped by a safety classifier. This is not a tool or API error. The rest of it was withheld." Category: cyber. "This request triggered restrictions on violative cyber content."</p>
+<p>A feature named expose, whose whole job is to leak, and an alarm had tripped. The app was ours. The secrets were ours. The only one they were leaking to was me.</p>
+<p>The AI carried on and didn't even mention it.</p>
+<h2>Secret delivery service</h2>
+<p>A side door like that has a door number, a port, and the system hands out a different one every launch. A human never needed to know, but the AI needs it for a secret handshake.</p>
+<p>So the app puts the door number on the screen: a one-pixel square, invisible to anyone looking.</p>
+<p>But it carries a label, and labels are the one thing my AI reads.</p>
+<h2>The confession</h2>
+<p>"Everything works as designed."</p>
+<p>No wiretap running, no database open, no server asked. Just the app, answering for itself.</p>
+<p>Two different apps, one foundation underneath, so both had the feature without a line of their own. In the first, the AI opened the flip-flops category and asked the screen. Back came the product with all its variants. In the second it asked the whole app: the customer's shopping in progress, four carts, the postcode data behind the shipping screen, the logged-in store. The parts each app adds of its own showed up too, nothing extra to do.</p>
+<p>Then the AI had one warning. The user record carries a fingerprint of the PIN, the same one the app uploads to the server. "Simulator only, but do not paste it into tickets."</p>
+<p>The app leaks its secrets. That was the point.</p>
+<h2>Before, after and in the middle</h2>
+<p>That evening the AI filed the ticket and sent both changes for review: the app side, and the command that reads it, an <a href="/posts/2026-08-30-the-checklist-id-been-following/">AXI</a>, a command written for an AI reader.</p>
+<p>The talk had one more rule: keep receipts. Whenever an AI checks something, let it leave a screenshot and a record behind, because a pile of those is worth something later. Screenshots my AI already took. Now it has an AXI for the other half: the app's own account of what it held, in the server's words, filed next to the screenshot.</p>
+<p>Three ways to look now. Proxyman, before. The server's receipts, after. And the app itself, in the middle of it.</p>
+<p>The browser app is next. Maybe.</p>
+<p>If there are multiple suspects, I make them talk.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Factory Reset</title>
 <link>https://scriptease.dev/posts/2026-10-11-factory-reset/</link>
@@ -78,7 +129,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Anticipation</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/skills/">#skills</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#axi">AXI saga</a>: <a href="/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · <a href="/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · <a href="/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · <a href="/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a> · 5. Anticipation</em></p>
+<p><em>The <a href="/sagas/#axi">AXI saga</a>: <a href="/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · <a href="/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · <a href="/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · <a href="/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a> · 5. Anticipation · <a href="/posts/2026-10-18-making-our-app-leak-its-secrets/">6. Making Our App Leak Its Secrets</a></em></p>
 <p>Every command I write for my AI has one job before the real one: anticipate what the AI will do next, and tell it before it asks. The first colleague to try one got no head start at all. The command failed, the AI pondered, and then he pondered.</p>
 <h2>"can you find the comment"</h2>
 <p>I no longer open Jira, the to-do list our team shares, myself. When a colleague commented on one of my tickets, I asked my AI to find it.</p>
@@ -121,7 +172,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Back in AXIon</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/skills/">#skills</a> <a href="/tags/ios/">#ios</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#axi">AXI saga</a>: <a href="/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · <a href="/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · <a href="/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · 4. Back in AXIon · <a href="/posts/2026-10-09-anticipation/">5. Anticipation</a></em></p>
+<p><em>The <a href="/sagas/#axi">AXI saga</a>: <a href="/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · <a href="/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · <a href="/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · 4. Back in AXIon · <a href="/posts/2026-10-09-anticipation/">5. Anticipation</a> · <a href="/posts/2026-10-18-making-our-app-leak-its-secrets/">6. Making Our App Leak Its Secrets</a></em></p>
 <p>At lunch I was the one holding the iPad, turning it while my AI waited for my verdict. By the evening the AI was logging in and out of that iPad by itself.</p>
 <h2>This is not enough</h2>
 <p>Our iPad app has a barcode scanner, and on iOS 27, the newest version of the iPad's operating system, the camera picture had started coming up sideways. The fix had been in for a week. What was missing was the proof, and this one can't be faked on a fake iPad: the bug only shows on a real one, turned in your hands.</p>
@@ -176,7 +227,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Not My First Rodeo</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/skills/">#skills</a> <a href="/tags/jira/">#jira</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#axi">AXI saga</a>: <a href="/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · <a href="/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · 3. Not My First Rodeo · <a href="/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a> · <a href="/posts/2026-10-09-anticipation/">5. Anticipation</a></em></p>
+<p><em>The <a href="/sagas/#axi">AXI saga</a>: <a href="/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · <a href="/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · 3. Not My First Rodeo · <a href="/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a> · <a href="/posts/2026-10-09-anticipation/">5. Anticipation</a> · <a href="/posts/2026-10-18-making-our-app-leak-its-secrets/">6. Making Our App Leak Its Secrets</a></em></p>
 <p>One time too many, my AI told me it can't read the attachments on a ticket, or attach a screenshot. So I did its dirty work and dragged the screenshots in myself.</p>
 <h2>Screenshots are receipts</h2>
 <p>At work, our tickets live in Jira, the to-do list a software team shares. My AI writes most of mine now. It reads them, comments on them and moves them along through Rovo, the official Jira plug-in from Atlassian, the company behind Jira. Think of a plug-in as an adapter between a tool and the AI, and MCP as the standard socket it fits into.</p>
@@ -920,7 +971,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>AXI All the Things</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/skills/">#skills</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#axi">AXI saga</a>: <a href="/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · 2. AXI All the Things · <a href="/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · <a href="/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a> · <a href="/posts/2026-10-09-anticipation/">5. Anticipation</a></em></p>
+<p><em>The <a href="/sagas/#axi">AXI saga</a>: <a href="/posts/2026-08-30-the-checklist-id-been-following/">1. The Checklist I'd Been Following</a> · 2. AXI All the Things · <a href="/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · <a href="/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a> · <a href="/posts/2026-10-09-anticipation/">5. Anticipation</a> · <a href="/posts/2026-10-18-making-our-app-leak-its-secrets/">6. Making Our App Leak Its Secrets</a></em></p>
 <p>I just got a notification on my phone: one of my testers' apps had crashed. It didn't say where.</p>
 <h2>Why do I look for the crashes myself?</h2>
 <p>Before an iPad app ships, testers get it early through TestFlight, Apple's app for beta versions. When it crashes on them, I get a report. What reached me was a note about a crash, without the report.</p>
@@ -1448,7 +1499,7 @@ any libraries, and it must render even in Safari on the iPad
 <content:encoded><![CDATA[<article class="post">
 <h1>The Checklist I'd Been Following for Ten Years</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/automation/">#automation</a> <a href="/tags/skills/">#skills</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#axi">AXI saga</a>: 1. The Checklist I'd Been Following · <a href="/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · <a href="/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · <a href="/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a> · <a href="/posts/2026-10-09-anticipation/">5. Anticipation</a></em></p>
+<p><em>The <a href="/sagas/#axi">AXI saga</a>: 1. The Checklist I'd Been Following · <a href="/posts/2026-09-26-axi-all-the-things/">2. AXI All the Things</a> · <a href="/posts/2026-10-07-not-my-first-rodeo/">3. Not My First Rodeo</a> · <a href="/posts/2026-10-09-back-in-axion/">4. Back in AXIon</a> · <a href="/posts/2026-10-09-anticipation/">5. Anticipation</a> · <a href="/posts/2026-10-18-making-our-app-leak-its-secrets/">6. Making Our App Leak Its Secrets</a></em></p>
 <p>A stranger's blog post gave a name to something I'd been doing for ten years without noticing. An hour later I was checking my own work against his ten rules.</p>
 <h2>The question I stopped asking</h2>
 <p>At work, when I finish a piece of code, I send it off to be judged. A colleague reads it, and so does a machine: somewhere in a server room a computer rebuilds the whole product and runs a few thousand checks. Twenty minutes, if nothing is queued ahead of me. A no means I just broke something.</p>
