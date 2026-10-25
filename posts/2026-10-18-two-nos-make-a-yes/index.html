@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Two Nos Make a Yes — scriptease.dev</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="scriptease.dev">
+<meta property="og:title" content="Two Nos Make a Yes">
+<meta property="og:description" content="In July I wrote that I didn't know what to do with an AI code reviewer. By October one was reading every change our company makes, with a vote, and last week it objected to being overruled.">
+<meta property="og:url" content="https://scriptease.dev/posts/2026-10-18-two-nos-make-a-yes/">
+<meta property="og:image" content="https://scriptease.dev/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Two Nos Make a Yes</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#hands-free">Hands-Free saga</a>: <a href="/posts/2026-07-05-the-ticket-that-filed-itself/">1. The Ticket That Filed Itself</a> · <a href="/posts/2026-07-18-siri-add-something-to-my-research-queue/">2. Siri, Add Something to My Research Queue</a> · <a href="/posts/2026-07-25-my-personal-hacker-news/">3. My Personal Hacker News</a> · <a href="/posts/2026-10-04-on-the-shoulders-of-giants/">4. On the Shoulders of Giants</a> · <a href="/posts/2026-10-11-factory-reset/">5. Factory Reset</a> · 6. Two Nos Make a Yes</em></p>
+<p>In July I wrote that I didn't know what to do with an AI code reviewer. By October one was reading every change our company makes, with a vote, and last week it objected to being overruled.</p>
+<h2>"I still don't know what to do with the reviewer"</h2>
+<p><a href="/posts/2026-07-29-three-different-ocrs/">The reviewer I tried in July</a> wrote a dozen comments on one change. Half were opinions, one was real. I kept the one good lead and filed the idea under "maybe".</p>
+<p>Since then, the models got better. And the tokens got free.</p>
+<p>In October, Anthropic, the company behind Claude, started handing its subscription plans a monthly allowance that only programs may spend, never a person typing in the chat. For a team like ours, up to five hundred dollars a month, use it or lose it.</p>
+<p>That flipped the question. Not "is an AI reviewer worth paying for" but "what would I run on money that evaporates at the end of the month".</p>
+<h2>Read everything, touch nothing</h2>
+<p>The reviewer started as a script I ran by hand on a colleague's change, a second opinion before my own review. It became a skill, a written recipe my AI follows, so anyone on the team could run it. <a href="/posts/2026-10-11-factory-reset/">Last week</a> it became a favour for a colleague who had run out of allowance.</p>
+<p>Then it went live. Every change, in every project, gets read by Opus, the biggest Claude model, in a sealed box with a read-only copy of the code. It may look, search and read. It may not change anything.</p>
+<p>Its findings land in Gerrit, the tool where every change at our company waits for review, pinned to the line, each with a severity, a why and a fix. Gerrit lets a comment be marked as coming from a robot, and the old version of its web page, which most of us still use, hides those entirely. "Which I kind of like." Then it turned out my own AI couldn't see them either. So I dropped the robot label, and the reviewer became a commenter like the rest of us.</p>
+<h2>Can it say no?</h2>
+<p>Within days my colleagues asked for more. The reviewer rates every finding HIGH, MEDIUM or LOW, from serious to minor. If it finds a HIGH, let it vote. In Gerrit a vote of minus one is a flag, not a lock. It says "look again", and it vanishes as soon as the change is updated. So I gave it the flag.</p>
+<p>My test change showed the first crack. The same issue came back HIGH in one run and MEDIUM in the next. Same code, same reviewer, different mood.</p>
+<p>"ok then lets push it and test on the next reviews"</p>
+<p>The reviewer's first job after that was to review the change that gave it the vote. It found a minus one that never gets cleared. My AI checked the server's rules: the vote is dropped whenever the change is updated. "leave it."</p>
+<p>The reviewer never heard that. Every run started from scratch.</p>
+<h2>Only one percent replies</h2>
+<p>By Saturday I had a worry and wanted it "found in reality, not just implemented". A doom loop: HIGH findings, fixed, then MEDIUM, fixed, then LOW, forever.</p>
+<p>The AI went through every review so far. The loop was real, but it wasn't a ladder. Each run reports a different random handful of what it sees, so a re-review finds "new" things that were there all along.</p>
+<p>Developers had replied to one percent of the reviewer's comments.</p>
+<p>"nobody responds because it doesn't have an effect at the moment. So it's kind of a chicken and egg problem."</p>
+<p>So instead of feeding the reviewer its own past, I fed it ours. The next review now sees every finding a human has answered, and what the human said. A rejected finding stays rejected. Reply to the robot, and the robot listens.</p>
+<p>"we are 10 people, so I can tell them on Monday."</p>
+<h2>A valid concern</h2>
+<p>I pushed that change. The reviewer reviewed it, rated it MEDIUM, and warned me about prompt injection, the trick of smuggling orders to an AI inside text it reads:</p>
+<blockquote>
+<p>[…] the owner (or any registered user) can reply 'not an issue' to a HIGH finding. […] The model is also told to obey these comments, so this is a direct prompt-injection path for non-reviewers.</p>
+</blockquote>
+<p>The reviewer had looked at the one feature that lets people tell it no, and called it an attack. Its fix: stop listening to the person who wrote the change.</p>
+<p>I replied on the line, the first human reply the new loop ever saw: "Intended: the owner rejecting a finding is the use case."</p>
+<h2>Looping loops</h2>
+<p>On Monday afternoon I ran the doom loop on purpose. My AI had written a small command-line tool for our ticket system, and I told it: "push until only low". Fix the findings, upload the fix, wait for the review, repeat until nothing above LOW is left. Every round the reviewer found something new and sounded more convinced: the script "mostly works", "is mostly sound", "is mostly solid", "is solid overall". Round after round, and in under an hour it got there.</p>
+<p>While that ran, another change of mine was ready, so I asked a colleague in Slack, our work chat, to review it.</p>
+<p>The link in my message woke up my Slack watcher, the one from the favour. It had a second AI, a GPT model, review the change, and posted a HIGH on it in my name.</p>
+<p>Then my colleague: "Review agent is complaining with a High."</p>
+<p>Me: "s&amp;%# I forgot the trigger ahaha"</p>
+<p>My AI checked the finding. The code already did what it asked for. My AI answered it on the change, and I pasted the answer into Slack: "the HIGH finding is wrong, so there is nothing to fix." That message had the link in it too. The watcher woke up again and found a fresh HIGH, plus a few MEDIUMs.</p>
+<p>My colleague: "oh, do the two of them want to step outside?"</p>
+<p>And then: "the least you can do is comment it so a review agent stops nagging."</p>
+<p>The findings I disagreed with already had a no on the change: one I had typed just before asking for the review, "It's fine there is only one window when this runs", and my AI's answer to the HIGH. I fixed what was left. The next Opus review ended: "both reviewer-rejected findings stay excluded." My colleague approved right after.</p>
+<p>Both nos came from the change's owner. Intended.</p>
+<p>It took no for an answer.</p>
+<h2>Can it say yes?</h2>
+<p>On another change of mine, the first round found a mistake that would have broken the server's answer, hidden by a test I had written that checked a blank instead of the real thing. My colleagues' verdict, as I had summed it up that Saturday: "it's good to have it, and it's spotted some issues where we could have missed something." But it only knows one vote. It can flag a change. It can't approve one.</p>
+<p>Not long after, <a href="/posts/2026-07-25-my-personal-hacker-news/">the news digest my AI writes for me</a> served <a href="https://lethain.com/small-changes/">an article by Will Larson</a> about small changes at his company. There a change can skip the human approval if it's small, the AI review found nothing serious, and the author has a track record in that part of the code. The bot that approves them has "only two options: approve or ignore." Only a small share of changes qualifies so far.</p>
+<p>That night I asked my AI what it would take here. One risk it named: a crafted change that talks the reviewer into finding nothing. Prompt injection, the attack the reviewer had warned me about days earlier. This time it was a valid concern. So the model can't be the only gate. The size, the author's track record and the projects too sensitive for automatic approval would be checked by plain code.</p>
+<p>It's a ticket for the team to discuss now, not a feature. The first step is only to count how many of our changes would have qualified.</p>
+<p>In a few months it went from a maybe to a reviewer that reads everything we write, flags what it rates high, and listens when we answer. It learned to take no for an answer. Next, maybe, it learns to say yes.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-10-18-making-our-app-leak-its-secrets/">← Making Our App Leak Its Secrets</a><span></span></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

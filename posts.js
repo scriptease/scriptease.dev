@@ -1,5 +1,22 @@
 window.POSTS = [
   {
+    "slug": "2026-10-18-two-nos-make-a-yes",
+    "title": "Two Nos Make a Yes",
+    "hook": "In July I wrote that I didn't know what to do with an AI code reviewer. By October one was reading every change our company makes, with a vote, and last week it objected to being overruled.",
+    "date": "2026-10-18",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "claude",
+      "agent",
+      "automation",
+      "saga"
+    ],
+    "sagas": [
+      "Hands-Free"
+    ]
+  },
+  {
     "slug": "2026-10-18-making-our-app-leak-its-secrets",
     "title": "Making Our App Leak Its Secrets",
     "hook": "Every bug has two suspects: the app and the server. Normally I only interrogate the server, because the app won't talk. Today I made it talk, and halfway through my AI got stopped for cyber misconduct.",

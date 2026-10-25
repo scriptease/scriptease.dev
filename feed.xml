@@ -7,7 +7,67 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sun, 18 Oct 2026 21:30:05 +0200</lastBuildDate>
+<lastBuildDate>Sun, 25 Oct 2026 14:07:10 +0100</lastBuildDate>
+<item>
+<title>Two Nos Make a Yes</title>
+<link>https://scriptease.dev/posts/2026-10-18-two-nos-make-a-yes/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-10-18-two-nos-make-a-yes/</guid>
+<pubDate>Sun, 25 Oct 2026 14:07:10 +0100</pubDate>
+<category>ai</category><category>claude</category><category>agent</category><category>automation</category><category>saga</category><description>In July I wrote that I didn't know what to do with an AI code reviewer. By October one was reading every change our company makes, with a vote, and last week it objected to being overruled.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Two Nos Make a Yes</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#hands-free">Hands-Free saga</a>: <a href="/posts/2026-07-05-the-ticket-that-filed-itself/">1. The Ticket That Filed Itself</a> · <a href="/posts/2026-07-18-siri-add-something-to-my-research-queue/">2. Siri, Add Something to My Research Queue</a> · <a href="/posts/2026-07-25-my-personal-hacker-news/">3. My Personal Hacker News</a> · <a href="/posts/2026-10-04-on-the-shoulders-of-giants/">4. On the Shoulders of Giants</a> · <a href="/posts/2026-10-11-factory-reset/">5. Factory Reset</a> · 6. Two Nos Make a Yes</em></p>
+<p>In July I wrote that I didn't know what to do with an AI code reviewer. By October one was reading every change our company makes, with a vote, and last week it objected to being overruled.</p>
+<h2>"I still don't know what to do with the reviewer"</h2>
+<p><a href="/posts/2026-07-29-three-different-ocrs/">The reviewer I tried in July</a> wrote a dozen comments on one change. Half were opinions, one was real. I kept the one good lead and filed the idea under "maybe".</p>
+<p>Since then, the models got better. And the tokens got free.</p>
+<p>In October, Anthropic, the company behind Claude, started handing its subscription plans a monthly allowance that only programs may spend, never a person typing in the chat. For a team like ours, up to five hundred dollars a month, use it or lose it.</p>
+<p>That flipped the question. Not "is an AI reviewer worth paying for" but "what would I run on money that evaporates at the end of the month".</p>
+<h2>Read everything, touch nothing</h2>
+<p>The reviewer started as a script I ran by hand on a colleague's change, a second opinion before my own review. It became a skill, a written recipe my AI follows, so anyone on the team could run it. <a href="/posts/2026-10-11-factory-reset/">Last week</a> it became a favour for a colleague who had run out of allowance.</p>
+<p>Then it went live. Every change, in every project, gets read by Opus, the biggest Claude model, in a sealed box with a read-only copy of the code. It may look, search and read. It may not change anything.</p>
+<p>Its findings land in Gerrit, the tool where every change at our company waits for review, pinned to the line, each with a severity, a why and a fix. Gerrit lets a comment be marked as coming from a robot, and the old version of its web page, which most of us still use, hides those entirely. "Which I kind of like." Then it turned out my own AI couldn't see them either. So I dropped the robot label, and the reviewer became a commenter like the rest of us.</p>
+<h2>Can it say no?</h2>
+<p>Within days my colleagues asked for more. The reviewer rates every finding HIGH, MEDIUM or LOW, from serious to minor. If it finds a HIGH, let it vote. In Gerrit a vote of minus one is a flag, not a lock. It says "look again", and it vanishes as soon as the change is updated. So I gave it the flag.</p>
+<p>My test change showed the first crack. The same issue came back HIGH in one run and MEDIUM in the next. Same code, same reviewer, different mood.</p>
+<p>"ok then lets push it and test on the next reviews"</p>
+<p>The reviewer's first job after that was to review the change that gave it the vote. It found a minus one that never gets cleared. My AI checked the server's rules: the vote is dropped whenever the change is updated. "leave it."</p>
+<p>The reviewer never heard that. Every run started from scratch.</p>
+<h2>Only one percent replies</h2>
+<p>By Saturday I had a worry and wanted it "found in reality, not just implemented". A doom loop: HIGH findings, fixed, then MEDIUM, fixed, then LOW, forever.</p>
+<p>The AI went through every review so far. The loop was real, but it wasn't a ladder. Each run reports a different random handful of what it sees, so a re-review finds "new" things that were there all along.</p>
+<p>Developers had replied to one percent of the reviewer's comments.</p>
+<p>"nobody responds because it doesn't have an effect at the moment. So it's kind of a chicken and egg problem."</p>
+<p>So instead of feeding the reviewer its own past, I fed it ours. The next review now sees every finding a human has answered, and what the human said. A rejected finding stays rejected. Reply to the robot, and the robot listens.</p>
+<p>"we are 10 people, so I can tell them on Monday."</p>
+<h2>A valid concern</h2>
+<p>I pushed that change. The reviewer reviewed it, rated it MEDIUM, and warned me about prompt injection, the trick of smuggling orders to an AI inside text it reads:</p>
+<blockquote>
+<p>[…] the owner (or any registered user) can reply 'not an issue' to a HIGH finding. […] The model is also told to obey these comments, so this is a direct prompt-injection path for non-reviewers.</p>
+</blockquote>
+<p>The reviewer had looked at the one feature that lets people tell it no, and called it an attack. Its fix: stop listening to the person who wrote the change.</p>
+<p>I replied on the line, the first human reply the new loop ever saw: "Intended: the owner rejecting a finding is the use case."</p>
+<h2>Looping loops</h2>
+<p>On Monday afternoon I ran the doom loop on purpose. My AI had written a small command-line tool for our ticket system, and I told it: "push until only low". Fix the findings, upload the fix, wait for the review, repeat until nothing above LOW is left. Every round the reviewer found something new and sounded more convinced: the script "mostly works", "is mostly sound", "is mostly solid", "is solid overall". Round after round, and in under an hour it got there.</p>
+<p>While that ran, another change of mine was ready, so I asked a colleague in Slack, our work chat, to review it.</p>
+<p>The link in my message woke up my Slack watcher, the one from the favour. It had a second AI, a GPT model, review the change, and posted a HIGH on it in my name.</p>
+<p>Then my colleague: "Review agent is complaining with a High."</p>
+<p>Me: "s&amp;%# I forgot the trigger ahaha"</p>
+<p>My AI checked the finding. The code already did what it asked for. My AI answered it on the change, and I pasted the answer into Slack: "the HIGH finding is wrong, so there is nothing to fix." That message had the link in it too. The watcher woke up again and found a fresh HIGH, plus a few MEDIUMs.</p>
+<p>My colleague: "oh, do the two of them want to step outside?"</p>
+<p>And then: "the least you can do is comment it so a review agent stops nagging."</p>
+<p>The findings I disagreed with already had a no on the change: one I had typed just before asking for the review, "It's fine there is only one window when this runs", and my AI's answer to the HIGH. I fixed what was left. The next Opus review ended: "both reviewer-rejected findings stay excluded." My colleague approved right after.</p>
+<p>Both nos came from the change's owner. Intended.</p>
+<p>It took no for an answer.</p>
+<h2>Can it say yes?</h2>
+<p>On another change of mine, the first round found a mistake that would have broken the server's answer, hidden by a test I had written that checked a blank instead of the real thing. My colleagues' verdict, as I had summed it up that Saturday: "it's good to have it, and it's spotted some issues where we could have missed something." But it only knows one vote. It can flag a change. It can't approve one.</p>
+<p>Not long after, <a href="/posts/2026-07-25-my-personal-hacker-news/">the news digest my AI writes for me</a> served <a href="https://lethain.com/small-changes/">an article by Will Larson</a> about small changes at his company. There a change can skip the human approval if it's small, the AI review found nothing serious, and the author has a track record in that part of the code. The bot that approves them has "only two options: approve or ignore." Only a small share of changes qualifies so far.</p>
+<p>That night I asked my AI what it would take here. One risk it named: a crafted change that talks the reviewer into finding nothing. Prompt injection, the attack the reviewer had warned me about days earlier. This time it was a valid concern. So the model can't be the only gate. The size, the author's track record and the projects too sensitive for automatic approval would be checked by plain code.</p>
+<p>It's a ticket for the team to discuss now, not a feature. The first step is only to count how many of our changes would have qualified.</p>
+<p>In a few months it went from a maybe to a reviewer that reads everything we write, flags what it rates high, and listens when we answer. It learned to take no for an answer. Next, maybe, it learns to say yes.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Making Our App Leak Its Secrets</title>
 <link>https://scriptease.dev/posts/2026-10-18-making-our-app-leak-its-secrets/</link>
@@ -68,7 +128,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Factory Reset</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/maestro/">#maestro</a> <a href="/tags/automation/">#automation</a> <a href="/tags/security/">#security</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#hands-free">Hands-Free saga</a>: <a href="/posts/2026-07-05-the-ticket-that-filed-itself/">1. The Ticket That Filed Itself</a> · <a href="/posts/2026-07-18-siri-add-something-to-my-research-queue/">2. Siri, Add Something to My Research Queue</a> · <a href="/posts/2026-07-25-my-personal-hacker-news/">3. My Personal Hacker News</a> · <a href="/posts/2026-10-04-on-the-shoulders-of-giants/">4. On the Shoulders of Giants</a> · 5. Factory Reset</em></p>
+<p><em>The <a href="/sagas/#hands-free">Hands-Free saga</a>: <a href="/posts/2026-07-05-the-ticket-that-filed-itself/">1. The Ticket That Filed Itself</a> · <a href="/posts/2026-07-18-siri-add-something-to-my-research-queue/">2. Siri, Add Something to My Research Queue</a> · <a href="/posts/2026-07-25-my-personal-hacker-news/">3. My Personal Hacker News</a> · <a href="/posts/2026-10-04-on-the-shoulders-of-giants/">4. On the Shoulders of Giants</a> · 5. Factory Reset · <a href="/posts/2026-10-18-two-nos-make-a-yes/">6. Two Nos Make a Yes</a></em></p>
 <p>In April I built a factory so AI could build software without me. By August, nothing went through it anymore.</p>
 <h2>Software I want, how I want, when I want</h2>
 <p>AI could already write code. I wanted to say what I wanted, the way I wanted it, whenever it occurred to me, and have it show up built.</p>
@@ -402,7 +462,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>On the Shoulders of Giants</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/youtube/">#youtube</a> <a href="/tags/automation/">#automation</a> <a href="/tags/agent/">#agent</a> <a href="/tags/obsidian/">#obsidian</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#hands-free">Hands-Free saga</a>: <a href="/posts/2026-07-05-the-ticket-that-filed-itself/">1. The Ticket That Filed Itself</a> · <a href="/posts/2026-07-18-siri-add-something-to-my-research-queue/">2. Siri, Add Something to My Research Queue</a> · <a href="/posts/2026-07-25-my-personal-hacker-news/">3. My Personal Hacker News</a> · 4. On the Shoulders of Giants · <a href="/posts/2026-10-11-factory-reset/">5. Factory Reset</a></em></p>
+<p><em>The <a href="/sagas/#hands-free">Hands-Free saga</a>: <a href="/posts/2026-07-05-the-ticket-that-filed-itself/">1. The Ticket That Filed Itself</a> · <a href="/posts/2026-07-18-siri-add-something-to-my-research-queue/">2. Siri, Add Something to My Research Queue</a> · <a href="/posts/2026-07-25-my-personal-hacker-news/">3. My Personal Hacker News</a> · 4. On the Shoulders of Giants · <a href="/posts/2026-10-11-factory-reset/">5. Factory Reset</a> · <a href="/posts/2026-10-18-two-nos-make-a-yes/">6. Two Nos Make a Yes</a></em></p>
 <p>This morning I built a YouTube watcher. It will never watch a single video.</p>
 <p>It watches channels. When one of them posts something new, it hands the video to my researcher and goes back to staring at the channel page. It's not a viewer. It's a manager.</p>
 <h2>The researcher who needed hearing aids</h2>
@@ -2811,7 +2871,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>My Personal Hacker News</h1>
 <p class="post-tags"><a href="/tags/obsidian/">#obsidian</a> <a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/memory/">#memory</a> <a href="/tags/search/">#search</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#hands-free">Hands-Free saga</a>: <a href="/posts/2026-07-05-the-ticket-that-filed-itself/">1. The Ticket That Filed Itself</a> · <a href="/posts/2026-07-18-siri-add-something-to-my-research-queue/">2. Siri, Add Something to My Research Queue</a> · 3. My Personal Hacker News · <a href="/posts/2026-10-04-on-the-shoulders-of-giants/">4. On the Shoulders of Giants</a> · <a href="/posts/2026-10-11-factory-reset/">5. Factory Reset</a></em></p>
+<p><em>The <a href="/sagas/#hands-free">Hands-Free saga</a>: <a href="/posts/2026-07-05-the-ticket-that-filed-itself/">1. The Ticket That Filed Itself</a> · <a href="/posts/2026-07-18-siri-add-something-to-my-research-queue/">2. Siri, Add Something to My Research Queue</a> · 3. My Personal Hacker News · <a href="/posts/2026-10-04-on-the-shoulders-of-giants/">4. On the Shoulders of Giants</a> · <a href="/posts/2026-10-11-factory-reset/">5. Factory Reset</a> · <a href="/posts/2026-10-18-two-nos-make-a-yes/">6. Two Nos Make a Yes</a></em></p>
 <p>For 4,775 days I saved every link I liked. I rarely go back.</p>
 <p>This week they told me what I care about.</p>
 <h2>The place to get the news</h2>
@@ -3155,7 +3215,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>Siri, Add Something to My Research Queue</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/siri/">#siri</a> <a href="/tags/voice/">#voice</a> <a href="/tags/automation/">#automation</a> <a href="/tags/obsidian/">#obsidian</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#hands-free">Hands-Free saga</a>: <a href="/posts/2026-07-05-the-ticket-that-filed-itself/">1. The Ticket That Filed Itself</a> · 2. Siri, Add Something to My Research Queue · <a href="/posts/2026-07-25-my-personal-hacker-news/">3. My Personal Hacker News</a> · <a href="/posts/2026-10-04-on-the-shoulders-of-giants/">4. On the Shoulders of Giants</a> · <a href="/posts/2026-10-11-factory-reset/">5. Factory Reset</a></em></p>
+<p><em>The <a href="/sagas/#hands-free">Hands-Free saga</a>: <a href="/posts/2026-07-05-the-ticket-that-filed-itself/">1. The Ticket That Filed Itself</a> · 2. Siri, Add Something to My Research Queue · <a href="/posts/2026-07-25-my-personal-hacker-news/">3. My Personal Hacker News</a> · <a href="/posts/2026-10-04-on-the-shoulders-of-giants/">4. On the Shoulders of Giants</a> · <a href="/posts/2026-10-11-factory-reset/">5. Factory Reset</a> · <a href="/posts/2026-10-18-two-nos-make-a-yes/">6. Two Nos Make a Yes</a></em></p>
 <p>The best ideas I have arrive when both my hands are on the handlebars, kilometres from a keyboard. For a while I could catch them. This week I taught the machine to actually do something with them.</p>
 <h2>Hey Siri, add something</h2>
 <p>I ride a lot, and riding is where my head finally goes quiet enough to think. Which is the problem: the good thought shows up exactly when I can't write it down. Both hands are busy. Stopping to fish out my phone means the thought is already half gone by the time the screen wakes up.</p>
@@ -3945,7 +4005,7 @@ I own the story and supply the lived details. You supply digging and craft.
 <content:encoded><![CDATA[<article class="post">
 <h1>The Ticket That Filed Itself</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/jira/">#jira</a> <a href="/tags/gerrit/">#gerrit</a> <a href="/tags/automation/">#automation</a> <a href="/tags/voice/">#voice</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#hands-free">Hands-Free saga</a>: 1. The Ticket That Filed Itself · <a href="/posts/2026-07-18-siri-add-something-to-my-research-queue/">2. Siri, Add Something to My Research Queue</a> · <a href="/posts/2026-07-25-my-personal-hacker-news/">3. My Personal Hacker News</a> · <a href="/posts/2026-10-04-on-the-shoulders-of-giants/">4. On the Shoulders of Giants</a> · <a href="/posts/2026-10-11-factory-reset/">5. Factory Reset</a></em></p>
+<p><em>The <a href="/sagas/#hands-free">Hands-Free saga</a>: 1. The Ticket That Filed Itself · <a href="/posts/2026-07-18-siri-add-something-to-my-research-queue/">2. Siri, Add Something to My Research Queue</a> · <a href="/posts/2026-07-25-my-personal-hacker-news/">3. My Personal Hacker News</a> · <a href="/posts/2026-10-04-on-the-shoulders-of-giants/">4. On the Shoulders of Giants</a> · <a href="/posts/2026-10-11-factory-reset/">5. Factory Reset</a> · <a href="/posts/2026-10-18-two-nos-make-a-yes/">6. Two Nos Make a Yes</a></em></p>
 <p>Somewhere on the autobahn to Austria, a colleague filed a support ticket — both hands on the wheel the whole time.</p>
 <p>We were carpooling to a company trip. He'd taken over driving; the rest of us were in the backseat, deep in some AI discussion. Then a few phones buzzed at once: a work notification saying <em>he</em> had just created a new ticket in our tracker. Someone laughed — <em>he's filing tickets with his knees at 130 on the autobahn?</em></p>
 <p>He hadn't touched a thing. A little robot he'd built had done it for him, on its own, while he drove.</p>
