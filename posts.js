@@ -1,5 +1,22 @@
 window.POSTS = [
   {
+    "slug": "2026-10-25-out-for-today",
+    "title": "Out for Today",
+    "hook": "Every evening when I leave the office, even when the office is my kitchen table, I sign out in Slack with a message called Out for today. It lists everything I did that day. My AI writes it, because my AI was there for almost all of it. Last week a colleague told me it was too long.",
+    "date": "2026-10-25",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "slack",
+      "communication",
+      "claude",
+      "saga"
+    ],
+    "sagas": [
+      "Remembering"
+    ]
+  },
+  {
     "slug": "2026-10-18-two-nos-make-a-yes",
     "title": "Two Nos Make a Yes",
     "hook": "In July I wrote that I didn't know what to do with an AI code reviewer. By October one was reading every change our company makes, with a vote, and last week it objected to being overruled.",

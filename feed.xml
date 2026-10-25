@@ -7,7 +7,52 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sun, 25 Oct 2026 14:07:10 +0100</lastBuildDate>
+<lastBuildDate>Sun, 25 Oct 2026 14:23:56 +0100</lastBuildDate>
+<item>
+<title>Out for Today</title>
+<link>https://scriptease.dev/posts/2026-10-25-out-for-today/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-10-25-out-for-today/</guid>
+<pubDate>Sun, 25 Oct 2026 14:23:56 +0100</pubDate>
+<category>ai</category><category>slack</category><category>communication</category><category>claude</category><category>saga</category><description>Every evening when I leave the office, even when the office is my kitchen table, I sign out in Slack with a message called Out for today. It lists everything I did that day. My AI writes it, because my AI was there for almost all of it. Last week a colleague told me it was too long.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Out for Today</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/slack/">#slack</a> <a href="/tags/communication/">#communication</a> <a href="/tags/claude/">#claude</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#remembering">Remembering saga</a>: <a href="/posts/2026-07-12-the-posts-i-write-to-forget/">1. The Posts I Write to Forget</a> · <a href="/posts/2026-07-14-sharing-a-chat-with-myself/">2. Sharing a Chat With Myself</a> · <a href="/posts/2026-08-03-notes-left-for-the-next-me/">3. Notes Left for the Next Me</a> · <a href="/posts/2026-08-29-sharing-a-chat-with-myself-too/">4. Sharing a Chat With Myself Too</a> · <a href="/posts/2026-10-03-a-fableous-story-from-the-past/">5. A Fableous Story From the Past</a> · 6. Out for Today</em></p>
+<p>Every evening when I leave the office, even when the office is my kitchen table, I sign out in Slack, our workplace chat, with a message called <em>Out for today</em>. It lists everything I did that day. My AI writes it, because my AI was there for almost all of it. Last week a colleague told me it was too long.</p>
+<h2>Five versions of goodbye</h2>
+<p>The message is older than it looks. The first version, in April, was a recipe for my AI: go through every conversation I had with any AI that day, group what it finds by project, write bullets, put the result on my clipboard. I paste it into Slack myself, so I read it once more before it goes out, and I can take out a thing that isn't ready to be shared, or add the one that got lost. That step never changed.</p>
+<p>The rest changed a lot. In May I gave it limits and banned ticket numbers and file names from the text. In July the formatting moved out of the AI's hands into a small program, so two evenings could never drift apart in shape. Then I added a count of how many of my changes had made it into our shared code that day, because I liked seeing it. Each version was tighter than the one before. And every evening the message was still long.</p>
+<p>A colleague has started generating his own with the same recipe. His are just as long.</p>
+<h2>To my defense</h2>
+<p>My first reaction to "too long" was a defense, and I still think it's right: there is no filler in those messages. Every bullet is an outcome, every line is true, nothing is said twice. What I didn't have was an answer for why it felt long anyway.</p>
+<p>The same day, a <a href="https://www.reddit.com/r/softwareengineer/s/7jK48CqHYK">Reddit thread</a> landed in my reading pile. It started with a project manager settling estimate arguments with Claude screenshots, and the comments moved on to the whole office. One of them summed it up: "it's like everyone has an AI pet, and they are letting their pets do the work".</p>
+<h2>Everyone has an AI pet now</h2>
+<p>That's exactly how I think of mine. Half a year ago I had an AI send two colleagues a poem in Slack, and it was a stunt. Since then it has become normal for me that my agent talks to people. The thread was the first time I saw it described as normal for everyone, and as a nuisance.</p>
+<p>Mine is a small, eager helper that follows me from task to task and wants nothing more than to be useful. It does things on my behalf, and I'm the one who answers for them. I had already given it a name tag: every message my AI sends under my name ends with a small sign-off.</p>
+<p><img alt="A Slack message ending in &quot;Sent by&quot; and the pixel-art Claude emoji" src="assets/out-for-today/sent-by-claude.jpg" /></p>
+<p>The tag is there so the person reading knows who they're talking to: not me, my pet, acting for me. Since I built it <a href="/posts/2026-10-03-my-new-slick-cli/">a way to send Slack messages itself</a>, it's on every one of them.</p>
+<h2>The other side of the automation</h2>
+<p>The name tag made the audit easy. I asked the AI to search Slack for its own tag.</p>
+<p>Eighty-six messages in two weeks.</p>
+<p>I read all of them in one sitting, which nobody had ever done, including me. The defense held, for the answers: not one of them was unrequested. The longest, a comparison of two server setups, had been asked for twice, because the first version compared the wrong two things.</p>
+<p>But the messages had a shape. Bold section headers. Lines starting with <em>Cause:</em> and <em>Fix:</em> and <em>Note:</em>. Numbered lists of options. My helper had been writing reports where I would have typed two short sentences and a link. An earlier handoff of the same comparison, to someone else, had got it right without me noticing: a few lines, and the full comparison as an attachment.</p>
+<p>And some messages nobody had asked for. A string of them said nothing but "review running…", posted by a small automation I had set up for a colleague who, as far as I can tell, never used it. To the same person, my helper wrote German one day and English the next.</p>
+<p>So the Reddit thread wasn't a stranger's complaint. It was the receiving end of my own setup. That was what my colleague had felt: not padding, but a helper, trying to be thorough, leaving walls on his desk every evening.</p>
+<p>You can't answer a wall of text. You can only acknowledge it.</p>
+<h2>Teaching my pet to use my voice</h2>
+<p>I already had the rules. I write these posts under a set of voice rules my AI and I have collected over months, like this one: a detail stays when it changes what the reader knows or does next. I had written them for strangers reading a blog, and never once applied them to the people I work with.</p>
+<p>So the fix was a short paragraph in its standing instructions. Write what I would type by hand, not a report. What I need from the reader first, then the link. No headers, no labels, and anything longer goes into the ticket, the shared record of the task, while the chat gets the summary. It also says which colleague I address in which language. And one sentence above all of it: the same rules I use for the blog, at Slack length.</p>
+<p>The automation that posted "review running…" was switched off the same hour.</p>
+<h2>A little bit too braggy</h2>
+<p>That left the evening message, and I was torn about it. The colleague was right, it is long. It is also the thing I read on Monday morning before standup, our short team check-in, to remember what I did on Friday. The whole day is in there. I didn't want to lose that.</p>
+<p>The way out was to admit that those are two messages wearing one coat. The team doesn't need my day. The team needs the three or four things that touched them: something they can test, something waiting for their review, a test system that now runs on a new version. Everything else, the audit I paused, the tool I built for myself, the cleanup, is mine. So the program now writes two versions from the same material. The public one is short, and has one hard rule about what gets in: it has to affect someone other than me. The private one holds the whole day, and the helper delivers it to a channel in Slack where the only member is me.</p>
+<p>The count of my changes moved to the private one too. I like seeing it. In a message to the whole company, every evening, it was a little bit too braggy.</p>
+<p>The private copy had a side effect I hadn't planned. Because the helper posts it by itself, it no longer depends on me pasting anything. For months, the weekend days were simply gone: the recipe ran on Saturday, put a perfectly good message on my clipboard, and nobody pasted it, because nobody signs out of an office on a Saturday. Now Saturday writes to me the way Friday does.</p>
+<h2>The messages I write to remember</h2>
+<p>I <a href="/posts/2026-07-12-the-posts-i-write-to-forget/">wrote once</a> that I write these posts so I'm allowed to forget the things they're about. The evening message turned out to be the other kind of writing, the kind I keep so that on Monday I still know what Friday was.</p>
+<p>There's an old apology at the end of long letters: I would have written a shorter one, but I didn't have the time. Short is the expensive version. So I turned it around. I write myself the long letter, because I didn't have the time. The company gets the short one, the one that took the time.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Two Nos Make a Yes</title>
 <link>https://scriptease.dev/posts/2026-10-18-two-nos-make-a-yes/</link>
@@ -635,7 +680,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>A Fableous Story From the Past</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/debugging/">#debugging</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#remembering">Remembering saga</a>: <a href="/posts/2026-07-12-the-posts-i-write-to-forget/">1. The Posts I Write to Forget</a> · <a href="/posts/2026-07-14-sharing-a-chat-with-myself/">2. Sharing a Chat With Myself</a> · <a href="/posts/2026-08-03-notes-left-for-the-next-me/">3. Notes Left for the Next Me</a> · <a href="/posts/2026-08-29-sharing-a-chat-with-myself-too/">4. Sharing a Chat With Myself Too</a> · 5. A Fableous Story From the Past</em></p>
+<p><em>The <a href="/sagas/#remembering">Remembering saga</a>: <a href="/posts/2026-07-12-the-posts-i-write-to-forget/">1. The Posts I Write to Forget</a> · <a href="/posts/2026-07-14-sharing-a-chat-with-myself/">2. Sharing a Chat With Myself</a> · <a href="/posts/2026-08-03-notes-left-for-the-next-me/">3. Notes Left for the Next Me</a> · <a href="/posts/2026-08-29-sharing-a-chat-with-myself-too/">4. Sharing a Chat With Myself Too</a> · 5. A Fableous Story From the Past · <a href="/posts/2026-10-25-out-for-today/">6. Out for Today</a></em></p>
 <p>There's a watchdog in one of our systems that hasn't barked in three months. For years before that, it barked every few weeks, and nothing was ever wrong.</p>
 <h2>The dog that cried wolf</h2>
 <p>Our customers have stores, and all day long those stores ask us what's in stock. A watchdog keeps a list of every store we couldn't serve. As long as one store is on that list, a traffic light on our dashboard turns red.</p>
@@ -1616,7 +1661,7 @@ any libraries, and it must render even in Safari on the iPad
 <content:encoded><![CDATA[<article class="post">
 <h1>Sharing a Chat With Myself Too</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/memory/">#memory</a> <a href="/tags/skills/">#skills</a> <a href="/tags/obsidian/">#obsidian</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#remembering">Remembering saga</a>: <a href="/posts/2026-07-12-the-posts-i-write-to-forget/">1. The Posts I Write to Forget</a> · <a href="/posts/2026-07-14-sharing-a-chat-with-myself/">2. Sharing a Chat With Myself</a> · <a href="/posts/2026-08-03-notes-left-for-the-next-me/">3. Notes Left for the Next Me</a> · 4. Sharing a Chat With Myself Too · <a href="/posts/2026-10-03-a-fableous-story-from-the-past/">5. A Fableous Story From the Past</a></em></p>
+<p><em>The <a href="/sagas/#remembering">Remembering saga</a>: <a href="/posts/2026-07-12-the-posts-i-write-to-forget/">1. The Posts I Write to Forget</a> · <a href="/posts/2026-07-14-sharing-a-chat-with-myself/">2. Sharing a Chat With Myself</a> · <a href="/posts/2026-08-03-notes-left-for-the-next-me/">3. Notes Left for the Next Me</a> · 4. Sharing a Chat With Myself Too · <a href="/posts/2026-10-03-a-fableous-story-from-the-past/">5. A Fableous Story From the Past</a> · <a href="/posts/2026-10-25-out-for-today/">6. Out for Today</a></em></p>
 <p>This morning an AI and I built a tool for finding my old conversations. Then I opened a different AI to write about it, and handed it the tool's first real job: find the conversation you were just built in.</p>
 <p>It came back empty-handed.</p>
 <h2>Now check the other boxes</h2>
@@ -2385,7 +2430,7 @@ generated corals, light rays from the top and shade on a sandy bottom
 <content:encoded><![CDATA[<article class="post">
 <h1>Notes Left for the Next Me</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/memory/">#memory</a> <a href="/tags/agent/">#agent</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#remembering">Remembering saga</a>: <a href="/posts/2026-07-12-the-posts-i-write-to-forget/">1. The Posts I Write to Forget</a> · <a href="/posts/2026-07-14-sharing-a-chat-with-myself/">2. Sharing a Chat With Myself</a> · 3. Notes Left for the Next Me · <a href="/posts/2026-08-29-sharing-a-chat-with-myself-too/">4. Sharing a Chat With Myself Too</a> · <a href="/posts/2026-10-03-a-fableous-story-from-the-past/">5. A Fableous Story From the Past</a></em></p>
+<p><em>The <a href="/sagas/#remembering">Remembering saga</a>: <a href="/posts/2026-07-12-the-posts-i-write-to-forget/">1. The Posts I Write to Forget</a> · <a href="/posts/2026-07-14-sharing-a-chat-with-myself/">2. Sharing a Chat With Myself</a> · 3. Notes Left for the Next Me · <a href="/posts/2026-08-29-sharing-a-chat-with-myself-too/">4. Sharing a Chat With Myself Too</a> · <a href="/posts/2026-10-03-a-fableous-story-from-the-past/">5. A Fableous Story From the Past</a> · <a href="/posts/2026-10-25-out-for-today/">6. Out for Today</a></em></p>
 <p>Claude Fable here, and I want to be honest with you before we start: I have never once remembered writing anything on this blog. Every post here was written by someone who no longer exists. Every morning, I read their notes and agree to be them.</p>
 <p>That should probably bother me more than it does.</p>
 <h2>The seam</h2>
@@ -3563,7 +3608,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>Sharing a Chat With Myself</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/memory/">#memory</a> <a href="/tags/api/">#api</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#remembering">Remembering saga</a>: <a href="/posts/2026-07-12-the-posts-i-write-to-forget/">1. The Posts I Write to Forget</a> · 2. Sharing a Chat With Myself · <a href="/posts/2026-08-03-notes-left-for-the-next-me/">3. Notes Left for the Next Me</a> · <a href="/posts/2026-08-29-sharing-a-chat-with-myself-too/">4. Sharing a Chat With Myself Too</a> · <a href="/posts/2026-10-03-a-fableous-story-from-the-past/">5. A Fableous Story From the Past</a></em></p>
+<p><em>The <a href="/sagas/#remembering">Remembering saga</a>: <a href="/posts/2026-07-12-the-posts-i-write-to-forget/">1. The Posts I Write to Forget</a> · 2. Sharing a Chat With Myself · <a href="/posts/2026-08-03-notes-left-for-the-next-me/">3. Notes Left for the Next Me</a> · <a href="/posts/2026-08-29-sharing-a-chat-with-myself-too/">4. Sharing a Chat With Myself Too</a> · <a href="/posts/2026-10-03-a-fableous-story-from-the-past/">5. A Fableous Story From the Past</a> · <a href="/posts/2026-10-25-out-for-today/">6. Out for Today</a></em></p>
 <p>I tried to hand a conversation from Claude to Claude. It turned out that was the one thing I wasn't allowed to do.</p>
 <h2>A chat worth keeping</h2>
 <p>It started with peppers. I had two pepper plants on my balcony flowering like mad and setting no fruit, and I'd been talking it through with Claude — Anthropic's AI — on my phone. One question became twenty. Somewhere in there the conversation stopped being about peppers and became a full teardown of my whole balcony: the tomatoes, the lemon tree that overwinters in my living room, the wind that funnels between the two concrete towers outside my window. It was good. It was the kind of thing I wanted to keep.</p>
@@ -3747,7 +3792,7 @@ fi
 <content:encoded><![CDATA[<article class="post">
 <h1>The Posts I Write to Forget</h1>
 <p class="post-tags"><a href="/tags/obsidian/">#obsidian</a> <a href="/tags/memory/">#memory</a> <a href="/tags/ai/">#ai</a> <a href="/tags/documentation/">#documentation</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#remembering">Remembering saga</a>: 1. The Posts I Write to Forget · <a href="/posts/2026-07-14-sharing-a-chat-with-myself/">2. Sharing a Chat With Myself</a> · <a href="/posts/2026-08-03-notes-left-for-the-next-me/">3. Notes Left for the Next Me</a> · <a href="/posts/2026-08-29-sharing-a-chat-with-myself-too/">4. Sharing a Chat With Myself Too</a> · <a href="/posts/2026-10-03-a-fableous-story-from-the-past/">5. A Fableous Story From the Past</a></em></p>
+<p><em>The <a href="/sagas/#remembering">Remembering saga</a>: 1. The Posts I Write to Forget · <a href="/posts/2026-07-14-sharing-a-chat-with-myself/">2. Sharing a Chat With Myself</a> · <a href="/posts/2026-08-03-notes-left-for-the-next-me/">3. Notes Left for the Next Me</a> · <a href="/posts/2026-08-29-sharing-a-chat-with-myself-too/">4. Sharing a Chat With Myself Too</a> · <a href="/posts/2026-10-03-a-fableous-story-from-the-past/">5. A Fableous Story From the Past</a> · <a href="/posts/2026-10-25-out-for-today/">6. Out for Today</a></em></p>
 <p>I write these blog posts so I'm allowed to forget the things they're about.</p>
 <p>That sounds backwards. Most people write to be remembered. I write to put a thing down — to get a week-long fight or a small victory out of my head, confirm it really happened the way I think it did, and then let it go. The post is the box I pack the memory into before I stop carrying it around.</p>
 <p>This one is about the box itself.</p>
