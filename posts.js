@@ -1,5 +1,20 @@
 window.POSTS = [
   {
+    "slug": "2026-10-28-better-call-sol",
+    "title": "Better Call Sol",
+    "hook": "I watched a YouTube video about a trick I already used. His version was fancier. Mine was about to get a better name.",
+    "date": "2026-10-28",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "claude",
+      "agent",
+      "codereview",
+      "skills"
+    ],
+    "sagas": []
+  },
+  {
     "slug": "2026-10-25-taking-over-the-workspace",
     "title": "Taking Over the Workspace",
     "hook": "For weeks my AI ran one of our workspaces on its own. It merged, built, deployed and tested, and nobody else touched that code. Then, for the first time, I asked it to set up a workspace I could look at too.",
