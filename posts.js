@@ -10,9 +10,12 @@ window.POSTS = [
       "claude",
       "agent",
       "codereview",
-      "skills"
+      "skills",
+      "saga"
     ],
-    "sagas": []
+    "sagas": [
+      "Hands-Off"
+    ]
   },
   {
     "slug": "2026-10-25-taking-over-the-workspace",
@@ -24,9 +27,12 @@ window.POSTS = [
       "ai",
       "claude",
       "agent",
-      "automation"
+      "automation",
+      "saga"
     ],
-    "sagas": []
+    "sagas": [
+      "Hands-Off"
+    ]
   },
   {
     "slug": "2026-10-25-out-for-today",
@@ -1008,9 +1014,12 @@ window.POSTS = [
       "ai",
       "agent",
       "work-life-balance",
-      "psychology"
+      "psychology",
+      "saga"
     ],
-    "sagas": []
+    "sagas": [
+      "Hands-Off"
+    ]
   },
   {
     "slug": "2026-07-21-load-bearing-constraints",

@@ -13,10 +13,11 @@
 <link>https://scriptease.dev/posts/2026-10-28-better-call-sol/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-10-28-better-call-sol/</guid>
 <pubDate>Wed, 28 Oct 2026 19:58:45 +0100</pubDate>
-<category>ai</category><category>claude</category><category>agent</category><category>codereview</category><category>skills</category><description>I watched a YouTube video about a trick I already used. His version was fancier. Mine was about to get a better name.</description>
+<category>ai</category><category>claude</category><category>agent</category><category>codereview</category><category>skills</category><category>saga</category><description>I watched a YouTube video about a trick I already used. His version was fancier. Mine was about to get a better name.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Better Call Sol</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/skills/">#skills</a></p>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/skills/">#skills</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · 3. Better Call Sol</em></p>
 <p>I watched a YouTube video about a trick I already used. His version was fancier. Mine was about to get a better name.</p>
 <h2>"I already use Sol his way anyway"</h2>
 <p>Theo, a developer on YouTube, made a video called <a href="https://www.youtube.com/watch?v=5Bmp9cz1JN8">These 3 skills changed my life</a>. A skill is a written recipe my AI follows when I say a certain phrase. One of his three is the Sol Loop.</p>
@@ -65,10 +66,11 @@ Sol verdict: approved
 <link>https://scriptease.dev/posts/2026-10-25-taking-over-the-workspace/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-10-25-taking-over-the-workspace/</guid>
 <pubDate>Wed, 28 Oct 2026 19:27:24 +0100</pubDate>
-<category>ai</category><category>claude</category><category>agent</category><category>automation</category><description>For weeks my AI ran one of our workspaces on its own. It merged, built, deployed and tested, and nobody else touched that code. Then, for the first time, I asked it to set up a workspace I could look at too.</description>
+<category>ai</category><category>claude</category><category>agent</category><category>automation</category><category>saga</category><description>For weeks my AI ran one of our workspaces on its own. It merged, built, deployed and tested, and nobody else touched that code. Then, for the first time, I asked it to set up a workspace I could look at too.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Taking Over the Workspace</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a></p>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · 2. Taking Over the Workspace · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a></em></p>
 <p>For weeks my AI ran one of our workspaces on its own. It merged, built, deployed and tested, and nobody else touched that code. Then, for the first time, I asked it to set up a workspace I could look at too.</p>
 <h2>"That was fast"</h2>
 <p>A colleague from our web team sent my AI a message in Slack, our work chat, with an upside-down smiley: "Create a ticket on how we can set up git repo for [both customers'] web". Repo is the tool that sets up our workspaces, with several projects side by side.</p>
@@ -3181,10 +3183,11 @@ Ah an idea can we test that you can drag the shark?
 <link>https://scriptease.dev/posts/2026-07-21-non-load-bearing/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-07-21-non-load-bearing/</guid>
 <pubDate>Tue, 21 Jul 2026 12:56:53 +0200</pubDate>
-<category>ai</category><category>agent</category><category>work-life-balance</category><category>psychology</category><description>I was watching Matt Pocock's 'AI Coding is exhausting,' and thirty seconds in he hit a nerve I'd been ignoring for weeks.</description>
+<category>ai</category><category>agent</category><category>work-life-balance</category><category>psychology</category><category>saga</category><description>I was watching Matt Pocock's 'AI Coding is exhausting,' and thirty seconds in he hit a nerve I'd been ignoring for weeks.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Non-Load-Bearing</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/work-life-balance/">#work-life-balance</a> <a href="/tags/psychology/">#psychology</a></p>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/work-life-balance/">#work-life-balance</a> <a href="/tags/psychology/">#psychology</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: 1. Non-Load-Bearing · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a></em></p>
 <p>I was watching Matt Pocock's <em>"AI Coding is exhausting,"</em> and thirty seconds in he hit a nerve I'd been ignoring for weeks.</p>
 <p>His point was small and exact. The AI hasn't made the work harder. It's eaten the <em>easy</em> part — and the easy part, it turns out, was doing something.</p>
 <h2>Strategic vs tactical decisions</h2>
