@@ -1,5 +1,19 @@
 window.POSTS = [
   {
+    "slug": "2026-10-25-taking-over-the-workspace",
+    "title": "Taking Over the Workspace",
+    "hook": "For weeks my AI ran one of our workspaces on its own. It merged, built, deployed and tested, and nobody else touched that code. Then, for the first time, I asked it to set up a workspace I could look at too.",
+    "date": "2026-10-25",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "claude",
+      "agent",
+      "automation"
+    ],
+    "sagas": []
+  },
+  {
     "slug": "2026-10-25-out-for-today",
     "title": "Out for Today",
     "hook": "Every evening when I leave the office, even when the office is my kitchen table, I sign out in Slack with a message called Out for today. It lists everything I did that day. My AI writes it, because my AI was there for almost all of it. Last week a colleague told me it was too long.",
