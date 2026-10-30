@@ -1,5 +1,23 @@
 window.POSTS = [
   {
+    "slug": "2026-10-30-its-time-to-settle",
+    "title": "It's Time to Settle",
+    "hook": "I left a wish in a YouTube comment. Less than an hour later I had the parts of it working myself, using only the tools the app already had.",
+    "date": "2026-10-30",
+    "month": "2026-10",
+    "tags": [
+      "ai",
+      "agent",
+      "automation",
+      "git",
+      "opensource",
+      "saga"
+    ],
+    "sagas": [
+      "Hands-Off"
+    ]
+  },
+  {
     "slug": "2026-10-28-better-call-sol",
     "title": "Better Call Sol",
     "hook": "I watched a YouTube video about a trick I already used. His version was fancier. Mine was about to get a better name.",

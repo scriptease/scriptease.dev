@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>It's Time to Settle — scriptease.dev</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="scriptease.dev">
+<meta property="og:title" content="It's Time to Settle">
+<meta property="og:description" content="I left a wish in a YouTube comment. Less than an hour later I had the parts of it working myself, using only the tools the app already had.">
+<meta property="og:url" content="https://scriptease.dev/posts/2026-10-30-its-time-to-settle/">
+<meta property="og:image" content="https://scriptease.dev/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>It's Time to Settle</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/git/">#git</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · 4. It's Time to Settle</em></p>
+<p>I left a wish in a YouTube comment. Less than an hour later I had the parts of it working myself, using only the tools the app already had.</p>
+<h2>"Can you add support for non github focused stuff?"</h2>
+<p>My workday happens in T3 Code, an open-source app where I run my AI coding assistants side by side, one conversation per task. Its maker, Theo, had posted a video tour of the new version the day before.</p>
+<p>One feature in it is settling. When a conversation's work is done, the app files it away, like an email you archive once it's answered. The sidebar stays an inbox of things that still need me. And it can settle on its own: once the code change the conversation produced is merged, the conversation disappears by itself.</p>
+<p>That only works if your code lives on GitHub, a place for open-source code. Ours doesn't. So I typed this under the video:</p>
+<blockquote>
+<p>Can you add support for non github focused stuff?</p>
+<p>Like being able to remove worktrees, other url formats for pr style urls like gerrit, or a way to automate settle if you are not using prs?</p>
+</blockquote>
+<p>Three wishes. This post is about the last one.</p>
+<h2>Masquerading as a pull request</h2>
+<p>At work we review code in Gerrit, a code review system from Google. A change waits there until a colleague approves it, then it's merged.</p>
+<p>T3 Code knows GitHub's "pull requests", which are the same idea under a different name. A month ago I taught it to take Gerrit changes for pull requests. My standing instructions tell every AI how to attach a Gerrit change to its conversation in pull-request format, and a small rule on our server makes that made-up link open the real change.</p>
+<p>So the links were all there. I asked my AI to find out why my conversations still never settled, and to read T3 Code's source to see what auto-settle actually checks.</p>
+<p>The answer: T3 Code tries to ask each linked pull request whether it's merged. A Gerrit link can't answer, so its status stays blank. And a blank status doesn't just skip that link. It blocks auto-settle for the whole conversation, including the fallback that tidies up anything untouched for days.</p>
+<p>My disguise wasn't just failing to help. It was why those conversations never went away.</p>
+<h2>"Reverse engineer the auto-settling"</h2>
+<p>Waiting for Theo was one option. The other was in my own message to the AI: "So I'm basically exploring how to reverse engineer the auto settling, but match it to our process."</p>
+<p>My rule for this: no fork, no patch to T3 Code. The app already gives its AIs tools to read conversations, link pull requests and settle threads. I wanted a small script on my Mac to use those same tools, and to decide "done" the way we decide it: the Gerrit change is merged <em>and</em> the Jira ticket behind it is resolved.</p>
+<p>There were two cases to cover. In the first, I start the conversation, the AI writes the code and pushes it to Gerrit, so the link is already there. In the second, I'm testing a colleague's work. I start the conversation from their ticket, and the script has to go find the changes itself. Searching Gerrit for the ticket number found all six changes for my test ticket. The ticket itself only pointed to the last one.</p>
+<h2>The key to the wrong door</h2>
+<p>The script needs a key to talk to T3 Code. The first one we made worked fine for reading. When it tried to settle anything, it was refused.</p>
+<p>The key's access level was "ask before acting", and my conversations run on "full access". T3 Code won't let a weaker key change a stronger conversation. The rule makes sense. It was still in my way.</p>
+<p>My AI's recommendation was the polite route: T3 Code's command-line tool already gets full access for the moment it runs, and a "settle" command would be about twenty lines. Propose it to the maintainers, then wait for a release.</p>
+<p>That was my YouTube comment again, just more specific. Ask, then wait for an update.</p>
+<p>So I tried a shortcut: let the conversation settle <em>itself</em>. The script sends it a message, "your work is merged, settle this thread", and the AI inside does it.</p>
+<p>"This thread will settle when this turn ends," it replied. Then it was gone.</p>
+<p>"It worked. Both of the demo thread just disappeared on both of my devices."</p>
+<h2>Caution: risk of burning tokens</h2>
+<p>It worked, and I didn't want it.</p>
+<p>"The bad thing about it is that it settles by burning additional tokens, and it also might be way too expensive to run because if I have a five hundred thousand token [most expensive model] session and I settle this with this mechanism, then it would put everything in the cache again just to remove it immediately."</p>
+<p>Every message wakes the AI, and the AI rereads the whole conversation before it can do anything.</p>
+<p>And it isn't only the cost. A colleague merges my change or resolves my ticket, and an AI on my Mac wakes up and starts working while I'm not looking. Nobody should be able to start my AI except me.</p>
+<p>The fix was already in the app. T3 Code lets you log a tool in through the browser: it opens a page and asks for a pairing code. "It's basically opening a browser window and asking for a pairing token." You choose the access level there, full access included, and the key is good for 30 days.</p>
+<p>With that key the script settled and unsettled my demo conversation directly. No AI involved, no tokens spent.</p>
+<h2>"Would it work with the baseline"</h2>
+<p>I didn't write the script myself. I asked my AI to have another T3 Code conversation build it, inside our team's repository of helper scripts, so my colleagues can install it too. Each of them runs their own copy on their own Mac, against their own T3 Code. Every five minutes a background job checks Gerrit and Jira and settles whatever is done. Midway I asked it to get the ticket status through the Jira tool we already have instead of building its own. That tool already reported everything needed.</p>
+<p>While wiring that in, the builder found something I hadn't asked about. Our Jira tool put its password in the list of running programs, where any app on my Mac could read it.</p>
+<p>A real bug, small and mine: "let's use this bug as an end to end test." A fresh conversation would write the ticket, fix the bug, send the fix to Gerrit, link it to itself and ping me when it was ready for review.</p>
+<p>My AI started it the way my instructions say. Those instructions forbid one T3 Code feature: giving each conversation its own private copy of the project, a <em>worktree</em>. The copies stay behind after the work is done and pile up. That was the first wish in my comment.</p>
+<p>I stopped it. "Because my Claude MD is there to prohibit this kind of bugs, but the task we're trying to get to work is to avoid having this special case." And then: "Because what we're building at the moment is basically would it work with the baseline."</p>
+<p>No workarounds this time. The conversation ran the way T3 Code is meant to be used.</p>
+<h2>It's time to settle</h2>
+<p>The fix came in, I reviewed it and merged it. I made a new Jira password, and the fix's own conversation checked that the new one worked and that nothing showed up in the list of running programs. Then it marked its ticket resolved.</p>
+<p>The background job had just run, a few seconds before. It missed.</p>
+<p>Five minutes later the next run came. Gerrit said merged, Jira said resolved. The conversation that had filed the bug, fixed it and tested it disappeared from my sidebar, and nobody had to tell it to.</p>
+<h2>Settling for good</h2>
+<p>My conversations now settle on their own. The private copies of the project are another matter. There are still rough edges in how they get cleaned up, so the line in my instructions that forbids them stays.</p>
+<p>But that's for another day. Two of my three wishes came true the same morning. The disguised Gerrit links had been there for a month, but until now they were only something to click. Now they're load-bearing.</p>
+<p>When this post went out, my YouTube comment still said "1 hour ago".</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-10-28-better-call-sol/">← Better Call Sol</a><span></span></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
