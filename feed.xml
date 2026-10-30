@@ -13,10 +13,10 @@
 <link>https://scriptease.dev/posts/2026-10-30-its-time-to-settle/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-10-30-its-time-to-settle/</guid>
 <pubDate>Fri, 30 Oct 2026 08:08:32 +0100</pubDate>
-<category>ai</category><category>agent</category><category>automation</category><category>git</category><category>opensource</category><category>saga</category><description>I left a wish in a YouTube comment. Less than an hour later I had the parts of it working myself, using only the tools the app already had.</description>
+<category>ai</category><category>agent</category><category>automation</category><category>git</category><category>opensource</category><category>saga</category><category>t3code</category><description>I left a wish in a YouTube comment. Less than an hour later I had the parts of it working myself, using only the tools the app already had.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>It's Time to Settle</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/git/">#git</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/saga/">#saga</a></p>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/git/">#git</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/saga/">#saga</a> <a href="/tags/t3code/">#t3code</a></p>
 <p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · 4. It's Time to Settle</em></p>
 <p>I left a wish in a YouTube comment. Less than an hour later I had the parts of it working myself, using only the tools the app already had.</p>
 <h2>"Can you add support for non github focused stuff?"</h2>
@@ -550,10 +550,10 @@ Sol verdict: approved
 <link>https://scriptease.dev/posts/2026-10-07-fixing-a-phone-app-on-the-phone-from-the-same-app/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-10-07-fixing-a-phone-app-on-the-phone-from-the-same-app/</guid>
 <pubDate>Wed, 07 Oct 2026 09:02:04 +0200</pubDate>
-<category>ai</category><category>agent</category><category>iphone</category><category>debugging</category><category>swift</category><description>I was in bed, on my phone, watching my AI drive a fake phone, to fix the app I was talking to it through.</description>
+<category>ai</category><category>agent</category><category>iphone</category><category>debugging</category><category>swift</category><category>t3code</category><description>I was in bed, on my phone, watching my AI drive a fake phone, to fix the app I was talking to it through.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Fixing a Phone App on the Phone From the Same App</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/iphone/">#iphone</a> <a href="/tags/debugging/">#debugging</a> <a href="/tags/swift/">#swift</a></p>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/iphone/">#iphone</a> <a href="/tags/debugging/">#debugging</a> <a href="/tags/swift/">#swift</a> <a href="/tags/t3code/">#t3code</a></p>
 <p>I was in bed, on my phone, watching my AI drive a fake phone, to fix the app I was talking to it through.</p>
 <h2>Build a version, then tell the others</h2>
 <p>T3 Code is the app I use to run AI coding agents on my Mac, with a phone app to steer them. Its newest Mac version had just locked out the phone app from the App Store.</p>
@@ -786,10 +786,10 @@ Sol verdict: approved
 <link>https://scriptease.dev/posts/2026-10-03-improving-the-tool-that-builds-the-tools/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-10-03-improving-the-tool-that-builds-the-tools/</guid>
 <pubDate>Sat, 03 Oct 2026 09:49:50 +0200</pubDate>
-<category>ai</category><category>claude</category><category>agent</category><category>ios</category><category>git</category><category>sharing</category><category>saga</category><description>Last week I asked for one improvement to the tool I use every day. Nobody answered. This morning I asked my AI what it would take to build it myself.</description>
+<category>ai</category><category>claude</category><category>agent</category><category>ios</category><category>git</category><category>sharing</category><category>saga</category><category>t3code</category><description>Last week I asked for one improvement to the tool I use every day. Nobody answered. This morning I asked my AI what it would take to build it myself.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Improving the Tool That Builds the Tools</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/ios/">#ios</a> <a href="/tags/git/">#git</a> <a href="/tags/sharing/">#sharing</a> <a href="/tags/saga/">#saga</a></p>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/ios/">#ios</a> <a href="/tags/git/">#git</a> <a href="/tags/sharing/">#sharing</a> <a href="/tags/saga/">#saga</a> <a href="/tags/t3code/">#t3code</a></p>
 <p><em>The <a href="/sagas/#pet-projects">Pet Projects saga</a>: <a href="/posts/2026-07-17-the-vault-i-could-finally-give-away/">1. The Vault I Could Finally Give Away</a> · <a href="/posts/2026-10-03-blume/">2. Blume</a> · 3. Improving the Tool That Builds the Tools · <a href="/posts/2026-10-03-my-new-slick-cli/">4. My New Slick CLI</a></em></p>
 <p>Last week I asked for one improvement to the tool I use every day. Nobody answered. This morning I asked my AI what it would take to build it myself.</p>
 <h2>From YouTube to my iPad in one hour</h2>

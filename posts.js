@@ -11,7 +11,8 @@ window.POSTS = [
       "automation",
       "git",
       "opensource",
-      "saga"
+      "saga",
+      "t3code"
     ],
     "sagas": [
       "Hands-Off"
@@ -187,7 +188,8 @@ window.POSTS = [
       "agent",
       "iphone",
       "debugging",
-      "swift"
+      "swift",
+      "t3code"
     ],
     "sagas": []
   },
@@ -258,7 +260,8 @@ window.POSTS = [
       "ios",
       "git",
       "sharing",
-      "saga"
+      "saga",
+      "t3code"
     ],
     "sagas": [
       "Pet Projects"
