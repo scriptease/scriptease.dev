@@ -7,7 +7,59 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Fri, 30 Oct 2026 08:08:32 +0100</lastBuildDate>
+<lastBuildDate>Sat, 31 Oct 2026 11:54:14 +0100</lastBuildDate>
+<item>
+<title>Sharpening My Axe</title>
+<link>https://scriptease.dev/posts/2026-10-31-sharpening-my-axe/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-10-31-sharpening-my-axe/</guid>
+<pubDate>Sat, 31 Oct 2026 11:54:14 +0100</pubDate>
+<category>ai</category><category>agent</category><category>simulator</category><category>keyboard</category><category>opensource</category><category>saga</category><description>For two months I've had my automatic login, and Apple has broken it every chance they got. I've lost count of how many times I rewrote the part that translates the keyboard. Today I decided to give it another go.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Sharpening My Axe</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/simulator/">#simulator</a> <a href="/tags/keyboard/">#keyboard</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#login-everywhere">Login Everywhere saga</a>: <a href="/posts/2026-09-05-every-login-all-at-once/">1. Every Login All at Once</a> · <a href="/posts/2026-10-06-built-over-his-lunch-break/">2. Built Over His Lunch Break</a> · 3. Sharpening My Axe</em></p>
+<p>For two months I've had my automatic login, and Apple has broken it every chance they got. I've lost count of how many times I rewrote the part that translates the keyboard. Today I decided to give it another go.</p>
+<h2>Computer use to the rescue?</h2>
+<p>The excuse was a video. Theo, a developer whose videos I follow, mentioned cua, an open-source tool that lets an AI use a computer the way a person does: look at the screen, click and type.</p>
+<p>He said it "will be in T3 Code very soon". T3 Code is the app I talk to my AIs in.</p>
+<p>I wanted to see whether cua could fix my long-term issues with Device Hub, the window on my Mac where Apple keeps all the fake iPhones and iPads I test our app on.</p>
+<p>I installed it and gave it a couple of tasks, to see how it could interact with my apps. It did them without touching my mouse.</p>
+<p>Then the fake iPad. cua could see our app, every button and its name, and tap one. And Device Hub jumped in front of whatever I was doing.</p>
+<p>My verdict: better at using a computer than the last tool I tried, "but it doesn't solve any of the issues that I'm trying to solve with it". It stays in its own little folder.</p>
+<h2>"Every little trick just fails because of another reason"</h2>
+<p>The issue was the keyboard. My Mac is German. The tools my AI typed with assumed an American keyboard. So when my AI typed, the iPad swapped the z and the y, and mistyped the <code>@</code> that's in every email address.</p>
+<p>In <a href="/posts/2026-09-05-every-login-all-at-once/">the first post of this saga</a> I worked around it. Before every login my AI flipped a handful of switches until the iPad expected an American keyboard, typed, and flipped them all back so I could still type German myself. Every new version of the iPad's software named those switches differently. It worked. I hated it.</p>
+<p>So this morning we tried every shortcut again.</p>
+<p>A fake iPad set to English only, so there was nothing German to switch away from. It came back German after the restart anyway.</p>
+<p>Translating on the way in: if the iPad expected German, have the AI type y when it meant z. That fixed the letters. The <code>@</code> stayed broken.</p>
+<p>"But I hope you now understand a little bit my frustration that every little trick just fails because of another reason."</p>
+<p>We thought we were out of options. I even considered the last one: switching my own Mac to an American layout. "Sometimes I think maybe I want English keyboard layout on my Mac." But the keys on my MacBook have German letters printed on them, and I can't swap the keyboard. It's attached to the laptop. The AI even suggested a little program that would let me and my AI use the keyboard at the same time.</p>
+<p>I switched the layout anyway, and the AI typed correctly. "I mean it would work, but it's also annoying as heck because that would mean that while my AI is running tests, I have to use a different keyboard layout." And even switching the keyboard didn't come without problems. It felt like the wrong fix for my problem.</p>
+<p>There was one more way. Normally you type on an iPad with the keyboard on its screen, and my AI could tap that too, letter by letter. But then it had to hunt for every key, tap Shift for capitals and switch to the symbol keys, and that keyboard looked different in every version of the iPad's software. Slow, fragile, and I want to automate the login, and "if a password contains a z y or a apostrophe, then I'm f&amp;%#ed".</p>
+<h2>Why don't they just have a way to send the text?</h2>
+<p>That was my real question to Apple. Why can't a tool just hand the iPad the finished text, instead of pretending to press keys?</p>
+<p>My AI explained what was going wrong. The tools I was using sent key presses, not finished text, and how the iPad read those key presses depended on its keyboard.</p>
+<p>I queued a research task: are there other tools that handle German keyboards? And I added a note of my own. I had dug into Argent, one of the two tools my AI used to drive the fake iPad. The part that types is closed source: private software that only its makers can change. The other one, I assumed, came the same way: a ready-to-run program, without the recipe for changing it. "It's also closed source and a binary."</p>
+<h2>"Why not build it ourselves"</h2>
+<p>It isn't.</p>
+<p>The other tool is axe, and it's open source. My AI looked inside: axe knew which key to press for every character from one list, and that list was American. One list. Add a German one next to it.</p>
+<p>"But thanks, this looks actually as a feasible way if I basically instead of complaining about not having a way to send a string layout independent to the simulator, why not build it ourselves, right?"</p>
+<p>The AI built its own axe, added the German list, and typed every special character a German keyboard has into the fake iPad. No switches flipped.</p>
+<p>Two of them came out wrong. Apple's German keyboards have two keys that trade places with each other. One more line in the list, and the next run came through exactly as sent. Letters, German umlauts, <code>@</code>, apostrophes, the lot.</p>
+<h2>Splitting hairs</h2>
+<p>Then I wanted to break it. I switched my Mac to American again. axe didn't care. It only listens to the iPad's keyboard.</p>
+<p>Then I remembered seeing keyboards on the iPad that are German and English at once. The AI found where to add one and tried to switch to it. Its tap missed, and the next one opened the wrong menu. "Oh, you tested the wrong one." I switched it by hand: this mixed keyboard needed the American list.</p>
+<p>Which list was right depended only on which keyboard the iPad had active, and the iPad wrote that down. So the AI taught axe to read it before typing and pick the list itself, and to refuse to type at all on a keyboard it doesn't know. Typing the wrong characters into a password field is worse than failing.</p>
+<p>I switched between the mixed keyboard and the German one. axe picked the right list both times.</p>
+<h2>What Apple should fix</h2>
+<p>Two months of workarounds, and the fix was inside a tool I had used every day without ever opening it. From "yes, let's try it" to the first clean German run took a couple of minutes.</p>
+<p>The research I had queued arrived while we were on the final steps. Every tool that types into the fake iPad by pressing keys carries the same American list, and nobody had even filed a bug about it. Nobody in the world supported my German keyboard.</p>
+<p>The one alternative was a tool that piggybacks on Apple's testing framework, the one developers use to test their own apps. That sounds official. It isn't. It's a hack, not a way Apple supports, so it broke with every beta of Apple's tools. When I tried it, setting it up took more than half an hour, and then it barely worked. Two weeks later I tried again, and it was broken again.</p>
+<p>The only way to fix it was to fix it myself.</p>
+<p>So now I have another working prototype. This time it's my own axe, 38 megabytes. For it to help anyone but me, every developer at our company would need my version of axe instead of the one that comes with their tools. Or the maker of axe takes the change. I already <a href="https://github.com/cameroncooke/AXe/issues/81">filed it and suggested the fix</a>.</p>
+<p>All to fix something Apple should have fixed in the first place.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>It's Time to Settle</title>
 <link>https://scriptease.dev/posts/2026-10-30-its-time-to-settle/</link>
@@ -616,7 +668,7 @@ Sol verdict: approved
 <content:encoded><![CDATA[<article class="post">
 <h1>Built Over His Lunch Break</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/browser/">#browser</a> <a href="/tags/password/">#password</a> <a href="/tags/commandline/">#commandline</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#login-everywhere">Login Everywhere saga</a>: <a href="/posts/2026-09-05-every-login-all-at-once/">1. Every Login All at Once</a> · 2. Built Over His Lunch Break</em></p>
+<p><em>The <a href="/sagas/#login-everywhere">Login Everywhere saga</a>: <a href="/posts/2026-09-05-every-login-all-at-once/">1. Every Login All at Once</a> · 2. Built Over His Lunch Break · <a href="/posts/2026-10-31-sharpening-my-axe/">3. Sharpening My Axe</a></em></p>
 <p>I asked a colleague how we could build something new. Then he went to lunch. By the time he was back online, it was built, and the demo I gave him took longer than the build.</p>
 <h2>A tool for the back of my head</h2>
 <p>The talk was called "MCP Doesn't Suck. Your Agent Does." MCP is a standard plug that lets an AI use an outside tool: a browser, a database, a ticket system. The speaker built a small program that turns any of those plugs into a plain command an AI can type, the way it already types a thousand other commands every day.</p>
@@ -1647,7 +1699,7 @@ any libraries, and it must render even in Safari on the iPad
 <content:encoded><![CDATA[<article class="post">
 <h1>Every Login All at Once</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/ios/">#ios</a> <a href="/tags/simulator/">#simulator</a> <a href="/tags/password/">#password</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#login-everywhere">Login Everywhere saga</a>: 1. Every Login All at Once · <a href="/posts/2026-10-06-built-over-his-lunch-break/">2. Built Over His Lunch Break</a></em></p>
+<p><em>The <a href="/sagas/#login-everywhere">Login Everywhere saga</a>: 1. Every Login All at Once · <a href="/posts/2026-10-06-built-over-his-lunch-break/">2. Built Over His Lunch Break</a> · <a href="/posts/2026-10-31-sharpening-my-axe/">3. Sharpening My Axe</a></em></p>
 <p>Most of Saturday went into one wrong assumption. The AI and I blamed the iOS 27 beta for eating keystrokes. The real culprit was a stuck process on my Mac, and I literally had to kill it twice because it refused to die.</p>
 <h2>Continue three times, select login, continue twice, enter code, continue again</h2>
 <p>Logging into the app I work on is not one step. The app ships in several variants, and they log in three different ways. The simplest is a list of users and a PIN pad. The second goes through Keycloak, a service that first asks you to pick how you want to sign in, then hands you on. The third is Microsoft's corporate login: an email form that bounces you through two more pages and ends at a six-digit code from an authenticator app. All of that before you are in our app.</p>
