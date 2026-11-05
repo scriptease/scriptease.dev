@@ -1,5 +1,23 @@
 window.POSTS = [
   {
+    "slug": "2026-11-05-groundhog-day",
+    "title": "Groundhog Day",
+    "hook": "In September I built a plugin on a Claude Code feature that didn't officially exist yet. It's official now, under a new name. When I came back to it, it turned out that everything I'd given it to remember, it had forgotten. And it would forget it again. So I rebuilt it.",
+    "date": "2026-11-05",
+    "month": "2026-11",
+    "tags": [
+      "ai",
+      "claude",
+      "security",
+      "plugins",
+      "agent",
+      "saga"
+    ],
+    "sagas": [
+      "AI Parenting"
+    ]
+  },
+  {
     "slug": "2026-10-31-sharpening-my-axe",
     "title": "Sharpening My Axe",
     "hook": "For two months I've had my automatic login, and Apple has broken it every chance they got. I've lost count of how many times I rewrote the part that translates the keyboard. Today I decided to give it another go.",

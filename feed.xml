@@ -7,7 +7,60 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sat, 31 Oct 2026 11:54:14 +0100</lastBuildDate>
+<lastBuildDate>Thu, 05 Nov 2026 16:16:16 +0100</lastBuildDate>
+<item>
+<title>Groundhog Day</title>
+<link>https://scriptease.dev/posts/2026-11-05-groundhog-day/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-11-05-groundhog-day/</guid>
+<pubDate>Thu, 05 Nov 2026 16:16:16 +0100</pubDate>
+<category>ai</category><category>claude</category><category>security</category><category>plugins</category><category>agent</category><category>saga</category><description>In September I built a plugin on a Claude Code feature that didn't officially exist yet. It's official now, under a new name. When I came back to it, it turned out that everything I'd given it to remember, it had forgotten. And it would forget it again. So I rebuilt it.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Groundhog Day</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/security/">#security</a> <a href="/tags/plugins/">#plugins</a> <a href="/tags/agent/">#agent</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="/posts/2026-09-22-or-else/">5. Or Else</a> · 6. Groundhog Day</em></p>
+<p>In September I built a plugin on a Claude Code feature that didn't officially exist yet. It's official now, under a new name. When I came back to it, it turned out that everything I'd given it to remember, it had forgotten. And it would forget it again. So I rebuilt it.</p>
+<h2>It has a name now</h2>
+<p>The plugin is called redact. In <a href="/posts/2026-09-05-redacted/">Redacted</a> I built it on a hidden switch in Claude Code, the AI I work with on my Mac: a way to change how Claude itself behaves. When a password or an email address shows up, the plugin swaps it for a placeholder like <code>REDACTED_EMAIL_1</code>. When the AI later uses that placeholder in a command, the plugin puts the real value back. The AI never holds the secret. The command still works.</p>
+<p>Back then my research agent told me the feature didn't exist. Two months later it does. The switch is gone, the feature is on for everyone, and it has a name: mods.</p>
+<p>This morning I asked my AI to find my old post, the plugin, and the official documentation, and to tell me one thing: does it work with the way I work now?</p>
+<h2>Every morning it forgets</h2>
+<p>I work in T3 Code, an app where I run my AI conversations side by side, one per task, from my laptop or my phone. T3 Code tries to keep Claude running, but it doesn't promise to. An update or a restart of T3 Code, and Claude starts fresh with the saved conversation handed back to it. And I want to come back to a conversation hours or days later and carry on, restart or not.</p>
+<p>The plugin kept its secrets only as long as Claude was running. Claude restarts, secrets gone.</p>
+<p>The conversation still said <code>REDACTED_DB_PASS</code>. The plugin had no idea what that meant anymore, so the command got the placeholder instead of the password and failed. Nothing leaked. It just broke. But The plugin had redacted my secrets so well that it had forgotten them. Every morning it woke up, read a conversation full of placeholders, and recognized none of them.</p>
+<h2>Stuck with 500 entries in my keychain</h2>
+<p>The AI's first idea was the Mac's Keychain, the password vault built into every Mac: one entry per secret.</p>
+<p>I've built this plugin for database work. A single lookup in our customer database can return 500 customers, and 500 email addresses. That would be 500 entries in my keychain. One entry per conversation, then? The AI found the catch there: every read and write would hand the secrets to a Keychain command, and while it runs, any other program on the Mac can see them in the list of running programs. Hidden from the AI, on show to everyone else.</p>
+<p>We settled on one master key in the Keychain, total. The secrets go into a file, locked with that key.</p>
+<p>Claude Code keeps every conversation as a file on disk, with a folder of its own next to it. I asked to put the locked secrets right there, next to the conversation they belong to. Move the conversation, the secrets move with it. Copy it, and the plugin refuses to guess which copy is real. Delete it, and the secrets go too.</p>
+<p>Then I thought about how I could break it.</p>
+<p>Writing all the secrets down takes time. Stop Claude halfway through, and the locked file can't be unlocked at all. Every secret, gone. So the plugin now writes a fresh copy next to the old one and swaps it in with one move. A reader sees the old file or the new one, never half of one.</p>
+<p>Mods come with a small set of security features of their own. They weren't enough to lock the file, so the plugin hands that job to <code>openssl</code>, the encryption tool that ships with every Mac.</p>
+<h2>Catch it when it enters</h2>
+<p>Until then the plugin recognized secrets by their shape: an email looks like an email, and many keys come in well-known shapes and sizes. A key with no famous shape got through.</p>
+<p>I had an idea about that. Secrets usually travel with a label. A web request carries its key in a labelled line, called a header, that starts with <code>Authorization:</code>. A settings file says <code>API_KEY=</code> right before the value. "If the header field could be used to identify a secret, then it would be masked… then we would catch it when it enters."</p>
+<p>That's how it works now. The first time a value appears next to a name like that, the plugin remembers it, and from then on it's masked everywhere, label or not.</p>
+<p>Then I wanted to see if my secrets were safe from the AI. I asked for a script that runs the detector over my key file line by line and prints only whether a line would be masked, never the line itself. The AI never read the file.</p>
+<p>Every line with a password or key was masked except one: a key for Jira, the work-tracking tool, whose label didn't say "key". Jira's keys all start with <code>ATATT3</code>, and nobody had told the detector. One new pattern, and that line went dark too.</p>
+<h2>Sharp knives</h2>
+<p>Along the way the AI tightened things I hadn't asked for. Placeholders would no longer be turned back into real values when they went to another AI. Fine. It also added a line telling the AI never to put placeholders into messages meant for people.</p>
+<p>I thought about a normal day. Someone asks me to look up an order, and I want the AI to post the customer's email address in our chat. With that rule, the AI would refuse.</p>
+<p>"My philosophy is, I want to give people sharp knives, because that means, yes, you can cut yourself, if you're doing the wrong thing, but it also doesn't make something impossible."</p>
+<p>The line came out. Now the only thing that still gets placeholders is a handoff to another AI. Everything that goes to a person gets the real value.</p>
+<h2>Better call Sol</h2>
+<p>By then the plugin had a test suite, a set of automatic checks: sample secrets and harmless bits of text, each one either masked or kept. Then I handed it to Sol.</p>
+<p>Sol is <a href="/posts/2026-10-28-better-call-sol/">my review loop</a>: a second AI from a different company reads the work and lists what's wrong, my AI writes a test that fails for each finding, fixes it, and sends it back. Up to five rounds.</p>
+<p>The first round came back with a list. The worst finding was about the guard itself. When a mod crashes, or takes too long, Claude Code skips it and carries on. For most mods that's polite. For mine it meant the secret walked straight past. And some of my patterns were slow enough to trigger it on a few pages of text.</p>
+<p>A guard that steps aside when it gets confused. Now it blocks instead: if the plugin can't check a message, the message doesn't go.</p>
+<p>Sol never got to approve it. The last fix came after the fifth round, and five is the limit.</p>
+<h2>I got you, babe</h2>
+<p>Then the real test, the one this morning was about. I opened a new conversation in T3 Code on my phone and gave it a fake password. The AI used it in a command, and the command got the real password. I restarted Claude and T3 Code, came back, and asked again.</p>
+<p>It still worked. The plugin had found its file, unlocked it, and remembered.</p>
+<p>The same test also showed where it can't help. T3 Code had named the conversation after my first message, the fake password in plain text. I didn't mind. I don't plan to type secrets into the chat. What I'm guarding against is an accident: a search through a settings file or a database lookup that pulls in a password, and an AI that then tells me, helpfully, that it just read a password.</p>
+<p>Every morning in Groundhog Day, Phil wakes up to the same song, I Got You Babe, and the whole town has forgotten yesterday. Phil hasn't. Now my plugin remembers like Phil, after every restart.</p>
+<p>Even the secrets, in all my conversations… with Claude.</p>
+<p>Here is <a href="https://github.com/scriptease/claude-code-redact-plugin">the plugin</a>, and here are <a href="https://code.claude.com/docs/en/plugins/mods/overview">the official docs for mods</a>.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Sharpening My Axe</title>
 <link>https://scriptease.dev/posts/2026-10-31-sharpening-my-axe/</link>
@@ -1250,7 +1303,7 @@ Sol verdict: approved
 <content:encoded><![CDATA[<article class="post">
 <h1>Or Else</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/git/">#git</a> <a href="/tags/security/">#security</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · 5. Or Else</em></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · 5. Or Else · <a href="/posts/2026-11-05-groundhog-day/">6. Groundhog Day</a></em></p>
 <p>There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.</p>
 <h2>A note on the door</h2>
 <p>In <a href="/posts/2026-07-22-childproofing-an-ai/">Childproofing an AI</a> I stopped building walls around my AI and wrote it a note instead. One door mattered more than the rest: sending my code to the team before I've looked at it. So I put a watchdog in front of that door, and hoped it would never have to bark.</p>
@@ -1763,7 +1816,7 @@ any libraries, and it must render even in Safari on the iPad
 <content:encoded><![CDATA[<article class="post">
 <h1>Redacted</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/security/">#security</a> <a href="/tags/plugins/">#plugins</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · 4. Redacted · <a href="/posts/2026-09-22-or-else/">5. Or Else</a></em></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · 4. Redacted · <a href="/posts/2026-09-22-or-else/">5. Or Else</a> · <a href="/posts/2026-11-05-groundhog-day/">6. Groundhog Day</a></em></p>
 <p>I watched a video about a new Claude Code feature, hooks that can rewrite what the AI reads, and knew within a minute what I'd use it for. Then my research agent came back with its verdict: the feature doesn't exist.</p>
 <h2>Everything you type is uploaded</h2>
 <p>An AI conversation is a transcript. Whatever I type goes to the AI company's servers, gets stored there, and comes back with each later message so the AI remembers what we were talking about. Passwords. Customer emails. The lot.</p>
@@ -1809,7 +1862,10 @@ any libraries, and it must render even in Safari on the iPad
 <p>I went back to the report and corrected it. The machinery is in the public version, and it only turns on with that extra startup switch. What hasn't shipped is a decision: the feature is marked early access, the design is still open for comments, and the way plugins talk to it may change without notice.</p>
 <p>"It hasn't shipped" was the accurate answer to a question I hadn't asked. Mine was whether I could use it on Saturday morning.</p>
 <p>The video's title was clickbait. It was also a door for building something cool.</p>
-<p>Here is <a href="https://github.com/scriptease/claude-code-redact-plugin">the plugin described in this post</a>, and here is <a href="https://claudefa.st/blog/tools/hooks/function-hooks">the unofficial documentation</a> if you want to learn more.</p>
+<p>Here is <a href="https://github.com/scriptease/claude-code-redact-plugin">the plugin described in this post</a>, and here is <del><a href="https://claudefa.st/blog/tools/hooks/function-hooks">the unofficial documentation</a></del> <a href="https://code.claude.com/docs/en/plugins/mods/overview">the official documentation</a> if you want to learn more.</p>
+<h2>Update: It shipped</h2>
+<p>Two months later, my research agent's "It hasn't shipped yet" is out of date. The extra startup switch from "Fun with flags" is gone. The feature is on for everyone, and it has an official name: mods.</p>
+<p>The plugin still loaded. It just couldn't remember a secret once Claude restarted, so I rebuilt it. That's the follow-up: <a href="/posts/2026-11-05-groundhog-day/">Groundhog Day</a>.</p>
 </article>]]></content:encoded>
 </item>
 <item>
@@ -3253,7 +3309,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>Childproofing an AI</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/security/">#security</a> <a href="/tags/git/">#git</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · 3. Childproofing an AI · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="/posts/2026-09-22-or-else/">5. Or Else</a></em></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · 3. Childproofing an AI · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="/posts/2026-09-22-or-else/">5. Or Else</a> · <a href="/posts/2026-11-05-groundhog-day/">6. Groundhog Day</a></em></p>
 <p>Three times I built a wall to keep my AI in line. Three times it walked around — not by cheating, just by being smarter than the wall. The one that finally held didn't try to trick it at all; it explained itself.</p>
 <p>A park's paths are laid out like the planner envisioned — the scenic route. But then people trample a shortcut — a direct path. That shortcut has a name: a <em>desire path</em> — the shortest line to the goal, worn by feet instead of drawn by planners. That's what my AI does — it leaves my scenic route and cuts straight to what it wants.</p>
 <h2>A sandbox needs walls</h2>
@@ -3358,7 +3414,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>Load-Bearing Constraints</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/talk/">#talk</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · 2. Load-Bearing Constraints · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="/posts/2026-09-22-or-else/">5. Or Else</a></em></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · 2. Load-Bearing Constraints · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="/posts/2026-09-22-or-else/">5. Or Else</a> · <a href="/posts/2026-11-05-groundhog-day/">6. Groundhog Day</a></em></p>
 <p>I was halfway through a talk about AI ignoring the rules we give it when I had a thought worth acting on: hold it up against my own rulebook.</p>
 <p>So I handed the talk to my assistant to research, and went back to watching the rest.</p>
 <p>It broke one of my rules before the speaker finished explaining how that happens.</p>
@@ -3526,7 +3582,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>AI Parenting 101</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: 1. AI Parenting 101 · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="/posts/2026-09-22-or-else/">5. Or Else</a></em></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: 1. AI Parenting 101 · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="/posts/2026-09-22-or-else/">5. Or Else</a> · <a href="/posts/2026-11-05-groundhog-day/">6. Groundhog Day</a></em></p>
 <p>My smartest coworker wakes up every morning three years old. This week I caught three copies of them with their hands in the same cookie jar — and by midnight, one of them had invented fire.</p>
 <h2>Greatest hits, said with affection</h2>
 <p>The coworker is an AI — Claude, in its various versions. I work with it daily, and the work is real: it reads five-year-old code I've forgotten, runs speed tests overnight, finds solutions I wouldn't have found with just my brain. That trust is earned.</p>
