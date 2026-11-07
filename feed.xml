@@ -76,7 +76,8 @@
 <h2>Every morning it forgets</h2>
 <p>I work in T3 Code, an app where I run my AI conversations side by side, one per task, from my laptop or my phone. T3 Code tries to keep Claude running, but it doesn't promise to. An update or a restart of T3 Code, and Claude starts fresh with the saved conversation handed back to it. And I want to come back to a conversation hours or days later and carry on, restart or not.</p>
 <p>The plugin kept its secrets only as long as Claude was running. Claude restarts, secrets gone.</p>
-<p>The conversation still said <code>REDACTED_DB_PASS</code>. The plugin had no idea what that meant anymore, so the command got the placeholder instead of the password and failed. Nothing leaked. It just broke. But The plugin had redacted my secrets so well that it had forgotten them. Every morning it woke up, read a conversation full of placeholders, and recognized none of them.</p>
+<p>The conversation still said <code>REDACTED_DB_PASS</code>. The plugin had no idea what that meant anymore, so the command got the placeholder instead of the password and failed. Nothing leaked. It just broke.</p>
+<p>The plugin had redacted my secrets so well that it had forgotten them. Every morning it woke up, read a conversation full of placeholders, and recognized none of them.</p>
 <h2>Stuck with 500 entries in my keychain</h2>
 <p>The AI's first idea was the Mac's Keychain, the password vault built into every Mac: one entry per secret.</p>
 <p>I've built this plugin for database work. A single lookup in our customer database can return 500 customers, and 500 email addresses. That would be 500 entries in my keychain. One entry per conversation, then? The AI found the catch there: every read and write would hand the secrets to a Keychain command, and while it runs, any other program on the Mac can see them in the list of running programs. Hidden from the AI, on show to everyone else.</p>
