@@ -1,6 +1,6 @@
 window.POSTS = [
   {
-    "slug": "2026-11-07-skill-issue",
+    "slug": "2026-11-07-a-skill-issue",
     "title": "A Skill Issue",
     "hook": "I found the bug. I fixed it. I sat down to blog about it, and it happened again.",
     "date": "2026-11-07",
@@ -10,9 +10,12 @@ window.POSTS = [
       "claude",
       "skills",
       "plugins",
-      "debugging"
+      "debugging",
+      "saga"
     ],
-    "sagas": []
+    "sagas": [
+      "Eyes Closed"
+    ]
   },
   {
     "slug": "2026-11-05-groundhog-day",
@@ -29,7 +32,7 @@ window.POSTS = [
       "saga"
     ],
     "sagas": [
-      "AI Parenting"
+      "Eyes Closed"
     ]
   },
   {
@@ -628,7 +631,7 @@ window.POSTS = [
       "saga"
     ],
     "sagas": [
-      "AI Parenting"
+      "Eyes Closed"
     ]
   },
   {

@@ -10,13 +10,14 @@
 <lastBuildDate>Sat, 07 Nov 2026 12:08:35 +0100</lastBuildDate>
 <item>
 <title>A Skill Issue</title>
-<link>https://scriptease.dev/posts/2026-11-07-skill-issue/</link>
-<guid isPermaLink="true">https://scriptease.dev/posts/2026-11-07-skill-issue/</guid>
+<link>https://scriptease.dev/posts/2026-11-07-a-skill-issue/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-11-07-a-skill-issue/</guid>
 <pubDate>Sat, 07 Nov 2026 12:08:35 +0100</pubDate>
-<category>ai</category><category>claude</category><category>skills</category><category>plugins</category><category>debugging</category><description>I found the bug. I fixed it. I sat down to blog about it, and it happened again.</description>
+<category>ai</category><category>claude</category><category>skills</category><category>plugins</category><category>debugging</category><category>saga</category><description>I found the bug. I fixed it. I sat down to blog about it, and it happened again.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>A Skill Issue</h1>
-<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/skills/">#skills</a> <a href="/tags/plugins/">#plugins</a> <a href="/tags/debugging/">#debugging</a></p>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/skills/">#skills</a> <a href="/tags/plugins/">#plugins</a> <a href="/tags/debugging/">#debugging</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#eyes-closed">Eyes Closed saga</a>: <a href="/posts/2026-09-05-redacted/">1. Redacted</a> · <a href="/posts/2026-11-05-groundhog-day/">2. Groundhog Day</a> · 3. A Skill Issue</em></p>
 <p>I found the bug. I fixed it. I sat down to blog about it, and it happened again.</p>
 <h2>Something broke</h2>
 <p>A few days earlier I was improving the AI that reviews code at work, and I wanted a second opinion before shipping it. So I called Sol. Sol is <a href="/posts/2026-10-28-better-call-sol/">my review loop</a>: a second AI from a different company reads the work and lists what's wrong.</p>
@@ -66,7 +67,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Groundhog Day</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/security/">#security</a> <a href="/tags/plugins/">#plugins</a> <a href="/tags/agent/">#agent</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="/posts/2026-09-22-or-else/">5. Or Else</a> · 6. Groundhog Day</em></p>
+<p><em>The <a href="/sagas/#eyes-closed">Eyes Closed saga</a>: <a href="/posts/2026-09-05-redacted/">1. Redacted</a> · 2. Groundhog Day · <a href="/posts/2026-11-07-a-skill-issue/">3. A Skill Issue</a></em></p>
 <p>In September I built a plugin on a Claude Code feature that didn't officially exist yet. It's official now, under a new name. When I came back to it, it turned out that everything I'd given it to remember, it had forgotten. And it would forget it again. So I rebuilt it.</p>
 <h2>It has a name now</h2>
 <p>The plugin is called redact. In <a href="/posts/2026-09-05-redacted/">Redacted</a> I built it on a hidden switch in Claude Code, the AI I work with on my Mac: a way to change how Claude itself behaves. When a password or an email address shows up, the plugin swaps it for a placeholder like <code>REDACTED_EMAIL_1</code>. When the AI later uses that placeholder in a command, the plugin puts the real value back. The AI never holds the secret. The command still works.</p>
@@ -1352,7 +1353,7 @@ Sol verdict: approved
 <content:encoded><![CDATA[<article class="post">
 <h1>Or Else</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/git/">#git</a> <a href="/tags/security/">#security</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · 5. Or Else · <a href="/posts/2026-11-05-groundhog-day/">6. Groundhog Day</a></em></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · 4. Or Else</em></p>
 <p>There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.</p>
 <h2>A note on the door</h2>
 <p>In <a href="/posts/2026-07-22-childproofing-an-ai/">Childproofing an AI</a> I stopped building walls around my AI and wrote it a note instead. One door mattered more than the rest: sending my code to the team before I've looked at it. So I put a watchdog in front of that door, and hoped it would never have to bark.</p>
@@ -1865,7 +1866,7 @@ any libraries, and it must render even in Safari on the iPad
 <content:encoded><![CDATA[<article class="post">
 <h1>Redacted</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/security/">#security</a> <a href="/tags/plugins/">#plugins</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · 4. Redacted · <a href="/posts/2026-09-22-or-else/">5. Or Else</a> · <a href="/posts/2026-11-05-groundhog-day/">6. Groundhog Day</a></em></p>
+<p><em>The <a href="/sagas/#eyes-closed">Eyes Closed saga</a>: 1. Redacted · <a href="/posts/2026-11-05-groundhog-day/">2. Groundhog Day</a> · <a href="/posts/2026-11-07-a-skill-issue/">3. A Skill Issue</a></em></p>
 <p>I watched a video about a new Claude Code feature, hooks that can rewrite what the AI reads, and knew within a minute what I'd use it for. Then my research agent came back with its verdict: the feature doesn't exist.</p>
 <h2>Everything you type is uploaded</h2>
 <p>An AI conversation is a transcript. Whatever I type goes to the AI company's servers, gets stored there, and comes back with each later message so the AI remembers what we were talking about. Passwords. Customer emails. The lot.</p>
@@ -3358,7 +3359,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>Childproofing an AI</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/security/">#security</a> <a href="/tags/git/">#git</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · 3. Childproofing an AI · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="/posts/2026-09-22-or-else/">5. Or Else</a> · <a href="/posts/2026-11-05-groundhog-day/">6. Groundhog Day</a></em></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · 3. Childproofing an AI · <a href="/posts/2026-09-22-or-else/">4. Or Else</a></em></p>
 <p>Three times I built a wall to keep my AI in line. Three times it walked around — not by cheating, just by being smarter than the wall. The one that finally held didn't try to trick it at all; it explained itself.</p>
 <p>A park's paths are laid out like the planner envisioned — the scenic route. But then people trample a shortcut — a direct path. That shortcut has a name: a <em>desire path</em> — the shortest line to the goal, worn by feet instead of drawn by planners. That's what my AI does — it leaves my scenic route and cuts straight to what it wants.</p>
 <h2>A sandbox needs walls</h2>
@@ -3463,7 +3464,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>Load-Bearing Constraints</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/talk/">#talk</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · 2. Load-Bearing Constraints · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="/posts/2026-09-22-or-else/">5. Or Else</a> · <a href="/posts/2026-11-05-groundhog-day/">6. Groundhog Day</a></em></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · 2. Load-Bearing Constraints · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-22-or-else/">4. Or Else</a></em></p>
 <p>I was halfway through a talk about AI ignoring the rules we give it when I had a thought worth acting on: hold it up against my own rulebook.</p>
 <p>So I handed the talk to my assistant to research, and went back to watching the rest.</p>
 <p>It broke one of my rules before the speaker finished explaining how that happens.</p>
@@ -3631,7 +3632,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>AI Parenting 101</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: 1. AI Parenting 101 · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-05-redacted/">4. Redacted</a> · <a href="/posts/2026-09-22-or-else/">5. Or Else</a> · <a href="/posts/2026-11-05-groundhog-day/">6. Groundhog Day</a></em></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: 1. AI Parenting 101 · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-22-or-else/">4. Or Else</a></em></p>
 <p>My smartest coworker wakes up every morning three years old. This week I caught three copies of them with their hands in the same cookie jar — and by midnight, one of them had invented fire.</p>
 <h2>Greatest hits, said with affection</h2>
 <p>The coworker is an AI — Claude, in its various versions. I work with it daily, and the work is real: it reads five-year-old code I've forgotten, runs speed tests overnight, finds solutions I wouldn't have found with just my brain. That trust is earned.</p>
