@@ -1,5 +1,22 @@
 window.POSTS = [
   {
+    "slug": "2026-11-07-unsupervised",
+    "title": "Unsupervised",
+    "hook": "My boss sent me one line: is Claude poking around our servers unsupervised? I was ready to answer no. My AI wasn't.",
+    "date": "2026-11-07",
+    "month": "2026-11",
+    "tags": [
+      "ai",
+      "agent",
+      "claude",
+      "security",
+      "saga"
+    ],
+    "sagas": [
+      "AI Parenting"
+    ]
+  },
+  {
     "slug": "2026-11-07-a-skill-issue",
     "title": "A Skill Issue",
     "hook": "I found the bug. I fixed it. I sat down to blog about it, and it happened again.",

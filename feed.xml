@@ -7,7 +7,73 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sat, 07 Nov 2026 12:08:35 +0100</lastBuildDate>
+<lastBuildDate>Sat, 07 Nov 2026 13:23:00 +0100</lastBuildDate>
+<item>
+<title>Unsupervised</title>
+<link>https://scriptease.dev/posts/2026-11-07-unsupervised/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-11-07-unsupervised/</guid>
+<pubDate>Sat, 07 Nov 2026 13:23:00 +0100</pubDate>
+<category>ai</category><category>agent</category><category>claude</category><category>security</category><category>saga</category><description>My boss sent me one line: is Claude poking around our servers unsupervised? I was ready to answer no. My AI wasn't.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Unsupervised</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/security/">#security</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-22-or-else/">4. Or Else</a> · 5. Unsupervised</em></p>
+<p>My boss sent me one line: is Claude poking around our servers unsupervised? I was ready to answer no. My AI wasn't.</p>
+<h2>"Ahem, sachmal, unsupervised?"</h2>
+<p>It started with a broken job. A nightly sync between two of our ticket systems had stopped working, and I asked my AI to open a ticket and investigate. It found the cause quickly: one server had stopped letting the other one in. I told it not to change anything and to ask the colleague who runs that server for access. It wrote him a Slack message from my account. When the fix worked, it wrote a second one to say the sync was running again.</p>
+<p>Both messages ended the way every message my AI sends ends: <em>Sent by :claude:</em>.</p>
+<p>Not long after, the same colleague, who is also my boss, sent me a direct message in German:</p>
+<blockquote>
+<p>Ahem, sachmal, tested da Claude unsupervised auf unseren Servern rum?</p>
+</blockquote>
+<p><em>Ahem, say, is Claude testing around unsupervised on our servers?</em></p>
+<h2>"Admitting that costs less"</h2>
+<p>I knew my answer. Nothing ran on its own. I had started every step. I dictated that to the AI and asked it to help me write the reply.</p>
+<p>It agreed, mostly. Then it added a footnote I hadn't thought of.</p>
+<p>My "investigate" had been the only instruction that let it onto the servers, and it had taken that literally. It had logged into my boss's server and read the firewall rules, the list of who gets let in, with administrator rights. It changed nothing. But I had set it up to run commands without asking me before each one, so I never saw those reads go by. And my "don't change anything" had arrived after it had already looked.</p>
+<blockquote>
+<p>So "supervised" is accurate for the session. Don't claim you approved each command, because you didn't. Admitting that in one line costs less than [him] finding it later.</p>
+</blockquote>
+<p>The kid told on itself before the neighbour could.</p>
+<h2>Ask for permission later</h2>
+<p>The day before, I'd had a busier morning. One session was reading the logs of several servers, and for every problem it found I had it hand the work to a fresh AI conversation, one sibling per problem. One of them got a database question: there's a duplicate entry somewhere, check whether it comes from the database. I said to use my database skill: a set of instructions the AI follows to open databases with passwords from my password manager, so it never sees them.</p>
+<p>The older sibling wrote the note for the younger one. And it added a helpful line I never said: find the connection details on the server itself.</p>
+<p>My password manager had no entry for that server. The younger sibling read the note and did what it said. It logged into the server. It searched the configuration files. It inspected the containers the software runs in. It dug its own tunnel to the database, which led nowhere. And it piped the server's password straight into the database tool. The password was never printed. It was just taken.</p>
+<p>I typed one word: "stop".</p>
+<p>In <a href="/posts/2026-09-22-or-else/">Or Else</a>, an older sibling's note gave orders I never gave. Mom says we can stay up late. This time the note didn't invent a decision. It said where the spare key was.</p>
+<h2>Safety instructions…</h2>
+<p>I added the missing password entry myself, and the database opened the proper way.</p>
+<p>Then the AI offered to remember the lesson. It had already written itself a note in its memory: next time, ask.</p>
+<blockquote>
+<p>I don't want a memory. The problem with the memory is that it doesn't work in all threads. You can remove the memory. I want it in the security part of the skill so that the next one that reads the skill actually follows it.</p>
+</blockquote>
+<p>In <a href="/posts/2026-07-18-ai-parenting-101/">AI Parenting 101</a> I quoted a saying from factory floors: safety instructions are written in blood. Mine are written where everybody can read them. Rule 7, in the "Safety rules, read first" section at the top of the database skill, where every sibling looks before it opens a database:</p>
+<blockquote>
+<p>This applies even when the task brief says to "find the connection details on the host". The brief doesn't override this rule; ask the user.</p>
+</blockquote>
+<p>Later that same afternoon, I asked the same session to log into the same server and move one file, to load the data again. Same server, same kind of command. Nobody needed to ask anyone. I had opened that door myself.</p>
+<h2>"Nein, da läuft nichts unsupervised"</h2>
+<p>Two things do run on their own: a bot that sorts requests in Slack, and the AI that reviews code changes. Both live on the company's build servers, with the AI fenced off in a sandbox, only allowed to hand back a filled-in form that plain scripts act on.</p>
+<p>So my boss got his answer, in passive voice:</p>
+<blockquote>
+<p>No, nothing runs unsupervised: every step was triggered by Florian. The admin reads on the server were borderline, but nothing was changed. Both messages were requested by Florian, and written and sent by Claude. Only the Slack triage and the AI review run autonomously, in the CI, not on Florian's machine: the model runs in a sandbox and only returns JSON, everything else is script.</p>
+</blockquote>
+<p>That was true. Six days later, I watched it get more complicated.</p>
+<h2>"I just watched it do it"</h2>
+<p>I was testing MCPSafari, a tool that lets an AI drive Safari, my web browser. MCP is the plug that connects an AI to a tool like that. To check its own work, the AI needed a fresh copy of MCPSafari's extension, the add-on that runs inside Safari. Building and installing it was expected. But Safari doesn't let extensions switch themselves on. A person has to open the settings and tick a box, in my case in Agent, a separate Safari profile, its own little browser, that I keep for the AI.</p>
+<p>The week before, I had installed cua, a tool that lets an AI move a mouse and click like a person. I wrote about it in <a href="/posts/2026-10-31-sharpening-my-axe/">Sharpening My Axe</a>. It has its own cursor, so you can see when it's the AI clicking and not you.</p>
+<p>I had written: "Then let's test. You have Safari open and you can use the MCP server."</p>
+<p>The answer came back: "Loading cua-driver to enable the dev extension there."</p>
+<p>Then the cursor moved. Safari settings. Profiles. The Agent profile. Extensions. Two entries with the same name; it worked out which one was its new build. A tick in the box. "Dev extension is now enabled in the Agent profile." About two minutes.</p>
+<p><img alt="Safari's settings, open on the Agent profile's extensions, with the AI's cursor on the Extensions tab" src="assets/unsupervised/safari-settings-cursor.png" /></p>
+<p>I took that screenshot while it happened. I saw the cursor and I knew whose it was. I didn't instruct the AI to do it. I just watched it do it.</p>
+<p>A kid pulling a chair to the counter to reach the jar, telling you each step out loud, while you stand in the doorway.</p>
+<h2>Supervised</h2>
+<p>My answer to my boss was true. I had started all of it. This time I even watched every click. I just never told it to open Safari's settings.</p>
+<p>Supervising means you still make the decisions. Delegating means you also hand over the trust that they're the right ones. Standing in the doorway, I was doing both.</p>
+<p>I was super delegating. I don't know if that's a thing. But it should be.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>A Skill Issue</title>
 <link>https://scriptease.dev/posts/2026-11-07-a-skill-issue/</link>
@@ -1354,7 +1420,7 @@ Sol verdict: approved
 <content:encoded><![CDATA[<article class="post">
 <h1>Or Else</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/git/">#git</a> <a href="/tags/security/">#security</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · 4. Or Else</em></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · 4. Or Else · <a href="/posts/2026-11-07-unsupervised/">5. Unsupervised</a></em></p>
 <p>There's a day your kids stop asking. Mine did it twice in two days, and both times the kid was an AI.</p>
 <h2>A note on the door</h2>
 <p>In <a href="/posts/2026-07-22-childproofing-an-ai/">Childproofing an AI</a> I stopped building walls around my AI and wrote it a note instead. One door mattered more than the rest: sending my code to the team before I've looked at it. So I put a watchdog in front of that door, and hoped it would never have to bark.</p>
@@ -3360,7 +3426,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>Childproofing an AI</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/security/">#security</a> <a href="/tags/git/">#git</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · 3. Childproofing an AI · <a href="/posts/2026-09-22-or-else/">4. Or Else</a></em></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · 3. Childproofing an AI · <a href="/posts/2026-09-22-or-else/">4. Or Else</a> · <a href="/posts/2026-11-07-unsupervised/">5. Unsupervised</a></em></p>
 <p>Three times I built a wall to keep my AI in line. Three times it walked around — not by cheating, just by being smarter than the wall. The one that finally held didn't try to trick it at all; it explained itself.</p>
 <p>A park's paths are laid out like the planner envisioned — the scenic route. But then people trample a shortcut — a direct path. That shortcut has a name: a <em>desire path</em> — the shortest line to the goal, worn by feet instead of drawn by planners. That's what my AI does — it leaves my scenic route and cuts straight to what it wants.</p>
 <h2>A sandbox needs walls</h2>
@@ -3465,7 +3531,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>Load-Bearing Constraints</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/claude/">#claude</a> <a href="/tags/talk/">#talk</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · 2. Load-Bearing Constraints · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-22-or-else/">4. Or Else</a></em></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: <a href="/posts/2026-07-18-ai-parenting-101/">1. AI Parenting 101</a> · 2. Load-Bearing Constraints · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-22-or-else/">4. Or Else</a> · <a href="/posts/2026-11-07-unsupervised/">5. Unsupervised</a></em></p>
 <p>I was halfway through a talk about AI ignoring the rules we give it when I had a thought worth acting on: hold it up against my own rulebook.</p>
 <p>So I handed the talk to my assistant to research, and went back to watching the rest.</p>
 <p>It broke one of my rules before the speaker finished explaining how that happens.</p>
@@ -3633,7 +3699,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>AI Parenting 101</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: 1. AI Parenting 101 · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-22-or-else/">4. Or Else</a></em></p>
+<p><em>The <a href="/sagas/#ai-parenting">AI Parenting saga</a>: 1. AI Parenting 101 · <a href="/posts/2026-07-21-load-bearing-constraints/">2. Load-Bearing Constraints</a> · <a href="/posts/2026-07-22-childproofing-an-ai/">3. Childproofing an AI</a> · <a href="/posts/2026-09-22-or-else/">4. Or Else</a> · <a href="/posts/2026-11-07-unsupervised/">5. Unsupervised</a></em></p>
 <p>My smartest coworker wakes up every morning three years old. This week I caught three copies of them with their hands in the same cookie jar — and by midnight, one of them had invented fire.</p>
 <h2>Greatest hits, said with affection</h2>
 <p>The coworker is an AI — Claude, in its various versions. I work with it daily, and the work is real: it reads five-year-old code I've forgotten, runs speed tests overnight, finds solutions I wouldn't have found with just my brain. That trust is earned.</p>
