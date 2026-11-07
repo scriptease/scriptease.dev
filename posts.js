@@ -1,5 +1,20 @@
 window.POSTS = [
   {
+    "slug": "2026-11-07-skill-issue",
+    "title": "A Skill Issue",
+    "hook": "I found the bug. I fixed it. I sat down to blog about it, and it happened again.",
+    "date": "2026-11-07",
+    "month": "2026-11",
+    "tags": [
+      "ai",
+      "claude",
+      "skills",
+      "plugins",
+      "debugging"
+    ],
+    "sagas": []
+  },
+  {
     "slug": "2026-11-05-groundhog-day",
     "title": "Groundhog Day",
     "hook": "In September I built a plugin on a Claude Code feature that didn't officially exist yet. It's official now, under a new name. When I came back to it, it turned out that everything I'd given it to remember, it had forgotten. And it would forget it again. So I rebuilt it.",

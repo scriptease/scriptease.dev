@@ -7,7 +7,56 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Thu, 05 Nov 2026 16:16:16 +0100</lastBuildDate>
+<lastBuildDate>Sat, 07 Nov 2026 12:08:35 +0100</lastBuildDate>
+<item>
+<title>A Skill Issue</title>
+<link>https://scriptease.dev/posts/2026-11-07-skill-issue/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-11-07-skill-issue/</guid>
+<pubDate>Sat, 07 Nov 2026 12:08:35 +0100</pubDate>
+<category>ai</category><category>claude</category><category>skills</category><category>plugins</category><category>debugging</category><description>I found the bug. I fixed it. I sat down to blog about it, and it happened again.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>A Skill Issue</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/skills/">#skills</a> <a href="/tags/plugins/">#plugins</a> <a href="/tags/debugging/">#debugging</a></p>
+<p>I found the bug. I fixed it. I sat down to blog about it, and it happened again.</p>
+<h2>Something broke</h2>
+<p>A few days earlier I was improving the AI that reviews code at work, and I wanted a second opinion before shipping it. So I called Sol. Sol is <a href="/posts/2026-10-28-better-call-sol/">my review loop</a>: a second AI from a different company reads the work and lists what's wrong.</p>
+<p>Sol didn't pick up. All I got back was one line: <code>Launching skill: better-call-sol</code>.</p>
+<p>My AI took that as a good sign: "The review by Sol is running."</p>
+<p>It was not. Almost an hour later I typed two words into my phone: "Something broke".</p>
+<p>Sol lives in a skill. A skill is a note with instructions for an AI, stored on a shelf with just a label. Asking for one gets back an envelope: the label on the outside, the note inside.</p>
+<p>This time the envelope came back empty. Once I complained, my AI opened the note file by hand and ran the review the long way round. Sol approved in the end.</p>
+<h2>The usual suspects</h2>
+<p>It had happened once before, so I spun up a fresh AI to find out who to blame. "Is this a T3 Code issue? Is this a Claude Code issue?" T3 Code is the app I run my AI conversations in; Claude Code is the coding assistant inside it.</p>
+<p>I thought two connections had dropped and come back just as the skill failed. Three suspects, all with motive.</p>
+<p>The digger ruled out the dropped connections first: they happened almost an hour later, right when I sent "Something broke".</p>
+<p>Then it read every skill request in every conversation I'd saved. The failures started one afternoon some days earlier. Not twice: almost twenty times. Most of them were the skill that talks to Jira, the work-tracking tool, and every time the AI had simply carried on without its instructions. I'd noticed twice.</p>
+<p>And every one of them had happened in T3 Code, all on the same version. Suspect number one, caught red-handed. Except it was a coincidence: I hadn't updated T3 Code since the day the trouble started, and I'd been working in nothing else.</p>
+<h2>"Reduction hook, comes from me"</h2>
+<p>Something had started rewriting the answers my AI got back. The digger followed the trail to a plugin installed that afternoon.</p>
+<p>I knew that plugin. I wrote it. It's redact, the one from <a href="/posts/2026-11-05-groundhog-day/">Groundhog Day</a>, which hides my passwords from my AI by swapping them for placeholders. That post ended with me installing it everywhere: "Even the secrets, in all my conversations… with Claude."</p>
+<p>All my conversations. That line was the bug going live.</p>
+<p>I sent the digger a voice message: "Reduction hook, comes from me."</p>
+<p>Gamers have a reply for anyone blaming the game: it's a skill issue. It means the problem is you. Mine was a skill issue in both senses, and I was mostly relieved: "It's good to know that if it causes some issues that it's not a T3 code thing."</p>
+<h2>The missing skill</h2>
+<p>My plugin checked every answer my AI got back and masked anything that looked like a password. Then it copied the label onto a fresh envelope and passed that on.</p>
+<p>The note stayed behind in the old one, even when there was nothing to mask.</p>
+<p>The fix: if there's nothing to mask, pass on the original envelope, note and all.</p>
+<p>If there <em>is</em> something to mask, the note still stays behind. The plugin never read it, so it could carry the very password the plugin just blacked out on the outside. A missing note is annoying. A leaked password can't be taken back.</p>
+<p>The proof was one question to a fresh AI with the plugin switched on: did the note arrive? The old version said <code>NOT_LOADED</code>. The new one said <code>LOADED</code>. Done.</p>
+<h2>Third time's a charm</h2>
+<p>Then I opened a new conversation to write this post, and my AI reached for the blog note.</p>
+<p><code>Launching skill: blog</code></p>
+<p>No note. The fix wasn't installed yet. I told the AI that fixed it to install it and to send the blogging conversation a message: it's fixed, try again.</p>
+<p>The envelope was still empty.</p>
+<p>A running conversation keeps the plugin it started with. The digger had seen it days earlier without either of us noticing: the last note that arrived after I first installed redact came from a conversation that had started before it. Same rule, other direction.</p>
+<p>While I waited, I asked one more question: could the plugin just leave skills alone? The answer was no, and the reason was another bug.</p>
+<p>When my AI asks for a note, it can add a line of its own: "use this password", with the password still a placeholder. My plugin put the real password back, as it would for a tool that needed the password to do its job. But this letter had the same sender and recipient. The line goes into the note, and the note comes straight back to my AI. The plugin was mailing my AI the very password it was hiding from it.</p>
+<p>One last fix. One restart of T3 Code. Then I asked my AI a third time, and finally, the note arrived.</p>
+<p>I can finally blog about it.</p>
+<p>When I started, I thought the title A Skill Issue was way too corny, and that nobody would write about one skill that wouldn't load.</p>
+<p>It turned out to be a gold mine.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Groundhog Day</title>
 <link>https://scriptease.dev/posts/2026-11-05-groundhog-day/</link>
