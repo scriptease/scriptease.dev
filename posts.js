@@ -1,5 +1,22 @@
 window.POSTS = [
   {
+    "slug": "2026-11-08-spike-the-word-that-opens-the-door",
+    "title": "Spike: The Word That Opens the Door",
+    "hook": "My AI kept naming its work \\\"spike\\\". I googled the word to find out what it meant. It took me a while to notice the answer described how I work.",
+    "date": "2026-11-08",
+    "month": "2026-11",
+    "tags": [
+      "ai",
+      "claude",
+      "presentation",
+      "prototype",
+      "saga"
+    ],
+    "sagas": [
+      "Remembering"
+    ]
+  },
+  {
     "slug": "2026-11-07-unsupervised",
     "title": "Unsupervised",
     "hook": "My boss sent me one line: is Claude poking around our servers unsupervised? I was ready to answer no. My AI wasn't.",
