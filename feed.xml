@@ -7,12 +7,12 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sat, 14 Nov 2026 15:53:39 +0100</lastBuildDate>
+<lastBuildDate>Sun, 15 Nov 2026 10:48:50 +0100</lastBuildDate>
 <item>
 <title>Reviewing the Reviewer</title>
 <link>https://scriptease.dev/posts/2026-11-07-reviewing-the-reviewer/</link>
 <guid isPermaLink="true">https://scriptease.dev/posts/2026-11-07-reviewing-the-reviewer/</guid>
-<pubDate>Sat, 14 Nov 2026 15:53:39 +0100</pubDate>
+<pubDate>Sun, 15 Nov 2026 10:48:50 +0100</pubDate>
 <category>ai</category><category>claude</category><category>agent</category><category>automation</category><category>saga</category><description>My AI code reviewer worked the way a demo works. It read every change we made, found real problems, and wrote them down in comments that were marked as done the moment they appeared.</description>
 <content:encoded><![CDATA[<article class="post">
 <h1>Reviewing the Reviewer</h1>
