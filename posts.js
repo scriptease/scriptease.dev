@@ -1,5 +1,22 @@
 window.POSTS = [
   {
+    "slug": "2026-11-07-reviewing-the-reviewer",
+    "title": "Reviewing the Reviewer",
+    "hook": "My AI code reviewer worked the way a demo works. It read every change we made, found real problems, and wrote them down in comments that were marked as done the moment they appeared.",
+    "date": "2026-11-07",
+    "month": "2026-11",
+    "tags": [
+      "ai",
+      "claude",
+      "agent",
+      "automation",
+      "saga"
+    ],
+    "sagas": [
+      "Hands-Free"
+    ]
+  },
+  {
     "slug": "2026-11-08-spike-the-word-that-opens-the-door",
     "title": "Spike: The Word That Opens the Door",
     "hook": "My AI kept naming its work \\\"spike\\\". I googled the word to find out what it meant. It took me a while to notice the answer described how I work.",
