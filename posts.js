@@ -1,5 +1,23 @@
 window.POSTS = [
   {
+    "slug": "2026-11-15-cascading-redactions",
+    "title": "Cascading Redactions",
+    "hook": "I asked an AI to find out why my words were disappearing. Halfway through, its own words started disappearing too.",
+    "date": "2026-11-15",
+    "month": "2026-11",
+    "tags": [
+      "ai",
+      "claude",
+      "plugins",
+      "debugging",
+      "security",
+      "saga"
+    ],
+    "sagas": [
+      "Eyes Closed"
+    ]
+  },
+  {
     "slug": "2026-11-07-reviewing-the-reviewer",
     "title": "Reviewing the Reviewer",
     "hook": "My AI code reviewer worked the way a demo works. It read every change we made, found real problems, and wrote them down in comments that were marked as done the moment they appeared.",

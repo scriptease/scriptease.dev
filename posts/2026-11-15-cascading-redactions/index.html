@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Cascading Redactions — scriptease.dev</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="scriptease.dev">
+<meta property="og:title" content="Cascading Redactions">
+<meta property="og:description" content="I asked an AI to find out why my words were disappearing. Halfway through, its own words started disappearing too.">
+<meta property="og:url" content="https://scriptease.dev/posts/2026-11-15-cascading-redactions/">
+<meta property="og:image" content="https://scriptease.dev/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Cascading Redactions</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/plugins/">#plugins</a> <a href="/tags/debugging/">#debugging</a> <a href="/tags/security/">#security</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#eyes-closed">Eyes Closed saga</a>: <a href="/posts/2026-09-05-redacted/">1. Redacted</a> · <a href="/posts/2026-11-05-groundhog-day/">2. Groundhog Day</a> · <a href="/posts/2026-11-07-a-skill-issue/">3. A Skill Issue</a> · 4. Cascading Redactions</em></p>
+<p>I asked an AI to find out why my words were disappearing. Halfway through, its own words started disappearing too.</p>
+<h2>Secrets: scrubbed</h2>
+<p>One day a long-running conversation of mine was reading all my other AI conversations, to build a talk on how I hand my AI bigger and bigger jobs.</p>
+<p>It didn't read them all itself. It sent out helper AIs, which sent out helpers of their own, each writing a report for the one above. Reports of reports of reports. That chain was what I wanted the talk to show.</p>
+<p>One report covered an earlier clean-up of passwords that had ended up where they shouldn't. It had a line starting with "Secrets:". Remember that line.</p>
+<p>While I watched, little black bars started showing up where there was nothing to hide.</p>
+<p>I knew where they came from. I wrote the thing that makes them: redact, the plugin from the <a href="/sagas/#eyes-closed">Eyes Closed saga</a>. It sits between my AI and everything it reads, and swaps every password for a black bar with a name on it, something like REDACTED_PASSWORD. When the AI uses the bar, the plugin puts the real password back. The AI never sees it.</p>
+<p>Then I asked it to check my usage meter with a little command of mine called usage-check. It answered, and added a note about my plugin, which it calls a hook:</p>
+<blockquote>
+<p>Your redaction hook is replacing ordinary words, not only secrets: "usage-check" in your message and "stopped", "same" and "once" in tool output arrived as REDACTED_… placeholders.</p>
+</blockquote>
+<p>My one-line request had been censored. By me.</p>
+<h2>Falsely flagged stuff</h2>
+<p>From my phone I opened a fresh AI: "claude-code-redact-plugin falsely flagged stuff… can you find out what triggered it".</p>
+<p>Seconds in, it had only opened the plugin's manual. Its thinking, the scratchpad where an AI talks to itself before it answers, already doubted its own eyes:</p>
+<p><img alt="The investigator's thinking: &quot;The README seems to show a redacted API token value, which makes me wonder whether the plugin masked it in my tool output rather than the file itself.&quot;" src="assets/cascading-redactions/thinking-readme.jpg" /></p>
+<p>It couldn't tell anymore whether a black bar was on the page or on its glasses.</p>
+<p>A couple of minutes later it had the answer. The plugin keeps a list of every word it has decided is a secret. In the long conversation, that list had about a hundred entries. Almost all of them ordinary words.</p>
+<p>It started with that report. The plugin's rule: a word like <em>password</em> or <em>secret</em>, then a colon, means the next word is the secret. Sensible for "password: swordfish". But "Secrets:" at the start of a line in a report has the same shape. So the next word became a password.</p>
+<h2>Redacted redactions</h2>
+<p>Then it snowballed. A secret word got blacked out everywhere, even inside other words. Once <em>check</em> was a secret, usage-check lost its second half.</p>
+<p>Every time a report quoted a line with a black bar in it, the bar got longer.</p>
+<p>The black bars kept expanding.</p>
+<h2>Do I need to turn off the plug-in before?</h2>
+<p>"Yes, implement the fixes and write some tests," I told it. "Do I need to turn off the plug-in before?"</p>
+<p>The investigator had the plugin switched on, like all my conversations. To fix the plugin it had to read its code, and that code is full of the words <em>secret</em> and <em>password</em>.</p>
+<p>It read its own instructions with holes in them. Its scratchpad filled with workarounds, until it settled on this:</p>
+<blockquote>
+<p>My session is hitting the same bug, […] so I'm writing test placeholders as concatenated strings to dodge the hook.</p>
+</blockquote>
+<p>It was spelling words in pieces so its own glasses wouldn't black them out.</p>
+<p>I'd seen this before. In <a href="/posts/2026-07-22-childproofing-an-ai/">Childproofing an AI</a>, a memory plugin showed my AI a summary instead of the file it had just written. It stopped trusting its eyes and found another way to see the real file. Same move, same reason.</p>
+<h2>Locked out twice</h2>
+<p>Watching the scratchpad from my phone, I had an idea.</p>
+<p>Claude Code, the AI assistant all of this runs in, reads a small settings file in each folder it works in. That file can switch a plugin off, just for that folder.</p>
+<p>So I asked for one in the plugin's own folder, with redact switched off. The plugin had locked my AI out of its code. Now the plugin was locked out of its own folder.</p>
+<p>The investigator didn't do the fix itself. It briefed a fresh AI in that folder and handed over the job. First instruction: check that the code reads normally. If you see a black bar, stop.</p>
+<p>No black bars. The new AI could see.</p>
+<p>Minutes later it had three fixes and nine new tests, built from the real false alarms. All nine failed on the old version and passed on the new one. I typed "Run it", and the fix was live.</p>
+<h2>Closing a gap</h2>
+<p>Back at the investigator, I reloaded the plugin, wiped its list and asked: "Can you tell me if it's now safe?"</p>
+<p>It fed itself the old troublemakers.</p>
+<p>"It's safer, but there's still a gap."</p>
+<p>A lone word at the end of a line, after a label, still counted as a password. It no longer spread, but it still stuck. And its own test had put three new junk words on its list.</p>
+<p>I sent it back to the fixer. A few minutes later, version two: a lone word made only of letters is no longer a secret. The cost: a real password made only of letters now slips through, unless I mark it myself.</p>
+<p>"Roll out." Done.</p>
+<h2>Building a lifeline</h2>
+<p>The fix stops new junk, not old junk. So I went through my conversations and wiped their lists by hand.</p>
+<p>That had a catch. The black bars stay in the conversation, but the list that knew what each bar stood for is gone. A bar where <em>check</em> used to be stays a riddle forever.</p>
+<p>"The thing I'm worried about is if I call redact clear, then it removes the redaction, but also the evidence, right?"</p>
+<p>"Yes."</p>
+<p>Fine for a conversation that has already worked out what was what. Not for one still lost in the bars, like the long-running one with its hundred fake secrets.</p>
+<p>My first idea was a command that tells the AI every hidden word. The answer opened with "No. Telling the model the secrets defeats the plugin". Correct. It also took away the only way out.</p>
+<p>Its alternative was a list only I could see, and one command per junk word. "Too much plumbing," I said. What if every hidden word went back through the plugin's rules first? Real passwords stay hidden, ordinary words go back to the AI.</p>
+<p>It found the hole in my idea. Most passwords are only recognisable by the label in front of them, and that label is gone once the word is on the list. So it rebuilds the label from the name on the bar. "Secrets: check" no longer counts. "Database password: …" still does.</p>
+<p>That became the new clear. Real secrets get wiped. Ordinary words go back to the AI, with a note saying which bar was which word.</p>
+<p>For the day the rules themselves are wrong, I asked for a forced version. I dictated "minus -4". My AI understood "--force": tell it everything, on purpose, because I asked.</p>
+<p>"Yes, build it and ship it."</p>
+<h2>Redactception</h2>
+<p>When I asked my AI to write this post, it read the previous Eyes Closed post as research. One word came back as a black bar. The file has none.</p>
+<p>Then it checked its own draft. Written in one piece, usage-check would have come back as <code>usage-█████</code>. So it wrote <code>'usage-che'+'ck'</code>: two pieces the computer glues back together.</p>
+<p><img alt="The blog conversation: my AI explains it had to write search words in pieces, then I reload the plugin and type &quot;Redact clear&quot;, and the hook answers &quot;redact: cleared&quot;" src="assets/cascading-redactions/redact-cleared.jpg" /></p>
+<p>In Childproofing I wrote that a blindfolded kid learns to peek. Redact is a blindfold, and my AI peeked twice, both times to do the job I'd given it.</p>
+<p>So it's not a lock. It doesn't stop my AI from dodging it.</p>
+<p>But it works when the two of us work together.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-11-07-reviewing-the-reviewer/">← Reviewing the Reviewer</a><span></span></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
