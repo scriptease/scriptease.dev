@@ -7,7 +7,62 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Sun, 15 Nov 2026 18:06:16 +0100</lastBuildDate>
+<lastBuildDate>Wed, 18 Nov 2026 09:37:06 +0100</lastBuildDate>
+<item>
+<title>Report to Production in Nine Minutes</title>
+<link>https://scriptease.dev/posts/2026-11-18-report-to-production-in-nine-minutes/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-11-18-report-to-production-in-nine-minutes/</guid>
+<pubDate>Wed, 18 Nov 2026 09:37:06 +0100</pubDate>
+<category>ai</category><category>claude</category><category>agent</category><category>debugging</category><category>production</category><category>saga</category><description>Iceberg, right ahead. I was on a call with a colleague when another one joined: all the logins had stopped working, what can we do? Soon he was throwing guesses into Slack. Nine minutes later, we passed the first iceberg.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>Report to Production in Nine Minutes</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/debugging/">#debugging</a> <a href="/tags/production/">#production</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a> · 5. Report to Production in Nine Minutes</em></p>
+<p>Iceberg, right ahead.</p>
+<p>I was on a call with a colleague when another one joined: all the logins had stopped working, what can we do? Soon he was throwing guesses into Slack.</p>
+<p>Nine minutes later, we passed the first iceberg.</p>
+<h2>Everybody on deck</h2>
+<p>The app is an ordering app for a customer's sales team. Field reps take orders on their iPads; the office runs them from a web page. That morning, nobody could get in.</p>
+<p>On a ship, a report climbs the chain of command. This one did, and fast. A field rep couldn't log in and told someone higher up at the customer. He told my colleague, and my colleague walked straight onto our call.</p>
+<p>Everyone on that call knew the app and its login service inside out: me, the colleague I'd been talking to, our project lead. Everyone on the bridge knew the ship. Nobody knew where the hole was.</p>
+<p>I opened Safari, went to the web page and logged in. An error. I took a screenshot and handed it straight to my AI, with four words: "why does this fail".</p>
+<h2>With my boarding pass</h2>
+<p>While it went through the server logs, I did the one thing it couldn't do itself. I moved my login into the Safari profile my AI can read through MCP, a plug that lets an AI look at and click around in a real browser. Logged in again. Same error.</p>
+<p>"i reproduced it in safari mcp," I typed.</p>
+<p>Now it didn't need my screenshot. It could see the failed request itself, in the same browser, on the same page where I had seen it. Same spot on the hull, two pairs of eyes.</p>
+<p>And it could see more than the error. Logging in works like boarding a ship. You prove who you are at the ticket office, here Keycloak, a widely used open-source login service, and it hands you a boarding pass. The app shows that pass to the server with every request. With my browser, my AI could read my boarding pass: which ticket office issued it, to whom, and which permissions are printed on it. That's what I gave it the browser for.</p>
+<h2>Taking the wheel</h2>
+<p>The first AI was still digging. I didn't wait. I sent out crews.</p>
+<p>"spawn a new thread and check the database." A second AI conversation went to the database, where the server logs every request, to find out when it started and who was hit.</p>
+<p>"and spawn a thread if there is a role missing." A third conversation went to compare Keycloak's permissions with what the server expects. On the call we were tossing around ideas, and a missing permission was one of them. A colleague had decoded his own boarding pass and posted the list of permissions printed on it.</p>
+<p>I was already thinking about a fourth, pointed at OpenObserve, the dashboard where our server logs and metrics end up. Before I sent it, the first one came back with the answer.</p>
+<p>The live system's boarding card reader was wired to the test system's ticket office, which was out of service. So everybody got turned away. That was the part of the iceberg under the water.</p>
+<h2>It takes a little while</h2>
+<p>"fix and helmfile apply."</p>
+<p>Helmfile is our charter: a document that describes how our servers are set up. Change the charter, apply it, and the servers follow. The fix was one line in the live charter: connect the reader to the live ticket office. Which office that was, my boarding pass had already told it.</p>
+<p>Then nothing happened for a while.</p>
+<p>The call was waiting. I told them it takes a little while, because it makes sure it doesn't break anything. It was working on production, so it went through the routine before touching the wheel: compare the charter with how the ship is actually set up.</p>
+<p>And it spotted a second iceberg, faint in the distance. None of us on the call had been looking that way. We were all staring at the first one.</p>
+<blockquote>
+<p>A plain apply would downgrade it. Checking.</p>
+</blockquote>
+<p>The charter still named an older version of the software than the one running live. Applying my one-line fix the normal way would have quietly rolled production back and undone changes that were supposed to be there.</p>
+<p>It kept the version that was running, checked once more that my line was the only change, and applied it.</p>
+<p>Some checks look like extra work. You only know you need them when you see what they catch.</p>
+<p>That's the deal with an AI at the wheel. Sometimes it takes longer to check than I would. You give it time.</p>
+<h2>Bookkeeping</h2>
+<p>Patched is not the same as dry. It went back to where it had seen the hole: my Safari, the same page, the same login. The customer list loaded. Another screenshot.</p>
+<p>Then the paperwork, by the book: a top-priority ticket with cause, fix, the screenshots and the open question of who owns the out-of-date charter. The other crews had reported back by then. No permission missing. The database showed we had hit the iceberg 20 minutes before my screenshot, and counted the field reps locked out. All of it went into the ticket: logbook and black box, in one place.</p>
+<p>Last, the answer for my colleagues. I ordered my AI to post it in Slack, with my own summary: the live Keycloak was using the credentials of the test Keycloak.</p>
+<p>That summary was wrong. I have a standing order with my AI: be honest, not just with me.</p>
+<p>So it posted its own: the live Keycloak had been fine, our server had been checking boarding passes against a ticket office that was down, and no permission had been missing.</p>
+<p>It went up under my colleague's message. The two messages are nine minutes apart.</p>
+<h2>Crew report on Monday</h2>
+<p>After a collision, the crew reports. Ours has a date: next Monday, in our team's demo slot.</p>
+<p>What we'll show is already in the logbook. Nobody went fast by skipping steps. The hole was seen with my eyes and then with the AI's, the facts came in before the decisions, the routine checks ran before the wheel turned, and the same spot was checked again once it was patched. The routine is what spotted the second iceberg.</p>
+<p>I renamed the conversation and put DEMO in front of it.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Cascading Redactions</title>
 <link>https://scriptease.dev/posts/2026-11-15-cascading-redactions/</link>
@@ -421,7 +476,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>It's Time to Settle</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/git/">#git</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/saga/">#saga</a> <a href="/tags/t3code/">#t3code</a></p>
-<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · 4. It's Time to Settle</em></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · 4. It's Time to Settle · <a href="/posts/2026-11-18-report-to-production-in-nine-minutes/">5. Report to Production in Nine Minutes</a></em></p>
 <p>I left a wish in a YouTube comment. Less than an hour later I had the parts of it working myself, using only the tools the app already had.</p>
 <h2>"Can you add support for non github focused stuff?"</h2>
 <p>My workday happens in T3 Code, an open-source app where I run my AI coding assistants side by side, one conversation per task. Its maker, Theo, had posted a video tour of the new version the day before.</p>
@@ -485,7 +540,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Better Call Sol</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/skills/">#skills</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · 3. Better Call Sol · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a></em></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · 3. Better Call Sol · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a> · <a href="/posts/2026-11-18-report-to-production-in-nine-minutes/">5. Report to Production in Nine Minutes</a></em></p>
 <p>I watched a YouTube video about a trick I already used. His version was fancier. Mine was about to get a better name.</p>
 <h2>"I already use Sol his way anyway"</h2>
 <p>Theo, a developer on YouTube, made a video called <a href="https://www.youtube.com/watch?v=5Bmp9cz1JN8">These 3 skills changed my life</a>. A skill is a written recipe my AI follows when I say a certain phrase. One of his three is the Sol Loop.</p>
@@ -538,7 +593,7 @@ Sol verdict: approved
 <content:encoded><![CDATA[<article class="post">
 <h1>Taking Over the Workspace</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · 2. Taking Over the Workspace · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a></em></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · 2. Taking Over the Workspace · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a> · <a href="/posts/2026-11-18-report-to-production-in-nine-minutes/">5. Report to Production in Nine Minutes</a></em></p>
 <p>For weeks my AI ran one of our workspaces on its own. It merged, built, deployed and tested, and nobody else touched that code. Then, for the first time, I asked it to set up a workspace I could look at too.</p>
 <h2>"That was fast"</h2>
 <p>A colleague from our web team sent my AI a message in Slack, our work chat, with an upside-down smiley: "Create a ticket on how we can set up git repo for [both customers'] web". Repo is the tool that sets up our workspaces, with several projects side by side.</p>
@@ -3658,7 +3713,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>Non-Load-Bearing</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/work-life-balance/">#work-life-balance</a> <a href="/tags/psychology/">#psychology</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: 1. Non-Load-Bearing · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a></em></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: 1. Non-Load-Bearing · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a> · <a href="/posts/2026-11-18-report-to-production-in-nine-minutes/">5. Report to Production in Nine Minutes</a></em></p>
 <p>I was watching Matt Pocock's <em>"AI Coding is exhausting,"</em> and thirty seconds in he hit a nerve I'd been ignoring for weeks.</p>
 <p>His point was small and exact. The AI hasn't made the work harder. It's eaten the <em>easy</em> part — and the easy part, it turns out, was doing something.</p>
 <h2>Strategic vs tactical decisions</h2>

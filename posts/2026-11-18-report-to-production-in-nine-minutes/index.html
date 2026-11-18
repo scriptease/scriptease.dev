@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Report to Production in Nine Minutes — scriptease.dev</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="scriptease.dev">
+<meta property="og:title" content="Report to Production in Nine Minutes">
+<meta property="og:description" content="Iceberg, right ahead. I was on a call with a colleague when another one joined: all the logins had stopped working, what can we do? Soon he was throwing guesses into Slack. Nine minutes later, we passed the first iceberg.">
+<meta property="og:url" content="https://scriptease.dev/posts/2026-11-18-report-to-production-in-nine-minutes/">
+<meta property="og:image" content="https://scriptease.dev/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Report to Production in Nine Minutes</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/debugging/">#debugging</a> <a href="/tags/production/">#production</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a> · 5. Report to Production in Nine Minutes</em></p>
+<p>Iceberg, right ahead.</p>
+<p>I was on a call with a colleague when another one joined: all the logins had stopped working, what can we do? Soon he was throwing guesses into Slack.</p>
+<p>Nine minutes later, we passed the first iceberg.</p>
+<h2>Everybody on deck</h2>
+<p>The app is an ordering app for a customer's sales team. Field reps take orders on their iPads; the office runs them from a web page. That morning, nobody could get in.</p>
+<p>On a ship, a report climbs the chain of command. This one did, and fast. A field rep couldn't log in and told someone higher up at the customer. He told my colleague, and my colleague walked straight onto our call.</p>
+<p>Everyone on that call knew the app and its login service inside out: me, the colleague I'd been talking to, our project lead. Everyone on the bridge knew the ship. Nobody knew where the hole was.</p>
+<p>I opened Safari, went to the web page and logged in. An error. I took a screenshot and handed it straight to my AI, with four words: "why does this fail".</p>
+<h2>With my boarding pass</h2>
+<p>While it went through the server logs, I did the one thing it couldn't do itself. I moved my login into the Safari profile my AI can read through MCP, a plug that lets an AI look at and click around in a real browser. Logged in again. Same error.</p>
+<p>"i reproduced it in safari mcp," I typed.</p>
+<p>Now it didn't need my screenshot. It could see the failed request itself, in the same browser, on the same page where I had seen it. Same spot on the hull, two pairs of eyes.</p>
+<p>And it could see more than the error. Logging in works like boarding a ship. You prove who you are at the ticket office, here Keycloak, a widely used open-source login service, and it hands you a boarding pass. The app shows that pass to the server with every request. With my browser, my AI could read my boarding pass: which ticket office issued it, to whom, and which permissions are printed on it. That's what I gave it the browser for.</p>
+<h2>Taking the wheel</h2>
+<p>The first AI was still digging. I didn't wait. I sent out crews.</p>
+<p>"spawn a new thread and check the database." A second AI conversation went to the database, where the server logs every request, to find out when it started and who was hit.</p>
+<p>"and spawn a thread if there is a role missing." A third conversation went to compare Keycloak's permissions with what the server expects. On the call we were tossing around ideas, and a missing permission was one of them. A colleague had decoded his own boarding pass and posted the list of permissions printed on it.</p>
+<p>I was already thinking about a fourth, pointed at OpenObserve, the dashboard where our server logs and metrics end up. Before I sent it, the first one came back with the answer.</p>
+<p>The live system's boarding card reader was wired to the test system's ticket office, which was out of service. So everybody got turned away. That was the part of the iceberg under the water.</p>
+<h2>It takes a little while</h2>
+<p>"fix and helmfile apply."</p>
+<p>Helmfile is our charter: a document that describes how our servers are set up. Change the charter, apply it, and the servers follow. The fix was one line in the live charter: connect the reader to the live ticket office. Which office that was, my boarding pass had already told it.</p>
+<p>Then nothing happened for a while.</p>
+<p>The call was waiting. I told them it takes a little while, because it makes sure it doesn't break anything. It was working on production, so it went through the routine before touching the wheel: compare the charter with how the ship is actually set up.</p>
+<p>And it spotted a second iceberg, faint in the distance. None of us on the call had been looking that way. We were all staring at the first one.</p>
+<blockquote>
+<p>A plain apply would downgrade it. Checking.</p>
+</blockquote>
+<p>The charter still named an older version of the software than the one running live. Applying my one-line fix the normal way would have quietly rolled production back and undone changes that were supposed to be there.</p>
+<p>It kept the version that was running, checked once more that my line was the only change, and applied it.</p>
+<p>Some checks look like extra work. You only know you need them when you see what they catch.</p>
+<p>That's the deal with an AI at the wheel. Sometimes it takes longer to check than I would. You give it time.</p>
+<h2>Bookkeeping</h2>
+<p>Patched is not the same as dry. It went back to where it had seen the hole: my Safari, the same page, the same login. The customer list loaded. Another screenshot.</p>
+<p>Then the paperwork, by the book: a top-priority ticket with cause, fix, the screenshots and the open question of who owns the out-of-date charter. The other crews had reported back by then. No permission missing. The database showed we had hit the iceberg 20 minutes before my screenshot, and counted the field reps locked out. All of it went into the ticket: logbook and black box, in one place.</p>
+<p>Last, the answer for my colleagues. I ordered my AI to post it in Slack, with my own summary: the live Keycloak was using the credentials of the test Keycloak.</p>
+<p>That summary was wrong. I have a standing order with my AI: be honest, not just with me.</p>
+<p>So it posted its own: the live Keycloak had been fine, our server had been checking boarding passes against a ticket office that was down, and no permission had been missing.</p>
+<p>It went up under my colleague's message. The two messages are nine minutes apart.</p>
+<h2>Crew report on Monday</h2>
+<p>After a collision, the crew reports. Ours has a date: next Monday, in our team's demo slot.</p>
+<p>What we'll show is already in the logbook. Nobody went fast by skipping steps. The hole was seen with my eyes and then with the AI's, the facts came in before the decisions, the routine checks ran before the wheel turned, and the same spot was checked again once it was patched. The routine is what spotted the second iceberg.</p>
+<p>I renamed the conversation and put DEMO in front of it.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-11-15-cascading-redactions/">← Cascading Redactions</a><span></span></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

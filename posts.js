@@ -1,5 +1,23 @@
 window.POSTS = [
   {
+    "slug": "2026-11-18-report-to-production-in-nine-minutes",
+    "title": "Report to Production in Nine Minutes",
+    "hook": "Iceberg, right ahead. I was on a call with a colleague when another one joined: all the logins had stopped working, what can we do? Soon he was throwing guesses into Slack. Nine minutes later, we passed the first iceberg.",
+    "date": "2026-11-18",
+    "month": "2026-11",
+    "tags": [
+      "ai",
+      "claude",
+      "agent",
+      "debugging",
+      "production",
+      "saga"
+    ],
+    "sagas": [
+      "Hands-Off"
+    ]
+  },
+  {
     "slug": "2026-11-15-cascading-redactions",
     "title": "Cascading Redactions",
     "hook": "I asked an AI to find out why my words were disappearing. Halfway through, its own words started disappearing too.",
