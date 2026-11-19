@@ -7,7 +7,57 @@
 <atom:link href="https://scriptease.dev/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notes from building with AI, one story at a time.</description>
 <language>en</language>
-<lastBuildDate>Wed, 18 Nov 2026 09:37:06 +0100</lastBuildDate>
+<lastBuildDate>Thu, 19 Nov 2026 07:20:54 +0100</lastBuildDate>
+<item>
+<title>A Zero Day a Day</title>
+<link>https://scriptease.dev/posts/2026-11-19-a-zero-day-a-day/</link>
+<guid isPermaLink="true">https://scriptease.dev/posts/2026-11-19-a-zero-day-a-day/</guid>
+<pubDate>Thu, 19 Nov 2026 07:20:54 +0100</pubDate>
+<category>security</category><category>java</category><category>kubernetes</category><category>ai</category><category>production</category><category>saga</category><description>Tuesday night our servers got a new kernel. Wednesday morning two of them kept dying, every minute or so. By Wednesday evening we had worked around a security hole on our Java servers. Thursday at six, the next one was announced.</description>
+<content:encoded><![CDATA[<article class="post">
+<h1>A Zero Day a Day</h1>
+<p class="post-tags"><a href="/tags/security/">#security</a> <a href="/tags/java/">#java</a> <a href="/tags/kubernetes/">#kubernetes</a> <a href="/tags/ai/">#ai</a> <a href="/tags/production/">#production</a> <a href="/tags/saga/">#saga</a></p>
+<p><em>The <a href="/sagas/#first-responder">First Responder saga</a>: <a href="/posts/2026-11-18-report-to-production-in-nine-minutes/">1. Report to Production in Nine Minutes</a> · 2. A Zero Day a Day</em></p>
+<p>Tuesday night our servers got a new kernel. Wednesday morning two of them kept dying, every minute or so. By Wednesday evening we had worked around a security hole on our Java servers.</p>
+<p>Thursday at six, the next one was announced.</p>
+<h2>Both get OOM killed</h2>
+<p>Our servers run on a fleet of machines, managed by Kubernetes. Each server program lives in its own box, a container, with a fixed memory allowance. Step over it and Kubernetes kills the box and starts a new one. The kill has a name, OOMKilled: out of memory.</p>
+<p>Tuesday night the machines under those boxes were reinstalled with a new Linux kernel, the core of the operating system. Wednesday morning I opened the dashboard. Two were dying. I sent my AI a screenshot: "why both get OOM killed".</p>
+<h2>A small box that thinks it has all the memory</h2>
+<p>Java, the engine our server programs run on, decides at startup how much memory it may use. In a container it's supposed to ask the box. These servers asked the whole machine instead. They saw its big numbers, all of its memory and all of its processors, not the small ones they were allowed to use. So they planned for a warehouse and moved into a closet.</p>
+<p>The new kernel had stopped listing memory in the one place older Java versions look for it. They didn't find it, quietly gave up on the box, and sized themselves for the machine. There was no warning. Even the usual memory check printed the right limit, because it reads a different place than the part that actually decides.</p>
+<p>Newer Java versions look somewhere else and get it right. Ours were older.</p>
+<p>I asked my AI: "does a kernel flag something like use cgroups v1 fix it?" Not that one, it said, but there's another: <code>cgroup_v1_proc=true</code> puts memory back where the old Java looks for it. We built two throwaway servers, an old Java and a new one, and pinned them to the one machine that already had the flag. Both picked the right size. A colleague restarted the machines one by one with the flag.</p>
+<p>I also split three Java upgrades across three AI conversations, so those programs wouldn't need the kernel flag at all. "spawn a new thread and fix" the first one. "spawn 2 more."</p>
+<h2>A new Java CVE came up, can you add that</h2>
+<p>At lunchtime the second thing arrived. Java had a new CVE, a public case number for a security hole. This one came with a nickname, Java4Shell, and no fix yet in the Java we use.</p>
+<p>The hole sits in Java's base64 code. Base64 packs any data into text, so it can travel through places that only take text, like a web address. Java has a shortcut for unpacking it again, using special instructions on newer processors. The shortcut can write past the space set aside for its result, like writing past one field on a form into the next. That's a heap overflow.</p>
+<p>Only some processors have those instructions, and we run a mix. The same program could be vulnerable on one machine and fine on the next. So we checked our systems one by one. Not many were affected.</p>
+<p>There's a switch that turns the shortcut off: <code>-XX:-UseBASE64Intrinsics</code>. Java falls back to the slow, boring way, which works. We put the switch on anyway, on every affected Java version we run.</p>
+<p>Our move to Java 25 has lived in a single AI conversation <a href="/posts/2026-10-25-taking-over-the-workspace/">since October</a>, the longest one I have. I pasted the ticket into it: "lets add this flag and redeploy all dev systems running java 25". It came back with seven systems switched, each one checked in the running program. I asked one more question: "so there are no java-25 missing without the base64 fix?" Two test systems were. Now they're on the list.</p>
+<p>Some of those were the same three programs I had just moved to a newer Java that morning. "came up can you add that." They went out twice in one day.</p>
+<p>By evening the switch was running on our live servers.</p>
+<h2>A watcher that would wait forever</h2>
+<p>The real fix is a new Java. We use Temurin, a free edition, packaged as container images: the ready-to-run contents of our server boxes. The fixed images weren't out yet. So I had my AI set up a watcher: every hour, check whether they're out, and ping me.</p>
+<p>Its first bug: the fix would be labeled <code>21.0.13.1_1</code>, the broken one is <code>21.0.13_9</code>. The watcher read the fix as the older of the two. It would have ignored the very release it was waiting for. We fixed the watcher first.</p>
+<h2>Thursday, six o'clock</h2>
+<p>Just after midnight, my colleague posted in our infrastructure channel: the live machines had the kernel flag too, and were rebooted. The memory fix was out.</p>
+<p>Six hours later, a security warning landed: four holes in nginx, the web server that hands out our web apps. I asked my AI how many of our servers were affected.</p>
+<p>On the machines we could reach, thirty-six copies of nginx ran a version on the warning's list. My AI checked the settings of every one. Each hole needed an optional feature switched on.</p>
+<p>Not one of the thirty-six had any of them.</p>
+<p>We dodged it. I updated the oldest one anyway, from 2022, and removed a copy nobody needed.</p>
+<p>If any of them had matched, it would have been Wednesday again: scan, switch, roll out, wait. <a href="/posts/2026-11-05-groundhog-day/">Groundhog Day</a>.</p>
+<h2>Still watching</h2>
+<p>As I write this, Temurin's tracker shows the fixed Java built and the container images still being prepared. We're safe behind the switch. When the images land, every one of those servers goes out again.</p>
+<h2>An old friend: base64</h2>
+<p>In 2011, our own iPhone app had a base64 bug. It had just gone out through the App Store. We went for lunch. On the walk there, crash reports started rolling in. Real users, real phones. On our test system it had never crashed once.</p>
+<p>Our base64 code set aside exactly enough memory for the result, then wrote one more byte after it. One byte past the end. A heap overflow, in base64.</p>
+<p>We couldn't put a new app on everyone's phone that afternoon. So we fixed it from the outside. At certain lengths, that extra byte did no harm. So we padded every web address to one of those lengths: a <code>#</code> and some garbage at the end. The <code>#</code> meant the same page still loaded. Our base64 code counted the garbage anyway.</p>
+<p>Then we fixed the code.</p>
+<p>Fifteen years later Java had the same kind of bug, in base64 again, and we did what we did in 2011: went around it until the real fix arrives.</p>
+<p>It's seven a.m. now. Time for some Java.</p>
+</article>]]></content:encoded>
+</item>
 <item>
 <title>Report to Production in Nine Minutes</title>
 <link>https://scriptease.dev/posts/2026-11-18-report-to-production-in-nine-minutes/</link>
@@ -17,7 +67,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Report to Production in Nine Minutes</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/debugging/">#debugging</a> <a href="/tags/production/">#production</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a> · 5. Report to Production in Nine Minutes</em></p>
+<p><em>The <a href="/sagas/#first-responder">First Responder saga</a>: 1. Report to Production in Nine Minutes · <a href="/posts/2026-11-19-a-zero-day-a-day/">2. A Zero Day a Day</a></em></p>
 <p>Iceberg, right ahead.</p>
 <p>I was on a call with a colleague when another one joined: all the logins had stopped working, what can we do? Soon he was throwing guesses into Slack.</p>
 <p>Nine minutes later, we passed the first iceberg.</p>
@@ -476,7 +526,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>It's Time to Settle</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/git/">#git</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/saga/">#saga</a> <a href="/tags/t3code/">#t3code</a></p>
-<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · 4. It's Time to Settle · <a href="/posts/2026-11-18-report-to-production-in-nine-minutes/">5. Report to Production in Nine Minutes</a></em></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · 4. It's Time to Settle</em></p>
 <p>I left a wish in a YouTube comment. Less than an hour later I had the parts of it working myself, using only the tools the app already had.</p>
 <h2>"Can you add support for non github focused stuff?"</h2>
 <p>My workday happens in T3 Code, an open-source app where I run my AI coding assistants side by side, one conversation per task. Its maker, Theo, had posted a video tour of the new version the day before.</p>
@@ -540,7 +590,7 @@
 <content:encoded><![CDATA[<article class="post">
 <h1>Better Call Sol</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/codereview/">#codereview</a> <a href="/tags/skills/">#skills</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · 3. Better Call Sol · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a> · <a href="/posts/2026-11-18-report-to-production-in-nine-minutes/">5. Report to Production in Nine Minutes</a></em></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · 3. Better Call Sol · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a></em></p>
 <p>I watched a YouTube video about a trick I already used. His version was fancier. Mine was about to get a better name.</p>
 <h2>"I already use Sol his way anyway"</h2>
 <p>Theo, a developer on YouTube, made a video called <a href="https://www.youtube.com/watch?v=5Bmp9cz1JN8">These 3 skills changed my life</a>. A skill is a written recipe my AI follows when I say a certain phrase. One of his three is the Sol Loop.</p>
@@ -593,7 +643,7 @@ Sol verdict: approved
 <content:encoded><![CDATA[<article class="post">
 <h1>Taking Over the Workspace</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/claude/">#claude</a> <a href="/tags/agent/">#agent</a> <a href="/tags/automation/">#automation</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · 2. Taking Over the Workspace · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a> · <a href="/posts/2026-11-18-report-to-production-in-nine-minutes/">5. Report to Production in Nine Minutes</a></em></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · 2. Taking Over the Workspace · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a></em></p>
 <p>For weeks my AI ran one of our workspaces on its own. It merged, built, deployed and tested, and nobody else touched that code. Then, for the first time, I asked it to set up a workspace I could look at too.</p>
 <h2>"That was fast"</h2>
 <p>A colleague from our web team sent my AI a message in Slack, our work chat, with an upside-down smiley: "Create a ticket on how we can set up git repo for [both customers'] web". Repo is the tool that sets up our workspaces, with several projects side by side.</p>
@@ -3713,7 +3763,7 @@ Ah an idea can we test that you can drag the shark?
 <content:encoded><![CDATA[<article class="post">
 <h1>Non-Load-Bearing</h1>
 <p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/work-life-balance/">#work-life-balance</a> <a href="/tags/psychology/">#psychology</a> <a href="/tags/saga/">#saga</a></p>
-<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: 1. Non-Load-Bearing · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a> · <a href="/posts/2026-11-18-report-to-production-in-nine-minutes/">5. Report to Production in Nine Minutes</a></em></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: 1. Non-Load-Bearing · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a></em></p>
 <p>I was watching Matt Pocock's <em>"AI Coding is exhausting,"</em> and thirty seconds in he hit a nerve I'd been ignoring for weeks.</p>
 <p>His point was small and exact. The AI hasn't made the work harder. It's eaten the <em>easy</em> part — and the easy part, it turns out, was doing something.</p>
 <h2>Strategic vs tactical decisions</h2>
