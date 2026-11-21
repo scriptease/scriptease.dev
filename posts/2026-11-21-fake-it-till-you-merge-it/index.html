@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/theme-init.js"></script>
+<title>Fake It Till You Merge It — scriptease.dev</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="scriptease.dev">
+<meta property="og:title" content="Fake It Till You Merge It">
+<meta property="og:description" content="For three weeks I had a working prototype, and I didn't want to run it. Then I read about someone who hadn't built one at all. They'd built an impostor.">
+<meta property="og:url" content="https://scriptease.dev/posts/2026-11-21-fake-it-till-you-merge-it/">
+<meta property="og:image" content="https://scriptease.dev/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="scriptease.dev" href="/feed.xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/"><img class="brand-shark" src="/shark.png" alt="" width="20" height="20"> scriptease.dev</a>
+  <div class="header-actions">
+    <div class="site-search" id="site-search">
+      <input class="search-input" id="search-input" type="search" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-toggle" id="search-toggle" aria-label="Search" title="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <a class="rss-link" href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="6.2" cy="17.8" r="2.2"/><path d="M4 4v3a13 13 0 0 1 13 13h3A16 16 0 0 0 4 4z"/><path d="M4 10.5v3A6.5 6.5 0 0 1 10.5 20h3A9.5 9.5 0 0 0 4 10.5z"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<div class="layout">
+  <main>
+<article class="post">
+<h1>Fake It Till You Merge It</h1>
+<p class="post-tags"><a href="/tags/ai/">#ai</a> <a href="/tags/agent/">#agent</a> <a href="/tags/git/">#git</a> <a href="/tags/opensource/">#opensource</a> <a href="/tags/saga/">#saga</a> <a href="/tags/t3code/">#t3code</a></p>
+<p><em>The <a href="/sagas/#hands-off">Hands-Off saga</a>: <a href="/posts/2026-07-21-non-load-bearing/">1. Non-Load-Bearing</a> · <a href="/posts/2026-10-25-taking-over-the-workspace/">2. Taking Over the Workspace</a> · <a href="/posts/2026-10-28-better-call-sol/">3. Better Call Sol</a> · <a href="/posts/2026-10-30-its-time-to-settle/">4. It's Time to Settle</a> · 5. Fake It Till You Merge It</em></p>
+<p>For three weeks I had a working prototype, and I didn't want to run it. Then I read about someone who hadn't built one at all. They'd built an impostor.</p>
+<h2>"Without changing the T3 app?"</h2>
+<p>My workday happens in T3 Code, an app where I run my AI coding assistants side by side. It has a tab for pull requests: code changes waiting for a colleague's review. It shows them for code on GitHub, the biggest public home for code, and a few similar services.</p>
+<p>At work we review code in Gerrit, a code review system from Google. T3 Code doesn't know it. <a href="/posts/2026-10-30-its-time-to-settle/">Last month</a> I disguised our Gerrit links as pull requests so the app would at least file them. The tab itself stayed empty.</p>
+<p>Three weeks ago I asked my AI: "Where does t3code get the pull requests from, is it possible to replace the pull requests sections with a gerrit search? Without changing the t3app?"</p>
+<p>No, it said. Not without a hack: putting a small program in front of Gerrit that pretends to be one of the services T3 Code already knows.</p>
+<p>I went the proper way instead.</p>
+<h2>A prototype I didn't want to run</h2>
+<p>The proper way was to teach T3 Code about Gerrit, in my own copy of its code. I had a second AI plan it alongside the first. They argued for three rounds until both wrote <code>AGREED</code>. An hour later, the Gerrit support was built and saved.</p>
+<p>Then it hit a wall. Our Gerrit sits behind a doorman, a gateway that checks every visitor's name and password before letting them in. The access key Gerrit gave me never got past him. I filed a ticket to discuss how tools should log in at all.</p>
+<p>But the doorman wasn't the real problem. A Gerrit plugin inside my own copy of T3 Code meant running my own copy of T3 Code, from then on. Every update from the real app would need merging in by hand. Every bug might be mine. And it's the app I work in all day.</p>
+<p>It was a workable solution. It was also a risk. The prototype sat there for three weeks.</p>
+<h2>"Why didn't I think of that?"</h2>
+<p>This morning I came across a post in T3 Code's community on Reddit: "T3 Code with self-hosted Bitbucket Data Center". Bitbucket is another code hosting service. T3 Code supports its cloud version, not the one companies run on their own servers. "If you're stuck on Bitbucket DC at work like I am, give it a try."</p>
+<p>So the author had written an adapter, a translator that runs on their computer and makes their company's server look like the cloud one. Four words in the post got me hooked: "No fork, no patch." No copy of the app to keep up to date, no changes to the app itself.</p>
+<p>Why didn't I think of that?</p>
+<h2>"I could also be wrong"</h2>
+<p>I sent my AI the link and asked whether we could go that route instead. It read the adapter and said: "I'd stay with the custom provider." My own Gerrit plugin, in other words. The code was already written, after all.</p>
+<p>I pushed back. "In my opinion, it would be easier to spoof a service and get it working instead of trying to get it into T3 code, we can do that as well, but that is way more effort than spoofing one. In my opinion, but I could also be wrong."</p>
+<p>"Partly right," it answered. And then it found the better disguise: "Best service to spoof: Forgejo, not Bitbucket."</p>
+<p>Forgejo. The same hack it had offered me three weeks earlier.</p>
+<p>Forgejo is a free code hosting service, and T3 Code already speaks it. One of the ways T3 Code talks to Forgejo is a little tool called <code>tea</code>. It remembers logins and talks to services. One new login entry, pointing at the adapter on my Mac, and instead of talking to Forgejo, T3 Code was unknowingly talking to Gerrit.</p>
+<p>It had been a busy week of reaching for <a href="/posts/2026-11-19-a-zero-day-a-day/">Java</a>. This weekend, I decided to relax with some tea.</p>
+<p>It even avoids the one catch of the Bitbucket adapter that inspired it: no special shortcut to start T3 Code. If the adapter ever causes trouble, I delete the login entry and it's gone.</p>
+<p>The adapter talks to Gerrit the way my AIs already do, so the login isn't even an issue.</p>
+<p>"Yes, let's do a spike." A <a href="/posts/2026-11-08-spike-the-word-that-opens-the-door/">spike</a> is a short experiment that answers one question, not a finished feature. This one's question: will the official app believe the disguise?</p>
+<p>The first made-up pull request showed up in T3 Code a quarter of an hour later. A few minutes after that, I pulled to refresh in T3 Code's iPad app, and all our changes were there, with their descriptions and the code that changed.</p>
+<h2>The adapter's log became my wishlist</h2>
+<p>I typed a comment on one of the changes and hit send.</p>
+<p>The adapter didn't know comments yet. It answered "not found", and my AI, watching its log, noticed: "Someone just tried to post a comment … If that was you, the comment did not reach Gerrit."</p>
+<p>"I think I want the comment feature, which is easy to create, right?"</p>
+<p>It was. A few minutes later I typed "Test" on the iPad, and in Gerrit, under my name, appeared "Patch Set 1: Test".</p>
+<p>That became the rhythm. I tried something in T3 Code and got an error. My AI was listening in the background and asked if I wanted it. I said yes, and it translated it into Gerrit's language. Closing and reopening a pull request became possible. Even the actions that don't translate well got a version: they leave a comment on the change in Gerrit instead.</p>
+<p>When my AI told me I could approve inside T3 Code, I was hyped. Then I couldn't find the button. It turns out Forgejo doesn't let you approve your own work, and the change I was testing on was mine. Even the impostor had to follow Forgejo's rules.</p>
+<p>"found it and close reopen worked :D"</p>
+<p>From Reddit post to working in a little over an hour. The proper way had sat untouched for three weeks.</p>
+<h2>Links, fixed on the way</h2>
+<p>The reason I'd picked this up this morning wasn't the empty tab. A recent test version of T3 Code had broken my disguised links. Clicking one opened a side panel that couldn't load the pull request, with no way out to Gerrit. A separate AI found what changed and wrote a fix.</p>
+<p>But a link like mine has to change disguises for everyone who looks at it. The first one was for T3 Code: look like a pull request, so it gets filed. Now, through the impostor, T3 Code knows what to do with it again and opens it in the browser.</p>
+<p>The last disguise is for Gerrit, so it accepts the link as one of its own. That one needed fixing too.</p>
+<p>With the impostor running, I clicked a link in T3 Code again.</p>
+<p>It worked.</p>
+<p>The fix for T3 Code is still sitting unused. It doesn't need to go anywhere.</p>
+<h2>Fake it till you merge it</h2>
+<p>The spike didn't stay a spike. The adapter now lives in our team's shared collection of helper scripts, in its own folder, with its own instructions and 31 tests. Nothing in its code knows our company's name, in case I want to give it away one day.</p>
+<p>Then I sent it in for review, like any other change, and opened it in T3 Code. My change, served by my impostor, in my own window. Our AI reviewer had already been there, and it voted against it:</p>
+<blockquote>
+<p>The adapter works for the main flows, but its unauthenticated localhost API lets any web page post reviews in the user's name.</p>
+</blockquote>
+<p>The impostor could be impersonated. I fixed that before finishing this post. Even then, <a href="/posts/2026-10-28-better-call-sol/">Sol</a>, the AI I ask for a second opinion, wouldn't approve it.</p>
+<p><img alt="The adapter's own change on top of 1,009 of mine in T3 Code's pull request view, with the AI reviewer's minus one" src="assets/fake-it-till-you-merge-it/adapter-reviews-itself.jpg" /></p>
+<p>Fake it till you merge it. It isn't merged yet.</p>
+<p>The prototype from three weeks ago is still there. Built, reviewed, ready to be run. It never will be.</p>
+<p>I went back to the Reddit post and thanked the author: "Thanks for the inspiration. I now have a Gerrit integration spoofing Forgejo as a hook!!!"</p>
+<p>T3 Code still thinks our code review system is Forgejo. I haven't told it.</p>
+<p>The disguise only drops when the browser opens.</p>
+</article>
+<nav class="post-nav"><a class="prev" href="/posts/2026-11-19-a-zero-day-a-day/">← A Zero Day a Day</a><span></span></nav>
+  </main>
+  <aside class="sidebar" id="sidebar"></aside>
+</div>
+<footer class="site">
+  <span>scriptease.dev — Notes from building with AI, one story at a time.</span>
+</footer>
+<script src="/posts.js"></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

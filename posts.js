@@ -1,5 +1,23 @@
 window.POSTS = [
   {
+    "slug": "2026-11-21-fake-it-till-you-merge-it",
+    "title": "Fake It Till You Merge It",
+    "hook": "For three weeks I had a working prototype, and I didn't want to run it. Then I read about someone who hadn't built one at all. They'd built an impostor.",
+    "date": "2026-11-21",
+    "month": "2026-11",
+    "tags": [
+      "ai",
+      "agent",
+      "git",
+      "opensource",
+      "saga",
+      "t3code"
+    ],
+    "sagas": [
+      "Hands-Off"
+    ]
+  },
+  {
     "slug": "2026-11-19-a-zero-day-a-day",
     "title": "A Zero Day a Day",
     "hook": "Tuesday night our servers got a new kernel. Wednesday morning two of them kept dying, every minute or so. By Wednesday evening we had worked around a security hole on our Java servers. Thursday at six, the next one was announced.",
