@@ -11,6 +11,8 @@ writes:
 
     index.html                 root: redirects to the latest post
     posts/<slug>/index.html    one page per post
+    posts/<slug>.md            the post as markdown, for AI agents
+    llms.txt / llms-full.txt   markdown index of all posts / every post in full
     posts/<slug>/assets/...    the post's copied images
     archive/<YYYY-MM>/index.html   month overview (that month's posts)
     sagas/index.html           every saga with its parts (frontmatter `saga:`)
@@ -162,7 +164,7 @@ PAGE = """<!DOCTYPE html>
 {meta}<link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="{site}" href="/feed.xml">
-<link rel="stylesheet" href="/style.css">
+{alternate}<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <header class="site">
@@ -273,6 +275,29 @@ def entry_list(posts):
     return '<ul class="entries">\n%s\n</ul>' % "\n".join(rows)
 
 
+def strip_comments(body):
+    """Drop `<!-- -->` editorial notes outside ``` fences."""
+    parts = re.split(r'(^```.*?^```[^\n]*$)', body, flags=re.M | re.S)
+    return "".join(part if i % 2 else re.sub(r'<!--.*?-->\n?', "", part, flags=re.S)
+                   for i, part in enumerate(parts))
+
+
+def post_markdown(slug, title, fm, tags, body):
+    """The post as standalone markdown served at /posts/<slug>.md: frontmatter,
+    title, body with wikilinks flattened and asset paths made absolute (the
+    .md sits one level above the post folder, so relative srcs would break)."""
+    url = "%s/posts/%s/" % (SITE_URL, slug)
+    meta = [("title", title), ("url", url), ("author", "Scriptease"),
+            ("created", fm.get("created", "")),
+            ("published", fm.get("published") or fm.get("created", "")),
+            ("description", fm.get("hook", "")), ("tags", tags)]
+    head = "".join("%s: %s\n" % (k, json.dumps(v, ensure_ascii=False))
+                   for k, v in meta)
+    text = flatten_wikilinks(strip_comments(body)).replace(
+        "](assets/", "](%sassets/" % url)
+    return "---\n%s---\n\n# %s\n\n%s\n" % (head, title, text.strip())
+
+
 def build_post(md_path):
     raw = md_path.read_text()
     fm, body = split_frontmatter(raw)
@@ -313,6 +338,7 @@ def build_post(md_path):
         "sagas": parse_sagas(fm.get("saga", "")),
         "saga_label": fm.get("saga_label") or title,
         "article": article,
+        "md": post_markdown(slug, title, fm, tags, body),
     }
 
 
@@ -324,6 +350,24 @@ def post_nav(older, newer):
     right = ('<a class="next" href="/posts/%s/">%s →</a>'
              % (newer["slug"], escape(newer["title"]))) if newer else "<span></span>"
     return '<nav class="post-nav">%s%s</nav>' % (left, right)
+
+
+MD_ALTERNATE = ('<link rel="alternate" type="text/markdown" '
+                'href="/posts/%s.md">\n')
+
+
+def write_llms_txt(posts):
+    """/llms.txt (llmstxt.org): what the site is, how to get markdown, and every
+    post newest first. /llms-full.txt: every post's markdown in one file."""
+    rows = "\n".join("- [%s](%s/posts/%s.md): %s" % (
+        p["title"], SITE_URL, p["slug"], p["hook"]) for p in posts)
+    (REPO / "llms.txt").write_text(
+        "# %s\n\n> %s\n\n"
+        "Every post is available as markdown: append `.md` to the post URL "
+        "without the trailing slash (`/posts/<slug>/` -> `/posts/<slug>.md`). "
+        "All posts in one file: %s/llms-full.txt. RSS: %s/feed.xml.\n\n"
+        "## Posts\n\n%s\n" % (SITE_TITLE, SITE_TAGLINE, SITE_URL, SITE_URL, rows))
+    (REPO / "llms-full.txt").write_text("\n\n".join(p["md"] for p in posts))
 
 
 def write_post_pages(chrono):
@@ -338,7 +382,9 @@ def write_post_pages(chrono):
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(PAGE.format(
             title=escape(p["title"]) + " — " + SITE_TITLE, site=SITE_TITLE,
-            tagline=SITE_TAGLINE, content=content, meta=post_og_meta(p)))
+            tagline=SITE_TAGLINE, content=content, meta=post_og_meta(p),
+            alternate=MD_ALTERNATE % p["slug"]))
+        (REPO / "posts" / ("%s.md" % p["slug"])).write_text(p["md"])
 
 
 def build_month_pages(posts):
@@ -363,7 +409,7 @@ def build_month_pages(posts):
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(PAGE.format(
             title="%s — %s" % (escape(month_label(ym)), SITE_TITLE),
-            site=SITE_TITLE, tagline=SITE_TAGLINE, content=content, meta=""))
+            site=SITE_TITLE, tagline=SITE_TAGLINE, content=content, meta="", alternate=""))
 
 
 def build_tag_pages(posts):
@@ -385,7 +431,7 @@ def build_tag_pages(posts):
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(PAGE.format(
             title="#%s — %s" % (escape(tag), SITE_TITLE),
-            site=SITE_TITLE, tagline=SITE_TAGLINE, content=content, meta=""))
+            site=SITE_TITLE, tagline=SITE_TAGLINE, content=content, meta="", alternate=""))
     build_tag_cloud(tags)
 
 
@@ -415,7 +461,7 @@ def build_saga_page(posts):
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(PAGE.format(
         title="Sagas — %s" % SITE_TITLE, site=SITE_TITLE,
-        tagline=SITE_TAGLINE, content=content, meta=""))
+        tagline=SITE_TAGLINE, content=content, meta="", alternate=""))
 
 
 def build_tag_cloud(tags):
@@ -444,7 +490,7 @@ def build_tag_cloud(tags):
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(PAGE.format(
         title="Tags — %s" % SITE_TITLE, site=SITE_TITLE,
-        tagline=SITE_TAGLINE, content=content, meta=""))
+        tagline=SITE_TAGLINE, content=content, meta="", alternate=""))
 
 
 def write_posts_js(posts):
@@ -551,6 +597,7 @@ def main():
     write_posts_js(posts)
     write_search_index(posts)
     write_feed(posts)
+    write_llms_txt(posts)
     if posts:
         (REPO / "index.html").write_text(
             REDIRECT.format(slug=posts[0]["slug"], site=SITE_TITLE,
